@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Me, Myself &amp; AI — Brand Kit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF5EC; --surface:#FFFDF8; --warm:#F3EADC; --ink:#2B231D; --ink-soft:#6B5C50;
+    --accent:#BF5538; --accent-deep:#9C4128; --highlight:#E5A33F; --success:#4E7A5A;
+    --error:#A33B2E; --line:#E3D7C6;
+    --sh1:0 1px 2px rgba(43,35,29,.06),0 4px 12px rgba(43,35,29,.05);
+    --sh2:0 4px 8px rgba(43,35,29,.08),0 12px 32px rgba(43,35,29,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--paper);color:var(--ink);font:400 17px/1.65 'Inter',sans-serif;padding:24px 20px 80px}
+  .wrap{max-width:680px;margin:0 auto}
+  h1{font:600 34px/1.12 'Fraunces',serif}
+  h2{font:600 26px/1.2 'Fraunces',serif;margin:48px 0 16px}
+  .kicker{font:500 13px/1.4 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:8px}
+  .sub{color:var(--ink-soft);margin-top:8px}
+  /* wordmark */
+  .wordmark{font:600 28px 'Fraunces',serif}
+  .wordmark .amp{color:var(--accent);font-style:italic}
+  /* swatches */
+  .swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px}
+  .sw{border-radius:16px;border:1px solid var(--line);overflow:hidden;background:var(--surface);box-shadow:var(--sh1)}
+  .sw .chip{height:64px}
+  .sw .meta{padding:10px 12px;font-size:13px}
+  .sw .meta b{display:block;font-weight:600}
+  .sw .meta span{color:var(--ink-soft)}
+  /* type */
+  .typecard{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--sh1);display:flex;flex-direction:column;gap:18px}
+  .t-display{font:600 34px/1.12 'Fraunces',serif}
+  .t-h2{font:600 26px/1.2 'Fraunces',serif}
+  .t-h3{font:700 18px/1.35 'Inter'}
+  .t-body{font:400 17px/1.65 'Inter'}
+  .t-take{font:italic 500 22px/1.4 'Fraunces',serif}
+  .t-cap{font:500 13px/1.4 'Inter';color:var(--ink-soft)}
+  .term{font-weight:600;box-shadow:inset 0 -2px 0 var(--highlight)}
+  /* buttons */
+  .row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+  .btn{font:600 17px 'Inter';border:none;border-radius:999px;min-height:52px;padding:14px 28px;cursor:pointer}
+  .btn-primary{background:var(--accent);color:var(--surface)}
+  .btn-primary:active,.btn-primary:hover{background:var(--accent-deep)}
+  .btn-secondary{background:transparent;border:1.5px solid var(--line);color:var(--ink)}
+  .btn-secondary:hover{background:var(--warm)}
+  a.textlink{color:var(--accent-deep);text-decoration:none;font-weight:600}
+  a.textlink:hover{text-decoration:underline}
+  /* cards */
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--sh1)}
+  .analogy{background:var(--warm);border:none;border-left:4px solid var(--highlight);border-radius:20px;padding:24px}
+  .analogy h3{font:600 26px/1.2 'Fraunces',serif;margin-bottom:8px}
+  .takeaway{background:var(--warm);border-radius:20px;padding:32px 24px;position:relative;box-shadow:var(--sh2)}
+  .takeaway:before{content:'\201C';position:absolute;top:4px;left:16px;font:600 96px 'Fraunces',serif;color:var(--accent);opacity:.2;line-height:1}
+  .takeaway p{font:italic 500 22px/1.4 'Fraunces',serif;position:relative}
+  /* progress */
+  .ptrack{height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+  .pfill{height:100%;width:55%;border-radius:999px;background:linear-gradient(90deg,var(--highlight),var(--accent))}
+  /* quiz */
+  .qopt{display:flex;align-items:center;gap:12px;width:100%;min-height:56px;padding:16px;border-radius:16px;border:1.5px solid var(--line);background:var(--surface);font:400 17px/1.5 'Inter';text-align:left;cursor:pointer;margin-bottom:10px}
+  .qopt.sel{border:2px solid var(--accent)}
+  .qopt.ok{border:2px solid var(--success);background:#EAF1EB}
+  .qopt.no{border:2px solid var(--error)}
+  .dot{flex:0 0 22px;height:22px;border-radius:50%;border:2px solid var(--line)}
+  .ok .dot{border-color:var(--success);background:var(--success)}
+  .stack{display:flex;flex-direction:column;gap:16px}
+  @media(min-width:768px){body{font-size:18px;padding:48px 32px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="kicker">Brand Kit · v1.0</p>
+  <h1>Me, Myself <span style="color:var(--accent);font-style:italic">&amp;</span> AI</h1>
+  <p class="sub">Finally, AI that makes sense for <em>your</em> work. Warm editorial — a smart book, not a dashboard. Phone-first.</p>
+
+  <h2>Wordmark</h2>
+  <div class="card row" style="justify-content:space-between">
+    <span class="wordmark">Me, Myself <span class="amp">&amp;</span> AI</span>
+    <span class="wordmark" style="font-size:22px">M<span class="amp">&amp;</span>AI</span>
+  </div>
+  <p class="t-cap" style="margin-top:8px">Fraunces 600. The ampersand is always Barro italic — it's the brand's wink.</p>
+
+  <h2>Color — Masa, Espresso &amp; Barro</h2>
+  <div class="swatches">
+    <div class="sw"><div class="chip" style="background:#FAF5EC;border-bottom:1px solid var(--line)"></div><div class="meta"><b>Masa</b><span>#FAF5EC · paper</span></div></div>
+    <div class="sw"><div class="chip" style="background:#FFFDF8;border-bottom:1px solid var(--line)"></div><div class="meta"><b>Crema</b><span>#FFFDF8 · surface</span></div></div>
+    <div class="sw"><div class="chip" style="background:#F3EADC"></div><div class="meta"><b>Horchata</b><span>#F3EADC · warm surface</span></div></div>
+    <div class="sw"><div class="chip" style="background:#2B231D"></div><div class="meta"><b>Espresso</b><span>#2B231D · ink</span></div></div>
+    <div class="sw"><div class="chip" style="background:#6B5C50"></div><div class="meta"><b>Cortado</b><span>#6B5C50 · soft ink</span></div></div>
+    <div class="sw"><div class="chip" style="background:#BF5538"></div><div class="meta"><b>Barro</b><span>#BF5538 · accent</span></div></div>
+    <div class="sw"><div class="chip" style="background:#9C4128"></div><div class="meta"><b>Adobe</b><span>#9C4128 · accent deep</span></div></div>
+    <div class="sw"><div class="chip" style="background:#E5A33F"></div><div class="meta"><b>Marigold</b><span>#E5A33F · highlight</span></div></div>
+    <div class="sw"><div class="chip" style="background:#4E7A5A"></div><div class="meta"><b>Nopal</b><span>#4E7A5A · success</span></div></div>
+    <div class="sw"><div class="chip" style="background:#A33B2E"></div><div class="meta"><b>Chile</b><span>#A33B2E · error</span></div></div>
+    <div class="sw"><div class="chip" style="background:#E3D7C6"></div><div class="meta"><b>Hilo</b><span>#E3D7C6 · line</span></div></div>
+  </div>
+
+  <h2>Typography</h2>
+  <div class="typecard">
+    <div><span class="t-cap">Display · Fraunces 600 · 34/48px</span><div class="t-display">AI has a gas tank.</div></div>
+    <div><span class="t-cap">H2 · Fraunces 600 · 26/32px</span><div class="t-h2">The Core Analogy</div></div>
+    <div><span class="t-cap">H3 · Inter 700 · 18/20px</span><div class="t-h3">Why long conversations get expensive</div></div>
+    <div><span class="t-cap">Body · Inter 400 · 17/18px</span><div class="t-body">Every word you type burns a little fuel. A <span class="term">token</span> — roughly three-quarters of a word — is the unit AI actually reads.</div></div>
+    <div><span class="t-cap">Takeaway · Fraunces italic · 22/26px</span><div class="t-take">Break big tasks into trips.</div></div>
+  </div>
+
+  <h2>Buttons</h2>
+  <div class="card row">
+    <button class="btn btn-primary">Continue</button>
+    <button class="btn btn-secondary">Back</button>
+    <a href="#" class="textlink">Skip for now</a>
+  </div>
+
+  <h2>Progress</h2>
+  <div class="card stack">
+    <span class="t-cap">Step 3 of 6 — never percentages</span>
+    <div class="ptrack"><div class="pfill"></div></div>
+  </div>
+
+  <h2>Cards</h2>
+  <div class="stack">
+    <div class="card"><h3 class="t-h3" style="margin-bottom:6px">Standard card</h3><p>Crema surface, 20px radius, hairline border, soft warm shadow.</p></div>
+    <div class="analogy"><h3>The Gas Tank</h3><p>Think of tokens like gas in a tank. Every word you type burns gas. Every word the AI writes back burns gas. When the tank hits empty — the car stops, even mid-sentence.</p></div>
+    <div class="takeaway"><p>AI has a gas tank. Long conversations burn more fuel. Break big tasks into trips.</p></div>
+  </div>
+
+  <h2>Quiz</h2>
+  <div class="card">
+    <p class="t-h3" style="margin-bottom:14px">What happens when the “tank” runs out mid-answer?</p>
+    <button class="qopt"><span class="dot"></span>Default option</button>
+    <button class="qopt sel"><span class="dot" style="border-color:var(--accent)"></span>Selected option</button>
+    <button class="qopt ok"><span class="dot"></span>Correct — the answer cuts off, even mid-sentence ✓</button>
+    <button class="qopt no"><span class="dot" style="border-color:var(--error)"></span>Not quite — here's the thing…</button>
+  </div>
+</div>
+</body>
+</html>
