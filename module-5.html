@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF5EC">
+<title>Module 5: Your First AI Workflow: The Sous Chef — Me, Myself &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF5EC; --surface:#FFFDF8; --warm:#F3EADC; --ink:#2B231D; --ink-soft:#6B5C50;
+    --accent:#BF5538; --accent-deep:#9C4128; --highlight:#E5A33F; --success:#4E7A5A;
+    --error:#A33B2E; --line:#E3D7C6;
+    --sh1:0 1px 2px rgba(43,35,29,.06),0 4px 12px rgba(43,35,29,.05);
+    --sh2:0 4px 8px rgba(43,35,29,.08),0 12px 32px rgba(43,35,29,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--paper);color:var(--ink);font:400 17px/1.65 'Inter',sans-serif;
+       -webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+  header{position:sticky;top:0;background:var(--paper);padding:14px 20px 10px;z-index:5}
+  .topline{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+  .brand{font:600 16px 'Fraunces',serif;color:var(--ink);text-decoration:none}
+  .brand .amp{color:var(--accent);font-style:italic}
+  .stepl{font:500 13px/1.4 'Inter';color:var(--ink-soft)}
+  .gauge{display:flex;align-items:center;gap:8px}
+  .gauge svg{flex:0 0 auto}
+  .ptrack{flex:1;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+  .pfill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--highlight),var(--accent));transition:width .25s ease-out}
+  main{flex:1;padding:8px 20px 120px;max-width:640px;width:100%;margin:0 auto}
+  .screen{display:none;animation:rise .25s ease-out}
+  .screen.on{display:block}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.screen{animation:none}}
+  .kicker{font:500 13px/1.4 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin:16px 0 8px}
+  h1{font:600 34px/1.12 'Fraunces',serif;margin-bottom:12px}
+  h2{font:600 26px/1.2 'Fraunces',serif;margin:28px 0 10px}
+  h3{font:700 18px/1.35 'Inter';margin:22px 0 6px}
+  p{margin-bottom:14px;max-width:62ch}
+  .soft{color:var(--ink-soft)}
+  .term{font-weight:600;box-shadow:inset 0 -2px 0 var(--highlight)}
+  ul{margin:0 0 14px 20px}
+  li{margin-bottom:8px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--sh1);margin:16px 0}
+  .analogy{background:var(--warm);border:none;border-left:4px solid var(--highlight);border-radius:20px;padding:24px;margin:16px 0}
+  .analogy h2{margin-top:0}
+  .takeaway{background:var(--warm);border-radius:20px;padding:36px 24px 28px;position:relative;box-shadow:var(--sh2);margin:20px 0}
+  .takeaway:before{content:'\201C';position:absolute;top:2px;left:16px;font:600 96px 'Fraunces',serif;color:var(--accent);opacity:.18;line-height:1}
+  .takeaway p{font:italic 500 22px/1.4 'Fraunces',serif;position:relative;margin:0}
+  .navbar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);
+          box-shadow:var(--sh2);padding:12px 20px calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;gap:12px;z-index:5}
+  .navbar .inner{display:flex;justify-content:space-between;gap:12px;width:100%;max-width:640px;margin:0 auto}
+  .btn{font:600 17px 'Inter';border:none;border-radius:999px;min-height:52px;padding:14px 28px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+  .btn-primary{background:var(--accent);color:var(--surface)}
+  .btn-primary:active,.btn-primary:hover{background:var(--accent-deep)}
+  .btn-primary[disabled]{opacity:.4;cursor:default}
+  .btn-ghost{background:transparent;color:var(--ink-soft)}
+  .qopt{display:flex;align-items:flex-start;gap:12px;width:100%;min-height:56px;padding:16px;border-radius:16px;
+        border:1.5px solid var(--line);background:var(--surface);font:400 17px/1.5 'Inter';text-align:left;cursor:pointer;margin-bottom:10px;color:var(--ink)}
+  .qopt.sel{border:2px solid var(--accent);padding:15px}
+  .qopt.ok{border:2px solid var(--success);background:#EAF1EB;padding:15px}
+  .qopt.no{border:2px solid var(--error);padding:15px}
+  .dot{flex:0 0 22px;height:22px;border-radius:50%;border:2px solid var(--line);margin-top:2px}
+  .qopt.ok .dot{border-color:var(--success);background:var(--success)}
+  .qopt.no .dot{border-color:var(--error)}
+  .explain{border-radius:16px;padding:16px;margin:6px 0 18px;font-size:16px;display:none}
+  .explain.show{display:block}
+  .explain.good{background:#EAF1EB;color:#33523D}
+  .explain.bad{background:#F6E8E2;color:#7A2E23}
+  @media(min-width:768px){
+    body{font-size:18px}
+    h1{font-size:48px} h2{font-size:32px}
+    main{padding-bottom:40px}
+    .navbar{position:static;box-shadow:none;border:none;background:transparent}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="topline">
+    <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
+    <span class="stepl" id="stepLabel">Module 5</span>
+  </div>
+  <div class="gauge" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg>
+    <div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div>
+  </div>
+</header>
+<main>
+  <section class="screen on" data-title="Module 5">
+    <p class="kicker">Module 5 · 10 min</p>
+    <h1>Your First AI Workflow: The Sous Chef</h1>
+    <p class="soft">You get it in theory. Now here's how to actually use AI for real work — starting with one task this week.</p>
+    <div class="card"><h3 style="margin-top:0">In this module</h3><ul style="margin-bottom:0"><li>How to pick your first use case</li><li>A bad prompt vs. a good one</li><li>The habit that makes it stick</li></ul></div>
+  </section>
+  <section class="screen" data-title="The problem">
+    <p class="kicker">The problem</p>
+    <h1>Okay… now what do I type?</h1>
+    <p>You understand tokens, whiteboards, and confident interns. But the blank chat box still stares back at you. Cursor blinking. “Now what do I actually <em>do</em> with this?”</p><p>This is where most people quit — not because AI is hard, but because nobody showed them the first move. So let's make the first move dead simple.</p>
+  </section>
+  <section class="screen" data-title="The analogy">
+    <p class="kicker">The core analogy</p>
+    <div class="analogy"><h2>The Sous Chef</h2><p>AI is your sous chef, not your head chef. You decide the dish, the flavor, who's eating. You're in charge of the vision.</p><p style="margin-bottom:0">The sous chef preps the ingredients, handles the repetitive chopping, and makes you faster. But you set the direction — and you always taste the food before it leaves the kitchen.</p></div>
+    <p>Keep that hierarchy and AI becomes genuinely useful. Flip it — letting the sous chef run the kitchen — and that's where people get burned.</p>
+  </section>
+  <section class="screen" data-title="How it works">
+    <p class="kicker">How it actually works</p>
+    <h1>Your first dish, step by step</h1>
+    <p>Don't try to “use AI” in the abstract. Pick <strong>one</strong> use case and actually run it.</p><h3>Pick one</h3><p>Email drafting, meeting prep, summarizing a long document, or brainstorming. Choose the one thing you do often that drains you.</p><h3>Bad prompt vs. good prompt</h3><p><span class="soft">Bad:</span> “Write an email.” — you'll get something generic and useless.</p><p><span class="soft">Good:</span> “Write a friendly 3-sentence email to a client moving our meeting from Tuesday to Thursday. Apologize briefly and offer two new times.” Same task — wildly better result. The difference is the prep you handed your sous chef.</p><h3>The editing mindset</h3><p>AI hands you a draft. Your job is to make it yours — trim it, fix it, add your voice. The draft is the prep work, not the plated dish.</p><h3>Where people get stuck</h3><p>Expecting a perfect result on the first try. Real use is a quick back-and-forth: draft, nudge, refine. Thirty seconds, not one magic prompt.</p>
+  </section>
+  <section class="screen" data-title="For you">
+    <p class="kicker">What this means for you</p>
+    <h1>Build the habit</h1>
+    <h3>1. Choose your one task today</h3><p>The recurring thing that drains you — that's your starting dish. Don't shop for more; just pick it.</p><h3>2. Give it the full recipe</h3><p>Who it's for, the tone, the length, the key facts. The more context you hand over, the better what comes back. Specifics in, quality out.</p><h3>3. Ten minutes a day, one week</h3><p>Use AI for that single task, ten minutes a day, for a week — before adding anything new. Habit first, breadth later. That's how it actually sticks.</p><div class="card"><h3 style="margin-top:0">Your assignment</h3><p style="margin-bottom:0">Pick your one task right now. Tomorrow morning, spend ten minutes doing it with AI. That's the whole start.</p></div>
+  </section>
+  <section class="screen" data-title="Takeaway">
+    <p class="kicker">One takeaway</p>
+    <h1>Say it to a colleague</h1>
+    <div class="takeaway"><p>You're the head chef. AI is your sous chef. Set the vision, delegate the prep.</p></div>
+    <p class="soft">That's the whole module in one sentence. If you can explain this to someone at work tomorrow, it stuck. Quick check — three questions, no grades, just proof it landed.</p>
+  </section>
+  <section class="screen" data-title="Quick check">
+    <p class="kicker">Quick check · 3 questions</p>
+    <div class="card" data-q="0" data-answer="1"><h3 style="margin-top:0">1. Best way to start using AI for real work?</h3><button class="qopt"><span class="dot"></span>Try to automate everything at once</button><button class="qopt"><span class="dot"></span>Pick one use case and practice it daily</button><button class="qopt"><span class="dot"></span>Wait until you've mastered all the theory</button><div class="explain"></div></div><div class="card" data-q="1" data-answer="1"><h3 style="margin-top:0">2. What makes a good prompt?</h3><button class="qopt"><span class="dot"></span>Keeping it as short as possible</button><button class="qopt"><span class="dot"></span>Specific details — audience, tone, length, facts</button><button class="qopt"><span class="dot"></span>Using fancy technical words</button><div class="explain"></div></div><div class="card" data-q="2" data-answer="2"><h3 style="margin-top:0">3. The AI's first draft isn't perfect. What does a head chef do?</h3><button class="qopt"><span class="dot"></span>Give up — AI doesn't work</button><button class="qopt"><span class="dot"></span>Publish it exactly as-is</button><button class="qopt"><span class="dot"></span>Edit and refine it until it's yours</button><div class="explain"></div></div>
+  </section>
+  <section class="screen" data-title="Done">
+    <p class="kicker">Module complete</p>
+    <h1 id="doneTitle">Full tank. 🎉</h1>
+    <p id="doneScore"></p>
+    <div class="takeaway"><p>You're the head chef. AI is your sous chef. Set the vision, delegate the prep.</p></div>
+    <p><strong>That's the foundation. 🍽️</strong> You can now explain AI better than most people you work with — gas tanks, whiteboards, interns, and all. Go cook something.</p>
+    <p class="soft">You’ve finished all five foundations. Proud of you.</p>
+  </section>
+</main>
+<nav class="navbar"><div class="inner">
+  <button class="btn btn-ghost" id="backBtn">Back</button>
+  <button class="btn btn-primary" id="nextBtn">Start the module</button>
+</div></nav>
+<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="index.html">Back to course home</a><a class="btn btn-ghost" href="index.html">Course home</a></div></div>
+<script>
+(function(){
+  var MOD=5;
+  var screens=[].slice.call(document.querySelectorAll('.screen'));
+  var fill=document.getElementById('fill'),stepLabel=document.getElementById('stepLabel');
+  var nextBtn=document.getElementById('nextBtn'),backBtn=document.getElementById('backBtn');
+  var navbar=document.querySelector('.navbar'),doneNav=document.getElementById('doneNav');
+  var QUIZ=6,DONE=screens.length-1;
+  var i=0,answers={};
+  try{var saved=parseInt(localStorage.getItem('mmai-m'+MOD),10);if(saved>0&&saved<DONE)i=saved;}catch(e){}
+  var explains={0:{good:"Exactly — one use case, practiced daily. Depth beats breadth at the start.",bad:"Start small: pick one use case and practice it daily. Trying to do everything at once is how people give up."},1:{good:"Right — specifics are the prep you hand your sous chef. More context, better dish.",bad:"Good prompts are specific: audience, tone, length, key facts. That's the prep that gets you a usable result."},2:{good:"Yes — you taste and adjust. The draft is prep; you plate the final dish.",bad:"A head chef tastes and adjusts — edit the draft until it's yours. The first draft is prep, not the final plate."}};
+  function quizDone(){return Object.keys(answers).length===3}
+  function score(){var s=0;for(var k in answers){if(answers[k])s++}return s}
+  function render(){
+    screens.forEach(function(s,n){s.classList.toggle('on',n===i)});
+    fill.style.width=Math.round(i/DONE*100)+'%';
+    stepLabel.textContent=(i===0)?'Module '+MOD:(i===DONE)?'Complete':'Step '+i+' of '+(DONE-1);
+    backBtn.style.visibility=(i===0)?'hidden':'visible';
+    if(i===0)nextBtn.textContent='Start the module';
+    else if(i===QUIZ){nextBtn.textContent='Finish';nextBtn.disabled=!quizDone();}
+    else{nextBtn.textContent='Continue';nextBtn.disabled=false;}
+    navbar.style.display=(i===DONE)?'none':'';
+    doneNav.style.display=(i===DONE)?'block':'none';
+    if(i===DONE){
+      try{localStorage.setItem('mmai-done-'+MOD,'1')}catch(e){}
+      var s=score();
+      document.getElementById('doneTitle').textContent=(s===3)?'Full tank. 🎉':'Module complete 🎉';
+      document.getElementById('doneScore').textContent='You got '+s+' of 3 on the quick check'+(s===3?' — perfect drive.':' — and the misses taught you something, which is the point.');
+    }
+    try{localStorage.setItem('mmai-m'+MOD,i)}catch(e){}
+    window.scrollTo({top:0});
+  }
+  nextBtn.addEventListener('click',function(){if(i<DONE){i++;render()}});
+  backBtn.addEventListener('click',function(){if(i>0){i--;render()}});
+  [].slice.call(document.querySelectorAll('[data-q]')).forEach(function(card){
+    var q=+card.dataset.q,ans=+card.dataset.answer;
+    var opts=[].slice.call(card.querySelectorAll('.qopt')),ex=card.querySelector('.explain');
+    opts.forEach(function(opt,n){
+      opt.addEventListener('click',function(){
+        if(q in answers)return;
+        var correct=(n===ans);answers[q]=correct;
+        opts.forEach(function(o){o.disabled=true});
+        opt.classList.add(correct?'ok':'no');
+        if(!correct)opts[ans].classList.add('ok');
+        ex.textContent=correct?explains[q].good:explains[q].bad;
+        ex.classList.add('show',correct?'good':'bad');
+        if(quizDone())nextBtn.disabled=false;
+      });
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>

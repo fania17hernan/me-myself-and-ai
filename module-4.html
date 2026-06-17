@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF5EC">
+<title>Module 4: Hallucination: The Confident Intern — Me, Myself &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF5EC; --surface:#FFFDF8; --warm:#F3EADC; --ink:#2B231D; --ink-soft:#6B5C50;
+    --accent:#BF5538; --accent-deep:#9C4128; --highlight:#E5A33F; --success:#4E7A5A;
+    --error:#A33B2E; --line:#E3D7C6;
+    --sh1:0 1px 2px rgba(43,35,29,.06),0 4px 12px rgba(43,35,29,.05);
+    --sh2:0 4px 8px rgba(43,35,29,.08),0 12px 32px rgba(43,35,29,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--paper);color:var(--ink);font:400 17px/1.65 'Inter',sans-serif;
+       -webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+  header{position:sticky;top:0;background:var(--paper);padding:14px 20px 10px;z-index:5}
+  .topline{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+  .brand{font:600 16px 'Fraunces',serif;color:var(--ink);text-decoration:none}
+  .brand .amp{color:var(--accent);font-style:italic}
+  .stepl{font:500 13px/1.4 'Inter';color:var(--ink-soft)}
+  .gauge{display:flex;align-items:center;gap:8px}
+  .gauge svg{flex:0 0 auto}
+  .ptrack{flex:1;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+  .pfill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--highlight),var(--accent));transition:width .25s ease-out}
+  main{flex:1;padding:8px 20px 120px;max-width:640px;width:100%;margin:0 auto}
+  .screen{display:none;animation:rise .25s ease-out}
+  .screen.on{display:block}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.screen{animation:none}}
+  .kicker{font:500 13px/1.4 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin:16px 0 8px}
+  h1{font:600 34px/1.12 'Fraunces',serif;margin-bottom:12px}
+  h2{font:600 26px/1.2 'Fraunces',serif;margin:28px 0 10px}
+  h3{font:700 18px/1.35 'Inter';margin:22px 0 6px}
+  p{margin-bottom:14px;max-width:62ch}
+  .soft{color:var(--ink-soft)}
+  .term{font-weight:600;box-shadow:inset 0 -2px 0 var(--highlight)}
+  ul{margin:0 0 14px 20px}
+  li{margin-bottom:8px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--sh1);margin:16px 0}
+  .analogy{background:var(--warm);border:none;border-left:4px solid var(--highlight);border-radius:20px;padding:24px;margin:16px 0}
+  .analogy h2{margin-top:0}
+  .takeaway{background:var(--warm);border-radius:20px;padding:36px 24px 28px;position:relative;box-shadow:var(--sh2);margin:20px 0}
+  .takeaway:before{content:'\201C';position:absolute;top:2px;left:16px;font:600 96px 'Fraunces',serif;color:var(--accent);opacity:.18;line-height:1}
+  .takeaway p{font:italic 500 22px/1.4 'Fraunces',serif;position:relative;margin:0}
+  .navbar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);
+          box-shadow:var(--sh2);padding:12px 20px calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;gap:12px;z-index:5}
+  .navbar .inner{display:flex;justify-content:space-between;gap:12px;width:100%;max-width:640px;margin:0 auto}
+  .btn{font:600 17px 'Inter';border:none;border-radius:999px;min-height:52px;padding:14px 28px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+  .btn-primary{background:var(--accent);color:var(--surface)}
+  .btn-primary:active,.btn-primary:hover{background:var(--accent-deep)}
+  .btn-primary[disabled]{opacity:.4;cursor:default}
+  .btn-ghost{background:transparent;color:var(--ink-soft)}
+  .qopt{display:flex;align-items:flex-start;gap:12px;width:100%;min-height:56px;padding:16px;border-radius:16px;
+        border:1.5px solid var(--line);background:var(--surface);font:400 17px/1.5 'Inter';text-align:left;cursor:pointer;margin-bottom:10px;color:var(--ink)}
+  .qopt.sel{border:2px solid var(--accent);padding:15px}
+  .qopt.ok{border:2px solid var(--success);background:#EAF1EB;padding:15px}
+  .qopt.no{border:2px solid var(--error);padding:15px}
+  .dot{flex:0 0 22px;height:22px;border-radius:50%;border:2px solid var(--line);margin-top:2px}
+  .qopt.ok .dot{border-color:var(--success);background:var(--success)}
+  .qopt.no .dot{border-color:var(--error)}
+  .explain{border-radius:16px;padding:16px;margin:6px 0 18px;font-size:16px;display:none}
+  .explain.show{display:block}
+  .explain.good{background:#EAF1EB;color:#33523D}
+  .explain.bad{background:#F6E8E2;color:#7A2E23}
+  @media(min-width:768px){
+    body{font-size:18px}
+    h1{font-size:48px} h2{font-size:32px}
+    main{padding-bottom:40px}
+    .navbar{position:static;box-shadow:none;border:none;background:transparent}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="topline">
+    <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
+    <span class="stepl" id="stepLabel">Module 4</span>
+  </div>
+  <div class="gauge" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg>
+    <div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div>
+  </div>
+</header>
+<main>
+  <section class="screen on" data-title="Module 4">
+    <p class="kicker">Module 4 · 10 min</p>
+    <h1>Hallucination: The Confident Intern</h1>
+    <p class="soft">The AI gave you wrong info and sounded totally sure. Can you trust it? Here's exactly when to double-check.</p>
+    <div class="card"><h3 style="margin-top:0">In this module</h3><ul style="margin-bottom:0"><li>Why AI makes things up</li><li>When the risk is highest</li><li>How to catch it before it bites you</li></ul></div>
+  </section>
+  <section class="screen" data-title="The problem">
+    <p class="kicker">The problem</p>
+    <h1>It made up a study. Confidently.</h1>
+    <p>It handed you a statistic and a source. Clean, specific, exactly what you needed. You almost dropped it into your deck. Then you went to find the study — and it doesn't exist.</p><p>The unsettling part isn't that it was wrong. It's <em>how sure it sounded</em>. Same confident tone it uses when it's right. Once you understand why, you'll never get fooled the same way again.</p>
+  </section>
+  <section class="screen" data-title="The analogy">
+    <p class="kicker">The core analogy</p>
+    <div class="analogy"><h2>The Confident Intern</h2><p>AI is a brilliant intern on their first day. They've read everything ever written, so they'll answer any question with total confidence.</p><p style="margin-bottom:0">But they've never actually <em>done</em> the job. So sometimes they'll make up a statistic or cite a paper that doesn't exist — not to deceive you, but because they're predicting what a good answer <em>sounds like</em>, not looking it up.</p></div>
+    <p>Brilliant, eager, and occasionally, confidently wrong. That's the intern — and that's your AI.</p>
+  </section>
+  <section class="screen" data-title="How it works">
+    <p class="kicker">How it actually works</p>
+    <h1>Why it happens</h1>
+    <p>An AI generates the next most likely word, over and over. Usually the most likely words happen to be true. Sometimes the most natural-<em>sounding</em> answer just isn't real. That's a <span class="term">hallucination</span> <span class="soft">(plain English: a confident made-up answer)</span>.</p><h3>It's structural, not a bug</h3><p>Making things up is baked into how the technology works — it predicts, it doesn't fact-check. Newer models do it less, but none are immune.</p><h3>Where the risk is highest</h3><ul><li>Specific facts and exact numbers</li><li>Citations, sources, quotes, and links</li><li>Recent events (especially after the model's training cutoff)</li><li>Anything niche, obscure, or rarely written about</li></ul><h3>The trap: it sounds the same either way</h3><p>The AI is just as fluent and confident when it's wrong as when it's right. Confidence is not a signal of accuracy. That single fact will protect you more than anything else in this course.</p>
+  </section>
+  <section class="screen" data-title="For you">
+    <p class="kicker">What this means for you</p>
+    <h1>How to catch it</h1>
+    <h3>1. Treat it as a first draft, never the final word</h3><p>For facts, it's a great starting point and a terrible place to stop. Use it to get moving, then verify before anything leaves your hands.</p><h3>2. Make it show its work</h3><p>Ask: “cite your sources” and “tell me what you're not sure about.” Then actually click the sources to confirm they exist and say what it claims.</p><h3>3. Never go solo on high-stakes calls</h3><p>Legal, medical, financial, or anything with real consequences — the AI is a research assistant, not the expert who signs off. Confirm with a qualified human.</p><div class="card"><h3 style="margin-top:0">Try it this week</h3><p style="margin-bottom:0">Next time AI gives you a fact or a source, pause and verify it before you use it. Build the reflex now, while the stakes are low.</p></div>
+  </section>
+  <section class="screen" data-title="Takeaway">
+    <p class="kicker">One takeaway</p>
+    <h1>Say it to a colleague</h1>
+    <div class="takeaway"><p>AI is a confident intern. Always check the work before you sign off on it.</p></div>
+    <p class="soft">That's the whole module in one sentence. If you can explain this to someone at work tomorrow, it stuck. Quick check — three questions, no grades, just proof it landed.</p>
+  </section>
+  <section class="screen" data-title="Quick check">
+    <p class="kicker">Quick check · 3 questions</p>
+    <div class="card" data-q="0" data-answer="1"><h3 style="margin-top:0">1. Why does AI sometimes “make things up”?</h3><button class="qopt"><span class="dot"></span>It's broken</button><button class="qopt"><span class="dot"></span>It predicts likely-sounding words rather than looking up truth</button><button class="qopt"><span class="dot"></span>It's lying on purpose</button><div class="explain"></div></div><div class="card" data-q="1" data-answer="1"><h3 style="margin-top:0">2. When is hallucination risk highest?</h3><button class="qopt"><span class="dot"></span>When writing a poem or brainstorming</button><button class="qopt"><span class="dot"></span>With specific facts, numbers, and citations</button><button class="qopt"><span class="dot"></span>Never — modern AI is always right</button><div class="explain"></div></div><div class="card" data-q="2" data-answer="2"><h3 style="margin-top:0">3. AI gives a confident answer to a legal question. Best move?</h3><button class="qopt"><span class="dot"></span>Trust it — it sounded sure</button><button class="qopt"><span class="dot"></span>Ask the same question again</button><button class="qopt"><span class="dot"></span>Verify with a qualified professional before acting</button><div class="explain"></div></div>
+  </section>
+  <section class="screen" data-title="Done">
+    <p class="kicker">Module complete</p>
+    <h1 id="doneTitle">Full tank. 🎉</h1>
+    <p id="doneScore"></p>
+    <div class="takeaway"><p>AI is a confident intern. Always check the work before you sign off on it.</p></div>
+    <p><strong>Next up — Module 5: The Sous Chef.</strong> Turning everything you've learned into your first real AI habit.</p>
+    
+  </section>
+</main>
+<nav class="navbar"><div class="inner">
+  <button class="btn btn-ghost" id="backBtn">Back</button>
+  <button class="btn btn-primary" id="nextBtn">Start the module</button>
+</div></nav>
+<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="module-5.html">Start Module 5 →</a><a class="btn btn-ghost" href="index.html">Course home</a></div></div>
+<script>
+(function(){
+  var MOD=4;
+  var screens=[].slice.call(document.querySelectorAll('.screen'));
+  var fill=document.getElementById('fill'),stepLabel=document.getElementById('stepLabel');
+  var nextBtn=document.getElementById('nextBtn'),backBtn=document.getElementById('backBtn');
+  var navbar=document.querySelector('.navbar'),doneNav=document.getElementById('doneNav');
+  var QUIZ=6,DONE=screens.length-1;
+  var i=0,answers={};
+  try{var saved=parseInt(localStorage.getItem('mmai-m'+MOD),10);if(saved>0&&saved<DONE)i=saved;}catch(e){}
+  var explains={0:{good:"Exactly — it predicts what sounds right, which is usually but not always true.",bad:"It's not malice or a glitch — it predicts the next likely-sounding word instead of looking facts up. Usually right, sometimes not."},1:{good:"Right — facts, numbers, and sources are the danger zone. Always verify those.",bad:"Highest risk is with specifics: exact facts, numbers, citations, and recent events. Creative tasks are much safer."},2:{good:"Yes — confidence isn't accuracy. High stakes means confirm with a real expert.",bad:"Confidence isn't accuracy. For legal, medical, or financial calls, verify with a qualified professional before acting."}};
+  function quizDone(){return Object.keys(answers).length===3}
+  function score(){var s=0;for(var k in answers){if(answers[k])s++}return s}
+  function render(){
+    screens.forEach(function(s,n){s.classList.toggle('on',n===i)});
+    fill.style.width=Math.round(i/DONE*100)+'%';
+    stepLabel.textContent=(i===0)?'Module '+MOD:(i===DONE)?'Complete':'Step '+i+' of '+(DONE-1);
+    backBtn.style.visibility=(i===0)?'hidden':'visible';
+    if(i===0)nextBtn.textContent='Start the module';
+    else if(i===QUIZ){nextBtn.textContent='Finish';nextBtn.disabled=!quizDone();}
+    else{nextBtn.textContent='Continue';nextBtn.disabled=false;}
+    navbar.style.display=(i===DONE)?'none':'';
+    doneNav.style.display=(i===DONE)?'block':'none';
+    if(i===DONE){
+      try{localStorage.setItem('mmai-done-'+MOD,'1')}catch(e){}
+      var s=score();
+      document.getElementById('doneTitle').textContent=(s===3)?'Full tank. 🎉':'Module complete 🎉';
+      document.getElementById('doneScore').textContent='You got '+s+' of 3 on the quick check'+(s===3?' — perfect drive.':' — and the misses taught you something, which is the point.');
+    }
+    try{localStorage.setItem('mmai-m'+MOD,i)}catch(e){}
+    window.scrollTo({top:0});
+  }
+  nextBtn.addEventListener('click',function(){if(i<DONE){i++;render()}});
+  backBtn.addEventListener('click',function(){if(i>0){i--;render()}});
+  [].slice.call(document.querySelectorAll('[data-q]')).forEach(function(card){
+    var q=+card.dataset.q,ans=+card.dataset.answer;
+    var opts=[].slice.call(card.querySelectorAll('.qopt')),ex=card.querySelector('.explain');
+    opts.forEach(function(opt,n){
+      opt.addEventListener('click',function(){
+        if(q in answers)return;
+        var correct=(n===ans);answers[q]=correct;
+        opts.forEach(function(o){o.disabled=true});
+        opt.classList.add(correct?'ok':'no');
+        if(!correct)opts[ans].classList.add('ok');
+        ex.textContent=correct?explains[q].good:explains[q].bad;
+        ex.classList.add('show',correct?'good':'bad');
+        if(quizDone())nextBtn.disabled=false;
+      });
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>

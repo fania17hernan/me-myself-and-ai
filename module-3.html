@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF5EC">
+<title>Module 3: Free vs. Paid: The Test Drive vs. the Lease — Me, Myself &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF5EC; --surface:#FFFDF8; --warm:#F3EADC; --ink:#2B231D; --ink-soft:#6B5C50;
+    --accent:#BF5538; --accent-deep:#9C4128; --highlight:#E5A33F; --success:#4E7A5A;
+    --error:#A33B2E; --line:#E3D7C6;
+    --sh1:0 1px 2px rgba(43,35,29,.06),0 4px 12px rgba(43,35,29,.05);
+    --sh2:0 4px 8px rgba(43,35,29,.08),0 12px 32px rgba(43,35,29,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--paper);color:var(--ink);font:400 17px/1.65 'Inter',sans-serif;
+       -webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+  header{position:sticky;top:0;background:var(--paper);padding:14px 20px 10px;z-index:5}
+  .topline{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+  .brand{font:600 16px 'Fraunces',serif;color:var(--ink);text-decoration:none}
+  .brand .amp{color:var(--accent);font-style:italic}
+  .stepl{font:500 13px/1.4 'Inter';color:var(--ink-soft)}
+  .gauge{display:flex;align-items:center;gap:8px}
+  .gauge svg{flex:0 0 auto}
+  .ptrack{flex:1;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+  .pfill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--highlight),var(--accent));transition:width .25s ease-out}
+  main{flex:1;padding:8px 20px 120px;max-width:640px;width:100%;margin:0 auto}
+  .screen{display:none;animation:rise .25s ease-out}
+  .screen.on{display:block}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.screen{animation:none}}
+  .kicker{font:500 13px/1.4 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin:16px 0 8px}
+  h1{font:600 34px/1.12 'Fraunces',serif;margin-bottom:12px}
+  h2{font:600 26px/1.2 'Fraunces',serif;margin:28px 0 10px}
+  h3{font:700 18px/1.35 'Inter';margin:22px 0 6px}
+  p{margin-bottom:14px;max-width:62ch}
+  .soft{color:var(--ink-soft)}
+  .term{font-weight:600;box-shadow:inset 0 -2px 0 var(--highlight)}
+  ul{margin:0 0 14px 20px}
+  li{margin-bottom:8px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--sh1);margin:16px 0}
+  .analogy{background:var(--warm);border:none;border-left:4px solid var(--highlight);border-radius:20px;padding:24px;margin:16px 0}
+  .analogy h2{margin-top:0}
+  .takeaway{background:var(--warm);border-radius:20px;padding:36px 24px 28px;position:relative;box-shadow:var(--sh2);margin:20px 0}
+  .takeaway:before{content:'\201C';position:absolute;top:2px;left:16px;font:600 96px 'Fraunces',serif;color:var(--accent);opacity:.18;line-height:1}
+  .takeaway p{font:italic 500 22px/1.4 'Fraunces',serif;position:relative;margin:0}
+  .navbar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);
+          box-shadow:var(--sh2);padding:12px 20px calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;gap:12px;z-index:5}
+  .navbar .inner{display:flex;justify-content:space-between;gap:12px;width:100%;max-width:640px;margin:0 auto}
+  .btn{font:600 17px 'Inter';border:none;border-radius:999px;min-height:52px;padding:14px 28px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+  .btn-primary{background:var(--accent);color:var(--surface)}
+  .btn-primary:active,.btn-primary:hover{background:var(--accent-deep)}
+  .btn-primary[disabled]{opacity:.4;cursor:default}
+  .btn-ghost{background:transparent;color:var(--ink-soft)}
+  .qopt{display:flex;align-items:flex-start;gap:12px;width:100%;min-height:56px;padding:16px;border-radius:16px;
+        border:1.5px solid var(--line);background:var(--surface);font:400 17px/1.5 'Inter';text-align:left;cursor:pointer;margin-bottom:10px;color:var(--ink)}
+  .qopt.sel{border:2px solid var(--accent);padding:15px}
+  .qopt.ok{border:2px solid var(--success);background:#EAF1EB;padding:15px}
+  .qopt.no{border:2px solid var(--error);padding:15px}
+  .dot{flex:0 0 22px;height:22px;border-radius:50%;border:2px solid var(--line);margin-top:2px}
+  .qopt.ok .dot{border-color:var(--success);background:var(--success)}
+  .qopt.no .dot{border-color:var(--error)}
+  .explain{border-radius:16px;padding:16px;margin:6px 0 18px;font-size:16px;display:none}
+  .explain.show{display:block}
+  .explain.good{background:#EAF1EB;color:#33523D}
+  .explain.bad{background:#F6E8E2;color:#7A2E23}
+  @media(min-width:768px){
+    body{font-size:18px}
+    h1{font-size:48px} h2{font-size:32px}
+    main{padding-bottom:40px}
+    .navbar{position:static;box-shadow:none;border:none;background:transparent}
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="topline">
+    <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
+    <span class="stepl" id="stepLabel">Module 3</span>
+  </div>
+  <div class="gauge" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg>
+    <div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div>
+  </div>
+</header>
+<main>
+  <section class="screen on" data-title="Module 3">
+    <p class="kicker">Module 3 · 9 min</p>
+    <h1>Free vs. Paid: The Test Drive vs. the Lease</h1>
+    <p class="soft">Should you upgrade? Are you missing something on the free tier? Here's how to decide without wasting $20.</p>
+    <div class="card"><h3 style="margin-top:0">In this module</h3><ul style="margin-bottom:0"><li>What you actually get free vs. paid</li><li>The signs it's truly time to upgrade</li><li>The ROI math for busy people</li></ul></div>
+  </section>
+  <section class="screen" data-title="The problem">
+    <p class="kicker">The problem</p>
+    <h1>That little “Upgrade” button.</h1>
+    <p>It sits there in the corner, quietly implying you're using the lite version — that the real magic is locked behind $20 a month. So you wonder: am I missing the good stuff?</p><p>Mostly, you're not. The free tier is genuinely powerful. But there's a clear moment when paying is worth it — and a lot of FOMO that isn't. Let's sort out which is which.</p>
+  </section>
+  <section class="screen" data-title="The analogy">
+    <p class="kicker">The core analogy</p>
+    <div class="analogy"><h2>The Test Drive vs. the Lease</h2><p>Free tier is a test drive. Same car, same engine — but you only go around the block, and someone from the dealership is riding along watching.</p><p style="margin-bottom:0">Paid is the full lease: longer drives, the premium trim, no one hovering. And here's the thing — you don't sign a lease before you know you actually like driving the car.</p></div>
+    <p>So the question isn't “is paid better?” It's “have I driven enough to know I need the lease?”</p>
+  </section>
+  <section class="screen" data-title="How it works">
+    <p class="kicker">How it actually works</p>
+    <h1>What you're actually paying for</h1>
+    <p>The most important myth to kill: the free tier is <em>not</em> a crippled demo. You get a genuinely capable model that handles most everyday tasks well.</p><h3>What's usually gated behind paid</h3><ul><li>The newest, smartest models</li><li>More messages before you hit limits</li><li>File and image uploads, longer responses</li><li>Faster speeds when servers are busy</li><li>Extras: voice, image generation, and automation/API access</li></ul><h3>The “hovering” part</h3><p>Free tiers may use your conversations to improve the product, and they cut you off sooner during busy hours. Paid generally means more privacy controls and fewer interruptions.</p><h3>The plans change constantly</h3><p>Claude, ChatGPT, and Gemini reshuffle what's free all the time. Don't memorize today's comparison chart — learn the signal for when <em>you</em> need more.</p>
+  </section>
+  <section class="screen" data-title="For you">
+    <p class="kicker">What this means for you</p>
+    <h1>How to decide</h1>
+    <h3>1. Start free — genuinely</h3><p>Drafting, summarizing, brainstorming, rewriting: the free tier does all of it. Use it for real work until something actually gets in your way.</p><h3>2. Upgrade when you hit a wall daily</h3><p>The real signal isn't the ad — it's friction. Hitting message limits every day, needing to analyze files, wanting the newest model for serious work. That's when the lease pays off.</p><h3>3. Do the two-hours math</h3><p>For a small business owner: $20/month is about one coffee a week. If the tool saves you two hours a week, it's paid for itself many times over. If it doesn't — cancel. There's no lease penalty.</p><div class="card"><h3 style="margin-top:0">Try it this week</h3><p style="margin-bottom:0">Notice the next time the free tier annoys you — a limit, a missing feature. Write down what it was. Two of those in a week is your upgrade signal.</p></div>
+  </section>
+  <section class="screen" data-title="Takeaway">
+    <p class="kicker">One takeaway</p>
+    <h1>Say it to a colleague</h1>
+    <div class="takeaway"><p>Start free. Upgrade when the limits annoy you — that's the sign you're actually using it.</p></div>
+    <p class="soft">That's the whole module in one sentence. If you can explain this to someone at work tomorrow, it stuck. Quick check — three questions, no grades, just proof it landed.</p>
+  </section>
+  <section class="screen" data-title="Quick check">
+    <p class="kicker">Quick check · 3 questions</p>
+    <div class="card" data-q="0" data-answer="1"><h3 style="margin-top:0">1. When should you upgrade to a paid plan?</h3><button class="qopt"><span class="dot"></span>Immediately, to get the “real” version</button><button class="qopt"><span class="dot"></span>When you hit limits daily or need a gated feature</button><button class="qopt"><span class="dot"></span>Never — paid is a scam</button><div class="explain"></div></div><div class="card" data-q="1" data-answer="1"><h3 style="margin-top:0">2. Is the free tier a crippled version?</h3><button class="qopt"><span class="dot"></span>Yes, it's basically a demo</button><button class="qopt"><span class="dot"></span>No — same core model, with some features gated</button><button class="qopt"><span class="dot"></span>Only on weekends</button><div class="explain"></div></div><div class="card" data-q="2" data-answer="2"><h3 style="margin-top:0">3. An owner wonders if $20/mo is worth it. Best way to decide?</h3><button class="qopt"><span class="dot"></span>Ask a friend what they do</button><button class="qopt"><span class="dot"></span>Flip a coin</button><button class="qopt"><span class="dot"></span>Compare the cost to the hours it saves you</button><div class="explain"></div></div>
+  </section>
+  <section class="screen" data-title="Done">
+    <p class="kicker">Module complete</p>
+    <h1 id="doneTitle">Full tank. 🎉</h1>
+    <p id="doneScore"></p>
+    <div class="takeaway"><p>Start free. Upgrade when the limits annoy you — that's the sign you're actually using it.</p></div>
+    <p><strong>Next up — Module 4: The Confident Intern.</strong> Why AI sometimes makes things up — and sounds completely sure doing it.</p>
+    
+  </section>
+</main>
+<nav class="navbar"><div class="inner">
+  <button class="btn btn-ghost" id="backBtn">Back</button>
+  <button class="btn btn-primary" id="nextBtn">Start the module</button>
+</div></nav>
+<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="module-4.html">Start Module 4 →</a><a class="btn btn-ghost" href="index.html">Course home</a></div></div>
+<script>
+(function(){
+  var MOD=3;
+  var screens=[].slice.call(document.querySelectorAll('.screen'));
+  var fill=document.getElementById('fill'),stepLabel=document.getElementById('stepLabel');
+  var nextBtn=document.getElementById('nextBtn'),backBtn=document.getElementById('backBtn');
+  var navbar=document.querySelector('.navbar'),doneNav=document.getElementById('doneNav');
+  var QUIZ=6,DONE=screens.length-1;
+  var i=0,answers={};
+  try{var saved=parseInt(localStorage.getItem('mmai-m'+MOD),10);if(saved>0&&saved<DONE)i=saved;}catch(e){}
+  var explains={0:{good:"Exactly — let friction be the signal, not the upgrade button.",bad:"The signal is friction: upgrade when you're hitting limits regularly or need a feature that's locked — not just because the button's there."},1:{good:"Right — same engine. You're getting a genuinely capable model for free.",bad:"Not really — it's the same core model. Paid mostly unlocks extras and higher limits, not a smarter brain."},2:{good:"Yes — hours saved vs. cost. If it saves two hours a week, it's an easy yes.",bad:"Best move: compare $20 to the hours it saves you each week. Save two hours? It's paid for itself."}};
+  function quizDone(){return Object.keys(answers).length===3}
+  function score(){var s=0;for(var k in answers){if(answers[k])s++}return s}
+  function render(){
+    screens.forEach(function(s,n){s.classList.toggle('on',n===i)});
+    fill.style.width=Math.round(i/DONE*100)+'%';
+    stepLabel.textContent=(i===0)?'Module '+MOD:(i===DONE)?'Complete':'Step '+i+' of '+(DONE-1);
+    backBtn.style.visibility=(i===0)?'hidden':'visible';
+    if(i===0)nextBtn.textContent='Start the module';
+    else if(i===QUIZ){nextBtn.textContent='Finish';nextBtn.disabled=!quizDone();}
+    else{nextBtn.textContent='Continue';nextBtn.disabled=false;}
+    navbar.style.display=(i===DONE)?'none':'';
+    doneNav.style.display=(i===DONE)?'block':'none';
+    if(i===DONE){
+      try{localStorage.setItem('mmai-done-'+MOD,'1')}catch(e){}
+      var s=score();
+      document.getElementById('doneTitle').textContent=(s===3)?'Full tank. 🎉':'Module complete 🎉';
+      document.getElementById('doneScore').textContent='You got '+s+' of 3 on the quick check'+(s===3?' — perfect drive.':' — and the misses taught you something, which is the point.');
+    }
+    try{localStorage.setItem('mmai-m'+MOD,i)}catch(e){}
+    window.scrollTo({top:0});
+  }
+  nextBtn.addEventListener('click',function(){if(i<DONE){i++;render()}});
+  backBtn.addEventListener('click',function(){if(i>0){i--;render()}});
+  [].slice.call(document.querySelectorAll('[data-q]')).forEach(function(card){
+    var q=+card.dataset.q,ans=+card.dataset.answer;
+    var opts=[].slice.call(card.querySelectorAll('.qopt')),ex=card.querySelector('.explain');
+    opts.forEach(function(opt,n){
+      opt.addEventListener('click',function(){
+        if(q in answers)return;
+        var correct=(n===ans);answers[q]=correct;
+        opts.forEach(function(o){o.disabled=true});
+        opt.classList.add(correct?'ok':'no');
+        if(!correct)opts[ans].classList.add('ok');
+        ex.textContent=correct?explains[q].good:explains[q].bad;
+        ex.classList.add('show',correct?'good':'bad');
+        if(quizDone())nextBtn.disabled=false;
+      });
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>
