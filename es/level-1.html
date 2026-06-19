@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#FAF5EC">
-<title>Me, Myself &amp; AI — Fundamentos de IA para profesionales</title>
+<title>Empieza Aquí — Me, Myself &amp; AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -114,37 +114,29 @@
 <body>
 <header>
   <div class="topline">
-    <span class="brand">Me, Myself <span class="amp">&amp;</span> AI</span>
-    <span class="rightgrp"><a class="lang" href="../index.html">English</a><span class="stepl" id="progText"></span></span>
+    <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
+    <span class="rightgrp"><a class="lang" href="../level-1.html">English</a><span class="stepl" id="progText"></span></span>
   </div>
   <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div></div>
 </header>
 <main>
+  <a class="backlink" href="index.html">← Todos los niveles</a>
   <div class="hero">
-    <p class="eyebrow">Elige por dónde empezar</p>
-    <h1>¿Qué quieres entender hoy?</h1>
-    <p class="tagline">Lecciones cortas y sin jerga — una analogía a la vez. Elige un nivel y entra.</p>
+    <p class="eyebrow">Nivel 1</p>
+    <h1>Empieza Aquí</h1>
+    <p class="tagline">Cómo se comporta la IA — para que deje de sorprenderte.</p>
   </div>
-  <a class="lcard" href="level-1.html" data-mods="1,2,3,4,5"><div class="lnum">1</div><div class="lbody"><div class="lname">Empieza Aquí</div><div class="ltag">Cómo se comporta la IA — para que deje de sorprenderte.</div><div class="lmeta">5 lecciones</div></div><div class="lring"><span></span></div></a><a class="lcard" href="level-2.html" data-mods="6,7,8,9"><div class="lnum">2</div><div class="lbody"><div class="lname">Las Herramientas</div><div class="ltag">Chats, proyectos, artefactos, conexiones — qué hace cada botón.</div><div class="lmeta">4 lecciones</div></div><div class="lring"><span></span></div></a><span class="lcard soon"><div class="lnum">3</div><div class="lbody"><div class="lname">Hazla Tuya</div><div class="ltag">Personaliza la IA a tu manera.</div><div class="lmeta soonlbl">Próximamente</div></div></span><span class="lcard soon"><div class="lnum">4</div><div class="lbody"><div class="lname">Bajo el Cofre</div><div class="ltag">El vibe coding y los términos técnicos, por fin sin misterio.</div><div class="lmeta soonlbl">Próximamente</div></div></span>
-  <div class="util">
-    <span class="tile"><div class="tt">Glosario</div><div class="ts">Cada término, en palabras claras. Consúltalo cuando quieras. (Próximamente)</div></span>
-    <span class="tile"><div class="tt">Por profesión</div><div class="ts">Lecciones según tu trabajo — estudiante, PM, maestro, agente inmobiliario y más. (Próximamente)</div></span>
-  </div>
+  <a class="mcard" href="module-1.html" data-mod="1"><div class="mnum">1</div><div class="mbody"><div class="mtitle">Tokens y Límites de Uso: El Tanque de Gasolina</div><div class="mmeta"><span class="manalogy">El Tanque de Gasolina</span> · 9 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-2.html" data-mod="2"><div class="mnum">2</div><div class="mbody"><div class="mtitle">Ventana de Contexto: La Pizarra</div><div class="mmeta"><span class="manalogy">La Pizarra</span> · 8 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-3.html" data-mod="3"><div class="mnum">3</div><div class="mbody"><div class="mtitle">Gratis vs. Pago: La Prueba de Manejo vs. la Renta</div><div class="mmeta"><span class="manalogy">La Prueba de Manejo vs. la Renta</span> · 9 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-4.html" data-mod="4"><div class="mnum">4</div><div class="mbody"><div class="mtitle">Alucinaciones: El Becario Seguro de Sí Mismo</div><div class="mmeta"><span class="manalogy">El Becario Seguro de Sí Mismo</span> · 10 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-5.html" data-mod="5"><div class="mnum">5</div><div class="mbody"><div class="mtitle">Tu Primer Flujo de Trabajo con IA: El Sous Chef</div><div class="mmeta"><span class="manalogy">El Sous Chef</span> · 10 min</div></div><div class="mcheck" aria-hidden="true"></div></a>
 </main>
 <script>
 (function(){
-  var live=[1,2,3,4,5,6,7,8,9];var done=0,total=0;
-  live.forEach(function(m){total++;try{if(localStorage.getItem('mmai-done-'+m)==='1')done++;}catch(e){}});
-  document.getElementById('fill').style.width=total?Math.round(done/total*100)+'%':'0%';
-  document.getElementById('progText').textContent=("{d} de {t} lecciones hechas").replace('{d}',String(done)).replace('{t}',String(total));
-  // per-level rings
-  [].slice.call(document.querySelectorAll('.lcard[data-mods]')).forEach(function(c){
-    var mods=c.getAttribute('data-mods').split(',').filter(Boolean);var d=0;
-    mods.forEach(function(m){try{if(localStorage.getItem('mmai-done-'+m)==='1')d++;}catch(e){}});
-    var ring=c.querySelector('.lring');var deg=mods.length?Math.round(d/mods.length*360):0;
-    if(ring){ring.style.background='conic-gradient(var(--accent) '+deg+'deg, var(--line) '+deg+'deg)';
-      var sp=ring.querySelector('span');if(sp)sp.textContent=d+'/'+mods.length;}
+  var mods=[1,2,3,4,5];var done=0;
+  [].slice.call(document.querySelectorAll('.mcard')).forEach(function(c){
+    var m=c.getAttribute('data-mod');
+    try{if(localStorage.getItem('mmai-done-'+m)==='1'){c.classList.add('done');done++;}}catch(e){}
   });
+  document.getElementById('fill').style.width=Math.round(done/mods.length*100)+'%';
+  document.getElementById('progText').textContent=("{d} de {n} hechas").replace('{d}',String(done)).replace('{n}',String(mods.length));
 })();
 </script>
 </body>
