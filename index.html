@@ -19,9 +19,12 @@
   body{background:var(--paper);color:var(--ink);font:400 17px/1.65 'Inter',sans-serif;
        -webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
   header{position:sticky;top:0;background:var(--paper);padding:14px 20px 10px;z-index:5}
-  .topline{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px}
+  .topline{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;gap:12px}
   .brand{font:600 16px 'Fraunces',serif;color:var(--ink);text-decoration:none}
   .brand .amp{color:var(--accent);font-style:italic}
+  .rightgrp{display:flex;align-items:baseline;gap:14px;flex-shrink:0}
+  .lang{font:600 12px/1.4 'Inter';letter-spacing:.06em;text-transform:uppercase;color:var(--accent-deep);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+  .lang:hover{border-color:var(--accent);background:var(--warm)}
   .stepl{font:500 13px/1.4 'Inter';color:var(--ink-soft)}
   .gauge{display:flex;align-items:center;gap:8px}
   .gauge svg{flex:0 0 auto}
@@ -67,17 +70,9 @@
   .explain.show{display:block}
   .explain.good{background:#EAF1EB;color:#33523D}
   .explain.bad{background:#F6E8E2;color:#7A2E23}
-  @media(min-width:768px){
-    body{font-size:18px}
-    h1{font-size:48px} h2{font-size:32px}
-    main{padding-bottom:40px}
-    .navbar{position:static;box-shadow:none;border:none;background:transparent}
-  }
-
   .hero{padding:8px 0 4px}
   .eyebrow{font:500 13px/1.4 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:10px}
   .tagline{font:italic 500 20px/1.4 'Fraunces',serif;color:var(--ink-soft);margin:0 0 18px}
-  .progwrap{margin:18px 0 8px}
   .mcard{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px 20px;box-shadow:var(--sh1);margin-bottom:12px;text-decoration:none;color:var(--ink)}
   .mcard:hover{border-color:var(--accent)}
   .mnum{flex:0 0 40px;height:40px;border-radius:50%;background:var(--warm);color:var(--accent-deep);font:600 18px 'Fraunces',serif;display:flex;align-items:center;justify-content:center}
@@ -90,13 +85,22 @@
   .mcard.done .mcheck:after{content:'\2713';color:#fff;display:flex;align-items:center;justify-content:center;height:100%;font-size:14px;font-weight:700}
   .mcard.done .mnum{background:var(--success);color:#fff}
   footer{color:var(--ink-soft);font-size:14px;margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
+  @media(min-width:768px){
+    body{font-size:18px}
+    h1{font-size:48px} h2{font-size:32px}
+    main{padding-bottom:40px}
+    .navbar{position:static;box-shadow:none;border:none;background:transparent}
+  }
 </style>
 </head>
 <body>
 <header>
   <div class="topline">
     <span class="brand">Me, Myself <span class="amp">&amp;</span> AI</span>
-    <span class="stepl" id="progText">0 of 5 done</span>
+    <span class="rightgrp">
+      <a class="lang" href="es/index.html">Español</a>
+      <span class="stepl" id="progText"></span>
+    </span>
   </div>
   <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div></div>
 </header>
@@ -106,7 +110,6 @@
     <h1>Finally, AI that makes sense for <em>your</em> work.</h1>
     <p class="tagline">Five sticky ideas. One analogy each. About 10 minutes a module — no jargon, no engineering degree required.</p>
   </div>
-  <div class="progwrap"></div>
   <a class="mcard" href="module-1.html" data-mod="1"><div class="mnum">1</div><div class="mbody"><div class="mtitle">Tokens & Rate Limits: The Gas Tank</div><div class="mmeta"><span class="manalogy">The Gas Tank</span> · 9 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-2.html" data-mod="2"><div class="mnum">2</div><div class="mbody"><div class="mtitle">Context Windows: The Whiteboard</div><div class="mmeta"><span class="manalogy">The Whiteboard</span> · 8 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-3.html" data-mod="3"><div class="mnum">3</div><div class="mbody"><div class="mtitle">Free vs. Paid: The Test Drive vs. the Lease</div><div class="mmeta"><span class="manalogy">The Test Drive vs. the Lease</span> · 9 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-4.html" data-mod="4"><div class="mnum">4</div><div class="mbody"><div class="mtitle">Hallucination: The Confident Intern</div><div class="mmeta"><span class="manalogy">The Confident Intern</span> · 10 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-5.html" data-mod="5"><div class="mnum">5</div><div class="mbody"><div class="mtitle">Your First AI Workflow: The Sous Chef</div><div class="mmeta"><span class="manalogy">The Sous Chef</span> · 10 min</div></div><div class="mcheck" aria-hidden="true"></div></a>
   <footer>Built for capable professionals who keep hearing about AI and want the part that actually matters. Start with Module 1 — the rest build on it.</footer>
 </main>
@@ -118,7 +121,7 @@
     try{if(localStorage.getItem('mmai-done-'+mod)==='1'){c.classList.add('done');done++;}}catch(e){}
   });
   document.getElementById('fill').style.width=Math.round(done/total*100)+'%';
-  document.getElementById('progText').textContent=done+' of '+total+' done';
+  document.getElementById('progText').textContent=("{d} of 5 done").replace("{d}",String(done));
 })();
 </script>
 </body>
