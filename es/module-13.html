@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF5EC">
+<title>Prompts Guardados: Tu Recetario — Me, Myself &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF5EC; --surface:#FFFDF8; --warm:#F3EADC; --ink:#2B231D; --ink-soft:#6B5C50;
+    --accent:#BF5538; --accent-deep:#9C4128; --highlight:#E5A33F; --success:#4E7A5A;
+    --error:#A33B2E; --line:#E3D7C6;
+    --sh1:0 1px 2px rgba(43,35,29,.06),0 4px 12px rgba(43,35,29,.05);
+    --sh2:0 4px 8px rgba(43,35,29,.08),0 12px 32px rgba(43,35,29,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--paper);color:var(--ink);font:400 17px/1.65 'Inter',sans-serif;
+       -webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+  header{position:sticky;top:0;background:var(--paper);padding:14px 20px 10px;z-index:5}
+  .topline{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;gap:12px}
+  .brand{font:600 16px 'Fraunces',serif;color:var(--ink);text-decoration:none}
+  .brand .amp{color:var(--accent);font-style:italic}
+  .rightgrp{display:flex;align-items:baseline;gap:14px;flex-shrink:0}
+  .lang{font:600 12px/1.4 'Inter';letter-spacing:.06em;text-transform:uppercase;color:var(--accent-deep);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+  .lang:hover{border-color:var(--accent);background:var(--warm)}
+  .stepl{font:500 13px/1.4 'Inter';color:var(--ink-soft)}
+  .gauge{display:flex;align-items:center;gap:8px}
+  .gauge svg{flex:0 0 auto}
+  .ptrack{flex:1;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+  .pfill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--highlight),var(--accent));transition:width .25s ease-out}
+  main{flex:1;padding:8px 20px 120px;max-width:640px;width:100%;margin:0 auto}
+  .screen{display:none;animation:rise .25s ease-out}
+  .screen.on{display:block}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.screen{animation:none}}
+  .kicker{font:500 13px/1.4 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin:16px 0 8px}
+  h1{font:600 34px/1.12 'Fraunces',serif;margin-bottom:12px}
+  h2{font:600 26px/1.2 'Fraunces',serif;margin:28px 0 10px}
+  h3{font:700 18px/1.35 'Inter';margin:22px 0 6px}
+  p{margin-bottom:14px;max-width:62ch}
+  .soft{color:var(--ink-soft)}
+  .term{font-weight:600;box-shadow:inset 0 -2px 0 var(--highlight)}
+  ul{margin:0 0 14px 20px}
+  li{margin-bottom:8px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--sh1);margin:16px 0}
+  .analogy{background:var(--warm);border:none;border-left:4px solid var(--highlight);border-radius:20px;padding:24px;margin:16px 0}
+  .analogy h2{margin-top:0}
+  .takeaway{background:var(--warm);border-radius:20px;padding:36px 24px 28px;position:relative;box-shadow:var(--sh2);margin:20px 0}
+  .takeaway:before{content:'\201C';position:absolute;top:2px;left:16px;font:600 96px 'Fraunces',serif;color:var(--accent);opacity:.18;line-height:1}
+  .takeaway p{font:italic 500 22px/1.4 'Fraunces',serif;position:relative;margin:0}
+  .navbar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);
+          box-shadow:var(--sh2);padding:12px 20px calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;gap:12px;z-index:5}
+  .navbar .inner{display:flex;justify-content:space-between;gap:12px;width:100%;max-width:640px;margin:0 auto}
+  .btn{font:600 17px 'Inter';border:none;border-radius:999px;min-height:52px;padding:14px 28px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+  .btn-primary{background:var(--accent);color:var(--surface)}
+  .btn-primary:active,.btn-primary:hover{background:var(--accent-deep)}
+  .btn-primary[disabled]{opacity:.4;cursor:default}
+  .btn-ghost{background:transparent;color:var(--ink-soft)}
+  .qopt{display:flex;align-items:flex-start;gap:12px;width:100%;min-height:56px;padding:16px;border-radius:16px;
+        border:1.5px solid var(--line);background:var(--surface);font:400 17px/1.5 'Inter';text-align:left;cursor:pointer;margin-bottom:10px;color:var(--ink)}
+  .qopt.sel{border:2px solid var(--accent);padding:15px}
+  .qopt.ok{border:2px solid var(--success);background:#EAF1EB;padding:15px}
+  .qopt.no{border:2px solid var(--error);padding:15px}
+  .dot{flex:0 0 22px;height:22px;border-radius:50%;border:2px solid var(--line);margin-top:2px}
+  .qopt.ok .dot{border-color:var(--success);background:var(--success)}
+  .qopt.no .dot{border-color:var(--error)}
+  .explain{border-radius:16px;padding:16px;margin:6px 0 18px;font-size:16px;display:none}
+  .explain.show{display:block}
+  .explain.good{background:#EAF1EB;color:#33523D}
+  .explain.bad{background:#F6E8E2;color:#7A2E23}
+  .hero{padding:8px 0 4px}
+  .eyebrow{font:500 13px/1.4 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:10px}
+  .tagline{font:italic 500 20px/1.4 'Fraunces',serif;color:var(--ink-soft);margin:0 0 18px}
+  .mcard{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px 20px;box-shadow:var(--sh1);margin-bottom:12px;text-decoration:none;color:var(--ink)}
+  .mcard:hover{border-color:var(--accent)}
+  .mnum{flex:0 0 40px;height:40px;border-radius:50%;background:var(--warm);color:var(--accent-deep);font:600 18px 'Fraunces',serif;display:flex;align-items:center;justify-content:center}
+  .mbody{flex:1;min-width:0}
+  .mtitle{font:700 17px/1.3 'Inter';margin-bottom:3px}
+  .mmeta{font:400 14px/1.4 'Inter';color:var(--ink-soft)}
+  .manalogy{color:var(--accent-deep);font-weight:600}
+  .mcheck{flex:0 0 24px;height:24px;border-radius:50%;border:2px solid var(--line)}
+  .mcard.done .mcheck{background:var(--success);border-color:var(--success)}
+  .mcard.done .mcheck:after{content:'\2713';color:#fff;display:flex;align-items:center;justify-content:center;height:100%;font-size:14px;font-weight:700}
+  .mcard.done .mnum{background:var(--success);color:#fff}
+  footer{color:var(--ink-soft);font-size:14px;margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
+  @media(min-width:768px){
+    body{font-size:18px}
+    h1{font-size:48px} h2{font-size:32px}
+    main{padding-bottom:40px}
+    .navbar{position:static;box-shadow:none;border:none;background:transparent}
+  }
+
+  .lcard{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--sh1);margin-bottom:14px;text-decoration:none;color:var(--ink)}
+  .lcard:hover{border-color:var(--accent)}
+  .lcard.soon{opacity:.62;cursor:default}
+  .lnum{flex:0 0 46px;height:46px;border-radius:14px;background:var(--warm);color:var(--accent-deep);font:600 20px 'Fraunces',serif;display:flex;align-items:center;justify-content:center}
+  .lbody{flex:1;min-width:0}
+  .lname{font:700 18px/1.25 'Inter';margin-bottom:3px}
+  .ltag{font:400 14px/1.4 'Inter';color:var(--ink-soft)}
+  .lmeta{font:500 12px/1.4 'Inter';color:var(--accent-deep);margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
+  .lmeta.soonlbl{color:var(--ink-soft)}
+  .lring{flex:0 0 34px;height:34px;border-radius:50%;background:conic-gradient(var(--accent) 0deg, var(--line) 0deg);display:flex;align-items:center;justify-content:center}
+  .lring span{width:26px;height:26px;border-radius:50%;background:var(--surface);font:600 10px 'Inter';display:flex;align-items:center;justify-content:center;color:var(--ink-soft)}
+  .util{display:flex;gap:12px;margin-top:6px}
+  .util .tile{flex:1;background:var(--warm);border-radius:16px;padding:16px;text-decoration:none;color:var(--ink)}
+  .util .tile .tt{font:700 15px 'Inter';margin-bottom:3px}
+  .util .tile .ts{font:400 12.5px/1.35 'Inter';color:var(--ink-soft)}
+  .backlink{display:inline-block;font:600 13px/1.4 'Inter';color:var(--accent-deep);text-decoration:none;margin:4px 0 4px}
+  .backlink:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<header>
+  <div class="topline">
+    <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
+    <span class="rightgrp">
+      <a class="lang" href="../module-13.html">English</a>
+      <span class="stepl" id="stepLabel">Hazla Tuya</span>
+    </span>
+  </div>
+  <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div></div>
+</header>
+<main>
+  <section class="screen on" data-title="cover">
+    <a class="backlink" href="level-3.html">← Hazla Tuya</a>
+    <p class="kicker">Hazla Tuya · Lección 4 de 4 · 7 min</p>
+    <h1>Prompts Guardados: Tu Recetario</h1>
+    <p class="soft">¿Encontraste un prompt que funciona increíble? No lo reinventes cada vez. Guárdalo como receta y reutilízalo para siempre.</p>
+    <div class="card"><h3 style="margin-top:0">En este módulo</h3><ul style="margin-bottom:0"><li>Por qué un buen prompt vale la pena guardar</li><li>La analogía del recetario</li><li>Cómo armar tus primeros</li></ul></div>
+  </section>
+  <section class="screen" data-title="problem"><p class="kicker">El problema</p><h1>Funcionó perfecto. Y luego lo perdiste.</h1><p>El mes pasado escribiste un prompt que convirtió notas desordenadas en un resumen limpio — perfecto. Hoy lo necesitas otra vez, y lo estás reescribiendo de memoria, peor que antes.</p><p>Los buenos prompts son un activo. Deja de tirarlos a la basura.</p></section>
+  <section class="screen" data-title="analogy"><p class="kicker">La analogía central</p><div class="analogy"><h2>El Recetario</h2><p>Un buen prompt es una <strong>receta</strong>: un conjunto de pasos probados que produce un buen platillo de forma confiable. No reinventarías tu mejor receta desde cero cada vez — la escribirías en una tarjeta y la guardarías en el recetario.</p><p style="margin-bottom:0">Los prompts guardados son tu recetario para la IA.</p></div><p>Se conecta justo con el Sous Chef del Nivel 1: un prompt guardado es la receta que le das a tu sous chef, lista para cocinar.</p></section>
+  <section class="screen" data-title="how"><p class="kicker">Cómo funciona en realidad</p><h1>Cómo armar un recetario</h1><p>Un <span class="term">prompt guardado</span> <span class="soft">(en pocas palabras: una instrucción reutilizable que conservas)</span> es simplemente un prompt que guardas y sacas cuando lo necesitas.</p><h3>Dónde viven</h3><p>Una app de notas, un documento, o funciones integradas (prompts guardados, plantillas, hasta un asistente personalizado del Nivel 2).</p><h3>Hazlos reutilizables</h3><p>Deja espacios para llenar: “Resume [pega las notas] para [audiencia] en [largo]”. Así una receta sirve para cien platillos.</p><h3>Arma un recetario chico, no una biblioteca</h3><p>Cinco recetas buenas que usas cada semana le ganan a cincuenta que olvidas que tienes.</p></section>
+  <section class="screen" data-title="foryou"><p class="kicker">Qué significa esto para ti</p><h1>Arma tu recetario</h1><h3>1. Guarda el próximo que funcione</h3><p>Cuando un prompt te salga increíble, cópialo en algún lado antes de que se pierda para siempre.</p><h3>2. Agrégale espacios para llenar</h3><p>Convierte un prompt de una vez en una plantilla con [corchetes] para las partes que cambian cada vez.</p><h3>3. Ten el recetario a la mano</h3><p>Una nota fija o un documento de donde puedas copiar y pegar en segundos — con eso basta.</p><div class="card"><h3 style="margin-top:0">Pruébalo esta semana</h3><p style="margin-bottom:0">La próxima vez que un prompt funcione bien, guárdalo con un par de [corchetes] para reutilizarlo en lo que sea.</p></div></section>
+  <section class="screen" data-title="takeaway"><p class="kicker">Una sola idea</p><h1>Díselo a un colega</h1><div class="takeaway"><p>Un buen prompt es una receta. Guarda los que funcionan en un recetario, con espacios para llenar, y reutilízalos para siempre.</p></div><p class="soft">Ese es todo el módulo en una frase. Si mañana puedes explicárselo a alguien en el trabajo, se te quedó. Una comprobación rápida — tres preguntas, sin calificaciones, solo para confirmar que quedó claro.</p></section>
+  <section class="screen" data-title="quiz"><p class="kicker">Comprobación rápida · 3 preguntas</p><div class="card" data-q="0" data-answer="1"><h3 style="margin-top:0">1. Escribiste un prompt que funciona increíble. ¿La jugada más lista?</h3><button class="qopt"><span class="dot"></span>Reescribirlo de memoria la próxima vez</button><button class="qopt"><span class="dot"></span>Guardarlo para reutilizarlo después</button><button class="qopt"><span class="dot"></span>Usarlo una vez y olvidarlo</button><div class="explain"></div></div><div class="card" data-q="1" data-answer="1"><h3 style="margin-top:0">2. ¿Qué hace reutilizable a un prompt guardado?</h3><button class="qopt"><span class="dot"></span>Que sea lo más largo posible</button><button class="qopt"><span class="dot"></span>Espacios para llenar ([corchetes]) en lo que cambia</button><button class="qopt"><span class="dot"></span>Vocabulario rebuscado</button><div class="explain"></div></div><div class="card" data-q="2" data-answer="1"><h3 style="margin-top:0">3. ¿De qué tamaño debe ser tu recetario?</h3><button class="qopt"><span class="dot"></span>Lo más grande posible</button><button class="qopt"><span class="dot"></span>Unos cuantos que de verdad uses cada semana</button><button class="qopt"><span class="dot"></span>Exactamente uno</button><div class="explain"></div></div></section>
+  <section class="screen" data-title="done">
+    <p class="kicker">Módulo completado</p><h1 id="doneTitle">Tanque lleno. 🎉</h1><p id="doneScore"></p>
+    <div class="takeaway"><p>Un buen prompt es una receta. Guarda los que funcionan en un recetario, con espacios para llenar, y reutilízalos para siempre.</p></div><p><strong>Ahora es tuya. 🏡</strong> Reglas de la casa, una libreta, ojos y oídos, y un recetario — la IA está configurada a tu manera. Pronto, más niveles.</p>
+  </section>
+</main>
+<nav class="navbar"><div class="inner">
+  <button class="btn btn-ghost" id="backBtn">Atrás</button>
+  <button class="btn btn-primary" id="nextBtn">Empezar el módulo</button>
+</div></nav>
+<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="index.html">Ver más niveles →</a><a class="btn btn-ghost" href="level-3.html">Volver a Hazla Tuya</a></div></div>
+<script>
+(function(){
+  var GID=13;
+  var LVLNAME="Hazla Tuya";
+  var L={step:"Paso",of:"de",complete:"Completado",start:"Empezar el módulo",cont:"Continuar",finish:"Terminar"};
+  var screens=[].slice.call(document.querySelectorAll('.screen'));
+  var fill=document.getElementById('fill'),stepLabel=document.getElementById('stepLabel');
+  var nextBtn=document.getElementById('nextBtn'),backBtn=document.getElementById('backBtn');
+  var navbar=document.querySelector('.navbar'),doneNav=document.getElementById('doneNav');
+  var QUIZ=6,DONE=screens.length-1;
+  var i=0,answers={};
+  try{var sv=parseInt(localStorage.getItem('mmai-m'+GID),10);if(sv>0&&sv<DONE)i=sv;}catch(e){}
+  var explains={0:{good:"Exacto — mételo a tu recetario antes de que se pierda.",bad:"Lo más listo es guardarlo en algún lado reutilizable — no reescribirlo de memoria cada vez."},1:{good:"Correcto — los corchetes dejan que una receta sirva para cien casos.",bad:"Lo reutilizable son los espacios para llenar — [corchetes] para las partes que cambian."},2:{good:"Sí — pocos que sí usas le ganan a docenas que olvidas.",bad:"Mejor chico: unas cuantas recetas que uses cada semana le ganan a un montón que olvidas."}};
+  function quizDone(){return Object.keys(answers).length===3}
+  function score(){var s=0;for(var k in answers){if(answers[k])s++}return s}
+  function render(){
+    screens.forEach(function(s,n){s.classList.toggle('on',n===i)});
+    fill.style.width=Math.round(i/DONE*100)+'%';
+    stepLabel.textContent=(i===0)?LVLNAME:(i===DONE)?L.complete:L.step+' '+i+' '+L.of+' '+(DONE-1);
+    backBtn.style.visibility=(i===0)?'hidden':'visible';
+    if(i===0)nextBtn.textContent=L.start;
+    else if(i===QUIZ){nextBtn.textContent=L.finish;nextBtn.disabled=!quizDone();}
+    else{nextBtn.textContent=L.cont;nextBtn.disabled=false;}
+    navbar.style.display=(i===DONE)?'none':'';
+    doneNav.style.display=(i===DONE)?'block':'none';
+    if(i===DONE){
+      try{localStorage.setItem('mmai-done-'+GID,'1')}catch(e){}
+      var s=score();
+      document.getElementById('doneTitle').textContent=(s===3)?"Tanque lleno. 🎉":"Módulo completado 🎉";
+      document.getElementById('doneScore').textContent="Acertaste "+s+" de 3 en la comprobación"+(s===3?" — manejo perfecto.":" — y los errores te enseñaron algo, que de eso se trata.");
+    }
+    try{localStorage.setItem('mmai-m'+GID,i)}catch(e){}
+    window.scrollTo({top:0});
+  }
+  nextBtn.addEventListener('click',function(){if(i<DONE){i++;render()}});
+  backBtn.addEventListener('click',function(){if(i>0){i--;render()}});
+  [].slice.call(document.querySelectorAll('[data-q]')).forEach(function(card){
+    var q=+card.dataset.q,ans=+card.dataset.answer;
+    var opts=[].slice.call(card.querySelectorAll('.qopt')),ex=card.querySelector('.explain');
+    opts.forEach(function(opt,n){
+      opt.addEventListener('click',function(){
+        if(q in answers)return;
+        var correct=(n===ans);answers[q]=correct;
+        opts.forEach(function(o){o.disabled=true});
+        opt.classList.add(correct?'ok':'no');
+        if(!correct)opts[ans].classList.add('ok');
+        ex.textContent=correct?explains[q].good:explains[q].bad;
+        ex.classList.add('show',correct?'good':'bad');
+        if(quizDone())nextBtn.disabled=false;
+      });
+    });
+  });
+  render();
+})();
+</script>
+</body>
+</html>
