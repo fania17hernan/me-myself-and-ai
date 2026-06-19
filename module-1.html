@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#FAF5EC">
-<title>Module 1: Tokens &amp; Rate Limits: The Gas Tank — Me, Myself &amp; AI</title>
+<title>Tokens &amp; Rate Limits: The Gas Tank — Me, Myself &amp; AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -91,6 +91,24 @@
     main{padding-bottom:40px}
     .navbar{position:static;box-shadow:none;border:none;background:transparent}
   }
+
+  .lcard{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--sh1);margin-bottom:14px;text-decoration:none;color:var(--ink)}
+  .lcard:hover{border-color:var(--accent)}
+  .lcard.soon{opacity:.62;cursor:default}
+  .lnum{flex:0 0 46px;height:46px;border-radius:14px;background:var(--warm);color:var(--accent-deep);font:600 20px 'Fraunces',serif;display:flex;align-items:center;justify-content:center}
+  .lbody{flex:1;min-width:0}
+  .lname{font:700 18px/1.25 'Inter';margin-bottom:3px}
+  .ltag{font:400 14px/1.4 'Inter';color:var(--ink-soft)}
+  .lmeta{font:500 12px/1.4 'Inter';color:var(--accent-deep);margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
+  .lmeta.soonlbl{color:var(--ink-soft)}
+  .lring{flex:0 0 34px;height:34px;border-radius:50%;background:conic-gradient(var(--accent) 0deg, var(--line) 0deg);display:flex;align-items:center;justify-content:center}
+  .lring span{width:26px;height:26px;border-radius:50%;background:var(--surface);font:600 10px 'Inter';display:flex;align-items:center;justify-content:center;color:var(--ink-soft)}
+  .util{display:flex;gap:12px;margin-top:6px}
+  .util .tile{flex:1;background:var(--warm);border-radius:16px;padding:16px;text-decoration:none;color:var(--ink)}
+  .util .tile .tt{font:700 15px 'Inter';margin-bottom:3px}
+  .util .tile .ts{font:400 12.5px/1.35 'Inter';color:var(--ink-soft)}
+  .backlink{display:inline-block;font:600 13px/1.4 'Inter';color:var(--accent-deep);text-decoration:none;margin:4px 0 4px}
+  .backlink:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -99,70 +117,54 @@
     <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
     <span class="rightgrp">
       <a class="lang" href="es/module-1.html">Español</a>
-      <span class="stepl" id="stepLabel">Module 1</span>
+      <span class="stepl" id="stepLabel">Start Here</span>
     </span>
   </div>
   <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div></div>
 </header>
 <main>
-  <section class="screen on" data-title="Module 1">
-    <p class="kicker">Module 1 · 9 min</p>
+  <section class="screen on" data-title="cover">
+    <a class="backlink" href="level-1.html">← Start Here</a>
+    <p class="kicker">Start Here · Lesson 1 of 5 · 9 min</p>
     <h1>Tokens &amp; Rate Limits: The Gas Tank</h1>
     <p class="soft">Why does AI cut off mid-answer? Why did it just… stop? By the end of this module you'll know exactly why — and how to never get stranded again.</p>
     <div class="card"><h3 style="margin-top:0">In this module</h3><ul style="margin-bottom:0"><li>One analogy you'll never forget (the gas tank)</li><li>What a "token" actually is, in plain English</li><li>Three habits that make AI cheaper, faster, and less frustrating</li></ul></div>
   </section>
-  <section class="screen" data-title="problem">
-    <p class="kicker">The problem</p><h1>It died mid-sentence.</h1><p>True story: I was deep in a real project, on a roll, AI assistant doing exactly what I needed. I pasted in one more big chunk of work and hit enter.</p><p>Nothing. Then a timeout error. Then — when it finally answered — it stopped <em>mid-sentence</em>, like someone yanked the cord out of the wall.</p><p>If that's ever happened to you, you probably assumed you did something wrong, or the tool was broken. Neither. Something very predictable happened, and once you can see it, you can work around it every single time.</p>
-  </section>
-  <section class="screen" data-title="analogy">
-    <p class="kicker">The core analogy</p>
-    <div class="analogy"><h2>The Gas Tank</h2><p>Think of tokens like gas in a tank. Every word you type burns a little gas. Every word the AI writes back burns gas too. When the tank hits empty, the car stops — even mid-sentence, even on the highway.</p><p style="margin-bottom:0">And <strong>rate limits</strong>? That's the gas station that only lets you fill up so many times per hour. Come back too often and they make you wait.</p></div><p>That's the whole mental model. Everything else in this module is just details about how big the tank is and how the gas gets burned.</p>
-  </section>
-  <section class="screen" data-title="how">
-    <p class="kicker">How it actually works</p><h1>What's actually in the tank</h1><p>A <span class="term">token</span> <span class="soft">(plain English: a chunk of a word)</span> is the unit AI actually reads and writes. A token is roughly three-quarters of a word — so 100 words is about 130 tokens. Close enough: <strong>words ≈ tokens</strong>.</p><h3>Both directions burn gas</h3><p>Here's what surprises people: it's not just what you type. <strong>Input</strong> (your message, plus everything earlier in the conversation) and <strong>output</strong> (the AI's reply) both count. Ask a short question that needs a long answer? That burns plenty of fuel too.</p><h3>Why long conversations get slow and pricey</h3><p>Each time you send a message, the AI re-reads the whole conversation so far. So message 40 in a long chat burns way more gas than message 2 — you're hauling the entire trip history with you.</p><h3>Every car has a different tank</h3><p>Claude, ChatGPT, and Gemini each have different tank sizes and different gas-station rules, and they change them often. The sizes don't matter — the <em>behavior</em> does: every tool has a limit, and every tool acts weird the same way when you hit it.</p><h3>What "empty" looks like</h3><ul><li><strong>Truncation</strong> — the answer cuts off mid-sentence (out of gas)</li><li><strong>Timeout or error</strong> — it gives up before finishing (engine flooded)</li><li><strong>"Try again later"</strong> — you hit the rate limit (gas station says come back in an hour)</li></ul>
-  </section>
-  <section class="screen" data-title="foryou">
-    <p class="kicker">What this means for you</p><h1>Drive like you know there's a tank</h1><h3>1. Break big tasks into trips</h3><p>Don't paste a 40-page document and ask for everything at once. Ask for the summary first. Then the risks. Then the rewrite. Three short trips beat one stalled-out haul.</p><h3>2. Start fresh when you change topics</h3><p>A new chat is a full tank. If you're done with the budget analysis and moving to the offsite agenda, open a new conversation instead of dragging the old one along.</p><h3>3. When it cuts off, just say "continue"</h3><p>Truncation isn't failure — the tank ran dry mid-answer. Reply "please continue" and it picks up where it stopped. Works almost every time.</p><div class="card"><h3 style="margin-top:0">Try it this week</h3><p style="margin-bottom:0">Take one big task you'd normally dump in a single message and split it into three smaller asks. Notice the difference in speed and quality.</p></div>
-  </section>
-  <section class="screen" data-title="takeaway">
-    <p class="kicker">One takeaway</p><h1>Say it to a colleague</h1>
-    <div class="takeaway"><p>AI has a gas tank. Long conversations burn more fuel. Break big tasks into trips.</p></div>
-    <p class="soft">That's the whole module in one sentence. If you can explain this to someone at work tomorrow, it stuck. Quick check — three questions, no grades, just proof it landed.</p>
-  </section>
-  <section class="screen" data-title="quiz">
-    <p class="kicker">Quick check · 3 questions</p><div class="card" data-q="0" data-answer="1"><h3 style="margin-top:0">1. Your AI's answer stops mid-sentence. What most likely happened?</h3><button class="qopt"><span class="dot"></span>It got confused by your question</button><button class="qopt"><span class="dot"></span>It ran out of tokens — the tank hit empty</button><button class="qopt"><span class="dot"></span>The internet connection dropped</button><div class="explain"></div></div><div class="card" data-q="1" data-answer="2"><h3 style="margin-top:0">2. Which burns fuel (tokens)?</h3><button class="qopt"><span class="dot"></span>Only what you type</button><button class="qopt"><span class="dot"></span>Only what the AI writes back</button><button class="qopt"><span class="dot"></span>Both — input and output</button><div class="explain"></div></div><div class="card" data-q="2" data-answer="0"><h3 style="margin-top:0">3. You're switching from a budget analysis to planning an offsite. Best move?</h3><button class="qopt"><span class="dot"></span>Start a new chat — fresh tank for a new trip</button><button class="qopt"><span class="dot"></span>Keep the same chat so it remembers everything</button><button class="qopt"><span class="dot"></span>Ask it to type faster</button><div class="explain"></div></div>
-  </section>
+  <section class="screen" data-title="problem"><p class="kicker">The problem</p><h1>It died mid-sentence.</h1><p>True story: I was deep in a real project, on a roll, AI assistant doing exactly what I needed. I pasted in one more big chunk of work and hit enter.</p><p>Nothing. Then a timeout error. Then — when it finally answered — it stopped <em>mid-sentence</em>, like someone yanked the cord out of the wall.</p><p>If that's ever happened to you, you probably assumed you did something wrong, or the tool was broken. Neither. Something very predictable happened, and once you can see it, you can work around it every single time.</p></section>
+  <section class="screen" data-title="analogy"><p class="kicker">The core analogy</p><div class="analogy"><h2>The Gas Tank</h2><p>Think of tokens like gas in a tank. Every word you type burns a little gas. Every word the AI writes back burns gas too. When the tank hits empty, the car stops — even mid-sentence, even on the highway.</p><p style="margin-bottom:0">And <strong>rate limits</strong>? That's the gas station that only lets you fill up so many times per hour. Come back too often and they make you wait.</p></div><p>That's the whole mental model. Everything else in this module is just details about how big the tank is and how the gas gets burned.</p></section>
+  <section class="screen" data-title="how"><p class="kicker">How it actually works</p><h1>What's actually in the tank</h1><p>A <span class="term">token</span> <span class="soft">(plain English: a chunk of a word)</span> is the unit AI actually reads and writes. A token is roughly three-quarters of a word — so 100 words is about 130 tokens. Close enough: <strong>words ≈ tokens</strong>.</p><h3>Both directions burn gas</h3><p>Here's what surprises people: it's not just what you type. <strong>Input</strong> (your message, plus everything earlier in the conversation) and <strong>output</strong> (the AI's reply) both count. Ask a short question that needs a long answer? That burns plenty of fuel too.</p><h3>Why long conversations get slow and pricey</h3><p>Each time you send a message, the AI re-reads the whole conversation so far. So message 40 in a long chat burns way more gas than message 2 — you're hauling the entire trip history with you.</p><h3>Every car has a different tank</h3><p>Claude, ChatGPT, and Gemini each have different tank sizes and different gas-station rules, and they change them often. The sizes don't matter — the <em>behavior</em> does: every tool has a limit, and every tool acts weird the same way when you hit it.</p><h3>What "empty" looks like</h3><ul><li><strong>Truncation</strong> — the answer cuts off mid-sentence (out of gas)</li><li><strong>Timeout or error</strong> — it gives up before finishing (engine flooded)</li><li><strong>"Try again later"</strong> — you hit the rate limit (gas station says come back in an hour)</li></ul></section>
+  <section class="screen" data-title="foryou"><p class="kicker">What this means for you</p><h1>Drive like you know there's a tank</h1><h3>1. Break big tasks into trips</h3><p>Don't paste a 40-page document and ask for everything at once. Ask for the summary first. Then the risks. Then the rewrite. Three short trips beat one stalled-out haul.</p><h3>2. Start fresh when you change topics</h3><p>A new chat is a full tank. If you're done with the budget analysis and moving to the offsite agenda, open a new conversation instead of dragging the old one along.</p><h3>3. When it cuts off, just say "continue"</h3><p>Truncation isn't failure — the tank ran dry mid-answer. Reply "please continue" and it picks up where it stopped. Works almost every time.</p><div class="card"><h3 style="margin-top:0">Try it this week</h3><p style="margin-bottom:0">Take one big task you'd normally dump in a single message and split it into three smaller asks. Notice the difference in speed and quality.</p></div></section>
+  <section class="screen" data-title="takeaway"><p class="kicker">One takeaway</p><h1>Say it to a colleague</h1><div class="takeaway"><p>AI has a gas tank. Long conversations burn more fuel. Break big tasks into trips.</p></div><p class="soft">That's the whole module in one sentence. If you can explain this to someone at work tomorrow, it stuck. Quick check — three questions, no grades, just proof it landed.</p></section>
+  <section class="screen" data-title="quiz"><p class="kicker">Quick check · 3 questions</p><div class="card" data-q="0" data-answer="1"><h3 style="margin-top:0">1. Your AI's answer stops mid-sentence. What most likely happened?</h3><button class="qopt"><span class="dot"></span>It got confused by your question</button><button class="qopt"><span class="dot"></span>It ran out of tokens — the tank hit empty</button><button class="qopt"><span class="dot"></span>The internet connection dropped</button><div class="explain"></div></div><div class="card" data-q="1" data-answer="2"><h3 style="margin-top:0">2. Which burns fuel (tokens)?</h3><button class="qopt"><span class="dot"></span>Only what you type</button><button class="qopt"><span class="dot"></span>Only what the AI writes back</button><button class="qopt"><span class="dot"></span>Both — input and output</button><div class="explain"></div></div><div class="card" data-q="2" data-answer="0"><h3 style="margin-top:0">3. You're switching from a budget analysis to planning an offsite. Best move?</h3><button class="qopt"><span class="dot"></span>Start a new chat — fresh tank for a new trip</button><button class="qopt"><span class="dot"></span>Keep the same chat so it remembers everything</button><button class="qopt"><span class="dot"></span>Ask it to type faster</button><div class="explain"></div></div></section>
   <section class="screen" data-title="done">
-    <p class="kicker">Module complete</p>
-    <h1 id="doneTitle">Full tank. 🎉</h1>
-    <p id="doneScore"></p>
-    <div class="takeaway"><p>AI has a gas tank. Long conversations burn more fuel. Break big tasks into trips.</p></div>
-    <p><strong>Next up — Module 2: The Whiteboard.</strong> Why does AI forget what you told it 20 messages ago? (Hint: it's not getting dumber.)</p>
+    <p class="kicker">Module complete</p><h1 id="doneTitle">Full tank. 🎉</h1><p id="doneScore"></p>
+    <div class="takeaway"><p>AI has a gas tank. Long conversations burn more fuel. Break big tasks into trips.</p></div><p><strong>Next up — Module 2: The Whiteboard.</strong> Why does AI forget what you told it 20 messages ago? (Hint: it's not getting dumber.)</p>
   </section>
 </main>
 <nav class="navbar"><div class="inner">
   <button class="btn btn-ghost" id="backBtn">Back</button>
   <button class="btn btn-primary" id="nextBtn">Start the module</button>
 </div></nav>
-<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="module-2.html">Start Module 2 →</a><a class="btn btn-ghost" href="index.html">Course home</a></div></div>
+<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="module-2.html">Next lesson →</a><a class="btn btn-ghost" href="level-1.html">Back to Start Here</a></div></div>
 <script>
 (function(){
-  var MOD=1;
-  var L={module:"Module",step:"Step",of:"of",complete:"Complete",start:"Start the module",cont:"Continue",finish:"Finish"};
+  var GID=1;
+  var LVLNAME="Start Here";
+  var L={step:"Step",of:"of",complete:"Complete",start:"Start the module",cont:"Continue",finish:"Finish"};
   var screens=[].slice.call(document.querySelectorAll('.screen'));
   var fill=document.getElementById('fill'),stepLabel=document.getElementById('stepLabel');
   var nextBtn=document.getElementById('nextBtn'),backBtn=document.getElementById('backBtn');
   var navbar=document.querySelector('.navbar'),doneNav=document.getElementById('doneNav');
   var QUIZ=6,DONE=screens.length-1;
   var i=0,answers={};
-  try{var saved=parseInt(localStorage.getItem('mmai-m'+MOD),10);if(saved>0&&saved<DONE)i=saved;}catch(e){}
+  try{var sv=parseInt(localStorage.getItem('mmai-m'+GID),10);if(sv>0&&sv<DONE)i=sv;}catch(e){}
   var explains={0:{good:"Exactly. Out of gas — even mid-sentence. Reply “continue” and it refuels.",bad:"Not quite — here's the thing: it ran out of tokens mid-answer. The fix is simple: reply “please continue.”"},1:{good:"Right — both directions burn fuel. Short question, long answer? Still pricey.",bad:"Almost — both count. Your input AND the AI's output burn tokens, which is why both long questions and long answers drain the tank."},2:{good:"Fresh tank, fresh trip. New topic = new chat is the single best habit from this module.",bad:"Tempting, but dragging the old conversation along burns fuel on every message. New topic = new chat = full tank."}};
   function quizDone(){return Object.keys(answers).length===3}
   function score(){var s=0;for(var k in answers){if(answers[k])s++}return s}
   function render(){
     screens.forEach(function(s,n){s.classList.toggle('on',n===i)});
     fill.style.width=Math.round(i/DONE*100)+'%';
-    stepLabel.textContent=(i===0)?L.module+' '+MOD:(i===DONE)?L.complete:L.step+' '+i+' '+L.of+' '+(DONE-1);
+    stepLabel.textContent=(i===0)?LVLNAME:(i===DONE)?L.complete:L.step+' '+i+' '+L.of+' '+(DONE-1);
     backBtn.style.visibility=(i===0)?'hidden':'visible';
     if(i===0)nextBtn.textContent=L.start;
     else if(i===QUIZ){nextBtn.textContent=L.finish;nextBtn.disabled=!quizDone();}
@@ -170,12 +172,12 @@
     navbar.style.display=(i===DONE)?'none':'';
     doneNav.style.display=(i===DONE)?'block':'none';
     if(i===DONE){
-      try{localStorage.setItem('mmai-done-'+MOD,'1')}catch(e){}
+      try{localStorage.setItem('mmai-done-'+GID,'1')}catch(e){}
       var s=score();
       document.getElementById('doneTitle').textContent=(s===3)?"Full tank. 🎉":"Module complete 🎉";
       document.getElementById('doneScore').textContent="You got "+s+" of 3 on the quick check"+(s===3?" — perfect drive.":" — and the misses taught you something, which is the point.");
     }
-    try{localStorage.setItem('mmai-m'+MOD,i)}catch(e){}
+    try{localStorage.setItem('mmai-m'+GID,i)}catch(e){}
     window.scrollTo({top:0});
   }
   nextBtn.addEventListener('click',function(){if(i<DONE){i++;render()}});

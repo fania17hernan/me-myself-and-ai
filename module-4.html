@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#FAF5EC">
-<title>Module 4: Hallucination: The Confident Intern — Me, Myself &amp; AI</title>
+<title>Hallucination: The Confident Intern — Me, Myself &amp; AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -91,6 +91,24 @@
     main{padding-bottom:40px}
     .navbar{position:static;box-shadow:none;border:none;background:transparent}
   }
+
+  .lcard{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--sh1);margin-bottom:14px;text-decoration:none;color:var(--ink)}
+  .lcard:hover{border-color:var(--accent)}
+  .lcard.soon{opacity:.62;cursor:default}
+  .lnum{flex:0 0 46px;height:46px;border-radius:14px;background:var(--warm);color:var(--accent-deep);font:600 20px 'Fraunces',serif;display:flex;align-items:center;justify-content:center}
+  .lbody{flex:1;min-width:0}
+  .lname{font:700 18px/1.25 'Inter';margin-bottom:3px}
+  .ltag{font:400 14px/1.4 'Inter';color:var(--ink-soft)}
+  .lmeta{font:500 12px/1.4 'Inter';color:var(--accent-deep);margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
+  .lmeta.soonlbl{color:var(--ink-soft)}
+  .lring{flex:0 0 34px;height:34px;border-radius:50%;background:conic-gradient(var(--accent) 0deg, var(--line) 0deg);display:flex;align-items:center;justify-content:center}
+  .lring span{width:26px;height:26px;border-radius:50%;background:var(--surface);font:600 10px 'Inter';display:flex;align-items:center;justify-content:center;color:var(--ink-soft)}
+  .util{display:flex;gap:12px;margin-top:6px}
+  .util .tile{flex:1;background:var(--warm);border-radius:16px;padding:16px;text-decoration:none;color:var(--ink)}
+  .util .tile .tt{font:700 15px 'Inter';margin-bottom:3px}
+  .util .tile .ts{font:400 12.5px/1.35 'Inter';color:var(--ink-soft)}
+  .backlink{display:inline-block;font:600 13px/1.4 'Inter';color:var(--accent-deep);text-decoration:none;margin:4px 0 4px}
+  .backlink:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -99,70 +117,54 @@
     <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
     <span class="rightgrp">
       <a class="lang" href="es/module-4.html">Español</a>
-      <span class="stepl" id="stepLabel">Module 4</span>
+      <span class="stepl" id="stepLabel">Start Here</span>
     </span>
   </div>
   <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div></div>
 </header>
 <main>
-  <section class="screen on" data-title="Module 4">
-    <p class="kicker">Module 4 · 10 min</p>
+  <section class="screen on" data-title="cover">
+    <a class="backlink" href="level-1.html">← Start Here</a>
+    <p class="kicker">Start Here · Lesson 4 of 5 · 10 min</p>
     <h1>Hallucination: The Confident Intern</h1>
     <p class="soft">The AI gave you wrong info and sounded totally sure. Can you trust it? Here's exactly when to double-check.</p>
     <div class="card"><h3 style="margin-top:0">In this module</h3><ul style="margin-bottom:0"><li>Why AI makes things up</li><li>When the risk is highest</li><li>How to catch it before it bites you</li></ul></div>
   </section>
-  <section class="screen" data-title="problem">
-    <p class="kicker">The problem</p><h1>It made up a study. Confidently.</h1><p>It handed you a statistic and a source. Clean, specific, exactly what you needed. You almost dropped it into your deck. Then you went to find the study — and it doesn't exist.</p><p>The unsettling part isn't that it was wrong. It's <em>how sure it sounded</em>. Same confident tone it uses when it's right. Once you understand why, you'll never get fooled the same way again.</p>
-  </section>
-  <section class="screen" data-title="analogy">
-    <p class="kicker">The core analogy</p>
-    <div class="analogy"><h2>The Confident Intern</h2><p>AI is a brilliant intern on their first day. They've read everything ever written, so they'll answer any question with total confidence.</p><p style="margin-bottom:0">But they've never actually <em>done</em> the job. So sometimes they'll make up a statistic or cite a paper that doesn't exist — not to deceive you, but because they're predicting what a good answer <em>sounds like</em>, not looking it up.</p></div><p>Brilliant, eager, and occasionally, confidently wrong. That's the intern — and that's your AI.</p>
-  </section>
-  <section class="screen" data-title="how">
-    <p class="kicker">How it actually works</p><h1>Why it happens</h1><p>An AI generates the next most likely word, over and over. Usually the most likely words happen to be true. Sometimes the most natural-<em>sounding</em> answer just isn't real. That's a <span class="term">hallucination</span> <span class="soft">(plain English: a confident made-up answer)</span>.</p><h3>It's structural, not a bug</h3><p>Making things up is baked into how the technology works — it predicts, it doesn't fact-check. Newer models do it less, but none are immune.</p><h3>Where the risk is highest</h3><ul><li>Specific facts and exact numbers</li><li>Citations, sources, quotes, and links</li><li>Recent events (especially after the model's training cutoff)</li><li>Anything niche, obscure, or rarely written about</li></ul><h3>The trap: it sounds the same either way</h3><p>The AI is just as fluent and confident when it's wrong as when it's right. Confidence is not a signal of accuracy. That single fact will protect you more than anything else in this course.</p>
-  </section>
-  <section class="screen" data-title="foryou">
-    <p class="kicker">What this means for you</p><h1>How to catch it</h1><h3>1. Treat it as a first draft, never the final word</h3><p>For facts, it's a great starting point and a terrible place to stop. Use it to get moving, then verify before anything leaves your hands.</p><h3>2. Make it show its work</h3><p>Ask: “cite your sources” and “tell me what you're not sure about.” Then actually click the sources to confirm they exist and say what it claims.</p><h3>3. Never go solo on high-stakes calls</h3><p>Legal, medical, financial, or anything with real consequences — the AI is a research assistant, not the expert who signs off. Confirm with a qualified human.</p><div class="card"><h3 style="margin-top:0">Try it this week</h3><p style="margin-bottom:0">Next time AI gives you a fact or a source, pause and verify it before you use it. Build the reflex now, while the stakes are low.</p></div>
-  </section>
-  <section class="screen" data-title="takeaway">
-    <p class="kicker">One takeaway</p><h1>Say it to a colleague</h1>
-    <div class="takeaway"><p>AI is a confident intern. Always check the work before you sign off on it.</p></div>
-    <p class="soft">That's the whole module in one sentence. If you can explain this to someone at work tomorrow, it stuck. Quick check — three questions, no grades, just proof it landed.</p>
-  </section>
-  <section class="screen" data-title="quiz">
-    <p class="kicker">Quick check · 3 questions</p><div class="card" data-q="0" data-answer="1"><h3 style="margin-top:0">1. Why does AI sometimes “make things up”?</h3><button class="qopt"><span class="dot"></span>It's broken</button><button class="qopt"><span class="dot"></span>It predicts likely-sounding words rather than looking up truth</button><button class="qopt"><span class="dot"></span>It's lying on purpose</button><div class="explain"></div></div><div class="card" data-q="1" data-answer="1"><h3 style="margin-top:0">2. When is hallucination risk highest?</h3><button class="qopt"><span class="dot"></span>When writing a poem or brainstorming</button><button class="qopt"><span class="dot"></span>With specific facts, numbers, and citations</button><button class="qopt"><span class="dot"></span>Never — modern AI is always right</button><div class="explain"></div></div><div class="card" data-q="2" data-answer="2"><h3 style="margin-top:0">3. AI gives a confident answer to a legal question. Best move?</h3><button class="qopt"><span class="dot"></span>Trust it — it sounded sure</button><button class="qopt"><span class="dot"></span>Ask the same question again</button><button class="qopt"><span class="dot"></span>Verify with a qualified professional before acting</button><div class="explain"></div></div>
-  </section>
+  <section class="screen" data-title="problem"><p class="kicker">The problem</p><h1>It made up a study. Confidently.</h1><p>It handed you a statistic and a source. Clean, specific, exactly what you needed. You almost dropped it into your deck. Then you went to find the study — and it doesn't exist.</p><p>The unsettling part isn't that it was wrong. It's <em>how sure it sounded</em>. Same confident tone it uses when it's right. Once you understand why, you'll never get fooled the same way again.</p></section>
+  <section class="screen" data-title="analogy"><p class="kicker">The core analogy</p><div class="analogy"><h2>The Confident Intern</h2><p>AI is a brilliant intern on their first day. They've read everything ever written, so they'll answer any question with total confidence.</p><p style="margin-bottom:0">But they've never actually <em>done</em> the job. So sometimes they'll make up a statistic or cite a paper that doesn't exist — not to deceive you, but because they're predicting what a good answer <em>sounds like</em>, not looking it up.</p></div><p>Brilliant, eager, and occasionally, confidently wrong. That's the intern — and that's your AI.</p></section>
+  <section class="screen" data-title="how"><p class="kicker">How it actually works</p><h1>Why it happens</h1><p>An AI generates the next most likely word, over and over. Usually the most likely words happen to be true. Sometimes the most natural-<em>sounding</em> answer just isn't real. That's a <span class="term">hallucination</span> <span class="soft">(plain English: a confident made-up answer)</span>.</p><h3>It's structural, not a bug</h3><p>Making things up is baked into how the technology works — it predicts, it doesn't fact-check. Newer models do it less, but none are immune.</p><h3>Where the risk is highest</h3><ul><li>Specific facts and exact numbers</li><li>Citations, sources, quotes, and links</li><li>Recent events (especially after the model's training cutoff)</li><li>Anything niche, obscure, or rarely written about</li></ul><h3>The trap: it sounds the same either way</h3><p>The AI is just as fluent and confident when it's wrong as when it's right. Confidence is not a signal of accuracy. That single fact will protect you more than anything else in this course.</p></section>
+  <section class="screen" data-title="foryou"><p class="kicker">What this means for you</p><h1>How to catch it</h1><h3>1. Treat it as a first draft, never the final word</h3><p>For facts, it's a great starting point and a terrible place to stop. Use it to get moving, then verify before anything leaves your hands.</p><h3>2. Make it show its work</h3><p>Ask: “cite your sources” and “tell me what you're not sure about.” Then actually click the sources to confirm they exist and say what it claims.</p><h3>3. Never go solo on high-stakes calls</h3><p>Legal, medical, financial, or anything with real consequences — the AI is a research assistant, not the expert who signs off. Confirm with a qualified human.</p><div class="card"><h3 style="margin-top:0">Try it this week</h3><p style="margin-bottom:0">Next time AI gives you a fact or a source, pause and verify it before you use it. Build the reflex now, while the stakes are low.</p></div></section>
+  <section class="screen" data-title="takeaway"><p class="kicker">One takeaway</p><h1>Say it to a colleague</h1><div class="takeaway"><p>AI is a confident intern. Always check the work before you sign off on it.</p></div><p class="soft">That's the whole module in one sentence. If you can explain this to someone at work tomorrow, it stuck. Quick check — three questions, no grades, just proof it landed.</p></section>
+  <section class="screen" data-title="quiz"><p class="kicker">Quick check · 3 questions</p><div class="card" data-q="0" data-answer="1"><h3 style="margin-top:0">1. Why does AI sometimes “make things up”?</h3><button class="qopt"><span class="dot"></span>It's broken</button><button class="qopt"><span class="dot"></span>It predicts likely-sounding words rather than looking up truth</button><button class="qopt"><span class="dot"></span>It's lying on purpose</button><div class="explain"></div></div><div class="card" data-q="1" data-answer="1"><h3 style="margin-top:0">2. When is hallucination risk highest?</h3><button class="qopt"><span class="dot"></span>When writing a poem or brainstorming</button><button class="qopt"><span class="dot"></span>With specific facts, numbers, and citations</button><button class="qopt"><span class="dot"></span>Never — modern AI is always right</button><div class="explain"></div></div><div class="card" data-q="2" data-answer="2"><h3 style="margin-top:0">3. AI gives a confident answer to a legal question. Best move?</h3><button class="qopt"><span class="dot"></span>Trust it — it sounded sure</button><button class="qopt"><span class="dot"></span>Ask the same question again</button><button class="qopt"><span class="dot"></span>Verify with a qualified professional before acting</button><div class="explain"></div></div></section>
   <section class="screen" data-title="done">
-    <p class="kicker">Module complete</p>
-    <h1 id="doneTitle">Full tank. 🎉</h1>
-    <p id="doneScore"></p>
-    <div class="takeaway"><p>AI is a confident intern. Always check the work before you sign off on it.</p></div>
-    <p><strong>Next up — Module 5: The Sous Chef.</strong> Turning everything you've learned into your first real AI habit.</p>
+    <p class="kicker">Module complete</p><h1 id="doneTitle">Full tank. 🎉</h1><p id="doneScore"></p>
+    <div class="takeaway"><p>AI is a confident intern. Always check the work before you sign off on it.</p></div><p><strong>Next up — Module 5: The Sous Chef.</strong> Turning everything you've learned into your first real AI habit.</p>
   </section>
 </main>
 <nav class="navbar"><div class="inner">
   <button class="btn btn-ghost" id="backBtn">Back</button>
   <button class="btn btn-primary" id="nextBtn">Start the module</button>
 </div></nav>
-<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="module-5.html">Start Module 5 →</a><a class="btn btn-ghost" href="index.html">Course home</a></div></div>
+<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="module-5.html">Next lesson →</a><a class="btn btn-ghost" href="level-1.html">Back to Start Here</a></div></div>
 <script>
 (function(){
-  var MOD=4;
-  var L={module:"Module",step:"Step",of:"of",complete:"Complete",start:"Start the module",cont:"Continue",finish:"Finish"};
+  var GID=4;
+  var LVLNAME="Start Here";
+  var L={step:"Step",of:"of",complete:"Complete",start:"Start the module",cont:"Continue",finish:"Finish"};
   var screens=[].slice.call(document.querySelectorAll('.screen'));
   var fill=document.getElementById('fill'),stepLabel=document.getElementById('stepLabel');
   var nextBtn=document.getElementById('nextBtn'),backBtn=document.getElementById('backBtn');
   var navbar=document.querySelector('.navbar'),doneNav=document.getElementById('doneNav');
   var QUIZ=6,DONE=screens.length-1;
   var i=0,answers={};
-  try{var saved=parseInt(localStorage.getItem('mmai-m'+MOD),10);if(saved>0&&saved<DONE)i=saved;}catch(e){}
+  try{var sv=parseInt(localStorage.getItem('mmai-m'+GID),10);if(sv>0&&sv<DONE)i=sv;}catch(e){}
   var explains={0:{good:"Exactly — it predicts what sounds right, which is usually but not always true.",bad:"It's not malice or a glitch — it predicts the next likely-sounding word instead of looking facts up. Usually right, sometimes not."},1:{good:"Right — facts, numbers, and sources are the danger zone. Always verify those.",bad:"Highest risk is with specifics: exact facts, numbers, citations, and recent events. Creative tasks are much safer."},2:{good:"Yes — confidence isn't accuracy. High stakes means confirm with a real expert.",bad:"Confidence isn't accuracy. For legal, medical, or financial calls, verify with a qualified professional before acting."}};
   function quizDone(){return Object.keys(answers).length===3}
   function score(){var s=0;for(var k in answers){if(answers[k])s++}return s}
   function render(){
     screens.forEach(function(s,n){s.classList.toggle('on',n===i)});
     fill.style.width=Math.round(i/DONE*100)+'%';
-    stepLabel.textContent=(i===0)?L.module+' '+MOD:(i===DONE)?L.complete:L.step+' '+i+' '+L.of+' '+(DONE-1);
+    stepLabel.textContent=(i===0)?LVLNAME:(i===DONE)?L.complete:L.step+' '+i+' '+L.of+' '+(DONE-1);
     backBtn.style.visibility=(i===0)?'hidden':'visible';
     if(i===0)nextBtn.textContent=L.start;
     else if(i===QUIZ){nextBtn.textContent=L.finish;nextBtn.disabled=!quizDone();}
@@ -170,12 +172,12 @@
     navbar.style.display=(i===DONE)?'none':'';
     doneNav.style.display=(i===DONE)?'block':'none';
     if(i===DONE){
-      try{localStorage.setItem('mmai-done-'+MOD,'1')}catch(e){}
+      try{localStorage.setItem('mmai-done-'+GID,'1')}catch(e){}
       var s=score();
       document.getElementById('doneTitle').textContent=(s===3)?"Full tank. 🎉":"Module complete 🎉";
       document.getElementById('doneScore').textContent="You got "+s+" of 3 on the quick check"+(s===3?" — perfect drive.":" — and the misses taught you something, which is the point.");
     }
-    try{localStorage.setItem('mmai-m'+MOD,i)}catch(e){}
+    try{localStorage.setItem('mmai-m'+GID,i)}catch(e){}
     window.scrollTo({top:0});
   }
   nextBtn.addEventListener('click',function(){if(i<DONE){i++;render()}});

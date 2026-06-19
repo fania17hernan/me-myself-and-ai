@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#FAF5EC">
-<title>Module 2: Context Windows: The Whiteboard — Me, Myself &amp; AI</title>
+<title>Context Windows: The Whiteboard — Me, Myself &amp; AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -91,6 +91,24 @@
     main{padding-bottom:40px}
     .navbar{position:static;box-shadow:none;border:none;background:transparent}
   }
+
+  .lcard{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--sh1);margin-bottom:14px;text-decoration:none;color:var(--ink)}
+  .lcard:hover{border-color:var(--accent)}
+  .lcard.soon{opacity:.62;cursor:default}
+  .lnum{flex:0 0 46px;height:46px;border-radius:14px;background:var(--warm);color:var(--accent-deep);font:600 20px 'Fraunces',serif;display:flex;align-items:center;justify-content:center}
+  .lbody{flex:1;min-width:0}
+  .lname{font:700 18px/1.25 'Inter';margin-bottom:3px}
+  .ltag{font:400 14px/1.4 'Inter';color:var(--ink-soft)}
+  .lmeta{font:500 12px/1.4 'Inter';color:var(--accent-deep);margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
+  .lmeta.soonlbl{color:var(--ink-soft)}
+  .lring{flex:0 0 34px;height:34px;border-radius:50%;background:conic-gradient(var(--accent) 0deg, var(--line) 0deg);display:flex;align-items:center;justify-content:center}
+  .lring span{width:26px;height:26px;border-radius:50%;background:var(--surface);font:600 10px 'Inter';display:flex;align-items:center;justify-content:center;color:var(--ink-soft)}
+  .util{display:flex;gap:12px;margin-top:6px}
+  .util .tile{flex:1;background:var(--warm);border-radius:16px;padding:16px;text-decoration:none;color:var(--ink)}
+  .util .tile .tt{font:700 15px 'Inter';margin-bottom:3px}
+  .util .tile .ts{font:400 12.5px/1.35 'Inter';color:var(--ink-soft)}
+  .backlink{display:inline-block;font:600 13px/1.4 'Inter';color:var(--accent-deep);text-decoration:none;margin:4px 0 4px}
+  .backlink:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -99,70 +117,54 @@
     <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
     <span class="rightgrp">
       <a class="lang" href="es/module-2.html">Español</a>
-      <span class="stepl" id="stepLabel">Module 2</span>
+      <span class="stepl" id="stepLabel">Start Here</span>
     </span>
   </div>
   <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div></div>
 </header>
 <main>
-  <section class="screen on" data-title="Module 2">
-    <p class="kicker">Module 2 · 8 min</p>
+  <section class="screen on" data-title="cover">
+    <a class="backlink" href="level-1.html">← Start Here</a>
+    <p class="kicker">Start Here · Lesson 2 of 5 · 8 min</p>
     <h1>Context Windows: The Whiteboard</h1>
     <p class="soft">Why does AI forget what you told it 20 messages ago? It's not getting dumber — and the fix takes ten seconds.</p>
     <div class="card"><h3 style="margin-top:0">In this module</h3><ul style="margin-bottom:0"><li>What a "context window" actually is</li><li>Why long chats lose the thread</li><li>Simple ways to keep AI on track</li></ul></div>
   </section>
-  <section class="screen" data-title="problem">
-    <p class="kicker">The problem</p><h1>“Wait, I already told you that.”</h1><p>You explained the whole project at the start — the client, the deadline, the tone you wanted. Forty messages later, the AI has forgotten all of it. It's suggesting things you ruled out an hour ago.</p><p>It feels like it stopped listening. Like it got lazy, or dumber. It didn't. Something very specific happened, and once you see it, the fix takes about ten seconds.</p>
-  </section>
-  <section class="screen" data-title="analogy">
-    <p class="kicker">The core analogy</p>
-    <div class="analogy"><h2>The Whiteboard</h2><p>AI doesn't have a memory — it has a whiteboard. Everything written on the board right now is everything it knows. Your messages, its replies, all of it crammed onto one board.</p><p style="margin-bottom:0">When the board fills up, the oldest notes get wiped to make room for new ones. It's not getting dumber. The board is just full.</p></div><p>That's the whole idea. “Forgetting” isn't a personality flaw — it's an erased corner of a whiteboard.</p>
-  </section>
-  <section class="screen" data-title="how">
-    <p class="kicker">How it actually works</p><h1>How the board fills up</h1><p>The <span class="term">context window</span> <span class="soft">(plain English: the whiteboard)</span> is everything the AI can see at once — the entire conversation so far, sitting in front of it.</p><h3>When it's full, old notes vanish</h3><p>The AI doesn't “recall” earlier parts of the chat. It reads whatever is currently on the board and responds. Once something scrolls off the top, it's gone — unless you write it down again.</p><h3>This isn't human memory</h3><p>You remember a conversation from last Tuesday. AI starts every single reply by reading only what's on the board right now. By default, nothing carries over between separate chats at all.</p><h3>System prompts = permanent marker</h3><p>Some instructions get written in permanent marker — they stay visible no matter how full the board gets. That's what a <strong>system prompt</strong>, or the setup inside a Claude Project or custom GPT, actually is.</p><h3>Tools that give you a bigger board</h3><p>Features like Claude Projects, custom GPTs, and “memory” settings let you pin important notes so they don't get wiped. Useful once you're past the basics.</p>
-  </section>
-  <section class="screen" data-title="foryou">
-    <p class="kicker">What this means for you</p><h1>Keep what matters on the board</h1><h3>1. Restate the important stuff</h3><p>When a chat gets long, don't assume it remembers. Paste the key facts again: “Reminder: deadline is Friday, audience is execs, keep it under one page.” You're rewriting the note before it gets wiped.</p><h3>2. New topic, new board</h3><p>Start a fresh chat when you switch subjects. A clean board with only relevant notes beats a cluttered one full of stuff that no longer matters.</p><h3>3. Put recurring context in permanent marker</h3><p>If you find yourself re-explaining the same background every time, put it in a Project or custom instructions once — so it's always on the board without you retyping it.</p><div class="card"><h3 style="margin-top:0">Try it this week</h3><p style="margin-bottom:0">Next time a long chat starts drifting, paste a one-line reminder of the key facts. Watch it snap back on track.</p></div>
-  </section>
-  <section class="screen" data-title="takeaway">
-    <p class="kicker">One takeaway</p><h1>Say it to a colleague</h1>
-    <div class="takeaway"><p>AI has a whiteboard, not a memory. Keep important context visible.</p></div>
-    <p class="soft">That's the whole module in one sentence. If you can explain this to someone at work tomorrow, it stuck. Quick check — three questions, no grades, just proof it landed.</p>
-  </section>
-  <section class="screen" data-title="quiz">
-    <p class="kicker">Quick check · 3 questions</p><div class="card" data-q="0" data-answer="1"><h3 style="margin-top:0">1. Your AI “forgets” something you said early in a long chat. Why?</h3><button class="qopt"><span class="dot"></span>It's malfunctioning</button><button class="qopt"><span class="dot"></span>The board filled up and earlier notes got wiped</button><button class="qopt"><span class="dot"></span>It's ignoring you on purpose</button><div class="explain"></div></div><div class="card" data-q="1" data-answer="1"><h3 style="margin-top:0">2. A long chat is losing the thread. Best fix?</h3><button class="qopt"><span class="dot"></span>Keep repeating the exact same question</button><button class="qopt"><span class="dot"></span>Restate the key facts so they're back on the board</button><button class="qopt"><span class="dot"></span>Type in all caps so it pays attention</button><div class="explain"></div></div><div class="card" data-q="2" data-answer="0"><h3 style="margin-top:0">3. Where does a Project instruction or system prompt live?</h3><button class="qopt"><span class="dot"></span>In permanent marker — always visible</button><button class="qopt"><span class="dot"></span>On a sticky note that falls off</button><button class="qopt"><span class="dot"></span>Nowhere, it's deleted instantly</button><div class="explain"></div></div>
-  </section>
+  <section class="screen" data-title="problem"><p class="kicker">The problem</p><h1>“Wait, I already told you that.”</h1><p>You explained the whole project at the start — the client, the deadline, the tone you wanted. Forty messages later, the AI has forgotten all of it. It's suggesting things you ruled out an hour ago.</p><p>It feels like it stopped listening. Like it got lazy, or dumber. It didn't. Something very specific happened, and once you see it, the fix takes about ten seconds.</p></section>
+  <section class="screen" data-title="analogy"><p class="kicker">The core analogy</p><div class="analogy"><h2>The Whiteboard</h2><p>AI doesn't have a memory — it has a whiteboard. Everything written on the board right now is everything it knows. Your messages, its replies, all of it crammed onto one board.</p><p style="margin-bottom:0">When the board fills up, the oldest notes get wiped to make room for new ones. It's not getting dumber. The board is just full.</p></div><p>That's the whole idea. “Forgetting” isn't a personality flaw — it's an erased corner of a whiteboard.</p></section>
+  <section class="screen" data-title="how"><p class="kicker">How it actually works</p><h1>How the board fills up</h1><p>The <span class="term">context window</span> <span class="soft">(plain English: the whiteboard)</span> is everything the AI can see at once — the entire conversation so far, sitting in front of it.</p><h3>When it's full, old notes vanish</h3><p>The AI doesn't “recall” earlier parts of the chat. It reads whatever is currently on the board and responds. Once something scrolls off the top, it's gone — unless you write it down again.</p><h3>This isn't human memory</h3><p>You remember a conversation from last Tuesday. AI starts every single reply by reading only what's on the board right now. By default, nothing carries over between separate chats at all.</p><h3>System prompts = permanent marker</h3><p>Some instructions get written in permanent marker — they stay visible no matter how full the board gets. That's what a <strong>system prompt</strong>, or the setup inside a Claude Project or custom GPT, actually is.</p><h3>Tools that give you a bigger board</h3><p>Features like Claude Projects, custom GPTs, and “memory” settings let you pin important notes so they don't get wiped. Useful once you're past the basics.</p></section>
+  <section class="screen" data-title="foryou"><p class="kicker">What this means for you</p><h1>Keep what matters on the board</h1><h3>1. Restate the important stuff</h3><p>When a chat gets long, don't assume it remembers. Paste the key facts again: “Reminder: deadline is Friday, audience is execs, keep it under one page.” You're rewriting the note before it gets wiped.</p><h3>2. New topic, new board</h3><p>Start a fresh chat when you switch subjects. A clean board with only relevant notes beats a cluttered one full of stuff that no longer matters.</p><h3>3. Put recurring context in permanent marker</h3><p>If you find yourself re-explaining the same background every time, put it in a Project or custom instructions once — so it's always on the board without you retyping it.</p><div class="card"><h3 style="margin-top:0">Try it this week</h3><p style="margin-bottom:0">Next time a long chat starts drifting, paste a one-line reminder of the key facts. Watch it snap back on track.</p></div></section>
+  <section class="screen" data-title="takeaway"><p class="kicker">One takeaway</p><h1>Say it to a colleague</h1><div class="takeaway"><p>AI has a whiteboard, not a memory. Keep important context visible.</p></div><p class="soft">That's the whole module in one sentence. If you can explain this to someone at work tomorrow, it stuck. Quick check — three questions, no grades, just proof it landed.</p></section>
+  <section class="screen" data-title="quiz"><p class="kicker">Quick check · 3 questions</p><div class="card" data-q="0" data-answer="1"><h3 style="margin-top:0">1. Your AI “forgets” something you said early in a long chat. Why?</h3><button class="qopt"><span class="dot"></span>It's malfunctioning</button><button class="qopt"><span class="dot"></span>The board filled up and earlier notes got wiped</button><button class="qopt"><span class="dot"></span>It's ignoring you on purpose</button><div class="explain"></div></div><div class="card" data-q="1" data-answer="1"><h3 style="margin-top:0">2. A long chat is losing the thread. Best fix?</h3><button class="qopt"><span class="dot"></span>Keep repeating the exact same question</button><button class="qopt"><span class="dot"></span>Restate the key facts so they're back on the board</button><button class="qopt"><span class="dot"></span>Type in all caps so it pays attention</button><div class="explain"></div></div><div class="card" data-q="2" data-answer="0"><h3 style="margin-top:0">3. Where does a Project instruction or system prompt live?</h3><button class="qopt"><span class="dot"></span>In permanent marker — always visible</button><button class="qopt"><span class="dot"></span>On a sticky note that falls off</button><button class="qopt"><span class="dot"></span>Nowhere, it's deleted instantly</button><div class="explain"></div></div></section>
   <section class="screen" data-title="done">
-    <p class="kicker">Module complete</p>
-    <h1 id="doneTitle">Full tank. 🎉</h1>
-    <p id="doneScore"></p>
-    <div class="takeaway"><p>AI has a whiteboard, not a memory. Keep important context visible.</p></div>
-    <p><strong>Next up — Module 3: The Test Drive vs. the Lease.</strong> Should you actually pay for AI, or is the free version fine?</p>
+    <p class="kicker">Module complete</p><h1 id="doneTitle">Full tank. 🎉</h1><p id="doneScore"></p>
+    <div class="takeaway"><p>AI has a whiteboard, not a memory. Keep important context visible.</p></div><p><strong>Next up — Module 3: The Test Drive vs. the Lease.</strong> Should you actually pay for AI, or is the free version fine?</p>
   </section>
 </main>
 <nav class="navbar"><div class="inner">
   <button class="btn btn-ghost" id="backBtn">Back</button>
   <button class="btn btn-primary" id="nextBtn">Start the module</button>
 </div></nav>
-<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="module-3.html">Start Module 3 →</a><a class="btn btn-ghost" href="index.html">Course home</a></div></div>
+<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="module-3.html">Next lesson →</a><a class="btn btn-ghost" href="level-1.html">Back to Start Here</a></div></div>
 <script>
 (function(){
-  var MOD=2;
-  var L={module:"Module",step:"Step",of:"of",complete:"Complete",start:"Start the module",cont:"Continue",finish:"Finish"};
+  var GID=2;
+  var LVLNAME="Start Here";
+  var L={step:"Step",of:"of",complete:"Complete",start:"Start the module",cont:"Continue",finish:"Finish"};
   var screens=[].slice.call(document.querySelectorAll('.screen'));
   var fill=document.getElementById('fill'),stepLabel=document.getElementById('stepLabel');
   var nextBtn=document.getElementById('nextBtn'),backBtn=document.getElementById('backBtn');
   var navbar=document.querySelector('.navbar'),doneNav=document.getElementById('doneNav');
   var QUIZ=6,DONE=screens.length-1;
   var i=0,answers={};
-  try{var saved=parseInt(localStorage.getItem('mmai-m'+MOD),10);if(saved>0&&saved<DONE)i=saved;}catch(e){}
+  try{var sv=parseInt(localStorage.getItem('mmai-m'+GID),10);if(sv>0&&sv<DONE)i=sv;}catch(e){}
   var explains={0:{good:"Exactly — the whiteboard filled and the oldest notes were erased. Totally normal.",bad:"Not quite — nothing's broken. The whiteboard filled up, so the earliest notes got wiped to make room."},1:{good:"Right — rewrite the note. Restating key context puts it back in front of the AI.",bad:"The fix is to restate the key facts — that puts the important notes back on the board where the AI can see them."},2:{good:"Yes — permanent marker. It stays on the board no matter how full things get.",bad:"Think permanent marker — system prompts and Project setups stay visible no matter how full the board gets."}};
   function quizDone(){return Object.keys(answers).length===3}
   function score(){var s=0;for(var k in answers){if(answers[k])s++}return s}
   function render(){
     screens.forEach(function(s,n){s.classList.toggle('on',n===i)});
     fill.style.width=Math.round(i/DONE*100)+'%';
-    stepLabel.textContent=(i===0)?L.module+' '+MOD:(i===DONE)?L.complete:L.step+' '+i+' '+L.of+' '+(DONE-1);
+    stepLabel.textContent=(i===0)?LVLNAME:(i===DONE)?L.complete:L.step+' '+i+' '+L.of+' '+(DONE-1);
     backBtn.style.visibility=(i===0)?'hidden':'visible';
     if(i===0)nextBtn.textContent=L.start;
     else if(i===QUIZ){nextBtn.textContent=L.finish;nextBtn.disabled=!quizDone();}
@@ -170,12 +172,12 @@
     navbar.style.display=(i===DONE)?'none':'';
     doneNav.style.display=(i===DONE)?'block':'none';
     if(i===DONE){
-      try{localStorage.setItem('mmai-done-'+MOD,'1')}catch(e){}
+      try{localStorage.setItem('mmai-done-'+GID,'1')}catch(e){}
       var s=score();
       document.getElementById('doneTitle').textContent=(s===3)?"Full tank. 🎉":"Module complete 🎉";
       document.getElementById('doneScore').textContent="You got "+s+" of 3 on the quick check"+(s===3?" — perfect drive.":" — and the misses taught you something, which is the point.");
     }
-    try{localStorage.setItem('mmai-m'+MOD,i)}catch(e){}
+    try{localStorage.setItem('mmai-m'+GID,i)}catch(e){}
     window.scrollTo({top:0});
   }
   nextBtn.addEventListener('click',function(){if(i<DONE){i++;render()}});
