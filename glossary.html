@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF5EC">
+<title>Glossary — Me, Myself &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF5EC; --surface:#FFFDF8; --warm:#F3EADC; --ink:#2B231D; --ink-soft:#6B5C50;
+    --accent:#BF5538; --accent-deep:#9C4128; --highlight:#E5A33F; --success:#4E7A5A;
+    --error:#A33B2E; --line:#E3D7C6;
+    --sh1:0 1px 2px rgba(43,35,29,.06),0 4px 12px rgba(43,35,29,.05);
+    --sh2:0 4px 8px rgba(43,35,29,.08),0 12px 32px rgba(43,35,29,.10);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--paper);color:var(--ink);font:400 17px/1.65 'Inter',sans-serif;
+       -webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+  header{position:sticky;top:0;background:var(--paper);padding:14px 20px 10px;z-index:5}
+  .topline{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;gap:12px}
+  .brand{font:600 16px 'Fraunces',serif;color:var(--ink);text-decoration:none}
+  .brand .amp{color:var(--accent);font-style:italic}
+  .rightgrp{display:flex;align-items:baseline;gap:14px;flex-shrink:0}
+  .lang{font:600 12px/1.4 'Inter';letter-spacing:.06em;text-transform:uppercase;color:var(--accent-deep);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:3px 10px}
+  .lang:hover{border-color:var(--accent);background:var(--warm)}
+  .stepl{font:500 13px/1.4 'Inter';color:var(--ink-soft)}
+  .gauge{display:flex;align-items:center;gap:8px}
+  .gauge svg{flex:0 0 auto}
+  .ptrack{flex:1;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
+  .pfill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--highlight),var(--accent));transition:width .25s ease-out}
+  main{flex:1;padding:8px 20px 120px;max-width:640px;width:100%;margin:0 auto}
+  .screen{display:none;animation:rise .25s ease-out}
+  .screen.on{display:block}
+  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.screen{animation:none}}
+  .kicker{font:500 13px/1.4 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin:16px 0 8px}
+  h1{font:600 34px/1.12 'Fraunces',serif;margin-bottom:12px}
+  h2{font:600 26px/1.2 'Fraunces',serif;margin:28px 0 10px}
+  h3{font:700 18px/1.35 'Inter';margin:22px 0 6px}
+  p{margin-bottom:14px;max-width:62ch}
+  .soft{color:var(--ink-soft)}
+  .term{font-weight:600;box-shadow:inset 0 -2px 0 var(--highlight)}
+  ul{margin:0 0 14px 20px}
+  li{margin-bottom:8px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--sh1);margin:16px 0}
+  .analogy{background:var(--warm);border:none;border-left:4px solid var(--highlight);border-radius:20px;padding:24px;margin:16px 0}
+  .analogy h2{margin-top:0}
+  .takeaway{background:var(--warm);border-radius:20px;padding:36px 24px 28px;position:relative;box-shadow:var(--sh2);margin:20px 0}
+  .takeaway:before{content:'\201C';position:absolute;top:2px;left:16px;font:600 96px 'Fraunces',serif;color:var(--accent);opacity:.18;line-height:1}
+  .takeaway p{font:italic 500 22px/1.4 'Fraunces',serif;position:relative;margin:0}
+  .navbar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);
+          box-shadow:var(--sh2);padding:12px 20px calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;gap:12px;z-index:5}
+  .navbar .inner{display:flex;justify-content:space-between;gap:12px;width:100%;max-width:640px;margin:0 auto}
+  .btn{font:600 17px 'Inter';border:none;border-radius:999px;min-height:52px;padding:14px 28px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
+  .btn-primary{background:var(--accent);color:var(--surface)}
+  .btn-primary:active,.btn-primary:hover{background:var(--accent-deep)}
+  .btn-primary[disabled]{opacity:.4;cursor:default}
+  .btn-ghost{background:transparent;color:var(--ink-soft)}
+  .qopt{display:flex;align-items:flex-start;gap:12px;width:100%;min-height:56px;padding:16px;border-radius:16px;
+        border:1.5px solid var(--line);background:var(--surface);font:400 17px/1.5 'Inter';text-align:left;cursor:pointer;margin-bottom:10px;color:var(--ink)}
+  .qopt.sel{border:2px solid var(--accent);padding:15px}
+  .qopt.ok{border:2px solid var(--success);background:#EAF1EB;padding:15px}
+  .qopt.no{border:2px solid var(--error);padding:15px}
+  .dot{flex:0 0 22px;height:22px;border-radius:50%;border:2px solid var(--line);margin-top:2px}
+  .qopt.ok .dot{border-color:var(--success);background:var(--success)}
+  .qopt.no .dot{border-color:var(--error)}
+  .explain{border-radius:16px;padding:16px;margin:6px 0 18px;font-size:16px;display:none}
+  .explain.show{display:block}
+  .explain.good{background:#EAF1EB;color:#33523D}
+  .explain.bad{background:#F6E8E2;color:#7A2E23}
+  .hero{padding:8px 0 4px}
+  .eyebrow{font:500 13px/1.4 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:10px}
+  .tagline{font:italic 500 20px/1.4 'Fraunces',serif;color:var(--ink-soft);margin:0 0 18px}
+  .mcard{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px 20px;box-shadow:var(--sh1);margin-bottom:12px;text-decoration:none;color:var(--ink)}
+  .mcard:hover{border-color:var(--accent)}
+  .mnum{flex:0 0 40px;height:40px;border-radius:50%;background:var(--warm);color:var(--accent-deep);font:600 18px 'Fraunces',serif;display:flex;align-items:center;justify-content:center}
+  .mbody{flex:1;min-width:0}
+  .mtitle{font:700 17px/1.3 'Inter';margin-bottom:3px}
+  .mmeta{font:400 14px/1.4 'Inter';color:var(--ink-soft)}
+  .manalogy{color:var(--accent-deep);font-weight:600}
+  .mcheck{flex:0 0 24px;height:24px;border-radius:50%;border:2px solid var(--line)}
+  .mcard.done .mcheck{background:var(--success);border-color:var(--success)}
+  .mcard.done .mcheck:after{content:'\2713';color:#fff;display:flex;align-items:center;justify-content:center;height:100%;font-size:14px;font-weight:700}
+  .mcard.done .mnum{background:var(--success);color:#fff}
+  footer{color:var(--ink-soft);font-size:14px;margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
+  @media(min-width:768px){
+    body{font-size:18px}
+    h1{font-size:48px} h2{font-size:32px}
+    main{padding-bottom:40px}
+    .navbar{position:static;box-shadow:none;border:none;background:transparent}
+  }
+
+  .lcard{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--sh1);margin-bottom:14px;text-decoration:none;color:var(--ink)}
+  .lcard:hover{border-color:var(--accent)}
+  .lcard.soon{opacity:.62;cursor:default}
+  .lnum{flex:0 0 46px;height:46px;border-radius:14px;background:var(--warm);color:var(--accent-deep);font:600 20px 'Fraunces',serif;display:flex;align-items:center;justify-content:center}
+  .lbody{flex:1;min-width:0}
+  .lname{font:700 18px/1.25 'Inter';margin-bottom:3px}
+  .ltag{font:400 14px/1.4 'Inter';color:var(--ink-soft)}
+  .lmeta{font:500 12px/1.4 'Inter';color:var(--accent-deep);margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
+  .lmeta.soonlbl{color:var(--ink-soft)}
+  .lring{flex:0 0 34px;height:34px;border-radius:50%;background:conic-gradient(var(--accent) 0deg, var(--line) 0deg);display:flex;align-items:center;justify-content:center}
+  .lring span{width:26px;height:26px;border-radius:50%;background:var(--surface);font:600 10px 'Inter';display:flex;align-items:center;justify-content:center;color:var(--ink-soft)}
+  .util{display:flex;gap:12px;margin-top:6px}
+  .util .tile{flex:1;background:var(--warm);border-radius:16px;padding:16px;text-decoration:none;color:var(--ink)}
+  .util .tile .tt{font:700 15px 'Inter';margin-bottom:3px}
+  .util .tile .ts{font:400 12.5px/1.35 'Inter';color:var(--ink-soft)}
+  .backlink{display:inline-block;font:600 13px/1.4 'Inter';color:var(--accent-deep);text-decoration:none;margin:4px 0 4px}
+  .backlink:hover{text-decoration:underline}
+
+  .gsearch{width:100%;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;font:400 17px 'Inter';color:var(--ink);margin:4px 0 18px}
+  .gsearch:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(191,85,56,.18)}
+  .gterm{font:700 18px/1.3 'Inter';margin-bottom:6px}
+  .gdef{margin-bottom:10px}
+  .gan{font:400 14px/1.45 'Inter';color:var(--ink-soft);background:var(--warm);border-radius:12px;padding:10px 12px;margin-bottom:12px}
+  .gan b{color:var(--accent-deep);font-weight:600}
+  .glearn{font:600 14px 'Inter';color:var(--accent-deep);text-decoration:none}
+  .glearn:hover{text-decoration:underline}
+  .gnone{color:var(--ink-soft);font-style:italic;padding:8px 2px;display:none}
+</style>
+</head>
+<body>
+<header>
+  <div class="topline">
+    <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
+    <span class="rightgrp"><a class="lang" href="es/glossary.html">Español</a><span class="stepl" id="cnt"></span></span>
+  </div>
+  <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" style="width:100%"></div></div></div>
+</header>
+<main>
+  <a class="backlink" href="index.html">← All levels</a>
+  <div class="hero"><p class="eyebrow">Glossary</p><h1>Glossary</h1><p class="tagline">Every term you'll bump into, in plain words — each tied to its analogy. Tap a card to jump to the lesson.</p></div>
+  <input class="gsearch" id="gsearch" type="search" placeholder="Search a term…" autocomplete="off" aria-label="Search a term…">
+  <div id="glist"><div class="card" data-s="artifact (canvas) a panel beside the chat where the ai builds an editable thing — a doc, sheet, or small app. a workbench next to the conversation."><div class="gterm">Artifact (Canvas)</div><p class="gdef">A panel beside the chat where the AI builds an editable thing — a doc, sheet, or small app.</p><div class="gan"><b>Think of it as:</b> A workbench next to the conversation.</div><a class="glearn" href="module-7.html">Learn it →</a></div><div class="card" data-s="chat a single conversation — quick and disposable. nothing is kept once you move on. a phone call."><div class="gterm">Chat</div><p class="gdef">A single conversation — quick and disposable. Nothing is kept once you move on.</p><div class="gan"><b>Think of it as:</b> A phone call.</div><a class="glearn" href="module-6.html">Learn it →</a></div><div class="card" data-s="connector a link that lets ai reach into another app you use, like email, calendar, or drive, to fetch or act. a key to another room."><div class="gterm">Connector</div><p class="gdef">A link that lets AI reach into another app you use, like email, calendar, or Drive, to fetch or act.</p><div class="gan"><b>Think of it as:</b> A key to another room.</div><a class="glearn" href="module-8.html">Learn it →</a></div><div class="card" data-s="context window everything the ai can “see” at once in a conversation. when it fills up, the oldest parts drop off. a whiteboard that gets wiped when it's full."><div class="gterm">Context window</div><p class="gdef">Everything the AI can “see” at once in a conversation. When it fills up, the oldest parts drop off.</p><div class="gan"><b>Think of it as:</b> A whiteboard that gets wiped when it's full.</div><a class="glearn" href="module-2.html">Learn it →</a></div><div class="card" data-s="custom assistant (custom gpt / gem) a helper you set up once with instructions and examples, then reuse without re-explaining. a specialist you trained once."><div class="gterm">Custom assistant (Custom GPT / Gem)</div><p class="gdef">A helper you set up once with instructions and examples, then reuse without re-explaining.</p><div class="gan"><b>Think of it as:</b> A specialist you trained once.</div><a class="glearn" href="module-9.html">Learn it →</a></div><div class="card" data-s="free vs. paid tier the free plan is the same core model; paying mostly unlocks higher limits and extra features. a test drive vs. leasing the car."><div class="gterm">Free vs. paid tier</div><p class="gdef">The free plan is the same core model; paying mostly unlocks higher limits and extra features.</p><div class="gan"><b>Think of it as:</b> A test drive vs. leasing the car.</div><a class="glearn" href="module-3.html">Learn it →</a></div><div class="card" data-s="hallucination when ai states something false with total confidence — because it predicts likely words, not verified facts. a confident intern making things up."><div class="gterm">Hallucination</div><p class="gdef">When AI states something false with total confidence — because it predicts likely words, not verified facts.</p><div class="gan"><b>Think of it as:</b> A confident intern making things up.</div><a class="glearn" href="module-4.html">Learn it →</a></div><div class="card" data-s="input &amp; output what you send (input) and what the ai sends back (output). both burn tokens. fuel burned on the way there and the way back."><div class="gterm">Input &amp; output</div><p class="gdef">What you send (input) and what the AI sends back (output). Both burn tokens.</p><div class="gan"><b>Think of it as:</b> Fuel burned on the way there and the way back.</div><a class="glearn" href="module-1.html">Learn it →</a></div><div class="card" data-s="model the underlying ai “brain.” newer or bigger ones are smarter but can be slower or pricier. picking the right vehicle for the trip."><div class="gterm">Model</div><p class="gdef">The underlying AI “brain.” Newer or bigger ones are smarter but can be slower or pricier.</p><div class="gan"><b>Think of it as:</b> Picking the right vehicle for the trip.</div><a class="glearn" href="module-3.html">Learn it →</a></div><div class="card" data-s="project a saved workspace that keeps your files, standing instructions, and chats for one job together. a dedicated office."><div class="gterm">Project</div><p class="gdef">A saved workspace that keeps your files, standing instructions, and chats for one job together.</p><div class="gan"><b>Think of it as:</b> A dedicated office.</div><a class="glearn" href="module-6.html">Learn it →</a></div><div class="card" data-s="prompt what you type to the ai. the more specific it is, the better the result. the recipe you hand your sous chef."><div class="gterm">Prompt</div><p class="gdef">What you type to the AI. The more specific it is, the better the result.</p><div class="gan"><b>Think of it as:</b> The recipe you hand your sous chef.</div><a class="glearn" href="module-5.html">Learn it →</a></div><div class="card" data-s="rate limit a cap on how much you can use ai within a set window of time before it makes you wait. a gas station that only lets you fill up so many times an hour."><div class="gterm">Rate limit</div><p class="gdef">A cap on how much you can use AI within a set window of time before it makes you wait.</p><div class="gan"><b>Think of it as:</b> A gas station that only lets you fill up so many times an hour.</div><a class="glearn" href="module-1.html">Learn it →</a></div><div class="card" data-s="system prompt standing instructions that stay active for the whole conversation, no matter how long it runs. written in permanent marker on the whiteboard."><div class="gterm">System prompt</div><p class="gdef">Standing instructions that stay active for the whole conversation, no matter how long it runs.</p><div class="gan"><b>Think of it as:</b> Written in permanent marker on the whiteboard.</div><a class="glearn" href="module-2.html">Learn it →</a></div><div class="card" data-s="token a chunk of a word — the unit ai actually reads and writes. roughly three-quarters of a word. gas in the tank — every word burns a little."><div class="gterm">Token</div><p class="gdef">A chunk of a word — the unit AI actually reads and writes. Roughly three-quarters of a word.</p><div class="gan"><b>Think of it as:</b> Gas in the tank — every word burns a little.</div><a class="glearn" href="module-1.html">Learn it →</a></div></div>
+  <p class="gnone" id="gnone">No terms match that search.</p>
+</main>
+<script>
+(function(){
+  var box=document.getElementById('gsearch'),cards=[].slice.call(document.querySelectorAll('.card[data-s]'));
+  var none=document.getElementById('gnone'),cnt=document.getElementById('cnt');
+  function up(){
+    var q=box.value.trim().toLowerCase(),shown=0;
+    cards.forEach(function(c){var hit=c.getAttribute('data-s').indexOf(q)>-1;c.style.display=hit?'':'none';if(hit)shown++;});
+    none.style.display=shown?'none':'block';
+    cnt.textContent=shown+(q?'':'');
+  }
+  box.addEventListener('input',up);
+  cnt.textContent=cards.length;
+})();
+</script>
+</body>
+</html>
