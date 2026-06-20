@@ -109,6 +109,14 @@
   .util .tile .ts{font:400 12.5px/1.35 'Inter';color:var(--ink-soft)}
   .backlink{display:inline-block;font:600 13px/1.4 'Inter';color:var(--accent-deep);text-decoration:none;margin:4px 0 4px}
   .backlink:hover{text-decoration:underline}
+  .suggest{border:1px solid var(--line);border-top:3px solid var(--highlight)}
+  .suggest h3{font:700 17px/1.3 'Inter'}
+  .suggest textarea,.suggest input[type=email]{width:100%;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font:400 16px 'Inter';color:var(--ink);margin-bottom:10px;resize:vertical;font-family:'Inter',sans-serif}
+  .suggest textarea:focus,.suggest input[type=email]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(191,85,56,.15)}
+  .suggest .btn-primary{width:100%}
+  .hp{position:absolute !important;left:-9999px !important;width:1px;height:1px;opacity:0;pointer-events:none}
+  .sg-msg{margin:10px 0 0;color:var(--error);font-size:14px}
+  .sg-ok{margin:0;color:var(--success);font-weight:600;font-size:16px}
 </style>
 </head>
 <body>
@@ -139,6 +147,7 @@
   <section class="screen" data-title="done">
     <p class="kicker">Módulo completado</p><h1 id="doneTitle">Tanque lleno. 🎉</h1><p id="doneScore"></p>
     <div class="takeaway"><p>Un asistente personalizado es un empleado que entrenas una vez. Enséñale el trabajo, dale ejemplos, y llega listo cada vez.</p></div><p><strong>Ese es tu kit de herramientas. 🧰</strong> Chats, Proyectos, la mesa de trabajo, llaves y empleados entrenados — ya sabes qué hace cada botón. Pronto, más niveles.</p>
+    <section class="suggest card"><h3 style="margin-top:0">¿Hay un tema que no hayamos cubierto?</h3><p class="soft" style="margin-bottom:14px">Dime qué te gustaría aprender — tus ideas deciden lo que construyo después.</p><form id="sg_module_9" novalidate><textarea id="sg_module_9_t" maxlength="1000" rows="3" placeholder="ej. ¿Cómo escribo mejores prompts para correos?" required></textarea><input id="sg_module_9_e" type="email" maxlength="200" placeholder="Correo (opcional — solo si quieres respuesta)" autocomplete="off"><input type="text" id="sg_module_9_hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"><button type="submit" class="btn btn-primary" id="sg_module_9_b">Enviar</button><p class="sg-msg" id="sg_module_9_m" role="status"></p></form></section><script>(function(){var f=document.getElementById("sg_module_9");if(!f)return;var t=document.getElementById("sg_module_9_t"),e=document.getElementById("sg_module_9_e"),hp=document.getElementById("sg_module_9_hp"),b=document.getElementById("sg_module_9_b"),m=document.getElementById("sg_module_9_m");f.addEventListener("submit",function(ev){ev.preventDefault();if(hp.value)return;var s=(t.value||"").trim();if(!s)return;b.disabled=true;m.textContent="";fetch("https://pdbqrjqlwqjqzefmmlhd.supabase.co"+"/rest/v1/topic_suggestions",{method:"POST",headers:{"apikey":"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Authorization":"Bearer "+"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify({suggestion:s,email:(e.value||"").trim()||null,lang:"es",source:"module-9"})}).then(function(r){if(r.ok){f.innerHTML="<p class=\"sg-ok\">"+"\u00a1Listo \u2014 gracias! \ud83d\ude4c Tu idea ya qued\u00f3."+"</p>";}else{m.textContent="Mmm, no se envi\u00f3. \u00bfLo intentas de nuevo en un momento?";b.disabled=false;}}).catch(function(){m.textContent="Mmm, no se envi\u00f3. \u00bfLo intentas de nuevo en un momento?";b.disabled=false;});});})();</script>
   </section>
 </main>
 <nav class="navbar"><div class="inner">

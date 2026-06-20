@@ -109,6 +109,14 @@
   .util .tile .ts{font:400 12.5px/1.35 'Inter';color:var(--ink-soft)}
   .backlink{display:inline-block;font:600 13px/1.4 'Inter';color:var(--accent-deep);text-decoration:none;margin:4px 0 4px}
   .backlink:hover{text-decoration:underline}
+  .suggest{border:1px solid var(--line);border-top:3px solid var(--highlight)}
+  .suggest h3{font:700 17px/1.3 'Inter'}
+  .suggest textarea,.suggest input[type=email]{width:100%;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font:400 16px 'Inter';color:var(--ink);margin-bottom:10px;resize:vertical;font-family:'Inter',sans-serif}
+  .suggest textarea:focus,.suggest input[type=email]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(191,85,56,.15)}
+  .suggest .btn-primary{width:100%}
+  .hp{position:absolute !important;left:-9999px !important;width:1px;height:1px;opacity:0;pointer-events:none}
+  .sg-msg{margin:10px 0 0;color:var(--error);font-size:14px}
+  .sg-ok{margin:0;color:var(--success);font-weight:600;font-size:16px}
 </style>
 </head>
 <body>
@@ -125,7 +133,7 @@
 <main>
   <section class="screen on" data-title="cover">
     <a class="backlink" href="level-3.html">← Hazla Tuya</a>
-    <p class="kicker">Hazla Tuya · Lección 4 de 4 · 7 min</p>
+    <p class="kicker">Hazla Tuya · Lección 4 de 5 · 7 min</p>
     <h1>Prompts Guardados: Tu Recetario</h1>
     <p class="soft">¿Encontraste un prompt que funciona increíble? No lo reinventes cada vez. Guárdalo como receta y reutilízalo para siempre.</p>
     <div class="card"><h3 style="margin-top:0">En este módulo</h3><ul style="margin-bottom:0"><li>Por qué un buen prompt vale la pena guardar</li><li>La analogía del recetario</li><li>Cómo armar tus primeros</li></ul></div>
@@ -138,14 +146,15 @@
   <section class="screen" data-title="quiz"><p class="kicker">Comprobación rápida · 3 preguntas</p><div class="card" data-q="0" data-answer="1"><h3 style="margin-top:0">1. Escribiste un prompt que funciona increíble. ¿La jugada más lista?</h3><button class="qopt"><span class="dot"></span>Reescribirlo de memoria la próxima vez</button><button class="qopt"><span class="dot"></span>Guardarlo para reutilizarlo después</button><button class="qopt"><span class="dot"></span>Usarlo una vez y olvidarlo</button><div class="explain"></div></div><div class="card" data-q="1" data-answer="1"><h3 style="margin-top:0">2. ¿Qué hace reutilizable a un prompt guardado?</h3><button class="qopt"><span class="dot"></span>Que sea lo más largo posible</button><button class="qopt"><span class="dot"></span>Espacios para llenar ([corchetes]) en lo que cambia</button><button class="qopt"><span class="dot"></span>Vocabulario rebuscado</button><div class="explain"></div></div><div class="card" data-q="2" data-answer="1"><h3 style="margin-top:0">3. ¿De qué tamaño debe ser tu recetario?</h3><button class="qopt"><span class="dot"></span>Lo más grande posible</button><button class="qopt"><span class="dot"></span>Unos cuantos que de verdad uses cada semana</button><button class="qopt"><span class="dot"></span>Exactamente uno</button><div class="explain"></div></div></section>
   <section class="screen" data-title="done">
     <p class="kicker">Módulo completado</p><h1 id="doneTitle">Tanque lleno. 🎉</h1><p id="doneScore"></p>
-    <div class="takeaway"><p>Un buen prompt es una receta. Guarda los que funcionan en un recetario, con espacios para llenar, y reutilízalos para siempre.</p></div><p><strong>Ahora es tuya. 🏡</strong> Reglas de la casa, una libreta, ojos y oídos, y un recetario — la IA está configurada a tu manera. Pronto, más niveles.</p>
+    <div class="takeaway"><p>Un buen prompt es una receta. Guarda los que funcionan en un recetario, con espacios para llenar, y reutilízalos para siempre.</p></div><p><strong>La última — El Turno Nocturno.</strong> ¿Y si la IA hiciera un trabajo completo mientras duermes y lo dejara listo para tu revisión? Conoce los loops.</p>
+    <section class="suggest card"><h3 style="margin-top:0">¿Hay un tema que no hayamos cubierto?</h3><p class="soft" style="margin-bottom:14px">Dime qué te gustaría aprender — tus ideas deciden lo que construyo después.</p><form id="sg_module_13" novalidate><textarea id="sg_module_13_t" maxlength="1000" rows="3" placeholder="ej. ¿Cómo escribo mejores prompts para correos?" required></textarea><input id="sg_module_13_e" type="email" maxlength="200" placeholder="Correo (opcional — solo si quieres respuesta)" autocomplete="off"><input type="text" id="sg_module_13_hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"><button type="submit" class="btn btn-primary" id="sg_module_13_b">Enviar</button><p class="sg-msg" id="sg_module_13_m" role="status"></p></form></section><script>(function(){var f=document.getElementById("sg_module_13");if(!f)return;var t=document.getElementById("sg_module_13_t"),e=document.getElementById("sg_module_13_e"),hp=document.getElementById("sg_module_13_hp"),b=document.getElementById("sg_module_13_b"),m=document.getElementById("sg_module_13_m");f.addEventListener("submit",function(ev){ev.preventDefault();if(hp.value)return;var s=(t.value||"").trim();if(!s)return;b.disabled=true;m.textContent="";fetch("https://pdbqrjqlwqjqzefmmlhd.supabase.co"+"/rest/v1/topic_suggestions",{method:"POST",headers:{"apikey":"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Authorization":"Bearer "+"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify({suggestion:s,email:(e.value||"").trim()||null,lang:"es",source:"module-13"})}).then(function(r){if(r.ok){f.innerHTML="<p class=\"sg-ok\">"+"\u00a1Listo \u2014 gracias! \ud83d\ude4c Tu idea ya qued\u00f3."+"</p>";}else{m.textContent="Mmm, no se envi\u00f3. \u00bfLo intentas de nuevo en un momento?";b.disabled=false;}}).catch(function(){m.textContent="Mmm, no se envi\u00f3. \u00bfLo intentas de nuevo en un momento?";b.disabled=false;});});})();</script>
   </section>
 </main>
 <nav class="navbar"><div class="inner">
   <button class="btn btn-ghost" id="backBtn">Atrás</button>
   <button class="btn btn-primary" id="nextBtn">Empezar el módulo</button>
 </div></nav>
-<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="index.html">Ver más niveles →</a><a class="btn btn-ghost" href="level-3.html">Volver a Hazla Tuya</a></div></div>
+<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="module-14.html">Siguiente lección →</a><a class="btn btn-ghost" href="level-3.html">Volver a Hazla Tuya</a></div></div>
 <script>
 (function(){
   var GID=13;
