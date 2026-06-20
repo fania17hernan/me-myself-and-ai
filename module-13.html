@@ -109,6 +109,14 @@
   .util .tile .ts{font:400 12.5px/1.35 'Inter';color:var(--ink-soft)}
   .backlink{display:inline-block;font:600 13px/1.4 'Inter';color:var(--accent-deep);text-decoration:none;margin:4px 0 4px}
   .backlink:hover{text-decoration:underline}
+  .suggest{border:1px solid var(--line);border-top:3px solid var(--highlight)}
+  .suggest h3{font:700 17px/1.3 'Inter'}
+  .suggest textarea,.suggest input[type=email]{width:100%;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font:400 16px 'Inter';color:var(--ink);margin-bottom:10px;resize:vertical;font-family:'Inter',sans-serif}
+  .suggest textarea:focus,.suggest input[type=email]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(191,85,56,.15)}
+  .suggest .btn-primary{width:100%}
+  .hp{position:absolute !important;left:-9999px !important;width:1px;height:1px;opacity:0;pointer-events:none}
+  .sg-msg{margin:10px 0 0;color:var(--error);font-size:14px}
+  .sg-ok{margin:0;color:var(--success);font-weight:600;font-size:16px}
 </style>
 </head>
 <body>
@@ -125,7 +133,7 @@
 <main>
   <section class="screen on" data-title="cover">
     <a class="backlink" href="level-3.html">← Make It Yours</a>
-    <p class="kicker">Make It Yours · Lesson 4 of 4 · 7 min</p>
+    <p class="kicker">Make It Yours · Lesson 4 of 5 · 7 min</p>
     <h1>Saved Prompts: Your Recipe Box</h1>
     <p class="soft">Found a prompt that works great? Don't reinvent it every time. Save it like a recipe and reuse it forever.</p>
     <div class="card"><h3 style="margin-top:0">In this module</h3><ul style="margin-bottom:0"><li>Why a good prompt is worth saving</li><li>The recipe-box analogy</li><li>Building your first few</li></ul></div>
@@ -138,14 +146,15 @@
   <section class="screen" data-title="quiz"><p class="kicker">Quick check · 3 questions</p><div class="card" data-q="0" data-answer="1"><h3 style="margin-top:0">1. You wrote a prompt that works great. Smartest move?</h3><button class="qopt"><span class="dot"></span>Rewrite it from memory next time</button><button class="qopt"><span class="dot"></span>Save it somewhere so you can reuse it</button><button class="qopt"><span class="dot"></span>Use it once and forget it</button><div class="explain"></div></div><div class="card" data-q="1" data-answer="1"><h3 style="margin-top:0">2. What makes a saved prompt reusable?</h3><button class="qopt"><span class="dot"></span>Making it as long as possible</button><button class="qopt"><span class="dot"></span>Fill-in blanks ([brackets]) for the parts that change</button><button class="qopt"><span class="dot"></span>Fancy vocabulary</button><div class="explain"></div></div><div class="card" data-q="2" data-answer="1"><h3 style="margin-top:0">3. How big should your recipe box be?</h3><button class="qopt"><span class="dot"></span>As large as possible</button><button class="qopt"><span class="dot"></span>A few great ones you actually use weekly</button><button class="qopt"><span class="dot"></span>Exactly one</button><div class="explain"></div></div></section>
   <section class="screen" data-title="done">
     <p class="kicker">Module complete</p><h1 id="doneTitle">Full tank. 🎉</h1><p id="doneScore"></p>
-    <div class="takeaway"><p>A good prompt is a recipe. Save the ones that work in a recipe box, with blanks to fill in, and reuse them forever.</p></div><p><strong>Now it's yours. 🏡</strong> House rules, a notebook, eyes and ears, and a recipe box — the AI is set up the way you work. More levels coming soon.</p>
+    <div class="takeaway"><p>A good prompt is a recipe. Save the ones that work in a recipe box, with blanks to fill in, and reuse them forever.</p></div><p><strong>Last one — The Night Shift.</strong> What if AI did a whole job while you slept and left it ready for your review? Meet loops.</p>
+    <section class="suggest card"><h3 style="margin-top:0">Want a topic we haven&#x27;t covered yet?</h3><p class="soft" style="margin-bottom:14px">Tell me what you&#x27;d like to learn next — your ideas shape what I build.</p><form id="sg_module_13" novalidate><textarea id="sg_module_13_t" maxlength="1000" rows="3" placeholder="e.g. How do I write better prompts for emails?" required></textarea><input id="sg_module_13_e" type="email" maxlength="200" placeholder="Email (optional — only if you&#x27;d like a reply)" autocomplete="off"><input type="text" id="sg_module_13_hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"><button type="submit" class="btn btn-primary" id="sg_module_13_b">Send it</button><p class="sg-msg" id="sg_module_13_m" role="status"></p></form></section><script>(function(){var f=document.getElementById("sg_module_13");if(!f)return;var t=document.getElementById("sg_module_13_t"),e=document.getElementById("sg_module_13_e"),hp=document.getElementById("sg_module_13_hp"),b=document.getElementById("sg_module_13_b"),m=document.getElementById("sg_module_13_m");f.addEventListener("submit",function(ev){ev.preventDefault();if(hp.value)return;var s=(t.value||"").trim();if(!s)return;b.disabled=true;m.textContent="";fetch("https://pdbqrjqlwqjqzefmmlhd.supabase.co"+"/rest/v1/topic_suggestions",{method:"POST",headers:{"apikey":"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Authorization":"Bearer "+"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify({suggestion:s,email:(e.value||"").trim()||null,lang:"en",source:"module-13"})}).then(function(r){if(r.ok){f.innerHTML="<p class=\"sg-ok\">"+"Got it \u2014 thank you! \ud83d\ude4c Your idea is in."+"</p>";}else{m.textContent="Hmm, that didn't send. Mind trying again in a moment?";b.disabled=false;}}).catch(function(){m.textContent="Hmm, that didn't send. Mind trying again in a moment?";b.disabled=false;});});})();</script>
   </section>
 </main>
 <nav class="navbar"><div class="inner">
   <button class="btn btn-ghost" id="backBtn">Back</button>
   <button class="btn btn-primary" id="nextBtn">Start the module</button>
 </div></nav>
-<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="index.html">Explore more levels →</a><a class="btn btn-ghost" href="level-3.html">Back to Make It Yours</a></div></div>
+<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="module-14.html">Next lesson →</a><a class="btn btn-ghost" href="level-3.html">Back to Make It Yours</a></div></div>
 <script>
 (function(){
   var GID=13;
