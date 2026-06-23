@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#FAF5EC">
-<title>Me, Myself &amp; AI — AI foundations for smart professionals</title>
+<title>About — Me, Myself &amp; AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -118,54 +118,26 @@
   .sg-msg{margin:10px 0 0;color:var(--error);font-size:14px}
   .sg-ok{margin:0;color:var(--success);font-weight:600;font-size:16px}
 
-  .outcomes{list-style:none;margin:4px 0 16px;padding:0}
-  .outcomes li{position:relative;padding-left:28px;margin-bottom:10px;font:500 16px/1.45 'Inter';color:var(--ink)}
-  .outcomes li:before{content:'\2713';position:absolute;left:0;top:0;color:var(--success);font-weight:700}
-  .facts{display:inline-block;background:var(--warm);color:var(--accent-deep);font:600 13.5px/1.4 'Inter';
-         border-radius:999px;padding:9px 16px;margin:0 0 14px}
-  .whylink{display:block;font:600 15px/1.4 'Inter';color:var(--accent-deep);text-decoration:none;margin:0 0 8px}
-  .whylink:hover{text-decoration:underline}
+  .about-body{max-width:62ch}
+  .about-body p{font:400 17px/1.7 'Inter';color:var(--ink);margin-bottom:16px}
+  .about-body p.lead{font:600 26px/1.2 'Fraunces',serif;color:var(--ink);margin-bottom:18px}
+  .about-body strong{font-weight:600}
+  @media(min-width:768px){.about-body p{font-size:18px}}
 </style>
 </head>
 <body>
 <header>
   <div class="topline">
-    <span class="brand">Me, Myself <span class="amp">&amp;</span> AI</span>
-    <span class="rightgrp"><a class="lang" href="es/index.html">Español</a><span class="stepl" id="progText"></span></span>
+    <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
+    <span class="rightgrp"><a class="lang" href="es/about.html">Español</a></span>
   </div>
-  <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div></div>
+  <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" style="width:100%"></div></div></div>
 </header>
 <main>
-  <div class="hero">
-    <p class="eyebrow">AI literacy · built for professionals</p>
-    <h1>What do you want to understand today?</h1>
-    <p class="tagline">Understand AI well enough to actually use it at work — in plain language, one analogy at a time.</p>
-    <ul class="outcomes"><li>Spot when AI is bluffing before you forward its work to your boss.</li><li>Get real value from the tools you (or your team) already pay for.</li><li>Hold your own in any AI conversation at work.</li></ul>
-    <p class="facts">19 lessons · ~10 min each · always free · English &amp; Spanish</p>
-    <a class="whylink" href="about.html">Why I built this →</a>
-  </div>
-  <a class="lcard" href="level-1.html" data-mods="1,2,3,4,5"><div class="lnum">1</div><div class="lbody"><div class="lname">Start Here</div><div class="ltag">How AI behaves — so it stops surprising you.</div><div class="lmeta">5 lessons</div></div><div class="lring"><span></span></div></a><a class="lcard" href="level-2.html" data-mods="6,7,8,9"><div class="lnum">2</div><div class="lbody"><div class="lname">The Tools</div><div class="ltag">Chats, projects, artifacts, connectors — what every button actually does.</div><div class="lmeta">4 lessons</div></div><div class="lring"><span></span></div></a><a class="lcard" href="level-3.html" data-mods="10,11,12,13,14"><div class="lnum">3</div><div class="lbody"><div class="lname">Make It Yours</div><div class="ltag">Make AI work the way you do — your rules, your memory, your shortcuts.</div><div class="lmeta">5 lessons</div></div><div class="lring"><span></span></div></a><a class="lcard" href="level-4.html" data-mods="15,16,17,18,19"><div class="lnum">4</div><div class="lbody"><div class="lname">Under the Hood</div><div class="ltag">Vibe coding and the tech words, finally demystified — it's all a restaurant.</div><div class="lmeta">5 lessons</div></div><div class="lring"><span></span></div></a>
-  <div class="util">
-    <a class="tile" href="glossary.html"><div class="tt">Glossary →</div><div class="ts">Every term, in plain words. Look up anything, any time.</div></a>
-    <span class="tile"><div class="tt">By profession</div><div class="ts">Lessons tuned to your job — student, PM, teacher, realtor and more. (Coming soon)</div></span>
-  </div>
-  <section class="suggest card"><h3 style="margin-top:0">Want a topic we haven&#x27;t covered yet?</h3><p class="soft" style="margin-bottom:14px">Tell me what you&#x27;d like to learn next — your ideas shape what I build.</p><form id="sg_landing" novalidate><textarea id="sg_landing_t" maxlength="1000" rows="3" placeholder="e.g. How do I write better prompts for emails?" required></textarea><input id="sg_landing_e" type="email" maxlength="200" placeholder="Email (optional — only if you&#x27;d like a reply)" autocomplete="off"><input type="text" id="sg_landing_hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"><button type="submit" class="btn btn-primary" id="sg_landing_b">Send it</button><p class="sg-msg" id="sg_landing_m" role="status"></p></form></section><script>(function(){var f=document.getElementById("sg_landing");if(!f)return;var t=document.getElementById("sg_landing_t"),e=document.getElementById("sg_landing_e"),hp=document.getElementById("sg_landing_hp"),b=document.getElementById("sg_landing_b"),m=document.getElementById("sg_landing_m");f.addEventListener("submit",function(ev){ev.preventDefault();if(hp.value)return;var s=(t.value||"").trim();if(!s)return;b.disabled=true;m.textContent="";fetch("https://pdbqrjqlwqjqzefmmlhd.supabase.co"+"/rest/v1/topic_suggestions",{method:"POST",headers:{"apikey":"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Authorization":"Bearer "+"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify({suggestion:s,email:(e.value||"").trim()||null,lang:"en",source:"landing"})}).then(function(r){if(r.ok){f.innerHTML="<p class=\"sg-ok\">"+"Got it \u2014 thank you! \ud83d\ude4c Your idea is in."+"</p>";}else{m.textContent="Hmm, that didn't send. Mind trying again in a moment?";b.disabled=false;}}).catch(function(){m.textContent="Hmm, that didn't send. Mind trying again in a moment?";b.disabled=false;});});})();</script>
+  <a class="backlink" href="index.html">← All levels</a>
+  <div class="hero"><p class="eyebrow">About</p><h1>Why I built this</h1></div>
+  <div class="about-body"><p class="lead">Hi — I'm Stephanie. 👋</p><p>I've spent my career helping people actually <em>use</em> AI at work — not the engineers who build it, but the teams who were skeptical, confused, or quietly overwhelmed by it. I've led AI-adoption efforts across industries like global travel, automotive, and healthcare, and the pattern was always the same: smart, capable people held back not by ability, but by jargon and hype nobody had bothered to translate.</p><p>My job was rarely about the technology. It was sitting with someone and saying, “here's what this actually means — and here's how it helps <em>your</em> work.” Watching it finally click is the part I love.</p><p><strong>Me, Myself &amp; AI</strong> is everything I wish I could have handed those teams on day one. Plain language, one analogy at a time, in English and Spanish. No jargon, no gatekeeping — just the part that's actually useful to you.</p><p>If that's the kind of AI learning you've been looking for, you're in the right place.</p></div>
+  <a class="btn btn-primary" href="index.html" style="margin-top:8px">Start the course →</a>
 </main>
-<script>
-(function(){
-  var live=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];var done=0,total=0;
-  live.forEach(function(m){total++;try{if(localStorage.getItem('mmai-done-'+m)==='1')done++;}catch(e){}});
-  document.getElementById('fill').style.width=total?Math.round(done/total*100)+'%':'0%';
-  document.getElementById('progText').textContent=("{d} of {t} lessons done").replace('{d}',String(done)).replace('{t}',String(total));
-  // per-level rings
-  [].slice.call(document.querySelectorAll('.lcard[data-mods]')).forEach(function(c){
-    var mods=c.getAttribute('data-mods').split(',').filter(Boolean);var d=0;
-    mods.forEach(function(m){try{if(localStorage.getItem('mmai-done-'+m)==='1')d++;}catch(e){}});
-    var ring=c.querySelector('.lring');var deg=mods.length?Math.round(d/mods.length*360):0;
-    if(ring){ring.style.background='conic-gradient(var(--accent) '+deg+'deg, var(--line) '+deg+'deg)';
-      var sp=ring.querySelector('span');if(sp)sp.textContent=d+'/'+mods.length;}
-  });
-})();
-</script>
 </body>
 </html>
