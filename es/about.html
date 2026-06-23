@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#FAF5EC">
-<title>Me, Myself &amp; AI — Fundamentos de IA para profesionales</title>
+<title>Acerca de — Me, Myself &amp; AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -118,54 +118,26 @@
   .sg-msg{margin:10px 0 0;color:var(--error);font-size:14px}
   .sg-ok{margin:0;color:var(--success);font-weight:600;font-size:16px}
 
-  .outcomes{list-style:none;margin:4px 0 16px;padding:0}
-  .outcomes li{position:relative;padding-left:28px;margin-bottom:10px;font:500 16px/1.45 'Inter';color:var(--ink)}
-  .outcomes li:before{content:'\2713';position:absolute;left:0;top:0;color:var(--success);font-weight:700}
-  .facts{display:inline-block;background:var(--warm);color:var(--accent-deep);font:600 13.5px/1.4 'Inter';
-         border-radius:999px;padding:9px 16px;margin:0 0 14px}
-  .whylink{display:block;font:600 15px/1.4 'Inter';color:var(--accent-deep);text-decoration:none;margin:0 0 8px}
-  .whylink:hover{text-decoration:underline}
+  .about-body{max-width:62ch}
+  .about-body p{font:400 17px/1.7 'Inter';color:var(--ink);margin-bottom:16px}
+  .about-body p.lead{font:600 26px/1.2 'Fraunces',serif;color:var(--ink);margin-bottom:18px}
+  .about-body strong{font-weight:600}
+  @media(min-width:768px){.about-body p{font-size:18px}}
 </style>
 </head>
 <body>
 <header>
   <div class="topline">
-    <span class="brand">Me, Myself <span class="amp">&amp;</span> AI</span>
-    <span class="rightgrp"><a class="lang" href="../index.html">English</a><span class="stepl" id="progText"></span></span>
+    <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
+    <span class="rightgrp"><a class="lang" href="../about.html">English</a></span>
   </div>
-  <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div></div>
+  <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" style="width:100%"></div></div></div>
 </header>
 <main>
-  <div class="hero">
-    <p class="eyebrow">Cultura de IA · hecho para profesionales</p>
-    <h1>¿Qué quieres entender hoy?</h1>
-    <p class="tagline">Entiende la IA lo suficiente para usarla de verdad en el trabajo — en lenguaje claro, una analogía a la vez.</p>
-    <ul class="outcomes"><li>Detecta cuándo la IA está inventando antes de reenviar su trabajo a tu jefe.</li><li>Saca valor real de las herramientas que tú (o tu equipo) ya pagan.</li><li>Mantente firme en cualquier conversación de IA en el trabajo.</li></ul>
-    <p class="facts">19 lecciones · ~10 min cada una · siempre gratis · inglés y español</p>
-    <a class="whylink" href="about.html">Por qué creé esto →</a>
-  </div>
-  <a class="lcard" href="level-1.html" data-mods="1,2,3,4,5"><div class="lnum">1</div><div class="lbody"><div class="lname">Empieza Aquí</div><div class="ltag">Cómo se comporta la IA — para que deje de sorprenderte.</div><div class="lmeta">5 lecciones</div></div><div class="lring"><span></span></div></a><a class="lcard" href="level-2.html" data-mods="6,7,8,9"><div class="lnum">2</div><div class="lbody"><div class="lname">Las Herramientas</div><div class="ltag">Chats, proyectos, artefactos, conexiones — qué hace cada botón.</div><div class="lmeta">4 lecciones</div></div><div class="lring"><span></span></div></a><a class="lcard" href="level-3.html" data-mods="10,11,12,13,14"><div class="lnum">3</div><div class="lbody"><div class="lname">Hazla Tuya</div><div class="ltag">Haz que la IA trabaje como tú — tus reglas, tu memoria, tus atajos.</div><div class="lmeta">5 lecciones</div></div><div class="lring"><span></span></div></a><a class="lcard" href="level-4.html" data-mods="15,16,17,18,19"><div class="lnum">4</div><div class="lbody"><div class="lname">Bajo el Cofre</div><div class="ltag">El vibe coding y los términos técnicos, por fin sin misterio — todo es un restaurante.</div><div class="lmeta">5 lecciones</div></div><div class="lring"><span></span></div></a>
-  <div class="util">
-    <a class="tile" href="glossary.html"><div class="tt">Glosario →</div><div class="ts">Cada término, en palabras claras. Consúltalo cuando quieras.</div></a>
-    <span class="tile"><div class="tt">Por profesión</div><div class="ts">Lecciones según tu trabajo — estudiante, PM, maestro, agente inmobiliario y más. (Próximamente)</div></span>
-  </div>
-  <section class="suggest card"><h3 style="margin-top:0">¿Hay un tema que no hayamos cubierto?</h3><p class="soft" style="margin-bottom:14px">Dime qué te gustaría aprender — tus ideas deciden lo que construyo después.</p><form id="sg_landing" novalidate><textarea id="sg_landing_t" maxlength="1000" rows="3" placeholder="ej. ¿Cómo escribo mejores prompts para correos?" required></textarea><input id="sg_landing_e" type="email" maxlength="200" placeholder="Correo (opcional — solo si quieres respuesta)" autocomplete="off"><input type="text" id="sg_landing_hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"><button type="submit" class="btn btn-primary" id="sg_landing_b">Enviar</button><p class="sg-msg" id="sg_landing_m" role="status"></p></form></section><script>(function(){var f=document.getElementById("sg_landing");if(!f)return;var t=document.getElementById("sg_landing_t"),e=document.getElementById("sg_landing_e"),hp=document.getElementById("sg_landing_hp"),b=document.getElementById("sg_landing_b"),m=document.getElementById("sg_landing_m");f.addEventListener("submit",function(ev){ev.preventDefault();if(hp.value)return;var s=(t.value||"").trim();if(!s)return;b.disabled=true;m.textContent="";fetch("https://pdbqrjqlwqjqzefmmlhd.supabase.co"+"/rest/v1/topic_suggestions",{method:"POST",headers:{"apikey":"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Authorization":"Bearer "+"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify({suggestion:s,email:(e.value||"").trim()||null,lang:"es",source:"landing"})}).then(function(r){if(r.ok){f.innerHTML="<p class=\"sg-ok\">"+"\u00a1Listo \u2014 gracias! \ud83d\ude4c Tu idea ya qued\u00f3."+"</p>";}else{m.textContent="Mmm, no se envi\u00f3. \u00bfLo intentas de nuevo en un momento?";b.disabled=false;}}).catch(function(){m.textContent="Mmm, no se envi\u00f3. \u00bfLo intentas de nuevo en un momento?";b.disabled=false;});});})();</script>
+  <a class="backlink" href="index.html">← Todos los niveles</a>
+  <div class="hero"><p class="eyebrow">Acerca de</p><h1>Por qué creé esto</h1></div>
+  <div class="about-body"><p class="lead">Hola — soy Stephanie. 👋</p><p>He pasado mi carrera en gestión de producto, de programas y de cambio — liderando transformación e iniciativas multifuncionales en retail, salud, tecnología automotriz y viajes globales. Mi trabajo siempre ha vivido en el cruce complicado entre la nueva tecnología y las personas a las que se les pide adoptarla.</p><p>Si algo aprendí ayudando a grandes empresas a cambiar, es que la tecnología casi nunca es lo difícil. Lo difícil es acompañar a la gente en ese cambio — y la falla más común que veo es que las organizaciones lanzan herramientas sin enseñarle a su gente a usarlas de verdad. En la era de la IA, esa brecha crece rápido: el ritmo no da tregua, y mucha gente muy capaz se siente dejada atrás.</p><p>Esto es lo que el hype pasa por alto. Las empresas pueden desplegar IA, pero no pueden escalarla sin sus expertos humanos. Son las personas quienes le dan el conocimiento de la organización, validan lo que produce, la mejoran con retroalimentación, la orquestan y la apuntan en la dirección correcta. El valor real nunca fue que la IA te reemplace — es que tú te vuelvas <em>la persona experta dentro del proceso</em>, dirigiéndola. Justo por eso importa que las personas sigan siendo las expertas.</p><p>Por eso este curso empieza con lo pequeño — con las tareas que parecen demasiado simples para dárselas a la IA, pero que sin hacer ruido te ahorran horas de trabajo tedioso — y avanza hasta que vas resolviendo más de tu día con asistencia guiada y segura.</p><p><strong>Me, Myself &amp; AI</strong> es todo lo que desearía haberles podido dar el primer día. En lenguaje claro, una analogía a la vez, en inglés y español. Sin jerga, sin barreras — solo la parte que te ayuda a seguir siendo la persona experta mientras las herramientas se vuelven más inteligentes.</p></div>
+  <a class="btn btn-primary" href="index.html" style="margin-top:8px">Empezar el curso →</a>
 </main>
-<script>
-(function(){
-  var live=[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];var done=0,total=0;
-  live.forEach(function(m){total++;try{if(localStorage.getItem('mmai-done-'+m)==='1')done++;}catch(e){}});
-  document.getElementById('fill').style.width=total?Math.round(done/total*100)+'%':'0%';
-  document.getElementById('progText').textContent=("{d} de {t} lecciones hechas").replace('{d}',String(done)).replace('{t}',String(total));
-  // per-level rings
-  [].slice.call(document.querySelectorAll('.lcard[data-mods]')).forEach(function(c){
-    var mods=c.getAttribute('data-mods').split(',').filter(Boolean);var d=0;
-    mods.forEach(function(m){try{if(localStorage.getItem('mmai-done-'+m)==='1')d++;}catch(e){}});
-    var ring=c.querySelector('.lring');var deg=mods.length?Math.round(d/mods.length*360):0;
-    if(ring){ring.style.background='conic-gradient(var(--accent) '+deg+'deg, var(--line) '+deg+'deg)';
-      var sp=ring.querySelector('span');if(sp)sp.textContent=d+'/'+mods.length;}
-  });
-})();
-</script>
 </body>
 </html>
