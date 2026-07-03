@@ -1,4 +1,4 @@
-# DESIGN.md — Me, Myself & AI
+# DESIGN.md, Me, Myself & AI
 
 **Brand:** Me, Myself & AI
 **Tagline:** Finally, AI that makes sense for *your* work.
@@ -13,12 +13,12 @@
 
 ## 1. Visual Theme & Atmosphere
 
-Warm editorial. The product should feel like a smart, beautifully printed book that happens to live on your phone — not a SaaS dashboard, not a YouTube thumbnail, not a corporate LMS.
+Warm editorial. The product should feel like a smart, beautifully printed book that happens to live on your phone, not a SaaS dashboard, not a YouTube thumbnail, not a corporate LMS.
 
 - **Mood:** calm confidence. A trusted colleague explaining something over coffee, not a professor lecturing.
-- **Density:** low. One idea per screen. Generous whitespace is the product — it signals "this won't overwhelm you," which is the brand promise.
+- **Density:** low. One idea per screen. Generous whitespace is the product, it signals "this won't overwhelm you," which is the brand promise.
 - **Philosophy:** analogies-first, jargon-translated. The UI mirrors the pedagogy: warm, human surface; precise structure underneath.
-- **Personality cues:** paper and ink, marginalia, a single confident accent color used like a highlighter — sparingly and meaningfully.
+- **Personality cues:** paper and ink, marginalia, a single confident accent color used like a highlighter, sparingly and meaningfully.
 - **Anti-references:** neon gradients, dark "techbro" themes, stock robot imagery, glassmorphism. Nothing that says "engineering tool."
 
 ## 2. Color Palette & Roles
@@ -41,23 +41,23 @@ Warm neutrals as canvas; terracotta as the single hero accent; marigold for high
 
 **Rules**
 - Barro (accent) appears **once per screen** as the dominant action. If everything is terracotta, nothing is.
-- Never place Barro text on Horchata — contrast is too low. Use Adobe `#9C4128` for accent text on warm surfaces.
-- Error states get gentle copy ("Not quite — here's why") and Chile only on the icon/border, never full red panels.
+- Never place Barro text on Horchata, contrast is too low. Use Adobe `#9C4128` for accent text on warm surfaces.
+- Error states get gentle copy ("Not quite, here's why") and Chile only on the icon/border, never full red panels.
 - Dark mode (v2): invert to Espresso canvas `#221B16`, Crema text `#F4EBDD`, keep Barro/Marigold as-is.
 
 ## 3. Typography Rules
 
 Two faces only. Serif display for warmth and authority; humanist sans for clarity at small sizes.
 
-- **Display / headings:** `Fraunces` (Google Fonts; optical size axis on, `'SOFT' 50`) — bookish, warm, a little personality.
-- **Body / UI:** `Inter` — invisible, legible, professional.
+- **Display / headings:** `Fraunces` (Google Fonts; optical size axis on, `'SOFT' 50`), bookish, warm, a little personality.
+- **Body / UI:** `Inter`, invisible, legible, professional.
 
 | Style | Font | Size (phone) | Size (desktop) | Weight | Line height | Use |
 |---|---|---|---|---|---|---|
 | Display | Fraunces | 34px | 48px | 600 | 1.12 | Module titles, screen headers |
 | H2 | Fraunces | 26px | 32px | 600 | 1.2 | Section heads ("The Core Analogy") |
 | H3 | Inter | 18px | 20px | 700 | 1.35 | Card titles, sub-points |
-| Body | Inter | 17px | 18px | 400 | 1.65 | Lesson text — never below 17px on phone |
+| Body | Inter | 17px | 18px | 400 | 1.65 | Lesson text, never below 17px on phone |
 | Body-strong | Inter | 17px | 18px | 600 | 1.65 | Inline emphasis, key terms |
 | Caption | Inter | 13px | 14px | 500 | 1.4 | Labels, progress text, metadata |
 | Takeaway | Fraunces italic | 22px | 26px | 500 italic | 1.4 | The one-sentence takeaway, pull quotes |
@@ -82,7 +82,7 @@ Two faces only. Serif display for warmth and authority; humanist sans for clarit
 - Horchata surface, oversized quote glyph in Barro at 20% opacity, takeaway in Fraunces italic, share affordance below. This is the screenshot-able moment of every module.
 
 **Progress**
-- Pill track in Hilo, fill in Marigold→Barro gradient (the one permitted gradient), 8px tall, rounded. Label as "Step 3 of 6" in Caption — never percentages.
+- Pill track in Hilo, fill in Marigold→Barro gradient (the one permitted gradient), 8px tall, rounded. Label as "Step 3 of 6" in Caption, never percentages.
 
 **Quiz**
 - Options are full-width tappable cards (min 56px tall), 16px radius, Hilo border. Selected → Barro border 2px. Correct → Nopal border + soft `#EAF1EB` fill + check icon. Incorrect → Chile border + explanation text, never a buzzer feeling.
@@ -120,14 +120,14 @@ No glows, no colored shadows, no glass blur.
 - Translate every technical term inline, immediately, in plain language.
 - Use Barro once per screen for the single most important action.
 - Keep every screen completable in under 90 seconds of reading.
-- Write microcopy peer-to-peer: "Not quite — here's the thing…" not "Incorrect."
+- Write microcopy peer-to-peer: "Not quite, here's the thing…" not "Incorrect."
 
 **Don't**
 - No robots, brains, circuit boards, or blue-glow AI clichés.
 - No jargon in UI chrome ("tokens remaining" → "fuel left").
 - No more than one accent action per screen; no walls of text; no autoplay.
 - No dark-pattern urgency (countdowns, fake scarcity).
-- Don't shame wrong quiz answers — every miss is a teaching beat.
+- Don't shame wrong quiz answers, every miss is a teaching beat.
 
 ## 8. Responsive Behavior
 
@@ -145,4 +145,4 @@ No glows, no colored shadows, no glass blur.
 **Fonts:** Fraunces (display) + Inter (body), via Google Fonts.
 
 **Ready-to-use prompt:**
-> Build a mobile-first lesson screen using DESIGN.md (Me, Myself & AI). Cream paper background (#FAF5EC), Fraunces serif headings, Inter body at 17px+, one terracotta (#BF5538) pill button in a sticky bottom bar, cards with 20px radius and warm hairline borders, marigold progress pill labeled "Step X of Y". Warm, calm, editorial — like a printed book, not a dashboard. No gradients except the progress fill, no tech clichés.
+> Build a mobile-first lesson screen using DESIGN.md (Me, Myself & AI). Cream paper background (#FAF5EC), Fraunces serif headings, Inter body at 17px+, one terracotta (#BF5538) pill button in a sticky bottom bar, cards with 20px radius and warm hairline borders, marigold progress pill labeled "Step X of Y". Warm, calm, editorial, like a printed book, not a dashboard. No gradients except the progress fill, no tech clichés.

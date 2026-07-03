@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#FAF5EC">
-<title>Me, Myself &amp; AI, AI foundations for smart professionals</title>
+<title>Me, Myself &amp; AI, Fundamentos de IA para profesionales</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -36,7 +36,7 @@
   @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
   @media(prefers-reduced-motion:reduce){*{animation:none!important}}
 
-  /* ---- Welcome hero ---- */
+  /* ---- Hero de bienvenida ---- */
   .hero{padding:18px 0 4px;animation:rise .3s ease-out}
   .eyebrow{font:500 13px/1.4 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:10px}
   h1{font:600 36px/1.1 'Fraunces',serif;margin-bottom:12px;letter-spacing:-.01em}
@@ -51,7 +51,7 @@
   .whylink{display:inline-flex;align-items:center;gap:5px;font:600 15px/1.4 'Inter';color:var(--accent-deep);text-decoration:none;margin:14px 0 0}
   .whylink:hover{text-decoration:underline}
 
-  /* ---- How it works strip ---- */
+  /* ---- Cómo funciona ---- */
   .how{display:flex;gap:10px;margin:22px 0 4px}
   .how .step{flex:1;background:var(--warm);border-radius:16px;padding:14px 12px;text-align:center}
   .how .step .ic{color:var(--accent-deep);margin-bottom:6px}
@@ -59,7 +59,7 @@
   .how .step .lbl{font:700 13px/1.3 'Inter';color:var(--ink)}
   .how .step .sub{font:400 11.5px/1.35 'Inter';color:var(--ink-soft);margin-top:2px}
 
-  /* ---- Journey trail ---- */
+  /* ---- Camino ---- */
   .sechead{display:flex;align-items:baseline;justify-content:space-between;margin:34px 0 6px}
   .sechead h2{font:600 22px/1.2 'Fraunces',serif}
   .sechead .meta{font:500 12px/1.4 'Inter';color:var(--ink-soft)}
@@ -77,7 +77,6 @@
   .lcard{flex:1;min-width:0;display:block;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:var(--sh1);text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
   .lcard:hover{border-color:var(--accent);transform:translateY(-1px)}
   .node.here .lcard{border-color:var(--accent)}
-  .node.locked .lcard{opacity:.78}
   .lrow{display:flex;align-items:center;justify-content:space-between;gap:10px}
   .lname{font:700 18px/1.25 'Inter'}
   .ltag{font:400 14px/1.45 'Inter';color:var(--ink-soft);margin-top:3px}
@@ -85,12 +84,11 @@
   .pill.here{background:var(--accent);color:#fff}
   .pill.done{background:#EAF1EB;color:#33523D}
   .pill.next{background:var(--warm);color:var(--accent-deep)}
-  .pill.lock{background:var(--warm);color:var(--ink-soft);display:inline-flex;align-items:center;gap:4px}
   .pbar{height:7px;border-radius:999px;background:var(--line);overflow:hidden;margin-top:12px}
   .pbar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--highlight),var(--accent));width:0}
   .pcount{font:500 12px/1.4 'Inter';color:var(--ink-soft);margin-top:6px}
 
-  /* ---- Badges ---- */
+  /* ---- Logros ---- */
   .badges{background:var(--warm);border-radius:18px;padding:16px 18px;margin-top:18px}
   .badges .bt{font:700 13px/1.3 'Inter';color:var(--ink);margin-bottom:12px;display:flex;align-items:center;gap:6px}
   .brow{display:flex;justify-content:space-between;gap:8px}
@@ -100,7 +98,7 @@
   .badge .blbl{font:500 11px/1.25 'Inter';color:var(--ink-soft)}
   .badge.lit .blbl{color:var(--accent-deep);font-weight:600}
 
-  /* ---- Utilities ---- */
+  /* ---- Utilidades ---- */
   .util{display:flex;gap:12px;margin-top:24px}
   .util .tile{flex:1;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px;text-decoration:none;color:var(--ink);box-shadow:var(--sh1)}
   .util .tile:hover{border-color:var(--accent)}
@@ -132,8 +130,8 @@
   <div class="topline">
     <span class="brand">Me, Myself <span class="amp">&amp;</span> AI</span>
     <span class="rightgrp">
-      <span class="streak" id="streak" title="Day streak"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 3c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-.5-3 2 2 3.5 4.5 3.5 7a8 8 0 1 1-16 0c0-3 2-5 3-7 .5 2 2 2 3 1 1-1 0-3-1-4Z" fill="#E5A33F" stroke="#BF5538" stroke-width="1.3" stroke-linejoin="round"/></svg><span id="streakNum">0</span></span>
-      <a class="lang" href="es/index.html">Español</a>
+      <span class="streak" id="streak" title="Racha de días"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 3c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-.5-3 2 2 3.5 4.5 3.5 7a8 8 0 1 1-16 0c0-3 2-5 3-7 .5 2 2 2 3 1 1-1 0-3-1-4Z" fill="#E5A33F" stroke="#BF5538" stroke-width="1.3" stroke-linejoin="round"/></svg><span id="streakNum">0</span></span>
+      <a class="lang" href="../index.html">English</a>
     </span>
   </div>
   <div class="gauge" aria-hidden="true">
@@ -144,101 +142,101 @@
 </header>
 <main>
   <section class="hero">
-    <p class="eyebrow">AI literacy · built for professionals</p>
-    <h1 id="greeting">Hi. Let&rsquo;s make AI finally make sense.</h1>
-    <p class="tagline">Short lessons in plain language, one analogy at a time, so you can actually use AI at work and spot when it&rsquo;s bluffing.</p>
+    <p class="eyebrow">Cultura de IA · hecho para profesionales</p>
+    <h1 id="greeting">Hola. Hagamos que la IA por fin tenga sentido.</h1>
+    <p class="tagline">Lecciones cortas en lenguaje claro, una analogía a la vez, para que de verdad uses la IA en el trabajo y notes cuándo está inventando.</p>
     <div class="cta">
       <a class="btn btn-primary" id="ctaBtn" href="level-1.html">
-        <span id="ctaLabel">Start lesson 1</span>
+        <span id="ctaLabel">Empieza la lección 1</span>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
-      <p class="ctimg" id="ctaSub"><b>~10 min</b> · always free · pick up right where you left off</p>
+      <p class="ctimg" id="ctaSub"><b>~10 min</b> · siempre gratis · retoma justo donde lo dejaste</p>
     </div>
-    <a class="whylink" href="about.html">Why I built this
+    <a class="whylink" href="about.html">Por qué creé esto
       <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     </a>
 
     <div class="how">
-      <div class="step"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg></div><div class="lbl">Read</div><div class="sub">A plain-language idea</div></div>
-      <div class="step"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-12 7.6L3 21l1.9-6A8.5 8.5 0 1 1 21 11.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="lbl">Try</div><div class="sub">A quick check or prompt</div></div>
-      <div class="step"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="lbl">Use it</div><div class="sub">At work, that day</div></div>
+      <div class="step"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg></div><div class="lbl">Lee</div><div class="sub">Una idea en lenguaje claro</div></div>
+      <div class="step"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-12 7.6L3 21l1.9-6A8.5 8.5 0 1 1 21 11.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="lbl">Prueba</div><div class="sub">Una práctica rápida</div></div>
+      <div class="step"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="lbl">Úsala</div><div class="sub">En el trabajo, ese día</div></div>
     </div>
   </section>
 
   <div class="sechead">
-    <h2>Your journey</h2>
+    <h2>Tu camino</h2>
     <span class="meta" id="jmeta"></span>
   </div>
 
   <div class="trail" id="trail">
-    <div class="node" data-href="level-1.html" data-mods="1,2,3,4,5">
+    <div class="node" data-href="level-1.html" data-mods="22,1,2,3,4,5">
       <div class="rail"><div class="disc">1</div><div class="connector"></div></div>
       <a class="lcard" href="level-1.html">
-        <div class="lrow"><div><div class="lname">Start Here</div><div class="ltag">How AI behaves, so it stops surprising you.</div></div><span class="pill"></span></div>
+        <div class="lrow"><div><div class="lname">Empieza Aquí</div><div class="ltag">Qué es la IA y cómo se comporta, para que deje de sorprenderte.</div></div><span class="pill"></span></div>
         <div class="pbar"><i></i></div><div class="pcount"></div>
       </a>
     </div>
-    <div class="node" data-href="level-2.html" data-mods="6,7,8,9,23,24,25,26">
+    <div class="node" data-href="level-2.html" data-mods="6,7,8,9">
       <div class="rail"><div class="disc">2</div><div class="connector"></div></div>
       <a class="lcard" href="level-2.html">
-        <div class="lrow"><div><div class="lname">The Tools</div><div class="ltag">Chats, projects, artifacts, connectors, and which model to use.</div></div><span class="pill"></span></div>
+        <div class="lrow"><div><div class="lname">Las Herramientas</div><div class="ltag">Chats, proyectos, artefactos, conexiones, qué hace cada botón.</div></div><span class="pill"></span></div>
         <div class="pbar"><i></i></div><div class="pcount"></div>
       </a>
     </div>
     <div class="node" data-href="level-3.html" data-mods="10,11,12,13,14,21,20">
       <div class="rail"><div class="disc">3</div><div class="connector"></div></div>
       <a class="lcard" href="level-3.html">
-        <div class="lrow"><div><div class="lname">Make It Yours</div><div class="ltag">Your rules, your memory, your seat at the controls.</div></div><span class="pill"></span></div>
+        <div class="lrow"><div><div class="lname">Hazla Tuya</div><div class="ltag">Tus reglas, tu memoria, y tu asiento en los controles.</div></div><span class="pill"></span></div>
         <div class="pbar"><i></i></div><div class="pcount"></div>
       </a>
     </div>
     <div class="node" data-href="level-4.html" data-mods="15,16,17,18,19">
       <div class="rail"><div class="disc">4</div><div class="connector"></div></div>
       <a class="lcard" href="level-4.html">
-        <div class="lrow"><div><div class="lname">Under the Hood</div><div class="ltag">Vibe coding and the tech words, finally demystified.</div></div><span class="pill"></span></div>
+        <div class="lrow"><div><div class="lname">Bajo el Cofre</div><div class="ltag">El vibe coding y los términos técnicos, por fin sin misterio.</div></div><span class="pill"></span></div>
         <div class="pbar"><i></i></div><div class="pcount"></div>
       </a>
     </div>
   </div>
 
   <div class="badges">
-    <div class="bt"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="#9C4128" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="#9C4128" stroke-width="1.8" stroke-linejoin="round"/></svg>Milestones, one per level you finish</div>
+    <div class="bt"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="#9C4128" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="#9C4128" stroke-width="1.8" stroke-linejoin="round"/></svg>Logros, uno por cada nivel que termines</div>
     <div class="brow" id="brow">
-      <div class="badge" data-lvl="0"><div class="bmedal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="blbl">Start Here</div></div>
-      <div class="badge" data-lvl="1"><div class="bmedal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="blbl">The Tools</div></div>
-      <div class="badge" data-lvl="2"><div class="bmedal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="blbl">Make It Yours</div></div>
-      <div class="badge" data-lvl="3"><div class="bmedal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="blbl">Under Hood</div></div>
+      <div class="badge" data-lvl="0"><div class="bmedal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="blbl">Empieza Aquí</div></div>
+      <div class="badge" data-lvl="1"><div class="bmedal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="blbl">Las Herramientas</div></div>
+      <div class="badge" data-lvl="2"><div class="bmedal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="blbl">Hazla Tuya</div></div>
+      <div class="badge" data-lvl="3"><div class="bmedal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="blbl">Bajo el Cofre</div></div>
     </div>
   </div>
 
   <div class="util">
-    <a class="tile" href="glossary.html"><div class="tt">Glossary
+    <a class="tile" href="glossary.html"><div class="tt">Glosario
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <div class="ts">Every term, in plain words. Look up anything, any time.</div></a>
-    <span class="tile soon"><div class="tt">By profession</div>
-      <div class="ts">Lessons tuned to your job, PM, teacher, realtor and more. (Coming soon)</div></span>
+      <div class="ts">Cada término, en palabras claras. Consúltalo cuando quieras.</div></a>
+    <span class="tile soon"><div class="tt">Por profesión</div>
+      <div class="ts">Lecciones según tu trabajo, PM, maestro, agente inmobiliario y más. (Próximamente)</div></span>
   </div>
 
   <section class="suggest card">
-    <h3 style="margin-top:0">Want a topic we haven&#x27;t covered yet?</h3>
-    <p class="soft" style="margin-bottom:14px">Tell me what you&#x27;d like to learn next, your ideas shape what I build.</p>
+    <h3 style="margin-top:0">¿Hay un tema que no hayamos cubierto?</h3>
+    <p class="soft" style="margin-bottom:14px">Dime qué te gustaría aprender, tus ideas deciden lo que construyo después.</p>
     <form id="sg_landing" novalidate>
-      <textarea id="sg_landing_t" maxlength="1000" rows="3" placeholder="e.g. How do I write better prompts for emails?" required></textarea>
-      <input id="sg_landing_e" type="email" maxlength="200" placeholder="Email (optional, only if you&#x27;d like a reply)" autocomplete="off">
+      <textarea id="sg_landing_t" maxlength="1000" rows="3" placeholder="ej. ¿Cómo escribo mejores prompts para correos?" required></textarea>
+      <input id="sg_landing_e" type="email" maxlength="200" placeholder="Correo (opcional, solo si quieres respuesta)" autocomplete="off">
       <input type="text" id="sg_landing_hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
-      <button type="submit" class="btn btn-primary" id="sg_landing_b">Send it</button>
+      <button type="submit" class="btn btn-primary" id="sg_landing_b">Enviar</button>
       <p class="sg-msg" id="sg_landing_m" role="status"></p>
     </form>
   </section>
 
-  <footer>Built solo, in public. Free for everyone, in English &amp; Español.</footer>
+  <footer>Hecho en solitario, en público. Gratis para todas las personas, en inglés y español.</footer>
 </main>
 
 <script>
 (function(){
   function isDone(m){try{return localStorage.getItem('mmai-done-'+m)==='1'}catch(e){return false}}
 
-  /* ----- streak (honest, day-based) ----- */
+  /* ----- racha (honesta, por día) ----- */
   (function(){
     var today=new Date(); today.setHours(0,0,0,0);
     var n=0,last=null;
@@ -246,7 +244,7 @@
     if(last){
       var d=new Date(last); d.setHours(0,0,0,0);
       var days=Math.round((today-d)/86400000);
-      if(days===0){/* same day, keep */}
+      if(days===0){}
       else if(days===1){n=n+1;}
       else{n=1;}
     } else { n=1; }
@@ -254,7 +252,7 @@
     document.getElementById('streakNum').textContent=n;
   })();
 
-  /* ----- progress per level + overall ----- */
+  /* ----- progreso por nivel + total ----- */
   var nodes=[].slice.call(document.querySelectorAll('.node'));
   var totalDone=0,totalAll=0,currentSet=false,afterCount=0;
 
@@ -264,49 +262,49 @@
     totalDone+=d; totalAll+=mods.length;
     var pct=mods.length?Math.round(d/mods.length*100):0;
     node.querySelector('.pbar i').style.width=pct+'%';
-    node.querySelector('.pcount').textContent=d+' of '+mods.length+' lessons';
+    node.querySelector('.pcount').textContent=d+' de '+mods.length+' lecciones';
     var pill=node.querySelector('.pill');
     var complete=(d===mods.length);
 
     if(complete){
       node.classList.add('done');
-      pill.className='pill done'; pill.textContent='Done ✓';
+      pill.className='pill done'; pill.textContent='Hecho ✓';
     } else if(!currentSet){
       currentSet=true;
       node.classList.add('here');
-      pill.className='pill here'; pill.textContent='You are here';
+      pill.className='pill here'; pill.textContent='Estás aquí';
     } else {
       afterCount++;
-      if(afterCount===1){ pill.className='pill next'; pill.textContent='Up next'; }
+      if(afterCount===1){ pill.className='pill next'; pill.textContent='Sigue'; }
       else { pill.style.display='none'; }
     }
   });
 
-  /* ----- header gauge ----- */
+  /* ----- medidor del encabezado ----- */
   var op=totalAll?Math.round(totalDone/totalAll*100):0;
   document.getElementById('fill').style.width=op+'%';
-  document.getElementById('progText').textContent=totalDone+' / '+totalAll+' lessons';
-  document.getElementById('jmeta').textContent=op+'% complete';
+  document.getElementById('progText').textContent=totalDone+' / '+totalAll+' lecciones';
+  document.getElementById('jmeta').textContent=op+'% completado';
 
-  /* ----- welcoming, dynamic hero copy + CTA ----- */
+  /* ----- saludo y botón dinámicos ----- */
   var here=document.querySelector('.node.here');
   var allDone=(totalDone===totalAll && totalAll>0);
   if(allDone){
-    document.getElementById('greeting').textContent='You did it. Welcome back anytime.';
-    document.getElementById('ctaLabel').textContent='Revisit the glossary';
+    document.getElementById('greeting').textContent='¡Lo lograste! Vuelve cuando quieras.';
+    document.getElementById('ctaLabel').textContent='Repasar el glosario';
     document.getElementById('ctaBtn').setAttribute('href','glossary.html');
-    document.getElementById('ctaSub').innerHTML='All 4 levels complete · you’ve got the foundations';
+    document.getElementById('ctaSub').innerHTML='Los 4 niveles completos · ya tienes las bases';
   } else if(totalDone===0){
-    document.getElementById('ctaLabel').textContent='Start lesson 1';
+    document.getElementById('ctaLabel').textContent='Empieza la lección 1';
     document.getElementById('ctaBtn').setAttribute('href','level-1.html');
   } else if(here){
     var name=here.querySelector('.lname').textContent;
-    document.getElementById('greeting').textContent='Welcome back. Let’s keep going.';
-    document.getElementById('ctaLabel').textContent='Continue: '+name;
+    document.getElementById('greeting').textContent='Qué bueno verte. Sigamos.';
+    document.getElementById('ctaLabel').textContent='Continuar: '+name;
     document.getElementById('ctaBtn').setAttribute('href',here.getAttribute('data-href'));
   }
 
-  /* ----- milestone badges ----- */
+  /* ----- logros ----- */
   nodes.forEach(function(node,idx){
     if(node.classList.contains('done')){
       var b=document.querySelector('.badge[data-lvl="'+idx+'"]');
@@ -316,7 +314,7 @@
 })();
 </script>
 <script>
-(function(){var f=document.getElementById("sg_landing");if(!f)return;var t=document.getElementById("sg_landing_t"),e=document.getElementById("sg_landing_e"),hp=document.getElementById("sg_landing_hp"),b=document.getElementById("sg_landing_b"),m=document.getElementById("sg_landing_m");f.addEventListener("submit",function(ev){ev.preventDefault();if(hp.value)return;var s=(t.value||"").trim();if(!s)return;b.disabled=true;m.textContent="";fetch("https://pdbqrjqlwqjqzefmmlhd.supabase.co"+"/rest/v1/topic_suggestions",{method:"POST",headers:{"apikey":"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Authorization":"Bearer "+"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify({suggestion:s,email:(e.value||"").trim()||null,lang:"en",source:"landing-redesign"})}).then(function(r){if(r.ok){f.innerHTML="<p class=\"sg-ok\">"+"Got it, thank you! 🙌 Your idea is in."+"</p>";}else{m.textContent="Hmm, that didn't send. Mind trying again in a moment?";b.disabled=false;}}).catch(function(){m.textContent="Hmm, that didn't send. Mind trying again in a moment?";b.disabled=false;});});})();
+(function(){var f=document.getElementById("sg_landing");if(!f)return;var t=document.getElementById("sg_landing_t"),e=document.getElementById("sg_landing_e"),hp=document.getElementById("sg_landing_hp"),b=document.getElementById("sg_landing_b"),m=document.getElementById("sg_landing_m");f.addEventListener("submit",function(ev){ev.preventDefault();if(hp.value)return;var s=(t.value||"").trim();if(!s)return;b.disabled=true;m.textContent="";fetch("https://pdbqrjqlwqjqzefmmlhd.supabase.co"+"/rest/v1/topic_suggestions",{method:"POST",headers:{"apikey":"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Authorization":"Bearer "+"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify({suggestion:s,email:(e.value||"").trim()||null,lang:"es",source:"landing-redesign"})}).then(function(r){if(r.ok){f.innerHTML="<p class=\"sg-ok\">"+"¡Listo, gracias! 🙌 Tu idea ya quedó."+"</p>";}else{m.textContent="Mmm, no se envió. ¿Lo intentas de nuevo en un momento?";b.disabled=false;}}).catch(function(){m.textContent="Mmm, no se envió. ¿Lo intentas de nuevo en un momento?";b.disabled=false;});});})();
 </script>
 </body>
 </html>
