@@ -36,3 +36,27 @@
   plain_es: "Cuando una respuesta se detiene a media frase porque se quedó sin espacio. No es un error, es el tanque vacío."
   volatility: evergreen
   related: [token, rate-limit]
+
+- id: confabulation
+  term_en: "Confabulation"
+  term_es: "Confabulación"
+  plain_en: "When AI states something false with complete confidence. Not lying, which would require knowing the truth."
+  plain_es: "Cuando la IA afirma algo falso con total seguridad. No es mentir, porque mentir exige saber la verdad."
+  volatility: evergreen
+  related: [token]
+
+- id: training-data
+  term_en: "Training data"
+  term_es: "Datos de entrenamiento"
+  plain_en: "The text a model learned patterns from, fixed at a point in the past. Not a live memory of your conversations."
+  plain_es: "El texto del que un modelo aprendió patrones, fijado en un momento del pasado. No es una memoria viva de tus conversaciones."
+  volatility: slow
+  related: [confabulation]
+
+- id: prompt
+  term_en: "Prompt"
+  term_es: "Instrucción"
+  plain_en: "What you ask for. The difference between a vague one and a specific one is most of the difference in what you get back."
+  plain_es: "Lo que pides. La diferencia entre una vaga y una específica explica casi toda la diferencia en lo que recibes."
+  volatility: evergreen
+  related: [token]
