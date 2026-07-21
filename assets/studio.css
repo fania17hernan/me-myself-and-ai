@@ -1,0 +1,248 @@
+/* =============================================================
+   Me, Myself & AI  ·  studio.css
+   THE REDESIGN. Studio / workshop.
+
+   Premise: authority through showing your work, not through
+   polish. Nothing reads less machine-generated than a drawn
+   diagram, and the whole product is about foundations, which is
+   what a workshop is for.
+
+   Type is unchanged: Fraunces and Inter. But Fraunces is now
+   running its SOFT and WONK axes, which is what that typeface
+   was built for and what the old build never used.
+
+   Discipline: this is a workshop, not a scrapbook. Marks are
+   rationed. Every one has a job.
+   ============================================================= */
+
+/* ---- Substrate --------------------------------------------------------
+   Paper is a surface, not a fill. The grain is a real SVG turbulence
+   layer at very low opacity, so it survives zoom and costs no request.
+   ------------------------------------------------------------------- */
+
+:root{
+  --paper:#F1EEE7;          /* newsprint, warm but not soft */
+  --paper-2:#E9E5DC;        /* the sheet underneath */
+  --card:#FBFAF7;           /* an index card laid on top */
+  --ink:#232120;            /* graphite, not black */
+  --ink-2:#5E5852;          /* pencil, lighter pass */
+  --ink-3:#6F6860;          /* the faintest mark */
+  --pencil:#BE3A22;         /* editor's red. Correction, emphasis */
+  --blueprint:#2C4C77;      /* technical drawing, plans, foundations */
+  --kraft:#D9C6A5;          /* tape, tab, card stock */
+  --sage:#6E8567;           /* correct, checked */
+  --rule:#CFC7BA;
+
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',ui-sans-serif,system-ui,sans-serif;
+
+  /* Fraunces, finally doing what it was designed to do */
+  --wonk:'SOFT' 40,'WONK' 1;
+  --wonk-soft:'SOFT' 60,'WONK' 1;
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+img,svg{display:block;max-width:100%}
+button,input,textarea{font:inherit;color:inherit}
+
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font:400 17px/1.7 var(--sans);
+  -webkit-font-smoothing:antialiased;
+  position:relative;
+}
+/* the grain */
+body::before{
+  content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.28'/%3E%3C/svg%3E");
+  mix-blend-mode:multiply;
+}
+body>*{position:relative;z-index:2}
+
+/* ---- Type -------------------------------------------------------------
+   Fraunces with WONK on for display, off for anything long. The wonky
+   letterforms are charming at 40px and tiring at 17.
+   ------------------------------------------------------------------- */
+
+h1,h2,h3{font-family:var(--serif);line-height:1.05;letter-spacing:-.025em}
+h1{font-size:clamp(2.2rem,1.4rem+3.6vw,3.6rem);font-weight:600;font-variation-settings:var(--wonk)}
+h2{font-size:clamp(1.6rem,1.2rem+1.8vw,2.3rem);font-weight:600;font-variation-settings:var(--wonk)}
+h3{font-family:var(--sans);font-size:1.0625rem;font-weight:700;letter-spacing:-.005em;line-height:1.35}
+
+p{max-width:60ch}
+p+p{margin-top:1rem}
+strong{font-weight:600}
+.soft{color:var(--ink-2)}
+
+/* Annotation voice. Fraunces italic with WONK, used where a person
+   would have written in the margin. Never for instruction. */
+.hand{
+  font-family:var(--serif);font-style:italic;font-weight:400;
+  font-variation-settings:var(--wonk-soft);
+  color:var(--pencil);line-height:1.4;
+}
+
+.label{
+  font:600 .6875rem var(--sans);letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ink-3);
+}
+.label.red{color:var(--pencil)}
+.label.blue{color:var(--blueprint)}
+
+/* ---- Marks ------------------------------------------------------------
+   A drawn underline, a circle, a torn rule. All SVG so they scale and
+   never look like a border-bottom.
+   ------------------------------------------------------------------- */
+
+.mark-u{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='10' viewBox='0 0 120 10'%3E%3Cpath d='M2 6.2c22-2.6 46-3.4 71-2.1 16 .8 30 2.2 45 3.6' fill='none' stroke='%23BE3A22' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:0 88%;background-size:100% .55em;
+  padding-bottom:.12em;
+}
+.mark-hl{
+  background:linear-gradient(180deg,transparent 58%,rgba(217,198,165,.75) 58%,rgba(217,198,165,.75) 94%,transparent 94%);
+  padding:0 .1em;
+}
+
+hr.torn{
+  border:0;height:9px;margin:2.5rem 0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='9' viewBox='0 0 300 9'%3E%3Cpath d='M1 5.2c26-1.8 52 1.4 78-.4 25-1.7 50 2.1 75 .6 26-1.6 52 1.9 78 .2 22-1.4 44 1.1 67-.6' fill='none' stroke='%23CFC7BA' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:repeat-x;background-size:300px 9px;
+}
+
+/* ---- Surfaces ---------------------------------------------------------
+   Things sit ON the paper. Slight rotation, real shadow, no border
+   radius theatre. An index card is an index card.
+   ------------------------------------------------------------------- */
+
+.card{
+  background:var(--card);
+  padding:1.5rem 1.4rem;
+  box-shadow:0 1px 1px rgba(35,33,32,.08),0 8px 22px -12px rgba(35,33,32,.35);
+  position:relative;
+}
+.card.tilt-l{transform:rotate(-.5deg)}
+.card.tilt-r{transform:rotate(.4deg)}
+
+/* Masking tape. One strip, top-left, holding the card down. */
+.taped::before{
+  content:'';position:absolute;top:-11px;left:1.6rem;width:76px;height:23px;
+  background:rgba(217,198,165,.72);
+  box-shadow:0 1px 0 rgba(35,33,32,.06);
+  transform:rotate(-2.4deg);
+  clip-path:polygon(2% 12%,98% 4%,100% 88%,4% 96%);
+}
+
+/* The blueprint plate: where drawn diagrams live */
+.plate{
+  background:var(--paper-2);
+  border:1px solid var(--rule);
+  padding:1.6rem 1.2rem 1.2rem;
+  position:relative;
+  margin:1.75rem 0;
+}
+.plate .fig{
+  position:absolute;top:-.62rem;left:1.1rem;background:var(--paper-2);
+  padding:0 .5rem;font:600 .625rem var(--sans);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--blueprint);
+}
+.plate .cap{margin-top:1rem;font-size:.875rem;color:var(--ink-2);max-width:46ch}
+
+/* ---- Buttons ----------------------------------------------------------
+   Squarish, slightly heavy, like a stamped label. Not a pill.
+   ------------------------------------------------------------------- */
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  font:600 .9375rem var(--sans);
+  padding:.85rem 1.5rem;min-height:48px;
+  border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);
+  cursor:pointer;text-decoration:none;
+  box-shadow:3px 3px 0 rgba(35,33,32,.16);
+  transition:transform .12s,box-shadow .12s;
+}
+.btn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 rgba(35,33,32,.2)}
+.btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 rgba(35,33,32,.16)}
+.btn-2{background:transparent;color:var(--ink);box-shadow:3px 3px 0 rgba(35,33,32,.1)}
+.btn-red{background:var(--pencil);border-color:var(--pencil);color:#fff}
+
+/* ---- Navigation -------------------------------------------------------
+   Mobile tabs and desktop rail carried over from the IA work. Styled
+   as a workbench edge rather than an app chrome.
+   ------------------------------------------------------------------- */
+
+.top{
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.85rem 1.1rem;border-bottom:1.5px solid var(--ink);
+}
+.wordmark{
+  font-family:var(--serif);font-weight:600;font-size:1rem;
+  font-variation-settings:var(--wonk);color:var(--ink);text-decoration:none;
+}
+.wordmark em{font-style:italic;color:var(--pencil)}
+
+.tabs{
+  display:flex;border-top:1.5px solid var(--ink);background:var(--paper);
+}
+.tabs a{
+  flex:1;text-align:center;padding:.6rem .25rem .75rem;text-decoration:none;
+  font:600 .625rem var(--sans);letter-spacing:.06em;color:var(--ink-3);
+  border-right:1px solid var(--rule);min-height:56px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2rem;
+}
+.tabs a:last-child{border-right:0}
+.tabs a[aria-current]{color:var(--ink)}
+.tabs a[aria-current] .ic{color:var(--pencil)}
+.tabs .ic{font-size:1rem;line-height:1;color:var(--ink-3)}
+
+/* ---- Path list --------------------------------------------------------
+   Not rows in a table. A checklist on the bench.
+   ------------------------------------------------------------------- */
+
+.checklist{list-style:none}
+.checklist li{
+  display:flex;align-items:baseline;gap:.85rem;
+  padding:.7rem 0;border-bottom:1px solid var(--rule);
+}
+.checklist li:last-child{border-bottom:0}
+.checklist .box{
+  flex:0 0 18px;width:18px;height:18px;border:1.5px solid var(--ink-3);
+  position:relative;transform:rotate(-1deg);align-self:center;
+}
+.checklist .done .box{border-color:var(--sage)}
+.checklist .done .box::after{
+  content:'';position:absolute;left:2px;top:1px;width:16px;height:14px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='14' viewBox='0 0 16 14'%3E%3Cpath d='M2 7.4c1.8 1.4 3.1 3 4.3 4.8C8.6 8 10.8 4.4 14.4 1.4' fill='none' stroke='%236E8567' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat;
+}
+.checklist .here .box{border-color:var(--pencil);border-width:2.5px}
+.checklist .t{flex:1;min-width:0;font-size:.9375rem;line-height:1.4}
+.checklist .done .t{color:var(--ink-2)}
+.checklist .kind{
+  font:600 .5625rem var(--sans);letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink-3);flex:0 0 auto;
+}
+.checklist .min{font:500 .6875rem var(--sans);color:var(--ink-3);flex:0 0 2.2rem;text-align:right}
+
+/* ---- Quiz -------------------------------------------------------------- */
+
+.opt{
+  display:block;width:100%;text-align:left;background:var(--card);
+  border:1.5px solid var(--rule);padding:.85rem 1rem;margin-top:.6rem;
+  font:400 .9375rem/1.45 var(--sans);cursor:pointer;
+  box-shadow:2px 2px 0 rgba(35,33,32,.06);
+}
+.opt:hover{border-color:var(--ink)}
+.opt.ok{border-color:var(--sage);border-width:2px}
+.opt.no{border-color:var(--pencil);border-width:2px}
+
+/* ---- Utility ----------------------------------------------------------- */
+
+.wrap{max-width:38rem;margin-inline:auto;padding:1.75rem 1.25rem 3rem}
+.sr-only{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:2.5px solid var(--pencil);outline-offset:3px}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .card.tilt-l,.card.tilt-r{transform:none}
+}

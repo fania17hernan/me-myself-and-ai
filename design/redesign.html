@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The redesign · Studio · Me, Myself &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/studio.css">
+<style>
+  .page{max-width:74rem;margin:0 auto;padding:3.5rem 1.5rem 8rem}
+  .lede{max-width:46rem;margin-bottom:3.5rem}
+  .lede h1{margin-bottom:1.1rem}
+  .lede p{font-size:1.0625rem;color:var(--ink-2)}
+  .lede p+p{margin-top:.85rem}
+
+  .sec{margin-bottom:5rem}
+  .sechead{display:flex;align-items:baseline;gap:1rem;margin-bottom:1.5rem;flex-wrap:wrap}
+  .sechead h2{font-size:1.5rem}
+  .sechead .n{font:600 .6875rem 'Inter';letter-spacing:.15em;text-transform:uppercase;color:var(--pencil)}
+
+  .bench{display:flex;gap:2.5rem;flex-wrap:wrap;align-items:flex-start}
+
+  /* device frames, laid on the bench */
+  .phone{width:310px;flex:0 0 310px;border:2px solid var(--ink);background:var(--paper);
+         box-shadow:6px 6px 0 rgba(35,33,32,.13);position:relative;overflow:hidden;
+         display:flex;flex-direction:column;min-height:640px}
+  .phone.tl{transform:rotate(-.6deg)}
+  .phone.tr{transform:rotate(.5deg)}
+  .screenwide{flex:1;min-width:460px;border:2px solid var(--ink);background:var(--paper);
+              box-shadow:6px 6px 0 rgba(35,33,32,.13);overflow:hidden;display:flex}
+  .cap-s{font:600 .625rem 'Inter';letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.7rem}
+
+  .body{flex:1;padding:1.35rem 1.15rem 1.6rem;overflow:hidden}
+  .prog{height:3px;background:var(--rule);position:relative}
+  .prog i{position:absolute;inset:0 62% 0 0;background:var(--pencil)}
+
+  /* desktop split */
+  .dk-rail{flex:0 0 190px;border-right:1.5px solid var(--ink);padding:1.3rem 1rem}
+  .dk-main{flex:1;padding:1.8rem 2rem;min-width:0}
+
+  .note{border-left:2.5px solid var(--pencil);padding:.5rem 0 .5rem 1rem;font-size:.9375rem;
+        color:var(--ink-2);max-width:62ch;margin-top:1.25rem}
+  .note b{color:var(--ink)}
+  .grid2{display:grid;gap:1.5rem;grid-template-columns:repeat(auto-fit,minmax(16rem,1fr));margin-top:1.25rem}
+  @media(max-width:820px){.phone,.screenwide{flex:0 0 100%;width:100%;min-width:100%}
+    .phone.tl,.phone.tr{transform:none}.screenwide{flex-direction:column}
+    .dk-rail{flex:none;border-right:0;border-bottom:1.5px solid var(--ink)}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="lede">
+  <p class="label red">The redesign · Studio</p>
+  <h1>Authority through showing your work, not through polish.</h1>
+  <p>Every previous version tried to earn trust by looking clean. That is the same move every AI product
+    makes, and it is the reason the reviewer's senior colleague would bounce off it. This earns trust the
+    opposite way: by being visibly made by a person who thought hard about the drawing.</p>
+  <p>Fraunces and Inter stay, as you asked. But Fraunces is now running its <b>SOFT</b> and <b>WONK</b>
+    axes, which is what that typeface was built for and what the old build never touched. Same fonts,
+    completely different voice.</p>
+  <p class="hand" style="font-size:1.0625rem;margin-top:1.25rem">Scroll. The diagram is the whole argument.</p>
+</div>
+
+<!-- ═══════════════ 1 · THE DIAGRAM ═══════════════ -->
+<section class="sec">
+  <div class="sechead"><span class="n">01</span><h2>The diagram is the product</h2></div>
+  <p class="soft" style="max-width:58ch;margin-bottom:1.75rem">Your analogies are all drawable, and none of
+    them have ever been drawn. A gas tank rendered as a hand-made technical plate does more for retention,
+    and more for credibility, than any amount of typographic restraint.</p>
+
+  <div class="plate" style="max-width:44rem">
+    <span class="fig">Fig. 1 — The tank</span>
+    <svg viewBox="0 0 420 250" role="img" aria-labelledby="t1 d1" style="width:100%;height:auto">
+      <title id="t1">The gas tank analogy</title>
+      <desc id="d1">A fuel tank with a gauge reading near empty. An arrow labelled "the words you type"
+        enters from the left, an arrow labelled "the words it writes back" leaves to the right. Both
+        drain the same tank.</desc>
+      <defs>
+        <filter id="rough" x="-8%" y="-8%" width="116%" height="116%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="7" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <filter id="rough2" x="-8%" y="-8%" width="116%" height="116%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+        </filter>
+        <pattern id="hatch" width="9" height="9" patternTransform="rotate(38)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="9" stroke="#BE3A22" stroke-width="2.1" opacity=".5"/>
+        </pattern>
+      </defs>
+
+      <g filter="url(#rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+        <!-- tank body, drawn twice for a pencil double-pass -->
+        <path d="M64,86 C64,73 73,66 87,66 L286,68 C300,68 307,75 307,87 L306,172 C306,184 297,190 284,190 L84,188 C70,188 64,181 64,169 Z"
+              stroke-width="2.6"/>
+        <path d="M67,88 C67,76 75,69 88,69 L285,71 C297,71 304,77 304,88 L303,170 C303,181 295,187 283,187 L85,185 C72,185 67,179 67,168 Z"
+              stroke-width="1" opacity=".38"/>
+        <!-- filler neck -->
+        <path d="M150,66 L150,50 C150,45 154,42 160,42 L184,42 C190,42 194,45 194,50 L194,66" stroke-width="2.4"/>
+        <path d="M144,42 L200,42" stroke-width="3.2"/>
+      </g>
+
+      <!-- fuel, nearly gone -->
+      <g filter="url(#rough)">
+        <path d="M70,158 C104,152 140,162 178,156 C214,150 254,160 301,155 L301,170 C301,181 294,187 283,187 L85,185 C72,185 70,179 70,168 Z"
+              fill="url(#hatch)" stroke="#BE3A22" stroke-width="1.8" stroke-linejoin="round"/>
+      </g>
+
+      <!-- gauge, mounted on the tank -->
+      <g filter="url(#rough2)" fill="none" stroke="#232120" stroke-linecap="round">
+        <circle cx="256" cy="112" r="30" stroke-width="2.4"/>
+        <circle cx="256" cy="112" r="30" stroke-width=".9" opacity=".35" transform="translate(1,-1)"/>
+        <path d="M234,124 L256,112" stroke-width="3" stroke="#BE3A22"/>
+        <circle cx="256" cy="112" r="3.4" fill="#232120" stroke="none"/>
+        <path d="M233,100 L236,104 M279,100 L276,104" stroke-width="1.8"/>
+      </g>
+      <text x="228" y="97" font-family="Fraunces,serif" font-size="14" font-style="italic"
+            font-weight="600" fill="#BE3A22">E</text>
+      <text x="277" y="97" font-family="Fraunces,serif" font-size="14" font-style="italic"
+            font-weight="600" fill="#5E5852">F</text>
+
+      <!-- in arrow -->
+      <g filter="url(#rough2)" fill="none" stroke="#2C4C77" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M8,104 C24,102 42,106 58,103"/>
+        <path d="M50,97 L59,103 L50,109"/>
+      </g>
+      <text x="6" y="90" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#2C4C77">
+        the words you type</text>
+
+      <!-- out arrow -->
+      <g filter="url(#rough2)" fill="none" stroke="#2C4C77" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M312,150 C330,147 352,152 372,149"/>
+        <path d="M364,143 L373,149 L364,155"/>
+      </g>
+      <text x="304" y="176" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#2C4C77">
+        …and the words</text>
+      <text x="304" y="192" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#2C4C77">
+        it writes back</text>
+
+      <!-- the annotation that carries the lesson -->
+      <g filter="url(#rough2)" fill="none" stroke="#BE3A22" stroke-width="1.9" stroke-linecap="round">
+        <path d="M186,206 C186,218 200,222 214,221"/>
+        <path d="M206,215 L215,221 L206,227"/>
+      </g>
+      <text x="60" y="226" font-family="Fraunces,serif" font-size="15" font-style="italic"
+            font-weight="500" fill="#BE3A22">both directions burn it</text>
+    </svg>
+    <p class="cap">Drawn once, reused everywhere: the plate, the unit screen, the glossary entry for
+      <em>token</em>, and the share card. One asset, four jobs.</p>
+  </div>
+
+  <p class="note"><b>Why this is the whole redesign.</b> A drawn diagram cannot be mistaken for generated
+    output, cannot be produced by a template, and does the actual pedagogical work your text is currently
+    doing alone. It is also the cheapest possible signal that a person made this on purpose.</p>
+</section>
+
+<!-- ═══════════════ 2 · THE UNIT ═══════════════ -->
+<section class="sec">
+  <div class="sechead"><span class="n">02</span><h2>A unit</h2></div>
+  <div class="bench">
+
+    <div>
+      <p class="cap-s">Mobile · the analogy unit</p>
+      <div class="phone tl">
+        <div class="top">
+          <a class="wordmark" href="#">Me, Myself <em>&amp;</em> AI</a>
+          <span class="label">ES</span>
+        </div>
+        <div class="prog"><i></i></div>
+        <div class="body">
+          <p class="label red">Foundations · unit 2 of 5 · 2 min</p>
+          <h2 style="margin:.7rem 0 .6rem">Tokens are gas in a tank</h2>
+          <p style="font-size:.9375rem;color:var(--ink-2)">Every word you type burns a little.
+            Every word it writes back burns a little more.</p>
+
+          <div class="plate" style="margin:1.4rem 0 1.1rem;padding:1.3rem .8rem .9rem">
+            <span class="fig">Fig. 1</span>
+            <svg viewBox="0 0 300 150" role="img" aria-label="A fuel tank with the gauge reading near empty"
+                 style="width:100%;height:auto">
+              <g filter="url(#rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M28,54 C28,44 35,39 46,39 L214,41 C225,41 231,47 231,56 L230,116 C230,126 223,131 212,131 L44,129 C33,129 28,124 28,115 Z" stroke-width="2.4"/>
+                <path d="M96,39 L96,27 C96,23 99,21 104,21 L124,21 C129,21 132,23 132,27 L132,39" stroke-width="2.2"/>
+                <path d="M91,21 L137,21" stroke-width="3"/>
+              </g>
+              <path d="M33,108 C62,103 92,111 124,106 C152,102 186,110 226,106 L226,116 C226,125 220,129 211,129 L45,127 C35,127 33,123 33,114 Z"
+                    fill="url(#hatch)" stroke="#BE3A22" stroke-width="1.6" filter="url(#rough)"/>
+              <g filter="url(#rough2)" fill="none" stroke="#232120" stroke-linecap="round">
+                <circle cx="192" cy="76" r="22" stroke-width="2.2"/>
+                <path d="M176,85 L192,76" stroke-width="2.6" stroke="#BE3A22"/>
+                <circle cx="192" cy="76" r="2.6" fill="#232120" stroke="none"/>
+              </g>
+              <text x="168" y="66" font-family="Fraunces,serif" font-size="11" font-style="italic" font-weight="600" fill="#BE3A22">E</text>
+              <g filter="url(#rough2)" fill="none" stroke="#2C4C77" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4,70 C12,68 18,72 24,69"/><path d="M18,64 L25,69 L18,74"/>
+                <path d="M236,100 C248,98 262,102 276,99"/><path d="M269,94 L277,99 L269,104"/>
+              </g>
+              <text x="24" y="146" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#BE3A22">both directions burn it</text>
+            </svg>
+          </div>
+
+          <p style="font-size:.9375rem;color:var(--ink-2)">When the tank hits empty everything stops.
+            <span class="mark-u">Even mid-sentence.</span></p>
+
+          <p class="hand" style="margin-top:1.1rem;font-size:1rem">Rate limits? That's the gas station
+            that only lets you fill up so many times an hour.</p>
+
+          <a class="btn" href="#" style="width:100%;margin-top:1.4rem">Continue</a>
+        </div>
+        <nav class="tabs" aria-label="Main">
+          <a href="#" aria-current="page"><span class="ic">◧</span>Home</a>
+          <a href="#"><span class="ic">✦</span>Use It</a>
+          <a href="#"><span class="ic">A</span>Glossary</a>
+          <a href="#"><span class="ic">◔</span>Progress</a>
+        </nav>
+      </div>
+    </div>
+
+    <div>
+      <p class="cap-s">Mobile · the recall moment</p>
+      <div class="phone tr">
+        <div class="top">
+          <a class="wordmark" href="#">Me, Myself <em>&amp;</em> AI</a>
+          <span class="label">ES</span>
+        </div>
+        <div class="prog"><i style="inset:0 22% 0 0"></i></div>
+        <div class="body">
+          <p class="label red">Quick check</p>
+          <h2 style="font-size:1.35rem;margin:.7rem 0 1rem">Which burns fuel?</h2>
+          <button class="opt">Only what you type</button>
+          <button class="opt ok">Both, input and output</button>
+          <button class="opt">Only what it writes back</button>
+          <p class="hand" style="margin-top:1rem;font-size:.9375rem">Right. Short question, long answer?
+            Still pricey.</p>
+
+          <hr class="torn">
+
+          <div class="card taped tilt-l" style="margin-top:1.6rem">
+            <p class="label" style="margin-bottom:.5rem">Pin to your bench</p>
+            <p style="font-family:var(--serif);font-size:1.05rem;line-height:1.3;
+                      font-variation-settings:var(--wonk)">"AI has a gas tank. Long conversations
+              burn more fuel."</p>
+            <a class="btn btn-2" href="#" style="margin-top:.9rem;font-size:.8125rem;padding:.6rem 1rem;min-height:40px">＋ Pin it</a>
+          </div>
+        </div>
+        <nav class="tabs" aria-label="Main">
+          <a href="#"><span class="ic">◧</span>Home</a>
+          <a href="#"><span class="ic">✦</span>Use It</a>
+          <a href="#"><span class="ic">A</span>Glossary</a>
+          <a href="#" aria-current="page"><span class="ic">◔</span>Progress</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+
+  <p class="note"><b>The cheat sheet became a bench.</b> Saved takeaways are index cards you pin up, not
+    rows in a list. Same data model from Phase 0, a metaphor someone actually wants to fill.</p>
+</section>
+
+<!-- ═══════════════ 3 · HOME ═══════════════ -->
+<section class="sec">
+  <div class="sechead"><span class="n">03</span><h2>Home, and the first visit</h2></div>
+  <div class="bench">
+
+    <div>
+      <p class="cap-s">Mobile · returning</p>
+      <div class="phone tl">
+        <div class="top">
+          <a class="wordmark" href="#">Me, Myself <em>&amp;</em> AI</a>
+          <span class="label">ES</span>
+        </div>
+        <div class="body">
+          <p class="label red">Pick up where you left off</p>
+          <div class="card taped tilt-r" style="margin-top:.9rem">
+            <h2 style="font-size:1.4rem;margin-bottom:.4rem">What's actually in the tank</h2>
+            <p class="soft" style="font-size:.8125rem">Concept · 3 min</p>
+            <a class="btn" href="#" style="width:100%;margin-top:1rem">Continue</a>
+          </div>
+
+          <p class="hand" style="margin-top:1.3rem;font-size:.9375rem">
+            You missed one on "both directions burn fuel" — worth another minute?</p>
+
+          <hr class="torn">
+
+          <p class="label">Foundations · 12 units</p>
+          <ul class="checklist" style="margin-top:.6rem">
+            <li class="done"><span class="box"></span><span class="t">The answer that died mid-sentence</span><span class="kind">Note</span><span class="min">2m</span></li>
+            <li class="done"><span class="box"></span><span class="t">Tokens are gas in a tank</span><span class="kind">Fig</span><span class="min">2m</span></li>
+            <li class="here"><span class="box"></span><span class="t"><strong>What's actually in the tank</strong></span><span class="kind">Concept</span><span class="min">3m</span></li>
+            <li><span class="box"></span><span class="t">Three habits that save fuel</span><span class="kind">Playbook</span><span class="min">2m</span></li>
+            <li><span class="box"></span><span class="t">Quick check</span><span class="kind">Check</span><span class="min">2m</span></li>
+          </ul>
+        </div>
+        <nav class="tabs" aria-label="Main">
+          <a href="#" aria-current="page"><span class="ic">◧</span>Home</a>
+          <a href="#"><span class="ic">✦</span>Use It</a>
+          <a href="#"><span class="ic">A</span>Glossary</a>
+          <a href="#"><span class="ic">◔</span>Progress</a>
+        </nav>
+      </div>
+    </div>
+
+    <div>
+      <p class="cap-s">Mobile · first visit, and where your story finally lives</p>
+      <div class="phone tr">
+        <div class="top">
+          <a class="wordmark" href="#">Me, Myself <em>&amp;</em> AI</a>
+          <span class="label">ES</span>
+        </div>
+        <div class="body">
+          <h1 style="font-size:1.9rem;margin-bottom:.8rem">AI, explained by someone who was also
+            intimidated by it.</h1>
+          <p class="soft" style="font-size:.9375rem">Two minutes at a time. Analogies that stick.
+            No jargon, no sign-up.</p>
+
+          <div class="card taped tilt-l" style="margin-top:1.5rem">
+            <p class="label red" style="margin-bottom:.5rem">Start here</p>
+            <h3 style="font-family:var(--serif);font-size:1.25rem;font-weight:600;
+                       font-variation-settings:var(--wonk);margin-bottom:.35rem">What AI isn't</h3>
+            <p class="soft" style="font-size:.8125rem">5 myths · 2 min each · no quiz</p>
+            <a class="btn btn-red" href="#" style="width:100%;margin-top:.9rem">Clear the air first</a>
+          </div>
+
+          <hr class="torn">
+
+          <p class="label">Foreword</p>
+          <p style="font-family:var(--serif);font-size:1.15rem;line-height:1.3;margin-top:.6rem;
+                    font-variation-settings:var(--wonk)">Four companies. Four industries. The same
+            crack in the floor.</p>
+          <p class="soft" style="font-size:.875rem;margin-top:.7rem">Manufacturing, travel, healthcare,
+            luxury retail. Different decades, one thing in common: teams moving fast on foundations
+            nobody had been taught.</p>
+          <p class="hand" style="margin-top:.8rem;font-size:.9375rem">AI is about to do it again.
+            Faster, and to more people. <span class="mark-u">Read why →</span></p>
+        </div>
+        <nav class="tabs" aria-label="Main">
+          <a href="#" aria-current="page"><span class="ic">◧</span>Home</a>
+          <a href="#"><span class="ic">✦</span>Use It</a>
+          <a href="#"><span class="ic">A</span>Glossary</a>
+          <a href="#"><span class="ic">◔</span>Progress</a>
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 4 · DESKTOP ═══════════════ -->
+<section class="sec">
+  <div class="sechead"><span class="n">04</span><h2>Desktop</h2></div>
+  <div class="screenwide">
+    <div class="dk-rail">
+      <a class="wordmark" href="#" style="display:block;margin-bottom:1.6rem">Me, Myself <em>&amp;</em> AI</a>
+      <p class="label" style="margin-bottom:.5rem">The bench</p>
+      <ul class="checklist" style="font-size:.8125rem">
+        <li class="done"><span class="box"></span><span class="t" style="font-size:.8125rem">It won't take your job</span></li>
+        <li class="done"><span class="box"></span><span class="t" style="font-size:.8125rem">Tokens are gas in a tank</span></li>
+        <li class="here"><span class="box"></span><span class="t" style="font-size:.8125rem"><strong>What's in the tank</strong></span></li>
+        <li><span class="box"></span><span class="t" style="font-size:.8125rem">Three habits</span></li>
+      </ul>
+      <hr class="torn" style="margin:1.4rem 0">
+      <p class="label">Pinned</p>
+      <div class="card tilt-l" style="padding:.7rem .8rem;margin-top:.6rem;font-family:var(--serif);
+                  font-size:.8125rem;line-height:1.35;font-variation-settings:var(--wonk)">
+        "AI has a gas tank."</div>
+      <div class="card tilt-r" style="padding:.7rem .8rem;margin-top:.5rem;font-family:var(--serif);
+                  font-size:.8125rem;line-height:1.35;font-variation-settings:var(--wonk)">
+        "New topic means new chat."</div>
+    </div>
+    <div class="dk-main">
+      <p class="label red">Foundations · unit 3 of 12</p>
+      <h1 style="font-size:2.6rem;margin:.6rem 0 .8rem">What's actually in the tank</h1>
+      <p class="soft" style="font-size:1rem">A token is the unit AI actually reads and writes. Roughly
+        three-quarters of a word, so 100 words is about 130 tokens.</p>
+
+      <div class="plate" style="max-width:32rem">
+        <span class="fig">Fig. 2 — Both directions</span>
+        <svg viewBox="0 0 340 120" role="img" aria-label="Input and output arrows both feeding one tank"
+             style="width:100%;height:auto">
+          <g filter="url(#rough2)" fill="none" stroke="#2C4C77" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8,40 C34,37 62,43 88,39"/><path d="M80,33 L89,39 L80,45"/>
+            <path d="M252,80 C278,77 306,83 332,79"/><path d="M324,73 L333,79 L324,85"/>
+          </g>
+          <g filter="url(#rough)" fill="none" stroke="#232120" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M96,26 C96,18 102,14 111,14 L230,16 C239,16 244,21 244,29 L243,92 C243,101 237,105 228,105 L109,103 C100,103 96,99 96,90 Z"/>
+          </g>
+          <path d="M100,84 C124,80 148,86 172,82 C196,78 220,84 240,81 L240,92 C240,100 235,103 228,103 L110,101 C102,101 100,98 100,90 Z"
+                fill="url(#hatch)" stroke="#BE3A22" stroke-width="1.5" filter="url(#rough)"/>
+          <text x="6" y="26" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#2C4C77">input</text>
+          <text x="292" y="102" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#2C4C77">output</text>
+          <text x="120" y="55" font-family="Fraunces,serif" font-size="14" font-style="italic" font-weight="500" fill="#BE3A22">one tank, both ways</text>
+        </svg>
+      </div>
+
+      <p style="font-size:1rem;color:var(--ink-2);margin-top:1.2rem">Here's what surprises people: it isn't
+        just what you type. <span class="mark-hl">Input and output both count.</span></p>
+
+      <div style="display:flex;gap:.7rem;margin-top:1.6rem;flex-wrap:wrap">
+        <a class="btn" href="#">Continue</a>
+        <a class="btn btn-2" href="#">＋ Pin the takeaway</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ 5 · THE LANGUAGE ═══════════════ -->
+<section class="sec">
+  <div class="sechead"><span class="n">05</span><h2>The elements</h2></div>
+  <div class="grid2">
+    <div>
+      <p class="label" style="margin-bottom:.6rem">Fraunces, WONK on</p>
+      <p style="font-family:var(--serif);font-size:1.75rem;line-height:1.1;font-weight:600;
+                font-variation-settings:var(--wonk)">Tokens are gas in a tank</p>
+      <p style="font-family:var(--serif);font-size:1.75rem;line-height:1.1;font-weight:600;
+                font-variation-settings:'SOFT' 0,'WONK' 0;color:var(--ink-3);margin-top:.4rem">
+        Tokens are gas in a tank</p>
+      <p class="soft" style="font-size:.8125rem;margin-top:.5rem">Top: WONK 1, SOFT 40. Bottom: the
+        default you've been shipping. Same font.</p>
+    </div>
+    <div>
+      <p class="label" style="margin-bottom:.6rem">Marks, rationed</p>
+      <p>A <span class="mark-u">drawn underline</span> for emphasis, a
+        <span class="mark-hl">kraft highlight</span> for a definition, and nothing else.</p>
+      <hr class="torn">
+      <p class="hand">The annotation voice is Fraunces italic in red pencil. Margin notes only,
+        never instruction.</p>
+    </div>
+    <div>
+      <p class="label" style="margin-bottom:.6rem">Palette</p>
+      <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+        <i style="width:38px;height:38px;background:#F1EEE7;box-shadow:inset 0 0 0 1px rgba(0,0,0,.15)"></i>
+        <i style="width:38px;height:38px;background:#232120"></i>
+        <i style="width:38px;height:38px;background:#BE3A22"></i>
+        <i style="width:38px;height:38px;background:#2C4C77"></i>
+        <i style="width:38px;height:38px;background:#D9C6A5"></i>
+        <i style="width:38px;height:38px;background:#6E8567"></i>
+      </div>
+      <p class="soft" style="font-size:.8125rem;margin-top:.6rem">Newsprint, graphite, editor's red,
+        blueprint blue, kraft, checked-green. Every one is a real workshop material, and the red and
+        blue both <em>mean</em> something: correction and plans.</p>
+    </div>
+    <div>
+      <p class="label" style="margin-bottom:.6rem">Surfaces</p>
+      <div class="card taped tilt-l" style="margin-top:1rem;padding:1rem">
+        <p style="font-size:.875rem">An index card, taped down, one degree off square. Not a
+          <em>div</em> with a border radius.</p>
+      </div>
+    </div>
+  </div>
+
+  <p class="note" style="margin-top:2rem"><b>The one discipline that keeps this from becoming kitsch:</b>
+    marks are rationed. One drawn underline per screen, one plate per unit, one piece of tape per card.
+    A workshop is orderly. A scrapbook is not, and the difference is the entire risk here.</p>
+</section>
+
+<hr class="torn">
+<p class="hand" style="font-size:1.15rem;max-width:44rem">If this is the direction, the next move is
+  drawing the other 25 analogies. That's the real work, and it's the part nobody can copy.</p>
+
+</div>
+</body>
+</html>
