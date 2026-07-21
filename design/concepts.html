@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Three concepts · Me, Myself &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1a1815; --mid:#6b635a; --soft:#9b938a; --line:#e0dad2;
+  --page:#f6f3ef; --card:#fff;
+  --barro:#BF5538; --barro-d:#9C4128; --marigold:#E5A33F; --cream:#FAF5EC; --warm:#F3EADC;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--page);color:var(--ink);font:400 15px/1.6 'Inter',system-ui,sans-serif;
+     padding:3rem 1.5rem 8rem;-webkit-font-smoothing:antialiased}
+.wrap{max-width:80rem;margin:0 auto}
+
+/* ---- doc chrome ---- */
+.masthead{max-width:52rem;margin-bottom:3.5rem}
+.masthead .kick{font:600 .6875rem 'Inter';letter-spacing:.16em;text-transform:uppercase;color:var(--barro);margin-bottom:1rem}
+.masthead h1{font:600 clamp(2rem,4vw,3rem)/1.05 'Fraunces',serif;letter-spacing:-.025em;margin-bottom:1rem}
+.masthead p{color:var(--mid);max-width:62ch;font-size:1.0625rem}
+.masthead p+p{margin-top:.75rem}
+
+.concept{margin-bottom:6rem}
+.chead{border-top:2px solid var(--ink);padding-top:1rem;margin-bottom:1.75rem;
+       display:grid;grid-template-columns:3rem 1fr;gap:1.25rem;align-items:start}
+.chead .num{font:600 2rem/1 'Fraunces',serif;color:var(--barro)}
+.chead h2{font:600 1.75rem/1.1 'Fraunces',serif;letter-spacing:-.02em;margin-bottom:.4rem}
+.chead .thesis{font-size:1.0625rem;color:var(--ink);max-width:58ch;margin-bottom:.75rem}
+.meta{display:flex;gap:2rem;flex-wrap:wrap;font-size:.8125rem;color:var(--mid);max-width:62ch}
+.meta div{flex:1;min-width:13rem}
+.meta b{display:block;font:600 .625rem 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin-bottom:.25rem}
+
+.frames{display:flex;gap:2rem;flex-wrap:wrap;align-items:flex-start;margin-bottom:1.25rem}
+.cap{font:600 .625rem 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin-bottom:.6rem}
+.ph{width:288px;flex:0 0 288px;height:600px;border:1px solid var(--ink);border-radius:26px;overflow:hidden;
+    display:flex;flex-direction:column;position:relative}
+.dk{flex:1;min-width:440px;height:600px;border:1px solid var(--ink);border-radius:8px;overflow:hidden;display:flex}
+.tradeoff{border-left:3px solid var(--barro);padding:.6rem 0 .6rem 1rem;font-size:.9375rem;color:var(--mid);max-width:62ch}
+.tradeoff b{color:var(--ink)}
+
+/* ═══════════════ A · FIELD MANUAL ═══════════════ */
+.A{background:var(--cream);color:#221d19;font-family:'Inter',sans-serif;width:100%;display:flex;flex-direction:column}
+.A .bar{display:flex;justify-content:space-between;align-items:center;padding:.85rem 1rem;
+  font:500 .625rem 'IBM Plex Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#8a7d70;
+  border-bottom:1px solid #e0d5c5}
+.A .doc{flex:1;overflow:hidden;padding:1.4rem 1rem}
+.A .idx{font:500 .625rem 'IBM Plex Mono',monospace;color:var(--barro);letter-spacing:.1em;margin-bottom:1.1rem;
+  display:flex;justify-content:space-between;border-bottom:1px solid #e0d5c5;padding-bottom:.5rem}
+.A h3{font:400 2.1rem/1.02 'Newsreader',serif;letter-spacing:-.02em;margin-bottom:.7rem}
+.A .lead{font:400 .875rem/1.55 'Inter';color:#5d5348;margin-bottom:1.2rem}
+.A .spec{border-top:1px solid #e0d5c5;padding-top:.7rem;margin-bottom:.5rem;
+  display:grid;grid-template-columns:4.5rem 1fr;gap:.6rem;font-size:.75rem;align-items:baseline}
+.A .spec dt{font:500 .5625rem 'IBM Plex Mono',monospace;letter-spacing:.09em;text-transform:uppercase;color:#a2947f}
+.A .spec dd{line-height:1.45}
+.A .fig{border:1px solid #d9cdb9;border-radius:2px;padding:1.1rem .9rem;margin:1.1rem 0;background:#fffdf8;position:relative}
+.A .fig .tag{position:absolute;top:-.5rem;left:.7rem;background:var(--cream);padding:0 .35rem;
+  font:500 .5625rem 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--barro)}
+.A .fig .big{font:400 1.35rem/1.15 'Newsreader',serif}
+.A .act{margin-top:auto;padding:.9rem 1rem;border-top:1px solid #e0d5c5;display:flex;gap:.5rem;align-items:center}
+.A .go{flex:1;background:#221d19;color:var(--cream);border-radius:2px;padding:.7rem;text-align:center;
+  font:500 .6875rem 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase}
+.A .rule{height:1px;background:#e0d5c5;margin:.9rem 0}
+
+.A-d{display:flex;width:100%;background:var(--cream);color:#221d19}
+.A-d .rail{flex:0 0 190px;border-right:1px solid #e0d5c5;padding:1.4rem 1rem;font-size:.75rem}
+.A-d .rail .lg{font:400 1rem 'Newsreader',serif;margin-bottom:1.4rem}
+.A-d .rail .sec{font:500 .5625rem 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;
+  color:#a2947f;margin:1.1rem 0 .5rem}
+.A-d .rail .it{padding:.28rem 0;color:#5d5348;display:flex;gap:.6rem}
+.A-d .rail .it .n{font:500 .625rem 'IBM Plex Mono',monospace;color:#bcae98;flex:0 0 1.4rem}
+.A-d .rail .it.on{color:#221d19;font-weight:600}
+.A-d .rail .it.on .n{color:var(--barro)}
+.A-d .pane{flex:1;padding:2rem 2.2rem;overflow:hidden;display:flex;gap:2.2rem}
+.A-d .marg{flex:0 0 90px;font:500 .5625rem 'IBM Plex Mono',monospace;letter-spacing:.08em;color:#a2947f;
+  line-height:1.7;text-align:right;padding-top:.5rem}
+.A-d .col{flex:1;min-width:0}
+.A-d h3{font:400 2.6rem/1.02 'Newsreader',serif;letter-spacing:-.025em;margin-bottom:.8rem}
+
+/* ═══════════════ B · ONE CARD ═══════════════ */
+.B{background:#101010;color:#f4f1ec;width:100%;display:flex;flex-direction:column;position:relative}
+.B .prog{position:absolute;top:0;left:0;right:0;height:2px;background:rgba(244,241,236,.12);z-index:2}
+.B .prog i{position:absolute;inset:0 55% 0 0;background:#E5A33F}
+.B .stage{flex:1;display:flex;flex-direction:column;justify-content:center;padding:2rem 1.6rem;text-align:left}
+.B .eye{font:500 .625rem 'Inter';letter-spacing:.2em;text-transform:uppercase;color:rgba(244,241,236,.42);margin-bottom:1.6rem}
+.B .huge{font:400 2.6rem/1.02 'Instrument Serif',serif;letter-spacing:-.015em}
+.B .huge em{font-style:italic;color:#E5A33F}
+.B .sub{font:400 .875rem/1.6 'Inter';color:rgba(244,241,236,.6);margin-top:1.4rem;max-width:30ch}
+.B .foot{padding:1.2rem 1.6rem 1.8rem;display:flex;justify-content:space-between;align-items:center}
+.B .hint{font:400 .6875rem 'Inter';color:rgba(244,241,236,.35);letter-spacing:.04em}
+.B .tapx{width:46px;height:46px;border-radius:50%;border:1px solid rgba(244,241,236,.25);
+  display:flex;align-items:center;justify-content:center;font-size:1rem;color:#f4f1ec}
+.B .opt{border:1px solid rgba(244,241,236,.18);border-radius:3px;padding:.75rem .85rem;
+  font:400 .8125rem 'Inter';margin-top:.5rem;color:rgba(244,241,236,.85)}
+.B .opt.on{border-color:#E5A33F;color:#fff}
+
+.B-d{background:#101010;color:#f4f1ec;width:100%;display:flex;flex-direction:column;position:relative}
+.B-d .prog{position:absolute;top:0;left:0;right:0;height:2px;background:rgba(244,241,236,.12)}
+.B-d .prog i{position:absolute;inset:0 55% 0 0;background:#E5A33F}
+.B-d .topline{display:flex;justify-content:space-between;padding:1.4rem 2rem;
+  font:500 .625rem 'Inter';letter-spacing:.16em;text-transform:uppercase;color:rgba(244,241,236,.38)}
+.B-d .stage{flex:1;display:flex;align-items:center;padding:0 5rem}
+.B-d .huge{font:400 clamp(2.6rem,5vw,4.2rem)/1 'Instrument Serif',serif;letter-spacing:-.02em;max-width:15ch}
+.B-d .huge em{font-style:italic;color:#E5A33F}
+.B-d .sub{font:400 1rem/1.65 'Inter';color:rgba(244,241,236,.58);margin-top:1.6rem;max-width:44ch}
+.B-d .foot{padding:1.4rem 2rem 2rem;display:flex;justify-content:space-between;align-items:center;
+  font:400 .75rem 'Inter';color:rgba(244,241,236,.35)}
+
+/* ═══════════════ C · WORKBENCH ═══════════════ */
+.C{background:#fdfcfa;color:#1c1a17;width:100%;display:flex;flex-direction:column}
+.C .bar{display:flex;justify-content:space-between;align-items:center;padding:.8rem .9rem;border-bottom:1px solid #eae4dc}
+.C .bar .t{font:600 .8125rem 'Inter'}
+.C .sq{width:30px;height:30px;border:1px solid #e0d9d0;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#7a7168}
+.C .body{flex:1;padding:1rem .9rem;overflow:hidden}
+.C .now{background:#1c1a17;color:#fdfcfa;border-radius:12px;padding:1rem;margin-bottom:.75rem}
+.C .now .l{font:600 .5625rem 'Inter';letter-spacing:.14em;text-transform:uppercase;opacity:.5;margin-bottom:.5rem}
+.C .now .n{font:600 1.15rem/1.15 'Inter';letter-spacing:-.015em}
+.C .now .m{font-size:.6875rem;opacity:.55;margin-top:.3rem}
+.C .now .go{background:#E5A33F;color:#1c1a17;border-radius:7px;padding:.5rem;text-align:center;
+  font:600 .75rem 'Inter';margin-top:.85rem}
+.C .strip{display:flex;gap:.4rem;margin-bottom:.75rem}
+.C .stat{flex:1;border:1px solid #eae4dc;border-radius:9px;padding:.55rem .6rem}
+.C .stat .v{font:600 1.05rem/1 'Inter'}
+.C .stat .k{font-size:.5625rem;color:#8b8279;margin-top:.2rem;letter-spacing:.03em}
+.C .grp{font:600 .5625rem 'Inter';letter-spacing:.14em;text-transform:uppercase;color:#8b8279;margin:1rem 0 .5rem}
+.C .row{display:flex;align-items:center;gap:.6rem;padding:.5rem 0;border-bottom:1px solid #f0ebe4;font-size:.75rem}
+.C .row .dot{width:7px;height:7px;border-radius:50%;background:#e0d9d0;flex:0 0 7px}
+.C .row.d .dot{background:#4E7A5A} .C .row.h .dot{background:#E5A33F;box-shadow:0 0 0 3px rgba(229,163,63,.22)}
+.C .row .x{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.C .row .tm{color:#a89e94;font-size:.625rem}
+.C .tabs{display:flex;border-top:1px solid #eae4dc;background:#fdfcfa}
+.C .tabs div{flex:1;text-align:center;padding:.55rem 0 .75rem;font-size:.5625rem;color:#8b8279}
+.C .tabs div .i{display:block;font-size:.85rem;margin-bottom:.15rem}
+.C .tabs div.on{color:#1c1a17;font-weight:600}
+
+.C-d{background:#fdfcfa;color:#1c1a17;width:100%;display:flex}
+.C-d .rail{flex:0 0 62px;border-right:1px solid #eae4dc;padding:1rem .5rem;display:flex;flex-direction:column;gap:.35rem;align-items:center}
+.C-d .rail .ic{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  color:#8b8279;font-size:.9rem}
+.C-d .rail .ic.on{background:#1c1a17;color:#fdfcfa}
+.C-d .mid{flex:1;min-width:0;padding:1.6rem 1.8rem;overflow:hidden}
+.C-d .drawer{flex:0 0 210px;border-left:1px solid #eae4dc;padding:1.4rem 1.1rem;background:#faf7f2}
+.C-d .drawer .h{font:600 .5625rem 'Inter';letter-spacing:.14em;text-transform:uppercase;color:#8b8279;margin-bottom:.8rem}
+.C-d .note{background:#fff;border:1px solid #eae4dc;border-radius:9px;padding:.6rem .7rem;margin-bottom:.5rem;
+  font:400 .6875rem/1.45 'Fraunces',serif}
+.C-d h3{font:600 1.6rem/1.1 'Inter';letter-spacing:-.025em;margin-bottom:.4rem}
+
+/* ---- about strip demo ---- */
+.aboutdemo{margin-top:1.25rem;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.about-A{background:#221d19;color:var(--cream);padding:2rem 1.75rem}
+.about-A .k{font:500 .625rem 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--marigold);margin-bottom:1rem}
+.about-A .q{font:400 1.6rem/1.2 'Newsreader',serif;max-width:24ch;margin-bottom:1rem}
+.about-A .b{font-size:.875rem;line-height:1.65;color:rgba(250,245,236,.7);max-width:56ch}
+.about-A .names{display:flex;gap:1.5rem;flex-wrap:wrap;margin-top:1.25rem;
+  font:500 .6875rem 'IBM Plex Mono',monospace;letter-spacing:.12em;color:rgba(250,245,236,.45)}
+@media(max-width:820px){.dk,.ph{min-width:100%;flex:0 0 100%;width:100%}.ph{height:560px}.dk{height:auto;min-height:520px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="masthead">
+  <p class="kick">Three concepts · pick a direction, not a colour</p>
+  <h1>Same content, three philosophies about how much interface should exist while someone is learning.</h1>
+  <p>These are not variations. Each answers a different question about what your learner is doing when they
+    open this, and each makes a real sacrifice to do it well.</p>
+  <p>Your palette is already right. The Awwwards UI-design pool this month runs on warm reds, burnt orange and
+    ochre with editorial serifs, which is where Barro and Marigold already live. What was wrong with the last
+    mock was that everything sat in a rounded card at one width, so nothing had a hierarchy. All three concepts
+    below fix that differently.</p>
+</div>
+
+<!-- ═══════════════════════ A ═══════════════════════ -->
+<section class="concept">
+  <div class="chead">
+    <div class="num">A</div>
+    <div>
+      <h2>The Field Manual</h2>
+      <p class="thesis">Learning as consulting a beautifully made technical document. Indexed, numbered,
+        precise. Trust comes from evident craft and rigour, not from friendliness.</p>
+      <div class="meta">
+        <div><b>Inspiration</b>Aviation checklists, Tesla service documentation, Braun instruction cards, Swiss editorial</div>
+        <div><b>Adult-learning basis</b>Adults resist being taught and accept being <i>referenced</i>. A manual grants authority over the material instead of asking for compliance.</div>
+        <div><b>Your ethos</b>Strongest fit. A manual <i>is</i> a foundation document. This is what the companies you worked at never wrote.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="frames">
+    <div>
+      <p class="cap">Mobile · a unit</p>
+      <div class="ph"><div class="A">
+        <div class="bar"><span>§1.2 — Tokens</span><span>02 / 05</span></div>
+        <div class="doc">
+          <div class="idx"><span>UNIT 1.2.02</span><span>ANALOGY · 2 MIN</span></div>
+          <h3>Tokens are gas in a tank</h3>
+          <p class="lead">Every word you type burns a little. Every word it writes back burns a little more.</p>
+          <div class="fig">
+            <span class="tag">FIG. 1</span>
+            <p class="big">Tank empty → sentence stops.<br>Mid-word. Mid-highway.</p>
+          </div>
+          <dl class="spec">
+            <dt>Teaches</dt><dd>token · rate limit</dd>
+          </dl>
+          <dl class="spec">
+            <dt>Volatility</dt><dd>Evergreen</dd>
+          </dl>
+          <dl class="spec">
+            <dt>Verified</dt><dd>2026-07-20</dd>
+          </dl>
+        </div>
+        <div class="act"><div class="go">Continue →</div></div>
+      </div></div>
+    </div>
+
+    <div style="flex:1;min-width:440px">
+      <p class="cap">Desktop · index rail, margin notes, wide measure</p>
+      <div class="dk"><div class="A-d">
+        <div class="rail">
+          <div class="lg">Me, Myself &amp; AI</div>
+          <div class="sec">§0 · What AI isn't</div>
+          <div class="it"><span class="n">0.1</span>It won't take your job</div>
+          <div class="it"><span class="n">0.2</span>It makes things up</div>
+          <div class="sec">§1 · Foundations</div>
+          <div class="it"><span class="n">1.1</span>The answer that died</div>
+          <div class="it on"><span class="n">1.2</span>Tokens are gas in a tank</div>
+          <div class="it"><span class="n">1.3</span>What's in the tank</div>
+          <div class="it"><span class="n">1.4</span>Three habits</div>
+          <div class="sec">§2 · Make it yours</div>
+          <div class="it"><span class="n">2.1</span>Locked</div>
+        </div>
+        <div class="pane">
+          <div class="marg">UNIT 1.2<br>ANALOGY<br>2 MIN<br><br>EVERGREEN<br>VER. 07·2026</div>
+          <div class="col">
+            <h3>Tokens are gas in a tank</h3>
+            <p style="font-size:.9375rem;line-height:1.65;color:#5d5348;max-width:46ch">
+              Every word you type burns a little gas. Every word the AI writes back burns gas too. When the
+              tank hits empty, everything stops. Even mid-sentence. Even on the highway.</p>
+            <div class="fig" style="margin-top:1.6rem;max-width:34rem">
+              <span class="tag">FIG. 1 — THE MENTAL MODEL</span>
+              <p class="big" style="font-size:1.7rem">Rate limits are the gas station that only lets you
+                fill up so many times an hour.</p>
+            </div>
+            <div class="rule"></div>
+            <p style="font:500 .625rem 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#a2947f">
+              NEXT — 1.3 WHAT'S ACTUALLY IN THE TANK · 3 MIN</p>
+          </div>
+        </div>
+      </div></div>
+    </div>
+  </div>
+
+  <p class="cap">Where your story lives</p>
+  <div class="aboutdemo"><div class="about-A">
+    <p class="k">Foreword</p>
+    <p class="q">Four companies. Four industries. The same crack in the floor.</p>
+    <p class="b">Tesla. Expedia. Highmark. Barneys. Different decades, different problems, one thing in
+      common: teams moving fast on top of foundations nobody had ever been taught. Not because people
+      weren't smart. Because no one had explained the fundamentals in language that made sense to the
+      people doing the work. I spent my career in that gap. AI is about to repeat it, faster and wider than
+      any system I've watched fail. So this is the manual I wish those teams had been handed.</p>
+    <div class="names"><span>TESLA</span><span>EXPEDIA</span><span>HIGHMARK</span><span>BARNEYS</span></div>
+  </div></div>
+
+  <p class="tradeoff" style="margin-top:1.25rem"><b>Trade-off.</b> The most distinctive and the most defensible,
+    and the only one where your credibility is structural rather than decorative. Risks reading cold or clinical
+    if the writing doesn't stay warm, and the numbering demands the taxonomy actually holds up, which is now
+    the case.</p>
+</section>
+
+<!-- ═══════════════════════ B ═══════════════════════ -->
+<section class="concept">
+  <div class="chead">
+    <div class="num">B</div>
+    <div>
+      <h2>One Thing at a Time</h2>
+      <p class="thesis">The interface disappears. One idea per screen, set enormous, with essentially no
+        chrome. Effortless in the literal sense: there is never a decision to make.</p>
+      <div class="meta">
+        <div><b>Inspiration</b>Apple onboarding, iOS Focus, Oak and Headspace, gallery wall labels</div>
+        <div><b>Adult-learning basis</b>Cognitive load theory, taken to its conclusion. Every visible control is working memory spent on the interface instead of the idea.</div>
+        <div><b>Your ethos</b>Weakest fit as-is. Needs a deliberate moment for the story, because there is no furniture to hang it on.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="frames">
+    <div>
+      <p class="cap">Mobile · the analogy</p>
+      <div class="ph"><div class="B">
+        <div class="prog"><i></i></div>
+        <div class="stage">
+          <p class="eye">Foundations · 02</p>
+          <p class="huge">Tokens are <em>gas in a tank.</em></p>
+          <p class="sub">Every word you type burns a little. Every word it writes back burns a little more.</p>
+        </div>
+        <div class="foot"><span class="hint">Tap to continue</span><span class="tapx">→</span></div>
+      </div></div>
+    </div>
+
+    <div>
+      <p class="cap">Mobile · recall, same silence</p>
+      <div class="ph"><div class="B">
+        <div class="prog"><i style="inset:0 25% 0 0"></i></div>
+        <div class="stage">
+          <p class="eye">Quick check</p>
+          <p class="huge" style="font-size:1.7rem">Which burns fuel?</p>
+          <div style="margin-top:1.5rem">
+            <div class="opt">Only what you type</div>
+            <div class="opt on">Both, input and output</div>
+            <div class="opt">Only what it writes back</div>
+          </div>
+        </div>
+        <div class="foot"><span class="hint">2 min left</span><span class="tapx">→</span></div>
+      </div></div>
+    </div>
+
+    <div style="flex:1;min-width:360px">
+      <p class="cap">Desktop · the same idea, given room</p>
+      <div class="dk" style="min-width:360px"><div class="B-d">
+        <div class="prog"><i></i></div>
+        <div class="topline"><span>Me, Myself &amp; AI</span><span>Foundations · 02 of 12</span></div>
+        <div class="stage">
+          <div>
+            <p class="huge">Tokens are <em>gas in a tank.</em></p>
+            <p class="sub">Every word you type burns a little gas. Every word the AI writes back burns gas
+              too. When the tank hits empty, everything stops. Even mid-sentence.</p>
+          </div>
+        </div>
+        <div class="foot"><span>Press space to continue</span><span>Esc for the index</span></div>
+      </div></div>
+      <p class="tradeoff" style="margin-top:1.25rem"><b>Trade-off.</b> By far the most striking, and genuinely
+        effortless. But it is hostile to your reference seeker: there is nowhere to browse, scan or look
+        something up, so the Glossary journey has to live somewhere else entirely. Also the hardest to write
+        for, since every screen has to earn its existence at 40px.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ C ═══════════════════════ -->
+<section class="concept">
+  <div class="chead">
+    <div class="num">C</div>
+    <div>
+      <h2>The Workbench</h2>
+      <p class="thesis">Not a course you are taking, a tool you own. Persistent context, a visible cheat
+        sheet you are building, and the sense of operating something rather than being walked through it.</p>
+      <div class="meta">
+        <div><b>Inspiration</b>Linear, Arc, Things 3, a well-organised workshop pegboard</div>
+        <div><b>Adult-learning basis</b>Andragogy: adults learn for immediate application, and want to keep what they make. The cheat sheet is visible the whole time, so value accrues in front of you.</div>
+        <div><b>Your ethos</b>Good fit. Speaks to operators. Your story lands as "built by someone who has run the thing," not as a bio.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="frames">
+    <div>
+      <p class="cap">Mobile · home</p>
+      <div class="ph"><div class="C">
+        <div class="bar"><span class="sq">☰</span><span class="t">Me, Myself &amp; AI</span><span class="sq">ES</span></div>
+        <div class="body">
+          <div class="now">
+            <p class="l">Up next</p>
+            <p class="n">What's actually in the tank</p>
+            <p class="m">Concept · 3 min</p>
+            <div class="go">Continue</div>
+          </div>
+          <div class="strip">
+            <div class="stat"><div class="v">14</div><div class="k">of 75 units</div></div>
+            <div class="stat"><div class="v">6</div><div class="k">you can do</div></div>
+            <div class="stat"><div class="v">6</div><div class="k">saved</div></div>
+          </div>
+          <p class="grp">Foundations</p>
+          <div class="row d"><span class="dot"></span><span class="x">The answer that died</span><span class="tm">2m</span></div>
+          <div class="row d"><span class="dot"></span><span class="x">Tokens are gas in a tank</span><span class="tm">2m</span></div>
+          <div class="row h"><span class="dot"></span><span class="x">What's actually in the tank</span><span class="tm">3m</span></div>
+          <div class="row"><span class="dot"></span><span class="x">Three habits that save fuel</span><span class="tm">2m</span></div>
+          <div class="row"><span class="dot"></span><span class="x">Quick check</span><span class="tm">2m</span></div>
+        </div>
+        <div class="tabs">
+          <div class="on"><span class="i">◧</span>Home</div>
+          <div><span class="i">✦</span>Use It</div>
+          <div><span class="i">A</span>Glossary</div>
+          <div><span class="i">◔</span>Progress</div>
+        </div>
+      </div></div>
+    </div>
+
+    <div style="flex:1;min-width:440px">
+      <p class="cap">Desktop · the cheat sheet is always visible, filling up as you go</p>
+      <div class="dk"><div class="C-d">
+        <div class="rail">
+          <div class="ic on">◧</div><div class="ic">✦</div><div class="ic">A</div><div class="ic">◔</div>
+          <div style="flex:1"></div><div class="ic">☰</div>
+        </div>
+        <div class="mid">
+          <p style="font:600 .5625rem 'Inter';letter-spacing:.14em;text-transform:uppercase;color:#8b8279;margin-bottom:.6rem">Foundations · unit 3 of 12</p>
+          <h3>What's actually in the tank</h3>
+          <p style="font-size:.875rem;line-height:1.65;color:#5f584f;max-width:48ch;margin-bottom:1.2rem">
+            A token is the unit AI actually reads and writes. Roughly three-quarters of a word, so 100 words
+            is about 130 tokens.</p>
+          <div style="background:#1c1a17;color:#fdfcfa;border-radius:12px;padding:1.4rem;max-width:32rem">
+            <p style="font:600 .5625rem 'Inter';letter-spacing:.14em;text-transform:uppercase;opacity:.5;margin-bottom:.6rem">Both directions burn fuel</p>
+            <p style="font:400 1.3rem/1.3 'Fraunces',serif">Input and output both count. A short question with
+              a long answer still drains the tank.</p>
+          </div>
+          <div style="display:flex;gap:.5rem;margin-top:1.2rem">
+            <div style="background:#E5A33F;color:#1c1a17;border-radius:8px;padding:.55rem 1.1rem;font:600 .8125rem 'Inter'">Continue</div>
+            <div style="border:1px solid #e0d9d0;border-radius:8px;padding:.55rem 1.1rem;font:600 .8125rem 'Inter';color:#7a7168">＋ Save to sheet</div>
+          </div>
+        </div>
+        <div class="drawer">
+          <p class="h">Your cheat sheet</p>
+          <div class="note">"AI has a gas tank. Long conversations burn more fuel."</div>
+          <div class="note">"Be specific about audience, tone and length."</div>
+          <div class="note">"New topic means new chat."</div>
+          <p style="font-size:.625rem;color:#a89e94;margin-top:.7rem">6 saved · export one page</p>
+        </div>
+      </div></div>
+      <p class="tradeoff" style="margin-top:1.25rem"><b>Trade-off.</b> Most useful, most familiar, most likely
+        to be used at work on a Tuesday. Also the least distinctive: it reads as competent software rather than
+        as something with a point of view, and it is the closest of the three to what everyone else ships.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════ RECOMMENDATION ═══════════════════════ -->
+<section class="concept" style="margin-bottom:2rem">
+  <div class="chead">
+    <div class="num" style="color:var(--ink)">→</div>
+    <div>
+      <h2>What I'd do</h2>
+      <p class="thesis"><b>A for the shell, B for the learning moment.</b> Field Manual gives the product its
+        authority, its index and its home for your story. Then when a unit opens, the manual gets out of the
+        way and the analogy goes full-screen and enormous, the way B does it.</p>
+      <div class="meta">
+        <div><b>Why not C</b>It is the safe answer. Nothing about it would make the reviewer's skeptical colleague think this was made by someone with a point of view, and that is the thing you are actually selling.</div>
+        <div><b>Why not B alone</b>It has nowhere to put a glossary, a profession picker, or four companies' worth of hard-won credibility.</div>
+        <div><b>What A+B buys</b>Structure when orienting, silence when learning. The manual is the foundation; the analogy is the moment. That is also, precisely, your thesis.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
