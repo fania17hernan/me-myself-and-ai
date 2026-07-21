@@ -28,8 +28,13 @@ function coerce(v) {
     const inner = s.slice(1, -1).trim();
     return inner ? inner.split(',').map(x => coerce(x)) : [];
   }
-  if ((s.startsWith('"') && s.endsWith('"')) || (s.startsWith("'") && s.endsWith("'"))) {
-    return s.slice(1, -1);
+  if (s.startsWith('"') && s.endsWith('"') && s.length > 1) {
+    // unescape \" and \\ inside a double-quoted scalar, otherwise a title
+    // like "\"It's going to take my job\"" renders its backslashes literally
+    return s.slice(1, -1).replace(/\\(["\\])/g, '$1');
+  }
+  if (s.startsWith("'") && s.endsWith("'") && s.length > 1) {
+    return s.slice(1, -1).replace(/''/g, "'");
   }
   return s;
 }
