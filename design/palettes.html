@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palette directions · Me, Myself &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@300;400;500;600;700&family=Newsreader:ital,opsz,wght@0,6..72,300..700;1,6..72,300..600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#fafafa;color:#1a1815;font:400 15px/1.6 'Inter',system-ui,sans-serif;padding:3rem 1.5rem 8rem}
+.wrap{max-width:76rem;margin:0 auto}
+.masthead{max-width:54rem;margin-bottom:3.5rem}
+.masthead .kick{font:600 .6875rem 'Inter';letter-spacing:.16em;text-transform:uppercase;color:#a8412a;margin-bottom:1rem}
+.masthead h1{font:600 clamp(2rem,4vw,2.9rem)/1.06 'Fraunces',serif;letter-spacing:-.025em;margin-bottom:1rem}
+.masthead p{color:#645a50;max-width:64ch;font-size:1.0625rem}
+.masthead p+p{margin-top:.75rem}
+
+.set{margin-bottom:5rem}
+.shead{display:grid;grid-template-columns:2.5rem 1fr;gap:1.25rem;border-top:2px solid #1a1815;padding-top:1rem;margin-bottom:1.5rem}
+.shead .n{font:600 1.75rem/1 'Fraunces',serif}
+.shead h2{font:600 1.6rem/1.1 'Fraunces',serif;letter-spacing:-.02em;margin-bottom:.35rem}
+.shead .why{color:#645a50;max-width:60ch;font-size:.9375rem}
+.shead .why b{color:#1a1815}
+.sw{display:flex;gap:.4rem;margin:.9rem 0 .25rem;flex-wrap:wrap}
+.sw i{width:34px;height:34px;border-radius:6px;box-shadow:inset 0 0 0 1px rgba(0,0,0,.12);display:block}
+.hex{font:400 .625rem 'IBM Plex Mono',monospace;color:#8f877e;letter-spacing:.02em}
+
+.demos{display:flex;gap:1.5rem;flex-wrap:wrap;align-items:flex-start;margin-top:1.5rem}
+.cap{font:600 .625rem 'Inter';letter-spacing:.12em;text-transform:uppercase;color:#9b938a;margin-bottom:.5rem}
+.ph{width:270px;flex:0 0 270px;height:500px;border-radius:22px;overflow:hidden;
+    box-shadow:0 1px 2px rgba(0,0,0,.08),0 12px 32px rgba(0,0,0,.10);display:flex;flex-direction:column}
+.wide{flex:1;min-width:380px;height:500px;border-radius:10px;overflow:hidden;
+      box-shadow:0 1px 2px rgba(0,0,0,.08),0 12px 32px rgba(0,0,0,.10);display:flex;flex-direction:column}
+
+/* ---- shared demo skeleton, themed by CSS vars ---- */
+.d{--r:3px;background:var(--paper);color:var(--ink);width:100%;height:100%;display:flex;flex-direction:column;
+   font-family:'Inter',sans-serif}
+.d .bar{display:flex;justify-content:space-between;align-items:center;padding:.8rem .9rem;
+  border-bottom:1px solid var(--line);font:500 .5625rem 'IBM Plex Mono',monospace;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+.d .b{flex:1;padding:1.2rem .95rem;overflow:hidden}
+.d .eye{font:600 .5625rem 'Inter';letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:.8rem}
+.d h3{font:400 1.85rem/1.05 var(--disp);letter-spacing:-.02em;margin-bottom:.6rem;font-weight:var(--dw)}
+.d p{font-size:.8125rem;line-height:1.6;color:var(--soft)}
+.d .fig{background:var(--tint);border-radius:var(--r);padding:1.1rem .9rem;margin:1.1rem 0;
+  border-left:3px solid var(--acc)}
+.d .fig .t{font:400 1.15rem/1.2 var(--disp);color:var(--ink);font-weight:var(--dw)}
+.d .go{background:var(--acc);color:var(--paper);border-radius:var(--r);padding:.65rem;text-align:center;
+  font:600 .75rem 'Inter';margin-top:.9rem}
+.d .row{display:flex;align-items:center;gap:.55rem;padding:.45rem 0;border-bottom:1px solid var(--line);font-size:.75rem}
+.d .row .dt{width:7px;height:7px;border-radius:50%;background:var(--line);flex:0 0 7px}
+.d .row.on .dt{background:var(--acc);box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 22%,transparent)}
+.d .row.dn .dt{background:var(--hi)}
+.d .row .x{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.d .row .m{color:var(--soft);font-size:.625rem}
+.d .foot{border-top:1px solid var(--line);padding:.7rem .95rem;display:flex;gap:.5rem;align-items:center;
+  font:500 .5625rem 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+
+/* wide variant */
+.d.w .b{display:flex;gap:2rem;padding:1.8rem}
+.d.w .col{flex:1;min-width:0}
+.d.w .side{flex:0 0 140px;font-size:.6875rem}
+.d.w h3{font-size:2.4rem}
+.d.w .marg{font:500 .5625rem 'IBM Plex Mono',monospace;letter-spacing:.08em;color:var(--soft);line-height:1.8}
+
+/* ---- the five ---- */
+.pA{--paper:#F7F4EE;--ink:#17130F;--soft:#645A50;--acc:#A8412A;--hi:#D98C2B;--line:#E2DACC;--tint:#EFE7D8;--disp:'Fraunces',serif;--dw:600}
+.pB{--paper:#FBFAF8;--ink:#0D0C0B;--soft:#5C5854;--acc:#B02318;--hi:#8A8378;--line:#E4E0DA;--tint:#F1EEE9;--disp:'Newsreader',serif;--dw:400}
+.pC{--paper:#F8F6F1;--ink:#17233D;--soft:#55607A;--acc:#2A4C9B;--hi:#C08A2E;--line:#DFDCD3;--tint:#E9EDF4;--disp:'Newsreader',serif;--dw:400}
+.pD{--paper:#F4F4F5;--ink:#18181B;--soft:#5B5B62;--acc:#C2450F;--hi:#8A8A93;--line:#DEDEE1;--tint:#E7E7E9;--disp:'Inter',sans-serif;--dw:600;--r:2px}
+.pE{--paper:#1C1B19;--ink:#EDEAE4;--soft:#A39B90;--acc:#D08A4E;--hi:#8FA98C;--line:#33302C;--tint:#262421;--disp:'Fraunces',serif;--dw:600}
+
+.verdict{border-left:3px solid #a8412a;padding:.6rem 0 .6rem 1rem;font-size:.9375rem;color:#645a50;max-width:64ch;margin-top:1.25rem}
+.verdict b{color:#1a1815}
+table{width:100%;border-collapse:collapse;font-size:.875rem;margin-top:1rem}
+td,th{text-align:left;padding:.55rem .5rem;border-bottom:1px solid #e6e2dc;vertical-align:top}
+th{font:600 .625rem 'Inter';letter-spacing:.1em;text-transform:uppercase;color:#9b938a}
+@media(max-width:860px){.ph,.wide{flex:0 0 100%;width:100%;min-width:100%}.wide{height:auto;min-height:420px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="masthead">
+  <p class="kick">Five palette directions</p>
+  <h1>Colour was doing the wrong job. It was making the product feel <em>gentle</em>, and you are not selling gentle.</h1>
+  <p>The current palette reads soft and reassuring, which fights the thing you are actually offering: rigour,
+    from someone who has watched four companies skip the fundamentals. Warm and reassuring is what a wellness
+    app looks like. You want warm and <b>exacting</b>.</p>
+  <p>Each direction below comes from something real about you rather than from a trend board. All five clear
+    WCAG AA on body text, muted text, accent, and button labels. Same layout throughout, so you are judging
+    colour and nothing else.</p>
+</div>
+
+<!-- ═════════ A ═════════ -->
+<section class="set">
+  <div class="shead">
+    <div class="n">A</div>
+    <div>
+      <h2>Barro &amp; Marigold, corrected</h2>
+      <p class="why">Your palette, fixed rather than replaced. <b>The problem was never the hue, it was the
+        haze.</b> The old paper is a yellowed beige and the old ink is a soft brown, so everything sits in a
+        narrow tonal band and nothing feels sharp. Cooler paper, near-black ink, deeper clay. Same identity,
+        suddenly legible. <i>Barro</i> stays, and it should: clay is the oldest building material there is.</p>
+      <div class="sw">
+        <i style="background:#F7F4EE"></i><i style="background:#17130F"></i><i style="background:#A8412A"></i><i style="background:#D98C2B"></i><i style="background:#E2DACC"></i>
+      </div>
+      <p class="hex">#F7F4EE · #17130F · #A8412A · #D98C2B — body 16.8 : 1</p>
+    </div>
+  </div>
+  <div class="demos">
+    <div><p class="cap">Unit</p><div class="ph"><div class="d pA">
+      <div class="bar"><span>§1.2 Tokens</span><span>02 / 05</span></div>
+      <div class="b">
+        <p class="eye">The core analogy</p>
+        <h3>Tokens are gas in a tank</h3>
+        <p>Every word you type burns a little. Every word it writes back burns a little more.</p>
+        <div class="fig"><p class="t">Tank empty, sentence stops. Mid-word. Mid-highway.</p></div>
+        <div class="go">Continue</div>
+      </div>
+      <div class="foot"><span>Evergreen · verified 07·2026</span></div>
+    </div></div></div>
+    <div style="flex:1;min-width:380px"><p class="cap">Home</p><div class="wide"><div class="d w pA">
+      <div class="bar"><span>Me, Myself &amp; AI</span><span>Foundations</span></div>
+      <div class="b">
+        <div class="col">
+          <p class="eye">Pick up where you left off</p>
+          <h3>What's actually in the tank</h3>
+          <p>Concept · 3 min</p>
+          <div class="go" style="max-width:11rem">Continue</div>
+          <div style="margin-top:1.4rem">
+            <div class="row dn"><span class="dt"></span><span class="x">The answer that died mid-sentence</span><span class="m">2m</span></div>
+            <div class="row dn"><span class="dt"></span><span class="x">Tokens are gas in a tank</span><span class="m">2m</span></div>
+            <div class="row on"><span class="dt"></span><span class="x">What's actually in the tank</span><span class="m">3m</span></div>
+            <div class="row"><span class="dt"></span><span class="x">Three habits that save fuel</span><span class="m">2m</span></div>
+          </div>
+        </div>
+        <div class="side"><p class="marg">UNIT 1.3<br>CONCEPT<br>3 MIN<br><br>14 OF 75<br>DONE</p></div>
+      </div>
+    </div></div></div>
+  </div>
+  <p class="verdict"><b>Reads as:</b> considered, handmade, editorial. <b>Risk:</b> still the warmest option,
+    so it still runs closest to "friendly" rather than "authoritative." <b>Lowest-cost choice</b>, since your
+    brand kit survives intact.</p>
+</section>
+
+<!-- ═════════ B ═════════ -->
+<section class="set">
+  <div class="shead">
+    <div class="n">B</div>
+    <div>
+      <h2>Obsidian &amp; Chile</h2>
+      <p class="why">Barneys. <b>Luxury retail taught you that restraint reads as expensive</b>, and that a
+        single red against black and bone does more than a whole palette. Near-black type on near-white paper,
+        one saturated chile red used sparingly enough that it always means something. This is the most
+        <i>expensive-looking</i> option and the one that most signals a point of view.</p>
+      <div class="sw">
+        <i style="background:#FBFAF8"></i><i style="background:#0D0C0B"></i><i style="background:#B02318"></i><i style="background:#8A8378"></i><i style="background:#E4E0DA"></i>
+      </div>
+      <p class="hex">#FBFAF8 · #0D0C0B · #B02318 · #8A8378 — body 18.7 : 1</p>
+    </div>
+  </div>
+  <div class="demos">
+    <div><p class="cap">Unit</p><div class="ph"><div class="d pB">
+      <div class="bar"><span>§1.2 Tokens</span><span>02 / 05</span></div>
+      <div class="b">
+        <p class="eye">The core analogy</p>
+        <h3>Tokens are gas in a tank</h3>
+        <p>Every word you type burns a little. Every word it writes back burns a little more.</p>
+        <div class="fig"><p class="t">Tank empty, sentence stops. Mid-word. Mid-highway.</p></div>
+        <div class="go">Continue</div>
+      </div>
+      <div class="foot"><span>Evergreen · verified 07·2026</span></div>
+    </div></div></div>
+    <div style="flex:1;min-width:380px"><p class="cap">Home</p><div class="wide"><div class="d w pB">
+      <div class="bar"><span>Me, Myself &amp; AI</span><span>Foundations</span></div>
+      <div class="b">
+        <div class="col">
+          <p class="eye">Pick up where you left off</p>
+          <h3>What's actually in the tank</h3>
+          <p>Concept · 3 min</p>
+          <div class="go" style="max-width:11rem">Continue</div>
+          <div style="margin-top:1.4rem">
+            <div class="row dn"><span class="dt"></span><span class="x">The answer that died mid-sentence</span><span class="m">2m</span></div>
+            <div class="row dn"><span class="dt"></span><span class="x">Tokens are gas in a tank</span><span class="m">2m</span></div>
+            <div class="row on"><span class="dt"></span><span class="x">What's actually in the tank</span><span class="m">3m</span></div>
+            <div class="row"><span class="dt"></span><span class="x">Three habits that save fuel</span><span class="m">2m</span></div>
+          </div>
+        </div>
+        <div class="side"><p class="marg">UNIT 1.3<br>CONCEPT<br>3 MIN<br><br>14 OF 75<br>DONE</p></div>
+      </div>
+    </div></div></div>
+  </div>
+  <p class="verdict"><b>Reads as:</b> assured, editorial, no apology. <b>Risk:</b> can tip cold if the writing
+    doesn't stay warm, and it abandons the clay reference that ties the brand to you.</p>
+</section>
+
+<!-- ═════════ C ═════════ -->
+<section class="set">
+  <div class="shead">
+    <div class="n">C</div>
+    <div>
+      <h2>Talavera</h2>
+      <p class="why">Puebla ceramic: cobalt on bone, with an ochre accent. <b>The one direction that is
+        unmistakably yours and not remotely a tech palette.</b> Crucially this is a <i>ceramic</i> cobalt, mixed
+        with warmth, not the flat blue every AI product on earth reaches for. It also solves something the warm
+        palettes can't: blue reads as trustworthy and institutional, which is exactly the register a guarded
+        senior professional responds to.</p>
+      <div class="sw">
+        <i style="background:#F8F6F1"></i><i style="background:#17233D"></i><i style="background:#2A4C9B"></i><i style="background:#C08A2E"></i><i style="background:#DFDCD3"></i>
+      </div>
+      <p class="hex">#F8F6F1 · #17233D · #2A4C9B · #C08A2E — body 14.5 : 1</p>
+    </div>
+  </div>
+  <div class="demos">
+    <div><p class="cap">Unit</p><div class="ph"><div class="d pC">
+      <div class="bar"><span>§1.2 Tokens</span><span>02 / 05</span></div>
+      <div class="b">
+        <p class="eye">The core analogy</p>
+        <h3>Tokens are gas in a tank</h3>
+        <p>Every word you type burns a little. Every word it writes back burns a little more.</p>
+        <div class="fig"><p class="t">Tank empty, sentence stops. Mid-word. Mid-highway.</p></div>
+        <div class="go">Continue</div>
+      </div>
+      <div class="foot"><span>Evergreen · verified 07·2026</span></div>
+    </div></div></div>
+    <div style="flex:1;min-width:380px"><p class="cap">Home</p><div class="wide"><div class="d w pC">
+      <div class="bar"><span>Me, Myself &amp; AI</span><span>Foundations</span></div>
+      <div class="b">
+        <div class="col">
+          <p class="eye">Pick up where you left off</p>
+          <h3>What's actually in the tank</h3>
+          <p>Concept · 3 min</p>
+          <div class="go" style="max-width:11rem">Continue</div>
+          <div style="margin-top:1.4rem">
+            <div class="row dn"><span class="dt"></span><span class="x">The answer that died mid-sentence</span><span class="m">2m</span></div>
+            <div class="row dn"><span class="dt"></span><span class="x">Tokens are gas in a tank</span><span class="m">2m</span></div>
+            <div class="row on"><span class="dt"></span><span class="x">What's actually in the tank</span><span class="m">3m</span></div>
+            <div class="row"><span class="dt"></span><span class="x">Three habits that save fuel</span><span class="m">2m</span></div>
+          </div>
+        </div>
+        <div class="side"><p class="marg">UNIT 1.3<br>CONCEPT<br>3 MIN<br><br>14 OF 75<br>DONE</p></div>
+      </div>
+    </div></div></div>
+  </div>
+  <p class="verdict"><b>Reads as:</b> crafted, cultural, institutionally trustworthy. <b>Risk:</b> blue is the
+    hardest colour to keep away from generic tech. It survives only if the blue stays ceramic and the ochre
+    gets real work to do, not decoration.</p>
+</section>
+
+<!-- ═════════ D ═════════ -->
+<section class="set">
+  <div class="shead">
+    <div class="n">D</div>
+    <div>
+      <h2>Graphite &amp; Signal</h2>
+      <p class="why">Tesla, and every good engineering document. Neutral graphite, generous white, and one
+        high-visibility signal orange used the way safety colour is used on a factory floor: <b>never
+        decorative, always meaning "look here."</b> This is the native palette of the Field Manual concept.
+        Nothing about it is trying to be liked, which is precisely why a skeptic trusts it.</p>
+      <div class="sw">
+        <i style="background:#F4F4F5"></i><i style="background:#18181B"></i><i style="background:#C2450F"></i><i style="background:#8A8A93"></i><i style="background:#DEDEE1"></i>
+      </div>
+      <p class="hex">#F4F4F5 · #18181B · #C2450F · #8A8A93 — body 16.1 : 1</p>
+    </div>
+  </div>
+  <div class="demos">
+    <div><p class="cap">Unit</p><div class="ph"><div class="d pD">
+      <div class="bar"><span>§1.2 Tokens</span><span>02 / 05</span></div>
+      <div class="b">
+        <p class="eye">The core analogy</p>
+        <h3>Tokens are gas in a tank</h3>
+        <p>Every word you type burns a little. Every word it writes back burns a little more.</p>
+        <div class="fig"><p class="t">Tank empty, sentence stops. Mid-word. Mid-highway.</p></div>
+        <div class="go">Continue</div>
+      </div>
+      <div class="foot"><span>Evergreen · verified 07·2026</span></div>
+    </div></div></div>
+    <div style="flex:1;min-width:380px"><p class="cap">Home</p><div class="wide"><div class="d w pD">
+      <div class="bar"><span>Me, Myself &amp; AI</span><span>Foundations</span></div>
+      <div class="b">
+        <div class="col">
+          <p class="eye">Pick up where you left off</p>
+          <h3>What's actually in the tank</h3>
+          <p>Concept · 3 min</p>
+          <div class="go" style="max-width:11rem">Continue</div>
+          <div style="margin-top:1.4rem">
+            <div class="row dn"><span class="dt"></span><span class="x">The answer that died mid-sentence</span><span class="m">2m</span></div>
+            <div class="row dn"><span class="dt"></span><span class="x">Tokens are gas in a tank</span><span class="m">2m</span></div>
+            <div class="row on"><span class="dt"></span><span class="x">What's actually in the tank</span><span class="m">3m</span></div>
+            <div class="row"><span class="dt"></span><span class="x">Three habits that save fuel</span><span class="m">2m</span></div>
+          </div>
+        </div>
+        <div class="side"><p class="marg">UNIT 1.3<br>CONCEPT<br>3 MIN<br><br>14 OF 75<br>DONE</p></div>
+      </div>
+    </div></div></div>
+  </div>
+  <p class="verdict"><b>Reads as:</b> precise, engineered, unsentimental. <b>Risk:</b> the most generic of the
+    five. Neutral grey is where software goes when it has no opinion, so this one lives or dies on typography
+    and on the discipline of the orange.</p>
+</section>
+
+<!-- ═════════ E ═════════ -->
+<section class="set">
+  <div class="shead">
+    <div class="n">E</div>
+    <div>
+      <h2>Volcánica</h2>
+      <p class="why">Basalt and molten copper, from the <i>molcajete</i>: volcanic stone, the oldest tool in the
+        kitchen, still in daily use because nothing has improved on it. <b>That is your entire thesis as a
+        colour.</b> Foundations outlast the things built on them. Dark-canvas-first, which also inverts the
+        usual reading posture and makes the analogy moments glow rather than sit.</p>
+      <div class="sw">
+        <i style="background:#1C1B19"></i><i style="background:#EDEAE4"></i><i style="background:#D08A4E"></i><i style="background:#8FA98C"></i><i style="background:#33302C"></i>
+      </div>
+      <p class="hex">#1C1B19 · #EDEAE4 · #D08A4E · #8FA98C — body 14.3 : 1</p>
+    </div>
+  </div>
+  <div class="demos">
+    <div><p class="cap">Unit</p><div class="ph"><div class="d pE">
+      <div class="bar"><span>§1.2 Tokens</span><span>02 / 05</span></div>
+      <div class="b">
+        <p class="eye">The core analogy</p>
+        <h3>Tokens are gas in a tank</h3>
+        <p>Every word you type burns a little. Every word it writes back burns a little more.</p>
+        <div class="fig"><p class="t">Tank empty, sentence stops. Mid-word. Mid-highway.</p></div>
+        <div class="go">Continue</div>
+      </div>
+      <div class="foot"><span>Evergreen · verified 07·2026</span></div>
+    </div></div></div>
+    <div style="flex:1;min-width:380px"><p class="cap">Home</p><div class="wide"><div class="d w pE">
+      <div class="bar"><span>Me, Myself &amp; AI</span><span>Foundations</span></div>
+      <div class="b">
+        <div class="col">
+          <p class="eye">Pick up where you left off</p>
+          <h3>What's actually in the tank</h3>
+          <p>Concept · 3 min</p>
+          <div class="go" style="max-width:11rem">Continue</div>
+          <div style="margin-top:1.4rem">
+            <div class="row dn"><span class="dt"></span><span class="x">The answer that died mid-sentence</span><span class="m">2m</span></div>
+            <div class="row dn"><span class="dt"></span><span class="x">Tokens are gas in a tank</span><span class="m">2m</span></div>
+            <div class="row on"><span class="dt"></span><span class="x">What's actually in the tank</span><span class="m">3m</span></div>
+            <div class="row"><span class="dt"></span><span class="x">Three habits that save fuel</span><span class="m">2m</span></div>
+          </div>
+        </div>
+        <div class="side"><p class="marg">UNIT 1.3<br>CONCEPT<br>3 MIN<br><br>14 OF 75<br>DONE</p></div>
+      </div>
+    </div></div></div>
+  </div>
+  <p class="verdict"><b>Reads as:</b> serious, cinematic, quietly confident. <b>Risk:</b> dark interfaces are
+    harder to read for long stretches, and it forfeits the light-to-dark progression that made Level 4's
+    payoff work. Better as a signature moment than as the whole product.</p>
+</section>
+
+<!-- ═════════ VERDICT ═════════ -->
+<section class="set">
+  <div class="shead">
+    <div class="n" style="color:#a8412a">→</div>
+    <div>
+      <h2>What I'd pick, and why</h2>
+      <p class="why"><b>C, Talavera.</b> It is the only one of the five that is simultaneously unmistakably
+        yours, not a tech palette, and psychologically right for a guarded reader. Blue does something none of
+        the warm options can: it reads institutional and verifiable, which is the register your fact-governance
+        work is already reaching for. The ochre keeps it from going corporate, and the cultural root is real
+        rather than applied.</p>
+    </div>
+  </div>
+  <table>
+    <tr><th></th><th>Unmistakably yours</th><th>Avoids AI default</th><th>Disarms a skeptic</th><th>Cost to switch</th></tr>
+    <tr><td><b>A</b> Barro corrected</td><td>Yes</td><td>Yes</td><td>Weak, reads gentle</td><td>None</td></tr>
+    <tr><td><b>B</b> Obsidian &amp; Chile</td><td>Via Barneys</td><td>Yes</td><td>Strong</td><td>Medium</td></tr>
+    <tr><td><b>C</b> Talavera</td><td>Strongly</td><td>If the blue stays ceramic</td><td>Strongest</td><td>Medium</td></tr>
+    <tr><td><b>D</b> Graphite &amp; Signal</td><td>Via Tesla</td><td>Least</td><td>Strong</td><td>Medium</td></tr>
+    <tr><td><b>E</b> Volcánica</td><td>Strongly</td><td>Yes</td><td>Medium</td><td>High</td></tr>
+  </table>
+  <p class="verdict" style="margin-top:1.5rem"><b>The hybrid worth considering:</b> C as the system, E as
+    Level 4. Talavera carries the course; Volcánica becomes "Under the Hood," where going dark is
+    narratively earned. That keeps the edition ladder intact and gives the deepest level a real payoff.</p>
+  <p class="verdict"><b>If you want the safest good answer</b>, take A. It costs nothing, fixes the actual
+    defect, which was tonal haze rather than hue, and keeps every asset you have already built.</p>
+</section>
+
+</div>
+</body>
+</html>
