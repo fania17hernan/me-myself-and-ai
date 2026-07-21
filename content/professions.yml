@@ -1,0 +1,3 @@
+# Closed set. Drives the Use It tab. A unit may only tag a profession
+# that appears here.
+professions: [teacher, small-business-owner, hvac-technician, nurse, recruiter, accountant, manager, real-estate-agent, nonprofit, other]

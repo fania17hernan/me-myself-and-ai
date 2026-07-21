@@ -1,0 +1,38 @@
+# The controlled vocabulary. This file is the spine of the taxonomy.
+# A unit may only claim to teach a term that exists here, and the build
+# fails otherwise. That single rule is what stops the glossary and the
+# curriculum from quietly disagreeing six months from now.
+#
+# `taught_by` is DERIVED at build time. Do not hand-edit it.
+
+- id: token
+  term_en: "Token"
+  term_es: "Token"
+  plain_en: "A chunk of a word. It's the unit AI reads and writes, roughly three-quarters of a word."
+  plain_es: "Un pedazo de palabra. Es la unidad que la IA lee y escribe, más o menos tres cuartas partes de una palabra."
+  volatility: evergreen
+  related: [rate-limit, context-window]
+
+- id: rate-limit
+  term_en: "Rate limit"
+  term_es: "Límite de uso"
+  plain_en: "A cap on how much you can use a tool in a given window. Like a gas station that only lets you fill up so many times an hour."
+  plain_es: "Un tope de cuánto puedes usar una herramienta en cierto tiempo. Como una gasolinera que solo te deja llenar el tanque unas cuantas veces por hora."
+  volatility: evergreen
+  related: [token]
+
+- id: context-window
+  term_en: "Context window"
+  term_es: "Ventana de contexto"
+  plain_en: "How much the AI can hold in mind at once. Everything earlier in the conversation counts against it."
+  plain_es: "Cuánto puede tener presente la IA a la vez. Todo lo anterior de la conversación cuenta."
+  volatility: slow
+  related: [token]
+
+- id: truncation
+  term_en: "Truncation"
+  term_es: "Corte de respuesta"
+  plain_en: "When an answer stops mid-sentence because it ran out of room. Not an error, just an empty tank."
+  plain_es: "Cuando una respuesta se detiene a media frase porque se quedó sin espacio. No es un error, es el tanque vacío."
+  volatility: evergreen
+  related: [token, rate-limit]

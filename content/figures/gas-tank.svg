@@ -1,0 +1,55 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="gt-t gt-d" class="drawn">
+  <title id="gt-t">The gas tank</title>
+  <desc id="gt-d">A fuel tank with a gauge reading near empty. An arrow labelled "the words you type"
+    enters from the left, an arrow labelled "and the words it writes back" leaves to the right.
+    A note reads: both directions burn it.</desc>
+  <defs>
+    <filter id="gt-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="gt-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <pattern id="gt-hatch" width="9" height="9" patternTransform="rotate(38)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="9" stroke="#BE3A22" stroke-width="2.1" opacity=".5"/>
+    </pattern>
+  </defs>
+
+  <g filter="url(#gt-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64,86 C64,73 73,66 87,66 L286,68 C300,68 307,75 307,87 L306,172 C306,184 297,190 284,190 L84,188 C70,188 64,181 64,169 Z" stroke-width="2.6"/>
+    <path d="M67,88 C67,76 75,69 88,69 L285,71 C297,71 304,77 304,88 L303,170 C303,181 295,187 283,187 L85,185 C72,185 67,179 67,168 Z" stroke-width="1" opacity=".38"/>
+    <path d="M150,66 L150,50 C150,45 154,42 160,42 L184,42 C190,42 194,45 194,50 L194,66" stroke-width="2.4"/>
+    <path d="M144,42 L200,42" stroke-width="3.2"/>
+  </g>
+
+  <path d="M70,158 C104,152 140,162 178,156 C214,150 254,160 301,155 L301,170 C301,181 294,187 283,187 L85,185 C72,185 70,179 70,168 Z"
+        fill="url(#gt-hatch)" stroke="#BE3A22" stroke-width="1.8" stroke-linejoin="round" filter="url(#gt-rough)"/>
+
+  <g filter="url(#gt-rough2)" fill="none" stroke="#232120" stroke-linecap="round">
+    <circle cx="256" cy="112" r="30" stroke-width="2.4"/>
+    <circle cx="256" cy="112" r="30" stroke-width=".9" opacity=".35" transform="translate(1,-1)"/>
+    <path d="M234,124 L256,112" stroke-width="3" stroke="#BE3A22"/>
+    <circle cx="256" cy="112" r="3.4" fill="#232120" stroke="none"/>
+    <path d="M233,100 L236,104 M279,100 L276,104" stroke-width="1.8"/>
+  </g>
+  <text x="228" y="97" font-family="Fraunces,serif" font-size="14" font-style="italic" font-weight="600" fill="#BE3A22">E</text>
+  <text x="277" y="97" font-family="Fraunces,serif" font-size="14" font-style="italic" font-weight="600" fill="#5E5852">F</text>
+
+  <g filter="url(#gt-rough2)" fill="none" stroke="#2C4C77" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M8,104 C24,102 42,106 58,103"/>
+    <path d="M50,97 L59,103 L50,109"/>
+    <path d="M312,150 C330,147 352,152 372,149"/>
+    <path d="M364,143 L373,149 L364,155"/>
+  </g>
+  <text x="6" y="90" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#2C4C77">the words you type</text>
+  <text x="304" y="176" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#2C4C77">…and the words</text>
+  <text x="304" y="192" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#2C4C77">it writes back</text>
+
+  <g filter="url(#gt-rough2)" fill="none" stroke="#BE3A22" stroke-width="1.9" stroke-linecap="round">
+    <path d="M186,206 C186,218 200,222 214,221"/>
+    <path d="M206,215 L215,221 L206,227"/>
+  </g>
+  <text x="60" y="226" font-family="Fraunces,serif" font-size="15" font-style="italic" font-weight="500" fill="#BE3A22">both directions burn it</text>
+</svg>

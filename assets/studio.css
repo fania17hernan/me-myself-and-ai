@@ -246,3 +246,35 @@ hr.torn{
   *{animation:none!important;transition:none!important}
   .card.tilt-l,.card.tilt-r{transform:none}
 }
+
+/* ---- Generated unit pages ---------------------------------------------- */
+
+.analogy-line{
+  font-family:var(--serif);font-weight:600;
+  font-size:clamp(1.9rem,1.2rem+3vw,3rem);line-height:1.02;letter-spacing:-.03em;
+  font-variation-settings:var(--wonk);
+  max-width:15ch;margin:1.75rem 0;
+}
+.check{border-top:1.5px solid var(--ink);padding-top:1.1rem;margin-top:2rem}
+.check .q{font-weight:600;margin-bottom:.9rem;max-width:52ch}
+.opt:disabled{cursor:default}
+.opt.ok{border-color:var(--sage);border-width:2px}
+.opt.no{border-color:var(--pencil);border-width:2px}
+.explain[hidden]{display:none}
+.explain{margin-top:.85rem;max-width:54ch}
+.pin-line{
+  font-family:var(--serif);font-size:1.15rem;line-height:1.3;
+  font-variation-settings:var(--wonk);margin-top:.5rem;
+}
+.pinnable .pin{margin-top:.9rem;font-size:.8125rem;padding:.55rem 1rem;min-height:42px}
+.stamp{
+  display:inline-flex;align-items:center;gap:.45rem;margin-top:2rem;
+  border:1px solid var(--rule);padding:.3rem .7rem;color:var(--ink-2);
+}
+.stamp::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--sage)}
+figure.plate svg{width:100%;height:auto}
+figcaption.cap{margin-top:.9rem}
+main.wrap h2{font-size:1.35rem;margin:2rem 0 .6rem}
+main.wrap ul{margin:1rem 0 0 1.2rem}
+main.wrap li{margin-bottom:.4rem}
+main.wrap>p{margin-top:1rem}
