@@ -4,6 +4,10 @@
 /u/
 /es/u/
 search-index.json
+/index.html
+/es/index.html
+/glossary/
+/es/glossary/
 
 # Local tooling
 node_modules/

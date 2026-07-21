@@ -17,6 +17,7 @@ import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync, rmSync
 import { join, dirname } from 'node:path';
 import { frontmatter, render, esc, attr } from './lib.mjs';
 import { validate, loadGlossary, loadUnits, VOLATILITY } from './validate.mjs';
+import { buildHome, buildGlossary, RETIRED } from './pages.mjs';
 
 const ROOT = process.argv[2] && !process.argv[2].startsWith('--') ? process.argv[2] : '.';
 const CHECK = process.argv.includes('--check');
@@ -187,6 +188,48 @@ const index = {
   glossary: glossary.map(t => ({ ...t, taught_by: taughtBy[t.id] || [] }))
 };
 if (!CHECK) writeFileSync(join(ROOT, 'search-index.json'), JSON.stringify(index, null, 2), 'utf8');
+
+/* ---- shell pages: home + glossary --------------------------------------
+   Home is the learning surface, which is why there is no /learn/ tab.
+   ------------------------------------------------------------------- */
+
+const unitsById = {};
+for (const u of index.units) unitsById[u.id] = u;
+
+for (const lang of ['en', 'es']) {
+  const list = loadUnits(ROOT, lang).map(u => u.data);
+  if (!list.length) continue;
+  const base = lang === 'en' ? ROOT : join(ROOT, 'es');
+
+  if (!CHECK) {
+    mkdirSync(base, { recursive: true });
+    writeFileSync(join(base, 'index.html'), buildHome({ root: ROOT, lang, units: list }), 'utf8');
+    mkdirSync(join(base, 'glossary'), { recursive: true });
+    writeFileSync(join(base, 'glossary', 'index.html'),
+      buildGlossary({ lang, glossary: index.glossary, unitsById }), 'utf8');
+  }
+  written += 2;
+}
+
+/* ---- legacy redirects --------------------------------------------------
+   A converted module keeps its old URL alive, pointing at the first unit
+   that replaced it. Shared links and search results do not die.
+   ------------------------------------------------------------------- */
+
+for (const lang of ['en', 'es']) {
+  const base = lang === 'en' ? ROOT : join(ROOT, 'es');
+  for (const [file, target] of Object.entries(RETIRED)) {
+    const to = lang === 'en' ? `/u/${target}/` : `/es/u/${target}/`;
+    if (!CHECK && existsSync(join(base, file))) {
+      writeFileSync(join(base, file),
+        `<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8">` +
+        `<link rel="canonical" href="${to}">` +
+        `<meta http-equiv="refresh" content="0; url=${to}">` +
+        `<title>Moved</title></head><body><p><a href="${to}">Moved here</a></p></body></html>`, 'utf8');
+      redirects++;
+    }
+  }
+}
 
 console.log(`\n${CHECK ? '[dry run] ' : ''}${written} pages, ${redirects} redirects, ` +
             `${counts.terms} terms indexed, ${warnings.length} warnings`);

@@ -278,3 +278,25 @@ main.wrap h2{font-size:1.35rem;margin:2rem 0 .6rem}
 main.wrap ul{margin:1rem 0 0 1.2rem}
 main.wrap li{margin-bottom:.4rem}
 main.wrap>p{margin-top:1rem}
+
+/* ---- Home + glossary ---------------------------------------------------- */
+
+.lvl-block{margin-top:1.75rem}
+.checklist a.t{color:var(--ink);text-decoration:none}
+.checklist a.t:hover{color:var(--pencil)}
+.checklist li.done a.t{color:var(--ink-2)}
+.checklist li.here a.t{font-weight:600}
+.checklist.legacy li{opacity:.7}
+.fore-line{
+  font-family:var(--serif);font-size:1.35rem;line-height:1.25;
+  font-variation-settings:var(--wonk);margin-top:.7rem;max-width:24ch;
+}
+.entry{border-bottom:1px solid var(--rule);padding:1.1rem 0}
+.entry:last-child{border-bottom:0}
+.term-name{font-weight:600;font-size:1.0625rem}
+.entry .def{color:var(--ink-2);font-size:.9375rem;margin-top:.25rem;max-width:56ch}
+.entry .learn{
+  font:600 .75rem var(--sans);color:var(--pencil);text-decoration:none;
+  display:inline-block;margin-top:.5rem;
+}
+.entry .learn:hover{text-decoration:underline}
