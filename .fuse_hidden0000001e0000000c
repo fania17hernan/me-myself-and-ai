@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF5EC">
+<title>Under the Hood, Me, Myself &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/themes.css">
+<link rel="stylesheet" href="assets/core.css">
+</head>
+<body class="ed-1">
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <div class="topline">
+    <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
+    <span class="rightgrp"><a class="lang" href="es/level-4.html">Español</a><span class="stepl" id="progText"></span></span>
+  </div>
+  <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div></div>
+</header>
+<main>
+  <a class="backlink" href="index.html">← All levels</a>
+  <div class="hero">
+    <p class="eyebrow">Level 4</p>
+    <h1>Under the Hood</h1>
+    <p class="tagline">Vibe coding and the tech words, finally demystified, it's all a restaurant.</p>
+  </div>
+  <a class="mcard" href="module-15.html" data-mod="15"><div class="mnum">1</div><div class="mbody"><div class="mtitle">Vibe Coding: Director, Not Bricklayer</div><div class="mmeta"><span class="manalogy">Director, Not Bricklayer</span> · 8 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-16.html" data-mod="16"><div class="mnum">2</div><div class="mbody"><div class="mtitle">Frontend vs. Backend: The Dining Room & the Kitchen</div><div class="mmeta"><span class="manalogy">The Dining Room &amp; the Kitchen</span> · 7 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-17.html" data-mod="17"><div class="mnum">3</div><div class="mbody"><div class="mtitle">APIs: The Waiter</div><div class="mmeta"><span class="manalogy">The Waiter</span> · 7 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-18.html" data-mod="18"><div class="mnum">4</div><div class="mbody"><div class="mtitle">Databases: The Filing Cabinet</div><div class="mmeta"><span class="manalogy">The Filing Cabinet</span> · 7 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-19.html" data-mod="19"><div class="mnum">5</div><div class="mbody"><div class="mtitle">Hosting & Deployment: Opening the Shop</div><div class="mmeta"><span class="manalogy">Opening the Shop</span> · 7 min</div></div><div class="mcheck" aria-hidden="true"></div></a>
+</main>
+<script>
+(function(){
+  var mods=[15,16,17,18,19];var done=0;
+  [].slice.call(document.querySelectorAll('.mcard')).forEach(function(c){
+    var m=c.getAttribute('data-mod');
+    try{if(localStorage.getItem('mmai-done-'+m)==='1'){c.classList.add('done');done++;}}catch(e){}
+  });
+  document.getElementById('fill').style.width=Math.round(done/mods.length*100)+'%';
+  document.getElementById('progText').textContent=("{d} of {n} done").replace('{d}',String(done)).replace('{n}',String(mods.length));
+})();
+</script>
+</body>
+</html>

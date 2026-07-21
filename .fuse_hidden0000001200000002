@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF5EC">
+<title>Me, Myself &amp; AI, AI foundations for smart professionals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/themes.css">
+<link rel="stylesheet" href="assets/core.css">
+<link rel="stylesheet" href="assets/index.css">
+</head>
+<body>
+<header>
+  <div class="topline">
+    <span class="brand">Me, Myself <span class="amp">&amp;</span> AI</span>
+    <span class="rightgrp">
+      <span class="streak" id="streak" title="Day streak"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 3c1 3-1 4-1 6a3 3 0 0 0 6 0c0-1 0-2-.5-3 2 2 3.5 4.5 3.5 7a8 8 0 1 1-16 0c0-3 2-5 3-7 .5 2 2 2 3 1 1-1 0-3-1-4Z" fill="#E5A33F" stroke="#BF5538" stroke-width="1.3" stroke-linejoin="round"/></svg><span id="streakNum">0</span></span>
+      <a class="lang" href="es/index.html">Español</a>
+    </span>
+  </div>
+  <div class="gauge" aria-hidden="true">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg>
+    <div class="ptrack"><div class="pfill" id="fill"></div></div>
+    <span class="stepl" id="progText"></span>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <p class="eyebrow">AI literacy · built for professionals</p>
+    <h1 id="greeting">Hi. Let&rsquo;s make AI finally make sense.</h1>
+    <p class="tagline">Short lessons in plain language, one analogy at a time, so you can actually use AI at work and spot when it&rsquo;s bluffing.</p>
+    <div class="cta">
+      <a class="btn btn-primary" id="ctaBtn" href="level-1.html">
+        <span id="ctaLabel">Start lesson 1</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <p class="ctimg" id="ctaSub"><b>~10 min</b> · always free · pick up right where you left off</p>
+    </div>
+    <a class="whylink" href="about.html">Why I built this
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+
+    <div class="how">
+      <div class="step"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/></svg></div><div class="lbl">Read</div><div class="sub">A plain-language idea</div></div>
+      <div class="step"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M21 11.5a8.4 8.4 0 0 1-12 7.6L3 21l1.9-6A8.5 8.5 0 1 1 21 11.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="lbl">Try</div><div class="sub">A quick check or prompt</div></div>
+      <div class="step"><div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="lbl">Use it</div><div class="sub">At work, that day</div></div>
+    </div>
+  </section>
+
+  <div class="sechead">
+    <h2>Your journey</h2>
+    <span class="meta" id="jmeta"></span>
+  </div>
+
+  <div class="trail" id="trail">
+    <div class="node" data-href="level-1.html" data-mods="22,1,2,3,4,5">
+      <div class="rail"><div class="disc">1</div><div class="connector"></div></div>
+      <a class="lcard" href="level-1.html">
+        <div class="lrow"><div><div class="lname">Start Here</div><div class="ltag">How AI behaves, so it stops surprising you.</div></div><span class="pill"></span></div>
+        <div class="pbar"><i></i></div><div class="pcount"></div>
+      </a>
+    </div>
+    <div class="node" data-href="level-2.html" data-mods="6,7,8,9,23,24,25,26">
+      <div class="rail"><div class="disc">2</div><div class="connector"></div></div>
+      <a class="lcard" href="level-2.html">
+        <div class="lrow"><div><div class="lname">The Tools</div><div class="ltag">Chats, projects, artifacts, connectors, and which model to use.</div></div><span class="pill"></span></div>
+        <div class="pbar"><i></i></div><div class="pcount"></div>
+      </a>
+    </div>
+    <div class="node" data-href="level-3.html" data-mods="10,11,12,13,14,21,20">
+      <div class="rail"><div class="disc">3</div><div class="connector"></div></div>
+      <a class="lcard" href="level-3.html">
+        <div class="lrow"><div><div class="lname">Make It Yours</div><div class="ltag">Your rules, your memory, your seat at the controls.</div></div><span class="pill"></span></div>
+        <div class="pbar"><i></i></div><div class="pcount"></div>
+      </a>
+    </div>
+    <div class="node" data-href="level-4.html" data-mods="15,16,17,18,19">
+      <div class="rail"><div class="disc">4</div><div class="connector"></div></div>
+      <a class="lcard" href="level-4.html">
+        <div class="lrow"><div><div class="lname">Under the Hood</div><div class="ltag">Vibe coding and the tech words, finally demystified.</div></div><span class="pill"></span></div>
+        <div class="pbar"><i></i></div><div class="pcount"></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="badges">
+    <div class="bt"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="#9C4128" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="#9C4128" stroke-width="1.8" stroke-linejoin="round"/></svg>Milestones, one per level you finish</div>
+    <div class="brow" id="brow">
+      <div class="badge" data-lvl="0"><div class="bmedal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="blbl">Start Here</div></div>
+      <div class="badge" data-lvl="1"><div class="bmedal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="blbl">The Tools</div></div>
+      <div class="badge" data-lvl="2"><div class="bmedal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="blbl">Make It Yours</div></div>
+      <div class="badge" data-lvl="3"><div class="bmedal"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m8 14-2 7 6-3 6 3-2-7" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></div><div class="blbl">Under Hood</div></div>
+    </div>
+  </div>
+
+  <div class="util">
+    <a class="tile" href="glossary.html"><div class="tt">Glossary
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="ts">Every term, in plain words. Look up anything, any time.</div></a>
+    <span class="tile soon"><div class="tt">By profession</div>
+      <div class="ts">Lessons tuned to your job, PM, teacher, realtor and more. (Coming soon)</div></span>
+  </div>
+
+  <section class="suggest card">
+    <h3 style="margin-top:0">Want a topic we haven&#x27;t covered yet?</h3>
+    <p class="soft" style="margin-bottom:14px">Tell me what you&#x27;d like to learn next, your ideas shape what I build.</p>
+    <form id="sg_landing" novalidate>
+      <textarea id="sg_landing_t" maxlength="1000" rows="3" placeholder="e.g. How do I write better prompts for emails?" required></textarea>
+      <input id="sg_landing_e" type="email" maxlength="200" placeholder="Email (optional, only if you&#x27;d like a reply)" autocomplete="off">
+      <input type="text" id="sg_landing_hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button type="submit" class="btn btn-primary" id="sg_landing_b">Send it</button>
+      <p class="sg-msg" id="sg_landing_m" role="status"></p>
+    </form>
+  </section>
+
+  <footer>Built solo, in public. Free for everyone, in English &amp; Español.</footer>
+</main>
+
+<script>
+(function(){
+  function isDone(m){try{return localStorage.getItem('mmai-done-'+m)==='1'}catch(e){return false}}
+
+  /* ----- streak (honest, day-based) ----- */
+  (function(){
+    var today=new Date(); today.setHours(0,0,0,0);
+    var n=0,last=null;
+    try{n=parseInt(localStorage.getItem('mmai-streak')||'0',10)||0;last=localStorage.getItem('mmai-last');}catch(e){}
+    if(last){
+      var d=new Date(last); d.setHours(0,0,0,0);
+      var days=Math.round((today-d)/86400000);
+      if(days===0){/* same day, keep */}
+      else if(days===1){n=n+1;}
+      else{n=1;}
+    } else { n=1; }
+    try{localStorage.setItem('mmai-streak',String(n));localStorage.setItem('mmai-last',today.toISOString());}catch(e){}
+    document.getElementById('streakNum').textContent=n;
+  })();
+
+  /* ----- progress per level + overall ----- */
+  var nodes=[].slice.call(document.querySelectorAll('.node'));
+  var totalDone=0,totalAll=0,currentSet=false,afterCount=0;
+
+  nodes.forEach(function(node,idx){
+    var mods=node.getAttribute('data-mods').split(',').filter(Boolean);
+    var d=0; mods.forEach(function(m){if(isDone(m))d++;});
+    totalDone+=d; totalAll+=mods.length;
+    var pct=mods.length?Math.round(d/mods.length*100):0;
+    node.querySelector('.pbar i').style.width=pct+'%';
+    node.querySelector('.pcount').textContent=d+' of '+mods.length+' lessons';
+    var pill=node.querySelector('.pill');
+    var complete=(d===mods.length);
+
+    if(complete){
+      node.classList.add('done');
+      pill.className='pill done'; pill.textContent='Done ✓';
+    } else if(!currentSet){
+      currentSet=true;
+      node.classList.add('here');
+      pill.className='pill here'; pill.textContent='You are here';
+    } else {
+      afterCount++;
+      if(afterCount===1){ pill.className='pill next'; pill.textContent='Up next'; }
+      else { pill.style.display='none'; }
+    }
+  });
+
+  /* ----- header gauge ----- */
+  var op=totalAll?Math.round(totalDone/totalAll*100):0;
+  document.getElementById('fill').style.width=op+'%';
+  document.getElementById('progText').textContent=totalDone+' / '+totalAll+' lessons';
+  document.getElementById('jmeta').textContent=op+'% complete';
+
+  /* ----- welcoming, dynamic hero copy + CTA ----- */
+  var here=document.querySelector('.node.here');
+  var allDone=(totalDone===totalAll && totalAll>0);
+  if(allDone){
+    document.getElementById('greeting').textContent='You did it. Welcome back anytime.';
+    document.getElementById('ctaLabel').textContent='Revisit the glossary';
+    document.getElementById('ctaBtn').setAttribute('href','glossary.html');
+    document.getElementById('ctaSub').innerHTML='All 4 levels complete · you’ve got the foundations';
+  } else if(totalDone===0){
+    document.getElementById('ctaLabel').textContent='Start lesson 1';
+    document.getElementById('ctaBtn').setAttribute('href','level-1.html');
+  } else if(here){
+    var name=here.querySelector('.lname').textContent;
+    document.getElementById('greeting').textContent='Welcome back. Let’s keep going.';
+    document.getElementById('ctaLabel').textContent='Continue: '+name;
+    document.getElementById('ctaBtn').setAttribute('href',here.getAttribute('data-href'));
+  }
+
+  /* ----- milestone badges ----- */
+  nodes.forEach(function(node,idx){
+    if(node.classList.contains('done')){
+      var b=document.querySelector('.badge[data-lvl="'+idx+'"]');
+      if(b)b.classList.add('lit');
+    }
+  });
+})();
+</script>
+<script>
+(function(){var f=document.getElementById("sg_landing");if(!f)return;var t=document.getElementById("sg_landing_t"),e=document.getElementById("sg_landing_e"),hp=document.getElementById("sg_landing_hp"),b=document.getElementById("sg_landing_b"),m=document.getElementById("sg_landing_m");f.addEventListener("submit",function(ev){ev.preventDefault();if(hp.value)return;var s=(t.value||"").trim();if(!s)return;b.disabled=true;m.textContent="";fetch("https://pdbqrjqlwqjqzefmmlhd.supabase.co"+"/rest/v1/topic_suggestions",{method:"POST",headers:{"apikey":"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Authorization":"Bearer "+"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify({suggestion:s,email:(e.value||"").trim()||null,lang:"en",source:"landing-redesign"})}).then(function(r){if(r.ok){f.innerHTML="<p class=\"sg-ok\">"+"Got it, thank you! 🙌 Your idea is in."+"</p>";}else{m.textContent="Hmm, that didn't send. Mind trying again in a moment?";b.disabled=false;}}).catch(function(){m.textContent="Hmm, that didn't send. Mind trying again in a moment?";b.disabled=false;});});})();
+</script>
+</body>
+</html>

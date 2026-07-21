@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wireframes · Me, Myself &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c1a18; --mid:#6e6862; --soft:#9a938c; --line:#d8d3cd;
+  --fill:#eeebe7; --fill2:#e2ddd7; --paper:#fff; --bg:#f7f5f3;
+  --hl:#b8532f;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:400 15px/1.6 'Inter',system-ui,sans-serif;padding:2.5rem 1.25rem 6rem}
+.page{max-width:78rem;margin:0 auto}
+h1{font-size:2rem;letter-spacing:-.02em;margin-bottom:.5rem}
+h2{font-size:1.25rem;letter-spacing:-.01em;margin:0 0 .35rem}
+.sub{color:var(--mid);max-width:62ch}
+.legend{display:flex;gap:1.25rem;flex-wrap:wrap;margin:1.5rem 0 3rem;padding:1rem 1.25rem;
+  background:var(--paper);border:1px solid var(--line);border-radius:10px;font-size:.8125rem;color:var(--mid)}
+.legend b{color:var(--ink);font-weight:600}
+
+section{margin-bottom:4rem}
+.shead{border-top:2px solid var(--ink);padding-top:.75rem;margin-bottom:1.5rem;
+  display:flex;align-items:baseline;gap:1rem;flex-wrap:wrap}
+.shead .n{font:700 .75rem 'Inter';letter-spacing:.12em;color:var(--hl)}
+.note{font-size:.8125rem;color:var(--mid);max-width:60ch;margin-top:.4rem}
+
+.row{display:flex;gap:2rem;flex-wrap:wrap;align-items:flex-start}
+.cap{font:600 .6875rem 'Inter';letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:.5rem}
+
+/* ---- device frames ---- */
+.phone{width:300px;flex:0 0 300px;border:2px solid var(--ink);border-radius:20px;overflow:hidden;background:var(--paper);
+  display:flex;flex-direction:column;min-height:560px}
+.desk{flex:1;min-width:400px;border:2px solid var(--ink);border-radius:10px;overflow:hidden;background:var(--paper);
+  display:flex;min-height:440px}
+
+/* ---- wireframe atoms ---- */
+.bar{padding:.6rem .75rem;border-bottom:1px solid var(--line);display:flex;align-items:center;
+  justify-content:space-between;gap:.5rem;font-size:.75rem;color:var(--mid);flex:0 0 auto}
+.body{padding:.75rem;flex:1;display:flex;flex-direction:column;gap:.6rem;overflow:hidden}
+.tabs{display:flex;border-top:1px solid var(--line);flex:0 0 auto}
+.tabs div{flex:1;padding:.5rem .25rem .6rem;text-align:center;font-size:.625rem;color:var(--soft);border-right:1px solid var(--line)}
+.tabs div:last-child{border-right:none}
+.tabs div.on{color:var(--hl);font-weight:600;box-shadow:inset 0 2px 0 var(--hl)}
+.tabs .ic{display:block;font-size:.9rem;margin-bottom:.15rem;color:inherit}
+
+.side{flex:0 0 150px;border-right:1px solid var(--line);padding:.75rem .6rem;display:flex;flex-direction:column;gap:.3rem;font-size:.75rem}
+.side .lg{font-weight:700;font-size:.75rem;margin-bottom:.6rem}
+.side a{padding:.3rem .45rem;border-radius:5px;color:var(--mid);text-decoration:none;display:block}
+.side a.on{background:var(--fill2);color:var(--ink);font-weight:600}
+.side .sep{border-top:1px solid var(--line);margin:.5rem 0}
+.side .sm{font-size:.6875rem;color:var(--soft);padding:.2rem .45rem}
+.main{flex:1;padding:1rem;display:flex;flex-direction:column;gap:.7rem;overflow:hidden}
+
+.box{border:1px solid var(--line);border-radius:8px;padding:.6rem .7rem;background:var(--paper)}
+.box.f{background:var(--fill)}
+.box.hero{border:2px solid var(--hl);background:var(--paper)}
+.lbl{font:600 .5625rem 'Inter';letter-spacing:.1em;text-transform:uppercase;color:var(--hl);margin-bottom:.3rem}
+.lbl.g{color:var(--soft)}
+.t{font-weight:600;font-size:.8125rem;line-height:1.3}
+.m{font-size:.6875rem;color:var(--soft);margin-top:.2rem}
+.btn{background:var(--ink);color:var(--paper);border-radius:99px;padding:.4rem .8rem;font-size:.6875rem;
+  font-weight:600;text-align:center;margin-top:.5rem}
+.btn.o{background:transparent;color:var(--mid);border:1px solid var(--line)}
+.ln{height:6px;background:var(--fill);border-radius:3px}
+.ln.s{width:60%} .ln.m2{width:85%} .ln.xs{width:40%}
+.hair{height:2px;background:var(--fill2);border-radius:2px;position:relative}
+.hair i{position:absolute;inset:0 60% 0 0;background:var(--hl);border-radius:2px}
+.chip{display:inline-block;font-size:.625rem;padding:.15rem .45rem;border:1px solid var(--line);
+  border-radius:99px;color:var(--mid);margin-right:.25rem}
+.rowb{display:flex;gap:.4rem}
+.rowb>*{flex:1}
+.stack{display:flex;flex-direction:column;gap:.4rem}
+.unitrow{display:flex;gap:.5rem;align-items:center;font-size:.75rem;padding:.35rem 0;border-bottom:1px solid var(--line)}
+.unitrow:last-child{border-bottom:none}
+.dot{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line);flex:0 0 16px}
+.dot.d{background:var(--fill2);border-color:var(--fill2)}
+.dot.c{border-color:var(--hl);border-width:2.5px}
+.unitrow .u{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.unitrow .tm{color:var(--soft);font-size:.625rem}
+.big{font-size:1.05rem;font-weight:700;line-height:1.2;letter-spacing:-.01em}
+.sheet{border:1px dashed var(--hl);border-radius:8px;padding:.6rem;background:var(--paper)}
+.flow{display:flex;gap:.5rem;align-items:stretch;flex-wrap:wrap;margin-top:.75rem}
+.step{flex:1;min-width:120px;border:1px solid var(--line);border-radius:8px;padding:.55rem .6rem;background:var(--paper);font-size:.75rem}
+.step .sn{font:700 .5625rem 'Inter';letter-spacing:.1em;color:var(--hl);margin-bottom:.25rem}
+.arrow{align-self:center;color:var(--soft);font-size:.9rem}
+.callout{border-left:3px solid var(--hl);padding:.5rem .75rem;background:var(--paper);font-size:.8125rem;color:var(--mid);margin-top:.75rem}
+.callout b{color:var(--ink)}
+@media(max-width:820px){ .desk{min-width:100%} .phone{flex:0 0 100%;width:100%} }
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>Wireframes</h1>
+<p class="sub">Structure only. No colour, no type treatment, no illustration. The point is to argue about
+what goes where and in what order, before any of that gets decided.</p>
+
+<div class="legend">
+  <span><b>Orange outline</b> the one primary action on a screen</span>
+  <span><b>Grey fill</b> content that exists but isn't the point</span>
+  <span><b>Dashed</b> appears conditionally</span>
+</div>
+
+<!-- ============ 1. HOME ============ -->
+<section>
+  <div class="shead">
+    <span class="n">01</span>
+    <h2>Home</h2>
+    <span class="sub" style="font-size:.8125rem">One clear next action, path underneath.</span>
+  </div>
+  <p class="note">The returning-learner session is the one to optimise. Cold open to learning content in
+    <b>one tap</b>. That number is the thing to protect in every later decision.</p>
+
+  <div class="row" style="margin-top:1.25rem">
+    <div>
+      <p class="cap">Mobile · returning learner</p>
+      <div class="phone">
+        <div class="bar"><span>☰</span><span style="font-weight:600;color:var(--ink)">Me, Myself &amp; AI</span><span>ES</span></div>
+        <div class="body">
+          <div class="box hero">
+            <div class="lbl">Pick up where you left off</div>
+            <div class="t">What's actually in the tank</div>
+            <div class="m">Concept · 3 min · Foundations</div>
+            <div class="btn">Continue</div>
+          </div>
+
+          <div class="sheet">
+            <div class="lbl">Worth another look</div>
+            <div class="t" style="font-weight:500">You missed one on “Both directions burn fuel”</div>
+            <div class="btn o">Retry, 1 min</div>
+          </div>
+
+          <div class="box">
+            <div class="lbl g">Your path</div>
+            <div class="unitrow"><span class="dot d"></span><span class="u">The answer that died</span><span class="tm">2m</span></div>
+            <div class="unitrow"><span class="dot d"></span><span class="u">Tokens are gas in a tank</span><span class="tm">2m</span></div>
+            <div class="unitrow"><span class="dot c"></span><span class="u">What's actually in the tank</span><span class="tm">3m</span></div>
+            <div class="unitrow"><span class="dot"></span><span class="u">Three habits that save fuel</span><span class="tm">2m</span></div>
+            <div class="unitrow"><span class="dot"></span><span class="u">Quick check</span><span class="tm">2m</span></div>
+          </div>
+
+          <div class="box f">
+            <div class="lbl g">What you can now do</div>
+            <div class="ln m2"></div><div class="ln s" style="margin-top:.3rem"></div>
+          </div>
+        </div>
+        <div class="tabs">
+          <div class="on"><span class="ic">⌂</span>Home</div>
+          <div><span class="ic">✦</span>Use It</div>
+          <div><span class="ic">A</span>Glossary</div>
+          <div><span class="ic">◔</span>You</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1;min-width:400px">
+      <p class="cap">Desktop · same priorities, sidebar instead of tabs</p>
+      <div class="desk">
+        <div class="side">
+          <div class="lg">Me, Myself &amp; AI</div>
+          <a class="on">⌂&nbsp; Home</a>
+          <a>✦&nbsp; Use It</a>
+          <a>A&nbsp; Glossary</a>
+          <a>◔&nbsp; You</a>
+          <div class="sep"></div>
+          <div class="sm">About</div>
+          <div class="sm">Español</div>
+          <div class="sm">Suggest a topic</div>
+          <div class="sm">Display</div>
+        </div>
+        <div class="main">
+          <div class="box hero" style="max-width:34rem">
+            <div class="lbl">Pick up where you left off</div>
+            <div class="big">What's actually in the tank</div>
+            <div class="m">Concept · 3 min · Foundations</div>
+            <div class="btn" style="max-width:9rem">Continue</div>
+          </div>
+          <div class="rowb" style="max-width:34rem">
+            <div class="sheet"><div class="lbl">Worth another look</div><div class="m">1 unit</div></div>
+            <div class="box f"><div class="lbl g">You can now</div><div class="m">6 things</div></div>
+          </div>
+          <div class="box" style="max-width:34rem">
+            <div class="lbl g">Your path · Foundations</div>
+            <div class="unitrow"><span class="dot d"></span><span class="u">The answer that died mid-sentence</span><span class="tm">2m</span></div>
+            <div class="unitrow"><span class="dot d"></span><span class="u">Tokens are gas in a tank</span><span class="tm">2m</span></div>
+            <div class="unitrow"><span class="dot c"></span><span class="u">What's actually in the tank</span><span class="tm">3m</span></div>
+            <div class="unitrow"><span class="dot"></span><span class="u">Three habits that save fuel</span><span class="tm">2m</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="callout"><b>Deliberately absent:</b> streak, flame, medals, badges, XP, league.
+        The resume card does the job the streak was pretending to do, without implying this is a game.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. FIRST VISIT ============ -->
+<section>
+  <div class="shead">
+    <span class="n">02</span>
+    <h2>Home · first visit, guard up</h2>
+    <span class="sub" style="font-size:.8125rem">Same screen, empty state. This is the skeptic's first impression.</span>
+  </div>
+  <p class="note">No commitment ask, no curriculum, no sign-up. A claim, a 2-minute promise, and a door
+    marked with the objection they already have.</p>
+
+  <div class="row" style="margin-top:1.25rem">
+    <div>
+      <p class="cap">Mobile · nothing started</p>
+      <div class="phone">
+        <div class="bar"><span>☰</span><span style="font-weight:600;color:var(--ink)">Me, Myself &amp; AI</span><span>ES</span></div>
+        <div class="body">
+          <div style="padding:.5rem 0">
+            <div class="big" style="font-size:1.25rem">AI, explained by someone who was also intimidated by it.</div>
+            <div class="m" style="font-size:.75rem;margin-top:.5rem">Analogies that stick. Two minutes at a time. No jargon.</div>
+          </div>
+          <div class="box hero">
+            <div class="lbl">Start here</div>
+            <div class="t">What AI isn't</div>
+            <div class="m">5 myths, 2 min each. No quiz, no sign-up.</div>
+            <div class="btn">Clear the air first</div>
+          </div>
+          <div class="box">
+            <div class="lbl g">Or skip ahead</div>
+            <div class="unitrow"><span class="dot"></span><span class="u">Foundations · 12 units</span></div>
+            <div class="unitrow"><span class="dot"></span><span class="u">Make It Yours · 18 units</span></div>
+            <div class="unitrow"><span class="dot"></span><span class="u">Under the Hood · 14 units</span></div>
+          </div>
+          <div class="box f">
+            <div class="lbl g">Not sure where to start?</div>
+            <div class="t" style="font-weight:500;font-size:.75rem">Pick your job, get three things to try today</div>
+          </div>
+        </div>
+        <div class="tabs">
+          <div class="on"><span class="ic">⌂</span>Home</div>
+          <div><span class="ic">✦</span>Use It</div>
+          <div><span class="ic">A</span>Glossary</div>
+          <div><span class="ic">◔</span>You</div>
+        </div>
+      </div>
+    </div>
+    <div style="flex:1;min-width:340px">
+      <p class="cap">Journey · the skeptic</p>
+      <div class="flow">
+        <div class="step"><div class="sn">LAND</div>Sees no medals, no flame. A claim and a 2-minute promise.</div>
+        <span class="arrow">→</span>
+        <div class="step"><div class="sn">DISARM</div>“It won't take your job” · myth-buster · concedes the true part first</div>
+        <span class="arrow">→</span>
+        <div class="step"><div class="sn">HOOK</div>“That took 2 minutes. Four more?”</div>
+        <span class="arrow">→</span>
+        <div class="step"><div class="sn">CROSS</div>Level 0 done in 15 min. Paper turns warm at Level 1.</div>
+      </div>
+      <div class="callout">The cool Slate &amp; Chalk palette of Level 0 does structural work here.
+        Arriving at Level 1's warmth is the felt reward for lowering the guard.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. THE UNIT ============ -->
+<section>
+  <div class="shead">
+    <span class="n">03</span>
+    <h2>The unit · the new atom</h2>
+    <span class="sub" style="font-size:.8125rem">2 to 3 minutes, one idea, ends in recall.</span>
+  </div>
+  <p class="note">Chrome disappears. Reading is a full-attention mode, so the tab bar and sidebar collapse
+    to a back affordance and a progress hairline, then return on completion. This is the one place a
+    hidden menu genuinely wins.</p>
+
+  <div class="row" style="margin-top:1.25rem">
+    <div>
+      <p class="cap">Mobile · reading</p>
+      <div class="phone">
+        <div class="bar"><span>✕</span><span style="font-size:.625rem">Unit 3 of 5</span><span>⋯</span></div>
+        <div style="padding:0 .75rem"><div class="hair"><i></i></div></div>
+        <div class="body">
+          <div class="lbl">How it works</div>
+          <div class="big">What's actually in the tank</div>
+          <div class="ln m2"></div><div class="ln"></div><div class="ln s"></div>
+          <div class="box f" style="text-align:center;padding:1.25rem .7rem">
+            <div class="lbl">The analogy</div>
+            <div class="big" style="font-size:1.15rem">Tokens are gas in a tank</div>
+          </div>
+          <div class="ln m2"></div><div class="ln"></div><div class="ln xs"></div>
+        </div>
+        <div class="bar" style="border-top:1px solid var(--line);border-bottom:none">
+          <span class="btn o" style="margin:0;flex:0 0 auto">Back</span>
+          <span class="btn" style="margin:0;flex:1;margin-left:.5rem">Continue</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="cap">Mobile · the recall moment</p>
+      <div class="phone">
+        <div class="bar"><span>✕</span><span style="font-size:.625rem">Unit 3 of 5</span><span>⋯</span></div>
+        <div style="padding:0 .75rem"><div class="hair"><i style="inset:0 15% 0 0"></i></div></div>
+        <div class="body">
+          <div class="lbl">Quick check</div>
+          <div class="t" style="font-size:.875rem">Which burns fuel?</div>
+          <div class="box" style="font-size:.75rem">Only what you type</div>
+          <div class="box hero" style="font-size:.75rem">✓ Both, input and output</div>
+          <div class="box" style="font-size:.75rem">Only what the AI writes back</div>
+          <div style="border-left:3px solid var(--hl);padding-left:.6rem;font-size:.6875rem;color:var(--mid)">
+            Right, both directions burn fuel. Short question, long answer? Still pricey.</div>
+        </div>
+        <div class="bar" style="border-top:1px solid var(--line);border-bottom:none">
+          <span class="btn" style="margin:0;flex:1">Finish</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <p class="cap">Mobile · done, and immediately onward</p>
+      <div class="phone">
+        <div class="bar"><span>✕</span><span style="font-size:.625rem">Complete</span><span>⋯</span></div>
+        <div class="body">
+          <div class="big" style="margin-top:.5rem">Full tank.</div>
+          <div class="m">3 of 3 on the quick check</div>
+          <div class="box hero">
+            <div class="lbl">What you can now do</div>
+            <div class="t" style="font-weight:500;font-size:.75rem">Explain why an AI answer stops
+              mid-sentence, and split a task so it doesn't.</div>
+          </div>
+          <div class="box">
+            <div class="lbl g">Save to your cheat sheet</div>
+            <div class="t" style="font-weight:500;font-size:.75rem">“AI has a gas tank. Break big
+              tasks into trips.”</div>
+            <div class="btn o">＋ Save</div>
+          </div>
+          <div class="box f">
+            <div class="lbl g">Next</div>
+            <div class="t">Three habits that save fuel</div>
+            <div class="m">Playbook · 2 min</div>
+          </div>
+          <div class="btn">Keep going</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="callout" style="max-width:66rem"><b>Why not an infinite feed:</b> the consistent critique of
+    short-form education is that the algorithm optimises for watch time rather than understanding, and
+    clips carry no retention mechanism. What rescues the format is one moment of active recall. So the
+    pacing is borrowed and the feed is not: units are short and self-contained, ordered by curriculum,
+    and every one of them ends by asking you to produce something.</div>
+</section>
+
+<!-- ============ 4. USE IT ============ -->
+<section>
+  <div class="shead">
+    <span class="n">04</span>
+    <h2>Use It · the motivation entry</h2>
+    <span class="sub" style="font-size:.8125rem">The reviewer's “analysis paralysis” fix.</span>
+  </div>
+  <p class="note">Sells outcomes, not curriculum. Profession is the door, the unit is the payoff.
+    Nobody has to know what they want to learn, only what they do for a living.</p>
+
+  <div class="row" style="margin-top:1.25rem">
+    <div>
+      <p class="cap">Mobile · pick a job</p>
+      <div class="phone">
+        <div class="bar"><span>☰</span><span style="font-weight:600;color:var(--ink)">Use It</span><span>ES</span></div>
+        <div class="body">
+          <div class="big" style="font-size:1.1rem">What do you do?</div>
+          <div class="m">Three things you could do today, in your words.</div>
+          <div style="margin-top:.3rem">
+            <span class="chip">Teacher</span><span class="chip">Small business owner</span>
+            <span class="chip">HVAC technician</span><span class="chip">Nurse</span>
+            <span class="chip">Real estate</span><span class="chip">Nonprofit</span>
+            <span class="chip">Recruiter</span><span class="chip">Accountant</span>
+            <span class="chip">Something else</span>
+          </div>
+        </div>
+        <div class="tabs">
+          <div><span class="ic">⌂</span>Home</div>
+          <div class="on"><span class="ic">✦</span>Use It</div>
+          <div><span class="ic">A</span>Glossary</div>
+          <div><span class="ic">◔</span>You</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <p class="cap">Mobile · teacher selected</p>
+      <div class="phone">
+        <div class="bar"><span>←</span><span style="font-weight:600;color:var(--ink)">Teacher</span><span>ES</span></div>
+        <div class="body">
+          <div class="box hero">
+            <div class="lbl">Try this first</div>
+            <div class="t">Write next week's lesson plans</div>
+            <div class="m">Uses: giving AI enough context · 3 min</div>
+            <div class="btn">Show me how</div>
+          </div>
+          <div class="box">
+            <div class="t" style="font-size:.8125rem">Turn a hard concept into an analogy your students will get</div>
+            <div class="m">Uses: asking for a specific format · 2 min</div>
+          </div>
+          <div class="box">
+            <div class="t" style="font-size:.8125rem">Draft parent emails you actually want to send</div>
+            <div class="m">Uses: setting tone · 2 min</div>
+          </div>
+          <div class="box f">
+            <div class="lbl g">Not your job?</div>
+            <div class="m">Tell me what's missing and I'll add it.</div>
+          </div>
+        </div>
+        <div class="tabs">
+          <div><span class="ic">⌂</span>Home</div>
+          <div class="on"><span class="ic">✦</span>Use It</div>
+          <div><span class="ic">A</span>Glossary</div>
+          <div><span class="ic">◔</span>You</div>
+        </div>
+      </div>
+    </div>
+    <div style="flex:1;min-width:300px">
+      <p class="cap">Journey · the stuck learner</p>
+      <div class="flow" style="flex-direction:column">
+        <div class="step"><div class="sn">MOTIVE</div>Willing, but “what would I even use it for?”</div>
+        <div class="step"><div class="sn">SELF-ID</div>Picks a profession. No curriculum vocabulary required.</div>
+        <div class="step"><div class="sn">CONCRETE</div>Three tasks phrased as outcomes in their language.</div>
+        <div class="step"><div class="sn">PAYOFF</div>Each task opens the unit that makes it possible.</div>
+      </div>
+      <div class="callout">Every task names the skill it teaches. That is what turns a list of tricks
+        into a curriculum the learner chose for themselves.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. GLOSSARY + YOU ============ -->
+<section>
+  <div class="shead">
+    <span class="n">05</span>
+    <h2>Glossary and You</h2>
+    <span class="sub" style="font-size:.8125rem">Look it up without being taught. Then, proof of what stuck.</span>
+  </div>
+
+  <div class="row" style="margin-top:1.25rem">
+    <div>
+      <p class="cap">Mobile · reference seeker, mid-workday</p>
+      <div class="phone">
+        <div class="bar"><span>☰</span><span style="font-weight:600;color:var(--ink)">Glossary</span><span>ES</span></div>
+        <div class="body">
+          <div class="box f" style="font-size:.75rem;color:var(--soft)">🔍 &nbsp;token</div>
+          <div class="box hero">
+            <div class="t">Token</div>
+            <div class="m" style="font-size:.75rem;color:var(--mid);margin-top:.35rem">A chunk of a word.
+              It's the unit AI reads and writes. Roughly ¾ of a word.</div>
+            <div class="btn o">Learn this properly · 2 min</div>
+          </div>
+          <div class="box"><div class="t" style="font-size:.75rem">Rate limit</div></div>
+          <div class="box"><div class="t" style="font-size:.75rem">Context window</div></div>
+          <div class="box"><div class="t" style="font-size:.75rem">Confabulation</div></div>
+        </div>
+        <div class="tabs">
+          <div><span class="ic">⌂</span>Home</div>
+          <div><span class="ic">✦</span>Use It</div>
+          <div class="on"><span class="ic">A</span>Glossary</div>
+          <div><span class="ic">◔</span>You</div>
+        </div>
+      </div>
+      <div class="callout" style="max-width:300px">Answers without teaching. The unit is offered,
+        never required. Gating a definition behind a lesson is how you lose this person.</div>
+    </div>
+
+    <div>
+      <p class="cap">Mobile · You</p>
+      <div class="phone">
+        <div class="bar"><span>☰</span><span style="font-weight:600;color:var(--ink)">You</span><span>ES</span></div>
+        <div class="body">
+          <div class="box">
+            <div class="lbl g">Progress</div>
+            <div class="t">14 of 75 units</div>
+            <div class="hair" style="margin-top:.4rem"><i style="inset:0 81% 0 0"></i></div>
+          </div>
+          <div class="box hero">
+            <div class="lbl">What you can now do</div>
+            <div class="unitrow"><span class="dot d"></span><span class="u">Explain why answers cut off</span></div>
+            <div class="unitrow"><span class="dot d"></span><span class="u">Spot a confabulation</span></div>
+            <div class="unitrow"><span class="dot d"></span><span class="u">Give AI enough context</span></div>
+          </div>
+          <div class="box f">
+            <div class="lbl g">Your cheat sheet</div>
+            <div class="m">6 saved takeaways</div>
+            <div class="btn o">Export one page</div>
+          </div>
+          <div class="sheet">
+            <div class="lbl">Worth another look</div>
+            <div class="m">2 units you missed first time</div>
+          </div>
+        </div>
+        <div class="tabs">
+          <div><span class="ic">⌂</span>Home</div>
+          <div><span class="ic">✦</span>Use It</div>
+          <div><span class="ic">A</span>Glossary</div>
+          <div class="on"><span class="ic">◔</span>You</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="flex:1;min-width:300px">
+      <p class="cap">Where “Worth another look” comes from</p>
+      <div class="callout" style="margin-top:0">
+        When Duolingo replaced its skill tree with the linear path, it gained completion and
+        <b>lost “cracked skills,”</b> the cue showing which skills had gone rusty. It traded targeted
+        review for linear clarity.<br><br>
+        <b>You don't have to make that trade.</b> Phase 0's <code>firstTry</code> field already records
+        which questions each learner missed on their first attempt, and it's immutable, so a retake
+        can't paper over it. That data is sitting there unused.<br><br>
+        Shown one unit at a time, never as a list of failures.
+      </div>
+      <p class="cap" style="margin-top:1.5rem">The cheat sheet</p>
+      <div class="callout" style="margin-top:0">Built from takeaway lines you already wrote 26 times.
+        They're currently decoration. Collected and exportable, they become the thing someone actually
+        carries into work on Monday, which is also why it's a distribution channel.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. NAV ============ -->
+<section>
+  <div class="shead">
+    <span class="n">06</span>
+    <h2>Navigation · what the hamburger holds</h2>
+    <span class="sub" style="font-size:.8125rem">It exists. It just stops hiding things people need to find.</span>
+  </div>
+  <p class="note">Feature discovery drops 30 to 50% for items behind a hamburger, because out of sight
+    reads as nonexistent. Apple's HIG and Material both recommend tabs for 3 to 5 primary destinations.
+    So primary lives in the thumb zone, and the hamburger takes what's genuinely occasional.</p>
+
+  <div class="row" style="margin-top:1.25rem">
+    <div>
+      <p class="cap">Mobile · hamburger open</p>
+      <div class="phone">
+        <div class="bar"><span>✕</span><span style="font-weight:600;color:var(--ink)">Menu</span><span></span></div>
+        <div class="body">
+          <div class="lbl g">Secondary only</div>
+          <div class="box">About this course</div>
+          <div class="box">Español</div>
+          <div class="box">Suggest a topic</div>
+          <div class="box">Display &amp; accessibility</div>
+          <div class="box">Reset my progress</div>
+          <div style="margin-top:auto" class="m">Primary destinations stay in the tab bar,
+            always visible, never here.</div>
+        </div>
+        <div class="tabs">
+          <div class="on"><span class="ic">⌂</span>Home</div>
+          <div><span class="ic">✦</span>Use It</div>
+          <div><span class="ic">A</span>Glossary</div>
+          <div><span class="ic">◔</span>You</div>
+        </div>
+      </div>
+    </div>
+    <div style="flex:1;min-width:340px">
+      <p class="cap">Why four, and why these four</p>
+      <table style="width:100%;border-collapse:collapse;font-size:.8125rem;margin-top:.25rem">
+        <tr style="border-bottom:1px solid var(--line)">
+          <td style="padding:.5rem 0;font-weight:600;width:6.5rem">Home</td>
+          <td style="color:var(--mid)">Resume, path, worth another look. The path gets no tab of its own,
+            because Home <i>is</i> the path and duplicating it wastes one of four slots.</td></tr>
+        <tr style="border-bottom:1px solid var(--line)">
+          <td style="padding:.5rem 0;font-weight:600">Use It</td>
+          <td style="color:var(--mid)">Profession entry. Belongs in primary precisely because it's the
+            answer to “I don't know where to start.”</td></tr>
+        <tr style="border-bottom:1px solid var(--line)">
+          <td style="padding:.5rem 0;font-weight:600">Glossary</td>
+          <td style="color:var(--mid)">The non-learning use case. Someone mid-workday who needs one
+            definition and nothing else.</td></tr>
+        <tr>
+          <td style="padding:.5rem 0;font-weight:600">You</td>
+          <td style="color:var(--mid)">Capabilities, cheat sheet, review. Where proof-over-points lives.</td></tr>
+      </table>
+      <div class="callout"><b>Spanish labels:</b> Inicio · Aplícalo · Glosario · Tu avance.
+        “Tu avance” is two words where the others are one, which is a live problem for a tab bar.
+        Worth solving before build.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. CONTENT MODEL ============ -->
+<section>
+  <div class="shead">
+    <span class="n">07</span>
+    <h2>The content model</h2>
+    <span class="sub" style="font-size:.8125rem">Three levels of structure where there are currently two.</span>
+  </div>
+  <div class="row">
+    <div style="flex:1;min-width:300px">
+      <div class="box" style="padding:1rem">
+        <div style="font-family:ui-monospace,monospace;font-size:.75rem;line-height:1.9;color:var(--mid)">
+          <div><b style="color:var(--ink)">Level</b> &nbsp;5, each a visual edition &nbsp;&nbsp;&nbsp;<span style="color:var(--soft)">L0 … L4</span></div>
+          <div style="padding-left:1.5rem"><b style="color:var(--ink)">Topic</b> &nbsp;26, the modules you have</div>
+          <div style="padding-left:3rem"><b style="color:var(--hl)">Unit</b> &nbsp;&nbsp;~75, 2–3 min, ONE idea</div>
+        </div>
+      </div>
+      <div class="callout"><b>The unit is the atom.</b> It's what the path lists, what progress counts,
+        what a URL points at, and what someone can finish standing in a queue. Topics stop being things
+        you <i>do</i> and become things you <i>have done</i>.</div>
+    </div>
+    <div style="flex:1;min-width:320px">
+      <p class="cap">Module 1 today → five units</p>
+      <div class="box">
+        <div class="unitrow"><span class="chip">Field note</span><span class="u">The answer that died mid-sentence</span><span class="tm">2m</span></div>
+        <div class="unitrow"><span class="chip">Analogy</span><span class="u">Tokens are gas in a tank</span><span class="tm">2m</span></div>
+        <div class="unitrow"><span class="chip">Concept</span><span class="u">What's actually in the tank</span><span class="tm">3m</span></div>
+        <div class="unitrow"><span class="chip">Playbook</span><span class="u">Three habits that save fuel</span><span class="tm">2m</span></div>
+        <div class="unitrow"><span class="chip">Check</span><span class="u">Quick check</span><span class="tm">2m</span></div>
+      </div>
+      <div class="callout">Same content. Five entry points instead of one, five completion moments
+        instead of one, and no session longer than three minutes.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. OPEN ============ -->
+<section>
+  <div class="shead"><span class="n">08</span><h2>Open before build</h2></div>
+  <div class="row">
+    <div style="flex:1;min-width:300px">
+      <div class="callout" style="margin-top:0"><b>1. How do ~75 units get authored?</b>
+        One file per unit is 150 files across both languages. Hand-authoring that is exactly how the
+        current 71-file problem started. Recommend generating units from markdown, which also turns the
+        Spanish mirror into a translation task instead of a duplication task.</div>
+      <div class="callout"><b>2. Do units need their own URLs?</b> Yes, for sharing and for the glossary
+        to link into. But that's the same decision as #1, not a separate one.</div>
+    </div>
+    <div style="flex:1;min-width:300px">
+      <div class="callout" style="margin-top:0"><b>3. “Tu avance” is two words.</b> Every other tab label
+        is one. Needs solving before build.</div>
+      <div class="callout"><b>4. Does /learn/ need a tab after all?</b> Watch whether people go looking
+        for a browse view that Home doesn't obviously provide.</div>
+      <div class="callout"><b>5. Level 0 placement.</b> The right first stop for a skeptic, but a
+        returning learner must never be pushed back into it.</div>
+    </div>
+  </div>
+</section>
+
+</div>
+</body>
+</html>

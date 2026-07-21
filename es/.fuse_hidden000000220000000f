@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF5EC">
+<title>Empieza Aquí, Me, Myself &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/themes.css">
+<link rel="stylesheet" href="../assets/core.css">
+</head>
+<body class="ed-1">
+<a class="skip" href="#main">Saltar al contenido</a>
+<header>
+  <div class="topline">
+    <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
+    <span class="rightgrp"><a class="lang" href="../level-1.html">English</a><span class="stepl" id="progText"></span></span>
+  </div>
+  <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div></div>
+</header>
+<main>
+  <a class="backlink" href="index.html">← Todos los niveles</a>
+  <div class="hero">
+    <p class="eyebrow">Nivel 1</p>
+    <h1>Empieza Aquí</h1>
+    <p class="tagline">¿Nuevo en la IA? Empieza aquí. Qué es, y cómo se comporta para que deje de sorprenderte.</p>
+  </div>
+  <a class="mcard" href="module-22.html" data-mod="22"><div class="mnum">1</div><div class="mbody"><div class="mtitle">IA 101: El Aeropuerto</div><div class="mmeta"><span class="manalogy">El Aeropuerto</span> · 7 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-1.html" data-mod="1"><div class="mnum">2</div><div class="mbody"><div class="mtitle">Tokens y Límites de Uso: El Tanque de Gasolina</div><div class="mmeta"><span class="manalogy">El Tanque de Gasolina</span> · 9 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-2.html" data-mod="2"><div class="mnum">3</div><div class="mbody"><div class="mtitle">Ventana de Contexto: La Pizarra</div><div class="mmeta"><span class="manalogy">La Pizarra</span> · 8 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-3.html" data-mod="3"><div class="mnum">4</div><div class="mbody"><div class="mtitle">Gratis vs. Pago: La Prueba de Manejo vs. la Renta</div><div class="mmeta"><span class="manalogy">La Prueba de Manejo vs. la Renta</span> · 9 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-4.html" data-mod="4"><div class="mnum">5</div><div class="mbody"><div class="mtitle">Alucinaciones: El Becario Seguro de Sí Mismo</div><div class="mmeta"><span class="manalogy">El Becario Seguro de Sí Mismo</span> · 10 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-5.html" data-mod="5"><div class="mnum">6</div><div class="mbody"><div class="mtitle">Tu Primer Flujo de Trabajo con IA: El Sous Chef</div><div class="mmeta"><span class="manalogy">El Sous Chef</span> · 10 min</div></div><div class="mcheck" aria-hidden="true"></div></a>
+</main>
+<script>
+(function(){
+  var mods=[22,1,2,3,4,5];var done=0;
+  [].slice.call(document.querySelectorAll('.mcard')).forEach(function(c){
+    var m=c.getAttribute('data-mod');
+    try{if(localStorage.getItem('mmai-done-'+m)==='1'){c.classList.add('done');done++;}}catch(e){}
+  });
+  document.getElementById('fill').style.width=Math.round(done/mods.length*100)+'%';
+  document.getElementById('progText').textContent=("{d} de {n} hechas").replace('{d}',String(done)).replace('{n}',String(mods.length));
+})();
+</script>
+</body>
+</html>

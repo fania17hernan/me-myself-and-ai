@@ -1,0 +1,6 @@
+/* Me, Myself & AI · about.css · PHASE 0: page-specific rules only. */
+  .about-body{max-width:62ch}
+  .about-body p{font:400 17px/1.7 'Inter';color:var(--ink);margin-bottom:16px}
+  .about-body p.lead{font:600 26px/1.2 'Fraunces',serif;color:var(--ink);margin-bottom:18px}
+  .about-body strong{font-weight:600}
+  @media(min-width:768px){.about-body p{font-size:18px}}

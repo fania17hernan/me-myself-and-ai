@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF5EC">
+<title>Hazla Tuya, Me, Myself &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/themes.css">
+<link rel="stylesheet" href="../assets/core.css">
+</head>
+<body>
+<header>
+  <div class="topline">
+    <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
+    <span class="rightgrp"><a class="lang" href="../level-3.html">English</a><span class="stepl" id="progText"></span></span>
+  </div>
+  <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div></div>
+</header>
+<main>
+  <a class="backlink" href="index.html">← Todos los niveles</a>
+  <div class="hero">
+    <p class="eyebrow">Nivel 3</p>
+    <h1>Hazla Tuya</h1>
+    <p class="tagline">Haz que la IA trabaje como tú, tus reglas, tu memoria, y tu asiento en los controles.</p>
+  </div>
+  <a class="mcard" href="module-10.html" data-mod="10"><div class="mnum">1</div><div class="mbody"><div class="mtitle">Instrucciones Personalizadas: Las Reglas de la Casa</div><div class="mmeta"><span class="manalogy">Las Reglas de la Casa</span> · 7 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-11.html" data-mod="11"><div class="mnum">2</div><div class="mbody"><div class="mtitle">Memoria: La Libreta que Sí Guarda</div><div class="mmeta"><span class="manalogy">La Libreta</span> · 7 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-12.html" data-mod="12"><div class="mnum">3</div><div class="mbody"><div class="mtitle">Más Allá del Texto: Ojos y Oídos</div><div class="mmeta"><span class="manalogy">Ojos y Oídos</span> · 7 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-13.html" data-mod="13"><div class="mnum">4</div><div class="mbody"><div class="mtitle">Prompts Guardados: Tu Recetario</div><div class="mmeta"><span class="manalogy">El Recetario</span> · 7 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-14.html" data-mod="14"><div class="mnum">5</div><div class="mbody"><div class="mtitle">Loops: El Turno Nocturno</div><div class="mmeta"><span class="manalogy">El Turno Nocturno</span> · 8 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-21.html" data-mod="21"><div class="mnum">6</div><div class="mbody"><div class="mtitle">Orquestación y Flujos de Trabajo: El Director de Orquesta</div><div class="mmeta"><span class="manalogy">El Director de Orquesta</span> · 8 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-20.html" data-mod="20"><div class="mnum">7</div><div class="mbody"><div class="mtitle">El Humano al Mando: El Piloto y el Piloto Automático</div><div class="mmeta"><span class="manalogy">El Piloto y el Piloto Automático</span> · 8 min</div></div><div class="mcheck" aria-hidden="true"></div></a>
+</main>
+<script>
+(function(){
+  var mods=[10,11,12,13,14,21,20];var done=0;
+  [].slice.call(document.querySelectorAll('.mcard')).forEach(function(c){
+    var m=c.getAttribute('data-mod');
+    try{if(localStorage.getItem('mmai-done-'+m)==='1'){c.classList.add('done');done++;}}catch(e){}
+  });
+  document.getElementById('fill').style.width=Math.round(done/mods.length*100)+'%';
+  document.getElementById('progText').textContent=("{d} de {n} hechas").replace('{d}',String(done)).replace('{n}',String(mods.length));
+})();
+</script>
+</body>
+</html>

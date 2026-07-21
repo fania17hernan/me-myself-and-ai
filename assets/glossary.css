@@ -1,0 +1,10 @@
+/* Me, Myself & AI · glossary.css · PHASE 0: page-specific rules only. */
+  .gsearch{width:100%;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;font:400 17px 'Inter';color:var(--ink);margin:4px 0 18px}
+  .gsearch:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(191,85,56,.18)}
+  .gterm{font:700 18px/1.3 'Inter';margin-bottom:6px}
+  .gdef{margin-bottom:10px}
+  .gan{font:400 14px/1.45 'Inter';color:var(--ink-soft);background:var(--warm);border-radius:12px;padding:10px 12px;margin-bottom:12px}
+  .gan b{color:var(--accent-deep);font-weight:600}
+  .glearn{font:600 14px 'Inter';color:var(--accent-deep);text-decoration:none}
+  .glearn:hover{text-decoration:underline}
+  .gnone{color:var(--ink-soft);font-style:italic;padding:8px 2px;display:none}

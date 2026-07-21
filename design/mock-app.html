@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF5EC">
+<title>UX mock · Me, Myself &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson.css">
+<link rel="stylesheet" href="../assets/app.css">
+<style>
+  /* Mock-only affordances. None of this ships. */
+  .mockbar{background:#1c1a18;color:#f7f5f3;padding:.6rem 1rem;font:500 12px/1.4 'Inter',sans-serif;
+    display:flex;gap:1rem;align-items:center;justify-content:center;flex-wrap:wrap;position:relative;z-index:80}
+  .mockbar b{font-weight:700}
+  .mockbar button{background:#3a3531;color:#f7f5f3;border:none;border-radius:99px;
+    padding:.3rem .75rem;font:600 11px 'Inter';cursor:pointer}
+  .mockbar button.on{background:#e58a4a;color:#1c1a18}
+</style>
+</head>
+<body class="ed-1">
+
+<div class="mockbar">
+  <b>Mock</b>
+  <span>Resize the window to see mobile tabs ⇄ desktop sidebar</span>
+  <span style="opacity:.6">|</span>
+  <span>Edition:</span>
+  <button data-ed="ed-0">L0</button>
+  <button data-ed="ed-1" class="on">L1</button>
+  <button data-ed="ed-2">L2</button>
+  <button data-ed="ed-3">L3</button>
+  <button data-ed="ed-4">L4</button>
+  <span style="opacity:.6">|</span>
+  <button data-state="returning" class="on">Returning</button>
+  <button data-state="first">First visit</button>
+</div>
+
+<a class="skip" href="#main">Skip to content</a>
+<div id="live" class="sr-only" role="status" aria-live="polite"></div>
+
+<div class="app">
+
+  <!-- ============ Desktop sidebar ============ -->
+  <nav class="rail" aria-label="Main">
+    <a class="mark" href="#">Me, Myself <span class="amp">&amp;</span> AI</a>
+    <a class="nav" href="#home"     data-tab="home"     aria-current="page"><span class="ic">⌂</span>Home</a>
+    <a class="nav" href="#use"      data-tab="use"><span class="ic">✦</span>Use It</a>
+    <a class="nav" href="#glossary" data-tab="glossary"><span class="ic">A</span>Glossary</a>
+    <a class="nav" href="#progress" data-tab="progress"><span class="ic">◔</span>Progress</a>
+    <div class="spacer"></div>
+    <div class="sep"></div>
+    <a class="sub" href="#">About this course</a>
+    <a class="sub" href="#">Español</a>
+    <a class="sub" href="#">Suggest a topic</a>
+    <a class="sub" href="#">Display &amp; accessibility</a>
+  </nav>
+
+  <!-- ============ Mobile top bar ============ -->
+  <header class="topbar">
+    <button class="iconbtn" id="menuBtn" aria-label="More" aria-expanded="false" aria-controls="sheet">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </button>
+    <a class="mark" href="#">Me, Myself <span class="amp">&amp;</span> AI</a>
+    <a class="lang" href="#" hreflang="es" lang="es">ES</a>
+  </header>
+
+  <div class="view">
+    <main id="main" tabindex="-1" class="viewbody">
+
+      <!-- ---------- HOME ---------- -->
+      <section class="panel" id="p-home">
+
+        <!-- returning -->
+        <div id="s-returning">
+          <p class="eyebrow">Foundations</p>
+          <div class="resume">
+            <p class="kicker">Pick up where you left off</p>
+            <p class="name">What's actually in the tank</p>
+            <p class="meta">Concept · 3 min</p>
+            <a class="btn btn-primary" href="../module-1.html">Continue</a>
+          </div>
+
+          <div class="review">
+            <div class="body">
+              <p class="kicker">Worth another look</p>
+              <p style="font-size:.9375rem">You missed one on <strong>Both directions burn fuel</strong></p>
+            </div>
+            <a class="btn btn-ghost" href="#">Retry · 1 min</a>
+          </div>
+        </div>
+
+        <!-- first visit -->
+        <div id="s-first" hidden>
+          <p class="hero-line">AI, explained by someone who was also intimidated by it.</p>
+          <p class="lede">Analogies that stick. Two minutes at a time. No jargon, no sign-up.</p>
+          <div class="resume">
+            <p class="kicker">Start here</p>
+            <p class="name">What AI isn't</p>
+            <p class="meta">5 myths · 2 min each · no quiz</p>
+            <a class="btn btn-primary" href="#">Clear the air first</a>
+          </div>
+          <p class="soft" style="font-size:.9375rem;margin-top:1rem">
+            Not sure where to start? <a href="#use" data-tab="use">Pick your job</a> and get three
+            things to try today.</p>
+        </div>
+
+        <!-- the path -->
+        <div class="pathhead">
+          <h2>Your path</h2>
+          <span class="meta">14 of 75 units</span>
+        </div>
+
+        <details class="lvl">
+          <summary>
+            <span class="swatch" style="background:#EDF0F2;box-shadow:inset 0 0 0 2px #1E5F63"></span>
+            <span><span class="lname">What AI isn't</span>
+              <span class="lmeta" style="display:block">Level 0 · 5 units · done</span></span>
+            <span class="chev">›</span>
+          </summary>
+          <div class="units">
+            <a class="unit done" href="#"><span class="state">✓</span><span class="u">It won't take your job</span><span class="tag">Myth</span><span class="min">2m</span></a>
+            <a class="unit done" href="#"><span class="state">✓</span><span class="u">It makes things up, and that's knowable</span><span class="tag">Myth</span><span class="min">2m</span></a>
+            <a class="unit done" href="#"><span class="state">✓</span><span class="u">It isn't learning from what you type</span><span class="tag">Myth</span><span class="min">2m</span></a>
+          </div>
+        </details>
+
+        <details class="lvl" open>
+          <summary>
+            <span class="swatch" style="background:#FAF5EC;box-shadow:inset 0 0 0 2px #BF5538"></span>
+            <span><span class="lname">Foundations</span>
+              <span class="lmeta" style="display:block">Level 1 · 12 units · 3 done</span></span>
+            <span class="chev">›</span>
+          </summary>
+          <div class="units">
+            <a class="unit done" href="#"><span class="state">✓</span><span class="u">The answer that died mid-sentence</span><span class="tag">Field note</span><span class="min">2m</span></a>
+            <a class="unit done" href="#"><span class="state">✓</span><span class="u">Tokens are gas in a tank</span><span class="tag">Analogy</span><span class="min">2m</span></a>
+            <a class="unit here" href="../module-1.html"><span class="state"></span><span class="u"><strong>What's actually in the tank</strong></span><span class="tag">Concept</span><span class="min">3m</span></a>
+            <a class="unit" href="#"><span class="state"></span><span class="u">Three habits that save fuel</span><span class="tag">Playbook</span><span class="min">2m</span></a>
+            <a class="unit" href="#"><span class="state"></span><span class="u">Quick check</span><span class="tag">Check</span><span class="min">2m</span></a>
+          </div>
+        </details>
+
+        <details class="lvl">
+          <summary>
+            <span class="swatch" style="background:#F3F2E7;box-shadow:inset 0 0 0 2px #3D6349"></span>
+            <span><span class="lname">Make It Yours</span>
+              <span class="lmeta" style="display:block">Level 2 · 18 units</span></span>
+            <span class="chev">›</span>
+          </summary>
+          <div class="units"><p class="soft" style="font-size:.875rem;padding-top:.75rem">Opens when Foundations is done.</p></div>
+        </details>
+
+        <details class="lvl">
+          <summary>
+            <span class="swatch" style="background:#F8EFE2;box-shadow:inset 0 0 0 2px #8F3A1E"></span>
+            <span><span class="lname">Working Together</span>
+              <span class="lmeta" style="display:block">Level 3 · 16 units</span></span>
+            <span class="chev">›</span>
+          </summary>
+          <div class="units"><p class="soft" style="font-size:.875rem;padding-top:.75rem">Opens later.</p></div>
+        </details>
+
+        <details class="lvl">
+          <summary>
+            <span class="swatch" style="background:#1A1715;box-shadow:inset 0 0 0 2px #E58A4A"></span>
+            <span><span class="lname">Under the Hood</span>
+              <span class="lmeta" style="display:block">Level 4 · 14 units</span></span>
+            <span class="chev">›</span>
+          </summary>
+          <div class="units"><p class="soft" style="font-size:.875rem;padding-top:.75rem">Opens later.</p></div>
+        </details>
+      </section>
+
+      <!-- ---------- USE IT ---------- -->
+      <section class="panel" id="p-use" hidden>
+        <p class="eyebrow">Use It</p>
+        <h1 style="font-size:1.75rem">What do you do?</h1>
+        <p class="lede">Three things you could do today, in your words.</p>
+
+        <div class="chips" role="group" aria-label="Choose a profession">
+          <button aria-pressed="true">Teacher</button>
+          <button aria-pressed="false">Small business owner</button>
+          <button aria-pressed="false">HVAC technician</button>
+          <button aria-pressed="false">Nurse</button>
+          <button aria-pressed="false">Recruiter</button>
+          <button aria-pressed="false">Accountant</button>
+          <button aria-pressed="false">Manager</button>
+          <button aria-pressed="false">Something else</button>
+        </div>
+
+        <div style="margin-top:2rem">
+          <p class="eyebrow">Teacher · try this first</p>
+          <div class="resume" style="margin-top:.75rem">
+            <p class="kicker">Start with this one</p>
+            <p class="name">Write next week's lesson plans</p>
+            <p class="meta">Teaches: giving AI enough context · 3 min</p>
+            <a class="btn btn-primary" href="#">Show me how</a>
+          </div>
+          <a class="tile" href="#" style="margin-top:1rem">
+            <div class="t">Turn a hard concept into an analogy your students will get</div>
+            <div class="m">Teaches: asking for a specific format · 2 min</div>
+          </a>
+          <a class="tile" href="#">
+            <div class="t">Draft parent emails you actually want to send</div>
+            <div class="m">Teaches: setting tone · 2 min</div>
+          </a>
+          <p class="soft" style="font-size:.9375rem;margin-top:1.25rem">
+            Not your job? <a href="#">Tell me what's missing</a> and I'll add it.</p>
+        </div>
+      </section>
+
+      <!-- ---------- GLOSSARY ---------- -->
+      <section class="panel" id="p-glossary" hidden>
+        <p class="eyebrow">Glossary</p>
+        <h1 style="font-size:1.75rem">Every term, in plain words</h1>
+        <p class="lede" style="margin-bottom:1.25rem">Look something up. No lesson required.</p>
+
+        <label class="sr-only" for="gsearch">Search terms</label>
+        <input class="search" id="gsearch" type="search" placeholder="Search, e.g. token">
+
+        <div style="margin-top:1.5rem">
+          <div class="entry">
+            <div class="term">Token</div>
+            <div class="def">A chunk of a word. It's the unit AI reads and writes, roughly
+              three-quarters of a word.</div>
+            <a class="learn" href="../module-1.html">Learn this properly · 2 min →</a>
+          </div>
+          <div class="entry">
+            <div class="term">Rate limit</div>
+            <div class="def">A cap on how much you can use a tool in a given window. Like a gas
+              station that only lets you fill up so many times an hour.</div>
+            <a class="learn" href="#">Learn this properly · 2 min →</a>
+          </div>
+          <div class="entry">
+            <div class="term">Context window</div>
+            <div class="def">How much the AI can hold in mind at once. Everything earlier in the
+              conversation counts against it.</div>
+            <a class="learn" href="#">Learn this properly · 3 min →</a>
+            <div style="margin-top:.6rem"><span class="stamp">Checked July 2026</span></div>
+          </div>
+          <div class="entry">
+            <div class="term">Confabulation</div>
+            <div class="def">When AI states something false with complete confidence. Not lying,
+              which requires knowing the truth.</div>
+            <a class="learn" href="#">Learn this properly · 2 min →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ---------- PROGRESS ---------- -->
+      <section class="panel" id="p-progress" hidden>
+        <p class="eyebrow">Your progress</p>
+        <h1 style="font-size:1.75rem">Proof, not points</h1>
+
+        <div class="statline">
+          <div class="s"><div class="n">14</div><div class="l">of 75 units</div></div>
+          <div class="s"><div class="n">6</div><div class="l">things you can now do</div></div>
+          <div class="s"><div class="n">6</div><div class="l">saved takeaways</div></div>
+        </div>
+
+        <div class="pathhead"><h2>What you can now do</h2></div>
+        <div class="cap-item"><span class="ck">✓</span><span class="x">Explain why an AI answer stops mid-sentence, and split a task so it doesn't.</span></div>
+        <div class="cap-item"><span class="ck">✓</span><span class="x">Spot when AI is confabulating, and check it in under a minute.</span></div>
+        <div class="cap-item"><span class="ck">✓</span><span class="x">Give AI enough context that the first draft is usable.</span></div>
+
+        <div class="pathhead"><h2>Your cheat sheet</h2></div>
+        <div class="tile" style="cursor:default">
+          <div class="t" style="font-family:var(--serif);font-weight:600">“AI has a gas tank. Long conversations burn more fuel.”</div>
+          <div class="m">Saved from Tokens are gas in a tank</div>
+        </div>
+        <a class="btn btn-ghost" href="#" style="margin-top:.5rem">Export one page</a>
+
+        <div class="review" style="margin-top:2rem">
+          <div class="body">
+            <p class="kicker">Worth another look</p>
+            <p style="font-size:.9375rem">2 units you missed on the first try</p>
+          </div>
+          <a class="btn btn-ghost" href="#">Review</a>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ============ Mobile tabs ============ -->
+    <nav class="tabbar" aria-label="Main">
+      <a href="#home"     data-tab="home"     aria-current="page"><span class="ic" aria-hidden="true">⌂</span>Home</a>
+      <a href="#use"      data-tab="use"><span class="ic" aria-hidden="true">✦</span>Use It</a>
+      <a href="#glossary" data-tab="glossary"><span class="ic" aria-hidden="true">A</span>Glossary</a>
+      <a href="#progress" data-tab="progress"><span class="ic" aria-hidden="true">◔</span>Progress</a>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ Hamburger sheet · secondary only ============ -->
+<div class="sheet" id="sheet" hidden>
+  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="sheetTitle">
+    <h2 id="sheetTitle">More</h2>
+    <a href="#">About this course</a>
+    <a href="#">Español</a>
+    <a href="#">Suggest a topic</a>
+    <a href="#">Display &amp; accessibility</a>
+    <a href="#">Reset my progress</a>
+    <p class="hint">Home, Use It, Glossary and Progress stay in the tab bar, always visible.
+      Nothing you need often lives in here.</p>
+    <button class="btn btn-ghost" id="closeSheet" style="width:100%;margin-top:1.25rem">Close</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var panels = { home:'p-home', use:'p-use', glossary:'p-glossary', progress:'p-progress' };
+
+  function show(tab){
+    if(!panels[tab]) tab = 'home';
+    Object.keys(panels).forEach(function(k){
+      document.getElementById(panels[k]).hidden = (k !== tab);
+    });
+    document.querySelectorAll('[data-tab]').forEach(function(a){
+      if(a.getAttribute('data-tab') === tab) a.setAttribute('aria-current','page');
+      else a.removeAttribute('aria-current');
+    });
+    var m = document.getElementById('main');
+    m.focus({preventScroll:true});
+    window.scrollTo({top:0});
+  }
+
+  document.querySelectorAll('[data-tab]').forEach(function(a){
+    a.addEventListener('click', function(e){ e.preventDefault(); show(a.getAttribute('data-tab')); });
+  });
+
+  // hamburger
+  var sheet = document.getElementById('sheet'), btn = document.getElementById('menuBtn');
+  function open(v){
+    sheet.hidden = !v;
+    btn.setAttribute('aria-expanded', String(v));
+    if(v) sheet.querySelector('a').focus();
+    else btn.focus();
+  }
+  btn.addEventListener('click', function(){ open(sheet.hidden); });
+  document.getElementById('closeSheet').addEventListener('click', function(){ open(false); });
+  sheet.addEventListener('click', function(e){ if(e.target === sheet) open(false); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && !sheet.hidden) open(false); });
+
+  // profession chips
+  document.querySelectorAll('.chips button').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.querySelectorAll('.chips button').forEach(function(o){ o.setAttribute('aria-pressed','false'); });
+      b.setAttribute('aria-pressed','true');
+    });
+  });
+
+  // mock-only controls
+  document.querySelectorAll('[data-ed]').forEach(function(b){
+    b.addEventListener('click', function(){
+      document.body.className = b.getAttribute('data-ed');
+      document.querySelectorAll('[data-ed]').forEach(function(o){ o.classList.remove('on'); });
+      b.classList.add('on');
+    });
+  });
+  document.querySelectorAll('[data-state]').forEach(function(b){
+    b.addEventListener('click', function(){
+      var first = b.getAttribute('data-state') === 'first';
+      document.getElementById('s-first').hidden = !first;
+      document.getElementById('s-returning').hidden = first;
+      document.querySelectorAll('[data-state]').forEach(function(o){ o.classList.remove('on'); });
+      b.classList.add('on');
+      show('home');
+    });
+  });
+})();
+</script>
+</body>
+</html>

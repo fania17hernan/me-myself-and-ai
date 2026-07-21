@@ -1,0 +1,293 @@
+/* =============================================================
+   Me, Myself & AI  ·  lesson.css
+   PHASE 1: the new lesson system.
+
+   Used only by the reference module for now. The remaining 25
+   modules stay on core.css until Phase 3, so this can be iterated
+   on without breaking the site.
+
+   Three deliberate departures from the old build:
+     1. A real type scale. The old one clustered everything between
+        11 and 36px, which is why nothing read as emphasised.
+     2. Three widths used on purpose, not one width used for
+        everything. Single-column uniformity was the main reason
+        the site read as templated.
+     3. The analogy is full-bleed and oversized, not a card. It is
+        the thing people remember, so it gets to behave like an
+        image rather than another box.
+   ============================================================= */
+
+@import url('themes.css');
+
+/* ---- Scale ------------------------------------------------------------- */
+
+:root {
+  --t-2xs:  0.6875rem;
+  --t-xs:   0.8125rem;
+  --t-sm:   0.9375rem;
+  --t-base: 1.0625rem;
+  --t-md:   1.1875rem;
+  --t-lg:   clamp(1.375rem, 1.1rem + 1.2vw, 1.75rem);
+  --t-xl:   clamp(1.75rem, 1.3rem + 2.1vw, 2.5rem);
+  --t-2xl:  clamp(2.25rem, 1.5rem + 3.4vw, 3.5rem);
+  --t-3xl:  clamp(2.5rem, 1.5rem + 4.8vw, 4.5rem);
+
+  --s-1:.25rem; --s-2:.5rem; --s-3:.75rem; --s-4:1rem;
+  --s-5:1.5rem; --s-6:2rem;  --s-7:3rem;   --s-8:4rem; --s-9:6rem;
+
+  --measure: 36rem;
+  --page: 70rem;
+  --r-md: 14px; --r-lg: 22px;
+  --serif: 'Fraunces', Georgia, serif;
+  --sans:  'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+/* ---- Base -------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+img, svg { display: block; max-width: 100%; }
+button, input, textarea { font: inherit; color: inherit; }
+
+body {
+  background: var(--paper); color: var(--ink);
+  font: 400 var(--t-base)/1.7 var(--sans);
+  -webkit-font-smoothing: antialiased;
+  display: flex; flex-direction: column; min-height: 100vh;
+}
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 600;
+             line-height: 1.1; letter-spacing: -.02em; }
+h1 { font-size: var(--t-2xl); }
+h2 { font-size: var(--t-xl); margin-bottom: var(--s-4); }
+h3 { font-size: var(--t-base); font-family: var(--sans); font-weight: 700;
+     letter-spacing: 0; margin-bottom: var(--s-2); }
+
+p { max-width: 64ch; }
+p + p, p + ul, ul + p { margin-top: var(--s-4); }
+ul { padding-left: var(--s-5); }
+li + li { margin-top: var(--s-2); }
+strong { font-weight: 600; }
+.soft { color: var(--ink-soft); }
+.term { font-weight: 600; box-shadow: inset 0 -2px 0 var(--highlight); }
+
+/* ---- Accessibility ----------------------------------------------------- */
+
+.skip { position: absolute; left: var(--s-4); top: -6rem; z-index: 100;
+        background: var(--accent); color: var(--paper);
+        padding: var(--s-3) var(--s-5); border-radius: 0 0 var(--r-md) var(--r-md);
+        font: 600 var(--t-sm) var(--sans); text-decoration: none; transition: top .15s; }
+.skip:focus { top: 0; }
+
+:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+:focus:not(:focus-visible) { outline: none; }
+
+.sr-only { position: absolute !important; width: 1px; height: 1px; padding: 0;
+           overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+button, .btn, .qopt { min-height: 44px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important;
+    transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media (prefers-contrast: more) { :root { --line: var(--ink-soft); } }
+
+/* ---- Masthead ----------------------------------------------------------
+   Quiet. The old header carried a flame, a streak count and a gauge,
+   which is a lot of chrome to put above a lesson for an audience that
+   is already unsure this is serious.
+   ------------------------------------------------------------------------ */
+
+.masthead { position: sticky; top: 0; z-index: 10; background: var(--paper);
+            border-bottom: 1px solid var(--line); padding: var(--s-3) var(--s-5) 0; }
+.masthead .row { display: flex; align-items: center; justify-content: space-between;
+                 gap: var(--s-4); max-width: var(--page); margin-inline: auto; }
+.brand { font: 600 var(--t-sm) var(--serif); color: var(--ink); text-decoration: none; }
+.brand .amp { color: var(--accent); font-style: italic; }
+.lang { font: 600 var(--t-2xs) var(--sans); letter-spacing: .07em; text-transform: uppercase;
+        color: var(--accent); text-decoration: none; border: 1px solid var(--line);
+        border-radius: 999px; padding: var(--s-1) var(--s-3); }
+.lang:hover { border-color: var(--accent); background: var(--warm); }
+
+.progress { max-width: var(--page); margin: var(--s-3) auto 0;
+            display: flex; align-items: center; gap: var(--s-4); padding-bottom: var(--s-2); }
+.ptrack { flex: 1; height: 2px; background: var(--line); border-radius: 999px; overflow: hidden; }
+.pfill  { height: 100%; background: var(--accent); width: 0; transition: width .3s ease-out; }
+.stepl  { font: 600 var(--t-2xs) var(--sans); letter-spacing: .1em; text-transform: uppercase;
+          color: var(--ink-soft); white-space: nowrap; }
+
+/* ---- Layout ------------------------------------------------------------ */
+
+main { flex: 1; width: 100%; padding-bottom: var(--s-9); }
+.screen { display: none; }
+.screen.on { display: block; animation: rise .3s ease-out; }
+@keyframes rise { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+.wrap  { max-width: var(--measure); margin-inline: auto; padding-inline: var(--s-5); }
+.wide  { max-width: 54rem;          margin-inline: auto; padding-inline: var(--s-5); }
+.pad   { padding-block: var(--s-7); }
+
+/* Asymmetric spread. Sticky lede on the left, detail on the right.
+   Used once per lesson so it stays a moment, not a pattern. */
+.spread { max-width: var(--page); margin-inline: auto;
+          padding: var(--s-7) var(--s-5); display: grid; gap: var(--s-5); }
+@media (min-width: 62rem) {
+  .spread { grid-template-columns: 20rem 1fr; gap: var(--s-8); align-items: start; }
+  .spread > .aside { position: sticky; top: 7rem; }
+}
+.spread .block + .block { margin-top: var(--s-6); }
+
+/* ---- Editorial marks --------------------------------------------------- */
+
+.eyebrow { font: 600 var(--t-2xs) var(--sans); letter-spacing: .14em;
+           text-transform: uppercase; color: var(--accent);
+           display: flex; align-items: center; gap: var(--s-3); margin-bottom: var(--s-5); }
+.eyebrow::after { content: ''; flex: 1; height: 1px; background: var(--line); }
+
+.lede { font-size: var(--t-md); line-height: 1.6; color: var(--ink-soft);
+        margin-top: var(--s-5); max-width: 52ch; }
+
+.rule { width: 2.5rem; height: 3px; background: var(--accent); margin-block: var(--s-5); }
+
+/* A framed list, not a card. Border on two sides only. */
+.frame { border-left: 2px solid var(--accent); padding: var(--s-2) 0 var(--s-2) var(--s-5);
+         margin-top: var(--s-6); }
+.frame .ft { font: 600 var(--t-2xs) var(--sans); letter-spacing: .14em;
+             text-transform: uppercase; color: var(--accent); margin-bottom: var(--s-3); }
+.frame ul { list-style: none; padding: 0; }
+.frame li { position: relative; padding-left: var(--s-5); }
+.frame li::before { content: ''; position: absolute; left: 0; top: .75em;
+                    width: 5px; height: 5px; border-radius: 50%; background: var(--line); }
+
+/* Pull quote. Breaks the prose column, which the old build never did. */
+.pull { font-family: var(--serif); font-size: var(--t-lg); line-height: 1.25;
+        color: var(--accent); max-width: 20ch; margin: var(--s-6) 0;
+        padding-left: var(--s-5); border-left: 3px solid var(--highlight); }
+
+/* ---- The analogy moment ------------------------------------------------
+   Full bleed, oversized, no card, no border radius. This is the single
+   biggest departure from the old template and the thing that should make
+   the page stop feeling like a document.
+   ------------------------------------------------------------------------ */
+
+.analogy { background: var(--warm); border-block: 1px solid var(--line);
+           padding: var(--s-9) var(--s-5); text-align: center; }
+.analogy .kicker { font: 600 var(--t-2xs) var(--sans); letter-spacing: .16em;
+                   text-transform: uppercase; color: var(--accent); margin-bottom: var(--s-5); }
+.analogy .big { font-family: var(--serif); font-size: var(--t-3xl); font-weight: 600;
+                line-height: .98; letter-spacing: -.035em; max-width: 14ch;
+                margin-inline: auto; }
+.analogy .sub { margin: var(--s-6) auto 0; max-width: 44ch; font-size: var(--t-md);
+                color: var(--ink-soft); text-align: left; }
+
+/* ---- Steps ------------------------------------------------------------- */
+
+.steps { list-style: none; padding: 0; counter-reset: s; margin-top: var(--s-6); }
+.steps li { counter-increment: s; position: relative; padding-left: 3.5rem; }
+.steps li + li { margin-top: var(--s-6); }
+.steps li::before { content: counter(s); position: absolute; left: 0; top: -.1em;
+  width: 2.25rem; height: 2.25rem; border-radius: 50%;
+  background: var(--warm); color: var(--accent); font: 600 var(--t-sm) var(--serif);
+  display: flex; align-items: center; justify-content: center; }
+
+/* ---- Takeaway ----------------------------------------------------------
+   Inverted. The old one was a warm card with a giant decorative quote mark,
+   which read as an inspirational poster. This reads as the point.
+   ------------------------------------------------------------------------ */
+
+.takeaway { background: var(--ink); color: var(--paper);
+            padding: var(--s-8) var(--s-5); text-align: center; }
+.takeaway .kicker { font: 600 var(--t-2xs) var(--sans); letter-spacing: .16em;
+                    text-transform: uppercase; opacity: .6; margin-bottom: var(--s-5); }
+.takeaway .line { font-family: var(--serif); font-size: var(--t-lg); line-height: 1.3;
+                  max-width: 26ch; margin-inline: auto; }
+body.ed-4 .takeaway { background: var(--warm); color: var(--ink); }
+
+/* ---- Quiz --------------------------------------------------------------
+   Hairline separated, not stacked cards. Same content, far less furniture.
+   ------------------------------------------------------------------------ */
+
+[data-q] { border-top: 1px solid var(--line); padding-top: var(--s-5); margin-top: var(--s-6); }
+[data-q]:first-of-type { border-top: none; margin-top: var(--s-5); }
+[data-q] h3 { font-size: var(--t-md); font-family: var(--sans); font-weight: 600;
+              margin-bottom: var(--s-4); max-width: 52ch; }
+
+.qopt { display: flex; align-items: flex-start; gap: var(--s-3); width: 100%;
+        padding: var(--s-3) var(--s-4); border: 1px solid var(--line);
+        border-radius: var(--r-md); background: var(--surface);
+        font: 400 var(--t-base)/1.5 var(--sans); text-align: left;
+        cursor: pointer; margin-top: var(--s-2); color: var(--ink);
+        transition: border-color .15s, background .15s; }
+.qopt:hover:not(:disabled) { border-color: var(--accent); }
+.qopt:disabled { cursor: default; }
+.dot { flex: 0 0 20px; height: 20px; border-radius: 50%;
+       border: 2px solid var(--line); margin-top: .2em;
+       display: flex; align-items: center; justify-content: center;
+       font-size: 12px; font-weight: 700; line-height: 1; }
+.qopt.ok { border-color: var(--success); background: var(--ok-bg, rgba(78,122,90,.09)); }
+.qopt.no { border-color: var(--error);   background: var(--no-bg, rgba(163,59,46,.07)); }
+/* Never colour alone. */
+.qopt.ok .dot { border-color: var(--success); color: var(--success); }
+.qopt.ok .dot::after { content: '\2713'; }
+.qopt.no .dot { border-color: var(--error); color: var(--error); }
+.qopt.no .dot::after { content: '\2715'; }
+
+.explain { display: none; margin-top: var(--s-3); padding-left: var(--s-4);
+           border-left: 3px solid var(--line); font-size: var(--t-sm);
+           line-height: 1.6; color: var(--ink-soft); max-width: 56ch; }
+.explain.show { display: block; }
+.explain.good { border-color: var(--success); }
+.explain.bad  { border-color: var(--error); }
+
+/* ---- Capability --------------------------------------------------------
+   Replaces the medal. Currency is proof, not points.
+   ------------------------------------------------------------------------ */
+
+.capability { border: 1px solid var(--accent); border-radius: var(--r-lg);
+              padding: var(--s-5); margin-top: var(--s-6); background: var(--surface); }
+.capability .kicker { font: 600 var(--t-2xs) var(--sans); letter-spacing: .14em;
+                      text-transform: uppercase; color: var(--accent); margin-bottom: var(--s-3); }
+.capability .stmt { font-size: var(--t-md); line-height: 1.5; max-width: 46ch; }
+
+.nextup { border-top: 1px solid var(--line); margin-top: var(--s-7); padding-top: var(--s-5); }
+.nextup .nt { font: 600 var(--t-2xs) var(--sans); letter-spacing: .14em;
+              text-transform: uppercase; color: var(--ink-soft); margin-bottom: var(--s-2); }
+
+/* ---- Buttons and nav --------------------------------------------------- */
+
+.btn { font: 600 var(--t-base) var(--sans); border: 1px solid transparent;
+       border-radius: 999px; padding: var(--s-3) var(--s-6); cursor: pointer;
+       display: inline-flex; align-items: center; justify-content: center; gap: var(--s-2);
+       text-decoration: none; transition: background .15s, border-color .15s; }
+.btn-primary { background: var(--accent); color: var(--paper); }
+.btn-primary:hover:not(:disabled) { background: var(--accent-deep); }
+.btn-ghost { background: transparent; color: var(--ink-soft); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.btn:disabled { opacity: .4; cursor: not-allowed; }
+
+.navbar { position: sticky; bottom: 0; background: var(--paper);
+          border-top: 1px solid var(--line);
+          padding: var(--s-3) var(--s-5) calc(var(--s-3) + env(safe-area-inset-bottom)); }
+.navbar .inner { display: flex; gap: var(--s-3); justify-content: space-between;
+                 max-width: var(--page); margin-inline: auto; }
+.navbar .btn-primary { flex: 1; max-width: 20rem; }
+
+/* ---- Suggestion form and footer ---------------------------------------- */
+
+.suggest { border: 1px solid var(--line); border-radius: var(--r-lg);
+           padding: var(--s-5); margin-top: var(--s-7); background: var(--surface); }
+.suggest textarea, .suggest input[type=email] {
+  width: 100%; background: var(--paper); border: 1px solid var(--line);
+  border-radius: var(--r-md); padding: var(--s-3) var(--s-4);
+  font: 400 var(--t-base) var(--sans); color: var(--ink);
+  margin-bottom: var(--s-3); resize: vertical; }
+.suggest textarea:focus, .suggest input:focus { outline: none; border-color: var(--accent); }
+.suggest .btn-primary { width: 100%; }
+.hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; }
+.sg-msg { margin-top: var(--s-3); color: var(--error); font-size: var(--t-sm); }
+.sg-ok  { color: var(--success); font-weight: 600; }
+
+footer { color: var(--ink-soft); font-size: var(--t-sm);
+         border-top: 1px solid var(--line); margin-top: var(--s-8);
+         padding: var(--s-5); max-width: var(--page);
+         margin-inline: auto; width: 100%; }

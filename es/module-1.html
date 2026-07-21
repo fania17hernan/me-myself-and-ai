@@ -4,211 +4,289 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#FAF5EC">
-<title>Tokens y Límites de Uso: El Tanque de Gasolina, Me, Myself &amp; AI</title>
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#FAF5EC; --surface:#FFFDF8; --warm:#F3EADC; --ink:#2B231D; --ink-soft:#6B5C50;
-    --accent:#BF5538; --accent-deep:#9C4128; --highlight:#E5A33F; --success:#4E7A5A;
-    --error:#A33B2E; --line:#E3D7C6;
-    --sh1:0 1px 2px rgba(43,35,29,.06),0 4px 12px rgba(43,35,29,.05);
-    --sh2:0 4px 8px rgba(43,35,29,.08),0 12px 32px rgba(43,35,29,.10);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{background:var(--paper);color:var(--ink);font:400 17px/1.65 'Inter',sans-serif;
-       -webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
-  header{position:sticky;top:0;background:var(--paper);padding:14px 20px 10px;z-index:5}
-  .topline{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;gap:12px}
-  .brand{font:600 16px 'Fraunces',serif;color:var(--ink);text-decoration:none}
-  .brand .amp{color:var(--accent);font-style:italic}
-  .rightgrp{display:flex;align-items:baseline;gap:14px;flex-shrink:0}
-  .lang{font:600 12px/1.4 'Inter';letter-spacing:.06em;text-transform:uppercase;color:var(--accent-deep);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:3px 10px}
-  .lang:hover{border-color:var(--accent);background:var(--warm)}
-  .stepl{font:500 13px/1.4 'Inter';color:var(--ink-soft)}
-  .gauge{display:flex;align-items:center;gap:8px}
-  .gauge svg{flex:0 0 auto}
-  .ptrack{flex:1;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
-  .pfill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--highlight),var(--accent));transition:width .25s ease-out}
-  main{flex:1;padding:8px 20px 120px;max-width:640px;width:100%;margin:0 auto}
-  .screen{display:none;animation:rise .25s ease-out}
-  .screen.on{display:block}
-  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  @media(prefers-reduced-motion:reduce){.screen{animation:none}}
-  .kicker{font:500 13px/1.4 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin:16px 0 8px}
-  h1{font:600 34px/1.12 'Fraunces',serif;margin-bottom:12px}
-  h2{font:600 26px/1.2 'Fraunces',serif;margin:28px 0 10px}
-  h3{font:700 18px/1.35 'Inter';margin:22px 0 6px}
-  p{margin-bottom:14px;max-width:62ch}
-  .soft{color:var(--ink-soft)}
-  .term{font-weight:600;box-shadow:inset 0 -2px 0 var(--highlight)}
-  ul{margin:0 0 14px 20px}
-  li{margin-bottom:8px}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--sh1);margin:16px 0}
-  .analogy{background:var(--warm);border:none;border-left:4px solid var(--highlight);border-radius:20px;padding:24px;margin:16px 0}
-  .analogy h2{margin-top:0}
-  .takeaway{background:var(--warm);border-radius:20px;padding:36px 24px 28px;position:relative;box-shadow:var(--sh2);margin:20px 0}
-  .takeaway:before{content:'\201C';position:absolute;top:2px;left:16px;font:600 96px 'Fraunces',serif;color:var(--accent);opacity:.18;line-height:1}
-  .takeaway p{font:italic 500 22px/1.4 'Fraunces',serif;position:relative;margin:0}
-  .navbar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);
-          box-shadow:var(--sh2);padding:12px 20px calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;gap:12px;z-index:5}
-  .navbar .inner{display:flex;justify-content:space-between;gap:12px;width:100%;max-width:640px;margin:0 auto}
-  .btn{font:600 17px 'Inter';border:none;border-radius:999px;min-height:52px;padding:14px 28px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
-  .btn-primary{background:var(--accent);color:var(--surface)}
-  .btn-primary:active,.btn-primary:hover{background:var(--accent-deep)}
-  .btn-primary[disabled]{opacity:.4;cursor:default}
-  .btn-ghost{background:transparent;color:var(--ink-soft)}
-  .qopt{display:flex;align-items:flex-start;gap:12px;width:100%;min-height:56px;padding:16px;border-radius:16px;
-        border:1.5px solid var(--line);background:var(--surface);font:400 17px/1.5 'Inter';text-align:left;cursor:pointer;margin-bottom:10px;color:var(--ink)}
-  .qopt.sel{border:2px solid var(--accent);padding:15px}
-  .qopt.ok{border:2px solid var(--success);background:#EAF1EB;padding:15px}
-  .qopt.no{border:2px solid var(--error);padding:15px}
-  .dot{flex:0 0 22px;height:22px;border-radius:50%;border:2px solid var(--line);margin-top:2px}
-  .qopt.ok .dot{border-color:var(--success);background:var(--success)}
-  .qopt.no .dot{border-color:var(--error)}
-  .explain{border-radius:16px;padding:16px;margin:6px 0 18px;font-size:16px;display:none}
-  .explain.show{display:block}
-  .explain.good{background:#EAF1EB;color:#33523D}
-  .explain.bad{background:#F6E8E2;color:#7A2E23}
-  .hero{padding:8px 0 4px}
-  .eyebrow{font:500 13px/1.4 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:10px}
-  .tagline{font:italic 500 20px/1.4 'Fraunces',serif;color:var(--ink-soft);margin:0 0 18px}
-  .mcard{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px 20px;box-shadow:var(--sh1);margin-bottom:12px;text-decoration:none;color:var(--ink)}
-  .mcard:hover{border-color:var(--accent)}
-  .mnum{flex:0 0 40px;height:40px;border-radius:50%;background:var(--warm);color:var(--accent-deep);font:600 18px 'Fraunces',serif;display:flex;align-items:center;justify-content:center}
-  .mbody{flex:1;min-width:0}
-  .mtitle{font:700 17px/1.3 'Inter';margin-bottom:3px}
-  .mmeta{font:400 14px/1.4 'Inter';color:var(--ink-soft)}
-  .manalogy{color:var(--accent-deep);font-weight:600}
-  .mcheck{flex:0 0 24px;height:24px;border-radius:50%;border:2px solid var(--line)}
-  .mcard.done .mcheck{background:var(--success);border-color:var(--success)}
-  .mcard.done .mcheck:after{content:'\2713';color:#fff;display:flex;align-items:center;justify-content:center;height:100%;font-size:14px;font-weight:700}
-  .mcard.done .mnum{background:var(--success);color:#fff}
-  footer{color:var(--ink-soft);font-size:14px;margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
-  @media(min-width:768px){
-    body{font-size:18px}
-    h1{font-size:48px} h2{font-size:32px}
-    main{padding-bottom:40px}
-    .navbar{position:static;box-shadow:none;border:none;background:transparent}
-  }
-
-  .lcard{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--sh1);margin-bottom:14px;text-decoration:none;color:var(--ink)}
-  .lcard:hover{border-color:var(--accent)}
-  .lcard.soon{opacity:.62;cursor:default}
-  .lnum{flex:0 0 46px;height:46px;border-radius:14px;background:var(--warm);color:var(--accent-deep);font:600 20px 'Fraunces',serif;display:flex;align-items:center;justify-content:center}
-  .lbody{flex:1;min-width:0}
-  .lname{font:700 18px/1.25 'Inter';margin-bottom:3px}
-  .ltag{font:400 14px/1.4 'Inter';color:var(--ink-soft)}
-  .lmeta{font:500 12px/1.4 'Inter';color:var(--accent-deep);margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
-  .lmeta.soonlbl{color:var(--ink-soft)}
-  .lring{flex:0 0 34px;height:34px;border-radius:50%;background:conic-gradient(var(--accent) 0deg, var(--line) 0deg);display:flex;align-items:center;justify-content:center}
-  .lring span{width:26px;height:26px;border-radius:50%;background:var(--surface);font:600 10px 'Inter';display:flex;align-items:center;justify-content:center;color:var(--ink-soft)}
-  .util{display:flex;gap:12px;margin-top:6px}
-  .util .tile{flex:1;background:var(--warm);border-radius:16px;padding:16px;text-decoration:none;color:var(--ink)}
-  .util .tile .tt{font:700 15px 'Inter';margin-bottom:3px}
-  .util .tile .ts{font:400 12.5px/1.35 'Inter';color:var(--ink-soft)}
-  .backlink{display:inline-block;font:600 13px/1.4 'Inter';color:var(--accent-deep);text-decoration:none;margin:4px 0 4px}
-  .backlink:hover{text-decoration:underline}
-  .suggest{border:1px solid var(--line);border-top:3px solid var(--highlight)}
-  .suggest h3{font:700 17px/1.3 'Inter'}
-  .suggest textarea,.suggest input[type=email]{width:100%;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font:400 16px 'Inter';color:var(--ink);margin-bottom:10px;resize:vertical;font-family:'Inter',sans-serif}
-  .suggest textarea:focus,.suggest input[type=email]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(191,85,56,.15)}
-  .suggest .btn-primary{width:100%}
-  .hp{position:absolute !important;left:-9999px !important;width:1px;height:1px;opacity:0;pointer-events:none}
-  .sg-msg{margin:10px 0 0;color:var(--error);font-size:14px}
-  .sg-ok{margin:0;color:var(--success);font-weight:600;font-size:16px}
-</style>
+<title>Tokens y límites de uso: el tanque de gasolina, Me, Myself &amp; AI</title>
+<link rel="alternate" hreflang="en" href="../module-1.html">
+<link rel="alternate" hreflang="es" href="module-1.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/lesson.css">
 </head>
-<body>
-<header>
-  <div class="topline">
+<body class="ed-1"
+      data-lesson="module-1"
+      data-level="Empieza Aquí"
+      data-i18n-step="Paso" data-i18n-of="de" data-i18n-complete="Completado"
+      data-i18n-start="Empezar el módulo" data-i18n-cont="Continuar" data-i18n-finish="Terminar"
+      data-done-perfect="Tanque lleno." data-done-ok="Módulo completado."
+      data-score-tpl="Acertaste {s} de {n} en la comprobación rápida"
+      data-score-perfect=", sin un solo fallo."
+      data-score-partial=", y lo que fallaste es justo lo que se aprende.">
+
+<a class="skip" href="#main">Saltar al contenido</a>
+<div id="live" class="sr-only" role="status" aria-live="polite"></div>
+
+<header class="masthead">
+  <div class="row">
     <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
-    <span class="rightgrp">
-      <a class="lang" href="../module-1.html">English</a>
-      <span class="stepl" id="stepLabel">Empieza Aquí</span>
-    </span>
+    <a class="lang" href="../module-1.html" hreflang="en" lang="en">English</a>
   </div>
-  <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div></div>
+  <div class="progress">
+    <span class="stepl" id="stepLabel">Empieza Aquí</span>
+    <div class="ptrack"><div class="pfill" id="fill"></div></div>
+  </div>
 </header>
-<main>
-  <section class="screen on" data-title="cover">
-    <a class="backlink" href="level-1.html">← Empieza Aquí</a>
-    <p class="kicker">Empieza Aquí · Lección 2 de 6 · 9 min</p>
-    <h1>Tokens y Límites de Uso: El Tanque de Gasolina</h1>
-    <p class="soft">¿Por qué la IA se corta a media respuesta? ¿Por qué simplemente… se detiene? Al terminar este módulo sabrás exactamente por qué, y cómo no quedarte varado nunca más.</p>
-    <div class="card"><h3 style="margin-top:0">En este módulo</h3><ul style="margin-bottom:0"><li>Una analogía que nunca olvidarás (el tanque de gasolina)</li><li>Qué es un "token" en realidad, sin tecnicismos</li><li>Tres hábitos que hacen la IA más barata, rápida y menos frustrante</li></ul></div>
+
+<main id="main" tabindex="-1">
+
+  <!-- 0 · Gancho -------------------------------------------------------- -->
+  <section class="screen on">
+    <div class="wrap pad">
+      <p class="eyebrow">Empieza Aquí · Lección 2 de 6 · 9 min</p>
+      <h1>Tokens y límites de uso: el tanque de gasolina</h1>
+      <p class="lede">¿Por qué la IA se corta a media respuesta? ¿Por qué simplemente… se detiene?
+        Al terminar este módulo vas a saber exactamente por qué, y cómo no quedarte a medias
+        nunca más.</p>
+
+      <div class="frame">
+        <p class="ft">En este módulo</p>
+        <ul>
+          <li>Una analogía que no vas a olvidar, el tanque de gasolina</li>
+          <li>Qué es un "token" en realidad, sin tecnicismos</li>
+          <li>Tres hábitos que hacen la IA más barata, más rápida y menos frustrante</li>
+        </ul>
+      </div>
+    </div>
   </section>
-  <section class="screen" data-title="problem"><p class="kicker">El problema</p><h1>Se murió a media frase.</h1><p>Historia real: estaba enfocada en un proyecto, con la IA haciendo justo lo que necesitaba. Pegué otro bloque de trabajo y le di enter.</p><p>Nada. Luego un error de tiempo agotado. Y cuando por fin respondió, se detuvo <em>a media frase</em>, como si alguien hubiera desconectado el cable de la pared.</p><p>Si alguna vez te ha pasado, seguramente pensaste que hiciste algo mal, o que la herramienta estaba descompuesta. Ninguna de las dos. Pasó algo muy predecible, y una vez que lo ves, puedes evitarlo siempre.</p></section>
-  <section class="screen" data-title="analogy"><p class="kicker">La analogía central</p><div class="analogy"><h2>El Tanque de Gasolina</h2><p>Piensa en los tokens como gasolina en un tanque. Cada palabra que escribes quema un poco de gasolina. Cada palabra que la IA responde también quema gasolina. Cuando el tanque llega a cero, el carro se detiene, aunque sea a media frase, aunque sea en plena carretera.</p><p style="margin-bottom:0">¿Y los <strong>límites de uso</strong>? Son como una gasolinera que solo te deja llenar el tanque cierta cantidad de veces por hora. Si vuelves demasiado seguido, te hacen esperar.</p></div><p>Ese es todo el modelo mental. Lo demás en este módulo son solo detalles sobre qué tan grande es el tanque y cómo se quema la gasolina.</p></section>
-  <section class="screen" data-title="how"><p class="kicker">Cómo funciona en realidad</p><h1>Qué hay realmente en el tanque</h1><p>Un <span class="term">token</span> <span class="soft">(en pocas palabras: un pedacito de palabra)</span> es la unidad que la IA realmente lee y escribe. Un token es más o menos tres cuartas partes de una palabra, así que 100 palabras son unos 130 tokens. Para entendernos: <strong>palabras ≈ tokens</strong>.</p><h3>Las dos direcciones queman gasolina</h3><p>Esto sorprende a todos: no es solo lo que escribes. La <strong>entrada</strong> (tu mensaje, más todo lo anterior en la conversación) y la <strong>salida</strong> (la respuesta de la IA) cuentan las dos. ¿Una pregunta corta que necesita una respuesta larga? Eso también quema bastante gasolina.</p><h3>Por qué las conversaciones largas se vuelven lentas y caras</h3><p>Cada vez que envías un mensaje, la IA vuelve a leer toda la conversación hasta ese punto. Así que el mensaje 40 de un chat largo quema mucho más que el mensaje 2, vas cargando con todo el historial del viaje.</p><h3>Cada carro tiene un tanque distinto</h3><p>Claude, ChatGPT y Gemini tienen tanques de distinto tamaño y reglas de gasolinera distintas, y las cambian seguido. Los tamaños no importan, lo que importa es el <em>comportamiento</em>: toda herramienta tiene un límite, y todas se portan raro de la misma forma cuando lo alcanzas.</p><h3>Cómo se ve el "tanque vacío"</h3><ul><li><strong>Corte</strong>, la respuesta se interrumpe a media frase (se acabó la gasolina)</li><li><strong>Tiempo agotado o error</strong>, se rinde antes de terminar (se ahogó el motor)</li><li><strong>"Intenta más tarde"</strong>, llegaste al límite de uso (la gasolinera dice que vuelvas en una hora)</li></ul></section>
-  <section class="screen" data-title="foryou"><p class="kicker">Qué significa esto para ti</p><h1>Maneja sabiendo que hay un tanque</h1><h3>1. Divide las tareas grandes en viajes</h3><p>No pegues un documento de 40 páginas pidiendo todo de una vez. Pide primero el resumen. Luego los riesgos. Luego la nueva versión. Tres viajes cortos le ganan a un viaje que se queda varado.</p><h3>2. Empieza de nuevo cuando cambies de tema</h3><p>Un chat nuevo es un tanque lleno. Si ya terminaste con el análisis del presupuesto y pasas a la agenda del offsite, abre una conversación nueva en lugar de arrastrar la vieja.</p><h3>3. Cuando se corte, solo di "continúa"</h3><p>Que se corte no es un fracaso, el tanque se quedó sin gasolina a media respuesta. Responde "por favor continúa" y retoma justo donde se quedó. Funciona casi siempre.</p><div class="card"><h3 style="margin-top:0">Pruébalo esta semana</h3><p style="margin-bottom:0">Toma una tarea grande que normalmente meterías en un solo mensaje y divídela en tres peticiones más pequeñas. Nota la diferencia en velocidad y calidad.</p></div></section>
-  <section class="screen" data-title="takeaway"><p class="kicker">Una sola idea</p><h1>Díselo a un colega</h1><div class="takeaway"><p>La IA tiene un tanque de gasolina. Las conversaciones largas queman más combustible. Divide las tareas grandes en viajes.</p></div><p class="soft">Ese es todo el módulo en una frase. Si mañana puedes explicárselo a alguien en el trabajo, se te quedó. Una comprobación rápida, tres preguntas, sin calificaciones, solo para confirmar que quedó claro.</p></section>
-  <section class="screen" data-title="quiz"><p class="kicker">Comprobación rápida · 3 preguntas</p><div class="card" data-q="0" data-answer="0"><h3 style="margin-top:0">1. La respuesta de tu IA se detiene a media frase. ¿Qué pasó probablemente?</h3><button class="qopt"><span class="dot"></span>Se quedó sin tokens, el tanque llegó a cero</button><button class="qopt"><span class="dot"></span>Se confundió con tu pregunta</button><button class="qopt"><span class="dot"></span>Se cayó la conexión a internet</button><div class="explain"></div></div><div class="card" data-q="1" data-answer="1"><h3 style="margin-top:0">2. ¿Qué quema combustible (tokens)?</h3><button class="qopt"><span class="dot"></span>Solo lo que escribes</button><button class="qopt"><span class="dot"></span>Las dos cosas, entrada y salida</button><button class="qopt"><span class="dot"></span>Solo lo que la IA responde</button><div class="explain"></div></div><div class="card" data-q="2" data-answer="2"><h3 style="margin-top:0">3. Pasas de un análisis de presupuesto a planear un offsite. ¿Mejor jugada?</h3><button class="qopt"><span class="dot"></span>Pedirle que escriba más rápido</button><button class="qopt"><span class="dot"></span>Seguir en el mismo chat para que recuerde todo</button><button class="qopt"><span class="dot"></span>Abrir un chat nuevo, tanque lleno para un viaje nuevo</button><div class="explain"></div></div></section>
-  <section class="screen" data-title="done">
-    <p class="kicker">Módulo completado</p><h1 id="doneTitle">Tanque lleno. 🎉</h1><p id="doneScore"></p>
-    <div class="takeaway"><p>La IA tiene un tanque de gasolina. Las conversaciones largas queman más combustible. Divide las tareas grandes en viajes.</p></div><p><strong>A continuación: Módulo 2: La Pizarra.</strong> ¿Por qué la IA olvida lo que le dijiste hace 20 mensajes? (Pista: no se está volviendo más tonta.)</p>
-    <section class="suggest card"><h3 style="margin-top:0">¿Hay un tema que no hayamos cubierto?</h3><p class="soft" style="margin-bottom:14px">Dime qué te gustaría aprender, tus ideas deciden lo que construyo después.</p><form id="sg_module_1" novalidate><textarea id="sg_module_1_t" maxlength="1000" rows="3" placeholder="ej. ¿Cómo escribo mejores prompts para correos?" required></textarea><input id="sg_module_1_e" type="email" maxlength="200" placeholder="Correo (opcional, solo si quieres respuesta)" autocomplete="off"><input type="text" id="sg_module_1_hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true"><button type="submit" class="btn btn-primary" id="sg_module_1_b">Enviar</button><p class="sg-msg" id="sg_module_1_m" role="status"></p></form></section><script>(function(){var f=document.getElementById("sg_module_1");if(!f)return;var t=document.getElementById("sg_module_1_t"),e=document.getElementById("sg_module_1_e"),hp=document.getElementById("sg_module_1_hp"),b=document.getElementById("sg_module_1_b"),m=document.getElementById("sg_module_1_m");f.addEventListener("submit",function(ev){ev.preventDefault();if(hp.value)return;var s=(t.value||"").trim();if(!s)return;b.disabled=true;m.textContent="";fetch("https://pdbqrjqlwqjqzefmmlhd.supabase.co"+"/rest/v1/topic_suggestions",{method:"POST",headers:{"apikey":"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Authorization":"Bearer "+"sb_publishable_IdA-Ju152TgBx-wEGMd0Yg_iV7_wvkO","Content-Type":"application/json","Prefer":"return=minimal"},body:JSON.stringify({suggestion:s,email:(e.value||"").trim()||null,lang:"es",source:"module-1"})}).then(function(r){if(r.ok){f.innerHTML="<p class=\"sg-ok\">"+"\u00a1Listo, gracias! \ud83d\ude4c Tu idea ya qued\u00f3."+"</p>";}else{m.textContent="Mmm, no se envi\u00f3. \u00bfLo intentas de nuevo en un momento?";b.disabled=false;}}).catch(function(){m.textContent="Mmm, no se envi\u00f3. \u00bfLo intentas de nuevo en un momento?";b.disabled=false;});});})();</script>
+
+  <!-- 1 · El problema --------------------------------------------------- -->
+  <section class="screen">
+    <div class="wrap pad">
+      <p class="eyebrow">El problema</p>
+      <h2>Se murió a media frase.</h2>
+      <p>Historia real: estaba enfocada en un proyecto, con la IA haciendo justo lo que
+        necesitaba. Pegué otro bloque grande de trabajo y envié el mensaje.</p>
+      <p>Nada. Luego un error de tiempo agotado. Y cuando por fin respondió, se detuvo a media
+        frase, como si alguien hubiera desconectado el cable de la pared.</p>
+
+      <p class="pull">Seguramente pensaste que hiciste algo mal.</p>
+
+      <p>Ni tú ni la herramienta fallaron. Pasó algo muy predecible, y una vez que lo ves,
+        puedes evitarlo siempre.</p>
+    </div>
   </section>
+
+  <!-- 2 · La analogía · ancho completo ----------------------------------- -->
+  <section class="screen">
+    <div class="analogy">
+      <p class="kicker">La analogía central</p>
+      <p class="big">Los tokens son gasolina en un tanque.</p>
+      <p class="sub">Cada palabra que escribes quema un poco de gasolina. Cada palabra que
+        responde la IA también quema. Cuando el tanque llega a cero, todo se detiene, aunque sea
+        a media frase, aunque sea en plena carretera. ¿Y los límites de uso? Son la gasolinera
+        que solo te deja llenar el tanque cierto número de veces por hora. Si vuelves demasiado
+        pronto, te hacen esperar.</p>
+    </div>
+    <div class="wrap pad">
+      <p class="soft">Ese es todo el modelo mental. Lo demás en este módulo son detalles sobre
+        qué tan grande es el tanque y cómo se quema la gasolina.</p>
+    </div>
+  </section>
+
+  <!-- 3 · Cómo funciona -------------------------------------------------- -->
+  <section class="screen">
+    <div class="spread">
+      <div class="aside">
+        <p class="eyebrow">Cómo funciona</p>
+        <h2>Qué hay dentro del tanque</h2>
+        <div class="rule"></div>
+        <p class="soft">Cuatro cosas que vale la pena saber. Ninguna necesita que hagas
+          cuentas.</p>
+      </div>
+      <div>
+        <div class="block">
+          <h3>Un token es un pedazo de palabra</h3>
+          <p>Un <span class="term">token</span> es la unidad que la IA lee y escribe en realidad.
+            Más o menos tres cuartas partes de una palabra, así que 100 palabras son unos 130
+            tokens. Para entendernos: palabras ≈ tokens.</p>
+        </div>
+        <div class="block">
+          <h3>Las dos direcciones queman gasolina</h3>
+          <p>Esto sorprende a todo el mundo: no es solo lo que escribes. La entrada, o sea tu
+            mensaje más todo lo anterior en la conversación, y la salida, la respuesta de la IA,
+            cuentan las dos. ¿Una pregunta corta que necesita una respuesta larga? También quema
+            bastante.</p>
+        </div>
+        <div class="block">
+          <h3>Las conversaciones largas se vuelven lentas y caras</h3>
+          <p>Cada vez que envías un mensaje, la IA vuelve a leer toda la conversación hasta ese
+            punto. El mensaje 40 de un chat largo quema mucho más que el mensaje 2. Vas cargando
+            con todo el historial del viaje.</p>
+        </div>
+        <div class="block">
+          <h3>Cada herramienta tiene un tanque distinto</h3>
+          <p>Claude, ChatGPT y Gemini tienen tanques de distinto tamaño y reglas de gasolinera
+            distintas, y las cambian a menudo. Los tamaños no importan, lo que importa es el
+            comportamiento: toda herramienta tiene un límite, y todas se comportan igual de raro
+            cuando lo alcanzas.</p>
+        </div>
+        <div class="frame">
+          <p class="ft">Cómo se ve el tanque vacío</p>
+          <ul>
+            <li><strong>Se corta.</strong> La respuesta se interrumpe a media frase. Se acabó la
+              gasolina.</li>
+            <li><strong>Tiempo agotado o error.</strong> Se rinde antes de terminar. Se ahogó el
+              motor.</li>
+            <li><strong>"Inténtalo más tarde".</strong> Llegaste al límite de uso. La gasolinera
+              te dice que vuelvas en una hora.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 · Qué significa para ti ------------------------------------------ -->
+  <section class="screen">
+    <div class="wrap pad">
+      <p class="eyebrow">Qué significa esto para ti</p>
+      <h2>Avanza sabiendo que hay un tanque</h2>
+
+      <ol class="steps">
+        <li>
+          <h3>Divide las tareas grandes en viajes</h3>
+          <p>No pegues un documento de 40 páginas pidiendo todo de una vez. Pide primero el
+            resumen. Luego los riesgos. Luego la nueva versión. Tres viajes cortos le ganan a uno
+            que se queda a medias.</p>
+        </li>
+        <li>
+          <h3>Empieza de nuevo cuando cambies de tema</h3>
+          <p>Un chat nuevo es un tanque lleno. Si ya terminaste con el análisis del presupuesto y
+            pasas a la agenda de la reunión de equipo, abre una conversación nueva en lugar de
+            arrastrar la anterior.</p>
+        </li>
+        <li>
+          <h3>Cuando se corte, solo di "continúa"</h3>
+          <p>Que se corte no es un fracaso, el tanque se quedó sin gasolina a media respuesta.
+            Responde "por favor continúa" y retoma justo donde se quedó. Funciona casi
+            siempre.</p>
+        </li>
+      </ol>
+
+      <div class="frame">
+        <p class="ft">Pruébalo esta semana</p>
+        <p>Toma una tarea grande que normalmente meterías en un solo mensaje y divídela en tres
+          peticiones más pequeñas. Fíjate en la diferencia de velocidad y calidad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 · La idea -------------------------------------------------------- -->
+  <section class="screen">
+    <div class="takeaway">
+      <p class="kicker">Díselo a alguien del trabajo</p>
+      <p class="line">La IA tiene un tanque de gasolina. Las conversaciones largas queman más
+        combustible. Divide las tareas grandes en viajes.</p>
+    </div>
+    <div class="wrap pad">
+      <p class="soft">Ese es todo el módulo en una frase. Si mañana puedes explicárselo a alguien
+        en el trabajo, se te quedó. Ahora, tres preguntas rápidas. Sin calificaciones, solo para
+        confirmar que quedó claro.</p>
+    </div>
+  </section>
+
+  <!-- 6 · Comprobación rápida --------------------------------------------- -->
+  <section class="screen">
+    <div class="wrap pad">
+      <p class="eyebrow">Comprobación rápida · 3 preguntas</p>
+
+      <div data-q="0" data-answer="0">
+        <h3>1. La respuesta de tu IA se detiene a media frase. ¿Qué pasó probablemente?</h3>
+        <button class="qopt"><span class="dot"></span>Se quedó sin tokens, el tanque llegó a cero</button>
+        <button class="qopt"><span class="dot"></span>Se confundió con tu pregunta</button>
+        <button class="qopt"><span class="dot"></span>Se cayó la conexión a internet</button>
+        <div class="explain"
+             data-good="Exacto. Se acabó la gasolina, aunque fuera a media frase. Responde “continúa” y vuelve a llenar el tanque."
+             data-bad="No del todo. Se quedó sin tokens a media respuesta. La solución es simple: responde “por favor continúa”."></div>
+      </div>
+
+      <div data-q="1" data-answer="1">
+        <h3>2. ¿Qué quema combustible (tokens)?</h3>
+        <button class="qopt"><span class="dot"></span>Solo lo que escribes</button>
+        <button class="qopt"><span class="dot"></span>Las dos cosas, la entrada y la salida</button>
+        <button class="qopt"><span class="dot"></span>Solo lo que responde la IA</button>
+        <div class="explain"
+             data-good="Correcto, las dos direcciones queman combustible. ¿Pregunta corta, respuesta larga? Sale igual de caro."
+             data-bad="Casi. Cuentan las dos. Tu entrada y la salida de la IA queman tokens, por eso vacían el tanque tanto las preguntas largas como las respuestas largas."></div>
+      </div>
+
+      <div data-q="2" data-answer="2">
+        <h3>3. Pasas de un análisis de presupuesto a planear una reunión de equipo. ¿Qué conviene hacer?</h3>
+        <button class="qopt"><span class="dot"></span>Pedirle que escriba más rápido</button>
+        <button class="qopt"><span class="dot"></span>Seguir en el mismo chat para que recuerde todo</button>
+        <button class="qopt"><span class="dot"></span>Abrir un chat nuevo, tanque lleno para un viaje nuevo</button>
+        <div class="explain"
+             data-good="Tanque lleno, viaje nuevo. Tema nuevo significa chat nuevo, el mejor hábito de este módulo."
+             data-bad="Se entiende, pero arrastrar la conversación anterior quema combustible en cada mensaje. Tema nuevo, chat nuevo, tanque lleno."></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · Completado ------------------------------------------------------ -->
+  <section class="screen">
+    <div class="wrap pad">
+      <p class="eyebrow">Módulo completado</p>
+      <h1 id="doneTitle">Tanque lleno.</h1>
+      <p class="lede" id="doneScore"></p>
+
+      <div class="capability">
+        <p class="kicker">Lo que ya puedes hacer</p>
+        <p class="stmt">Puedes explicar por qué una respuesta de IA se detiene a media frase, y
+          dividir una tarea grande para que no te pase.</p>
+      </div>
+
+      <div class="nextup">
+        <p class="nt">A continuación</p>
+        <p><strong>Módulo 2: La pizarra.</strong> ¿Por qué la IA olvida lo que le dijiste hace 20
+          mensajes? Pista: no se está volviendo más tonta.</p>
+      </div>
+
+      <section class="suggest">
+        <h3>¿Hay algún tema que no hayamos cubierto?</h3>
+        <p class="soft">Dime qué te gustaría aprender. Tus ideas deciden lo que construyo
+          después.</p>
+        <form id="sg_module_1" data-suggest data-lang="es" data-source="module-1" novalidate>
+          <label class="sr-only" for="sg_module_1_t">Tu sugerencia</label>
+          <textarea id="sg_module_1_t" data-field="text" maxlength="1000" rows="3"
+                    placeholder="Por ejemplo: ¿cómo escribo mejores instrucciones para correos?" required></textarea>
+          <label class="sr-only" for="sg_module_1_e">Correo, opcional</label>
+          <input id="sg_module_1_e" data-field="email" type="email" maxlength="200"
+                 placeholder="Correo (opcional, solo si quieres respuesta)" autocomplete="off">
+          <input type="text" data-field="hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button type="submit" class="btn btn-primary" data-field="submit">Enviar</button>
+          <p class="sg-msg" data-field="msg" role="status"></p>
+        </form>
+      </section>
+    </div>
+  </section>
+
 </main>
+
 <nav class="navbar"><div class="inner">
   <button class="btn btn-ghost" id="backBtn">Atrás</button>
   <button class="btn btn-primary" id="nextBtn">Empezar el módulo</button>
 </div></nav>
-<div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="module-2.html">Siguiente lección →</a><a class="btn btn-ghost" href="level-1.html">Volver a Empieza Aquí</a></div></div>
-<script>
-(function(){
-  var GID=1;
-  var LVLNAME="Empieza Aquí";
-  var L={step:"Paso",of:"de",complete:"Completado",start:"Empezar el módulo",cont:"Continuar",finish:"Terminar"};
-  var screens=[].slice.call(document.querySelectorAll('.screen'));
-  var fill=document.getElementById('fill'),stepLabel=document.getElementById('stepLabel');
-  var nextBtn=document.getElementById('nextBtn'),backBtn=document.getElementById('backBtn');
-  var navbar=document.querySelector('.navbar'),doneNav=document.getElementById('doneNav');
-  var QUIZ=6,DONE=screens.length-1;
-  var i=0,answers={};
-  try{var sv=parseInt(localStorage.getItem('mmai-m'+GID),10);if(sv>0&&sv<DONE)i=sv;}catch(e){}
-  var explains={0:{good:"Exacto. Se acabó la gasolina, aunque sea a media frase. Responde “continúa” y se rellena.",bad:"No del todo, la cosa es así: se quedó sin tokens a media respuesta. La solución es simple: responde “por favor continúa.”"},1:{good:"Correcto, las dos direcciones queman combustible. ¿Pregunta corta, respuesta larga? Igual sale caro.",bad:"Casi, cuentan las dos. Tu entrada Y la salida de la IA queman tokens, por eso tanto las preguntas largas como las respuestas largas vacían el tanque."},2:{good:"Tanque lleno, viaje nuevo. Tema nuevo = chat nuevo es el mejor hábito de este módulo.",bad:"Tentador, pero arrastrar la conversación vieja quema combustible en cada mensaje. Tema nuevo = chat nuevo = tanque lleno."}};
-  function quizDone(){return Object.keys(answers).length===3}
-  function score(){var s=0;for(var k in answers){if(answers[k])s++}return s}
-  function render(){
-    screens.forEach(function(s,n){s.classList.toggle('on',n===i)});
-    fill.style.width=Math.round(i/DONE*100)+'%';
-    stepLabel.textContent=(i===0)?LVLNAME:(i===DONE)?L.complete:L.step+' '+i+' '+L.of+' '+(DONE-1);
-    backBtn.style.visibility=(i===0)?'hidden':'visible';
-    if(i===0)nextBtn.textContent=L.start;
-    else if(i===QUIZ){nextBtn.textContent=L.finish;nextBtn.disabled=!quizDone();}
-    else{nextBtn.textContent=L.cont;nextBtn.disabled=false;}
-    navbar.style.display=(i===DONE)?'none':'';
-    doneNav.style.display=(i===DONE)?'block':'none';
-    if(i===DONE){
-      try{localStorage.setItem('mmai-done-'+GID,'1')}catch(e){}
-      var s=score();
-      document.getElementById('doneTitle').textContent=(s===3)?"Tanque lleno. 🎉":"Módulo completado 🎉";
-      document.getElementById('doneScore').textContent="Acertaste "+s+" de 3 en la comprobación"+(s===3?", manejo perfecto.":", y los errores te enseñaron algo, que de eso se trata.");
-    }
-    try{localStorage.setItem('mmai-m'+GID,i)}catch(e){}
-    window.scrollTo({top:0});
-  }
-  nextBtn.addEventListener('click',function(){if(i<DONE){i++;render()}});
-  backBtn.addEventListener('click',function(){if(i>0){i--;render()}});
-  [].slice.call(document.querySelectorAll('[data-q]')).forEach(function(card){
-    var q=+card.dataset.q,ans=+card.dataset.answer;
-    var opts=[].slice.call(card.querySelectorAll('.qopt')),ex=card.querySelector('.explain');
-    opts.forEach(function(opt,n){
-      opt.addEventListener('click',function(){
-        if(q in answers)return;
-        var correct=(n===ans);answers[q]=correct;
-        opts.forEach(function(o){o.disabled=true});
-        opt.classList.add(correct?'ok':'no');
-        if(!correct)opts[ans].classList.add('ok');
-        ex.textContent=correct?explains[q].good:explains[q].bad;
-        ex.classList.add('show',correct?'good':'bad');
-        if(quizDone())nextBtn.disabled=false;
-      });
-    });
-  });
-  render();
-})();
-</script>
+
+<div id="doneNav" style="display:none">
+  <div class="wrap" style="padding-bottom:3rem;display:flex;gap:.75rem;flex-wrap:wrap">
+    <a class="btn btn-primary" href="module-2.html">Siguiente lección →</a>
+    <a class="btn btn-ghost" href="level-1.html">Volver a Empieza Aquí</a>
+  </div>
+</div>
+
+<footer>
+  <p>Me, Myself &amp; AI · Fundamentos de IA para profesionales</p>
+</footer>
+
+<script src="../assets/state.js"></script>
+<script src="../assets/module.js"></script>
+<script src="../assets/suggest.js"></script>
 </body>
 </html>

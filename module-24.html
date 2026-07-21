@@ -6,120 +6,12 @@
 <meta name="theme-color" content="#FAF5EC">
 <title>The Claude Family: Anthropic's Garage, Me, Myself &amp; AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#FAF5EC; --surface:#FFFDF8; --warm:#F3EADC; --ink:#2B231D; --ink-soft:#6B5C50;
-    --accent:#BF5538; --accent-deep:#9C4128; --highlight:#E5A33F; --success:#4E7A5A;
-    --error:#A33B2E; --line:#E3D7C6;
-    --sh1:0 1px 2px rgba(43,35,29,.06),0 4px 12px rgba(43,35,29,.05);
-    --sh2:0 4px 8px rgba(43,35,29,.08),0 12px 32px rgba(43,35,29,.10);
-  }
-  *{box-sizing:border-box;margin:0;padding:0}
-  html,body{height:100%}
-  body{background:var(--paper);color:var(--ink);font:400 17px/1.65 'Inter',sans-serif;
-       -webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
-  header{position:sticky;top:0;background:var(--paper);padding:14px 20px 10px;z-index:5}
-  .topline{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:10px;gap:12px}
-  .brand{font:600 16px 'Fraunces',serif;color:var(--ink);text-decoration:none}
-  .brand .amp{color:var(--accent);font-style:italic}
-  .rightgrp{display:flex;align-items:baseline;gap:14px;flex-shrink:0}
-  .lang{font:600 12px/1.4 'Inter';letter-spacing:.06em;text-transform:uppercase;color:var(--accent-deep);text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:3px 10px}
-  .lang:hover{border-color:var(--accent);background:var(--warm)}
-  .stepl{font:500 13px/1.4 'Inter';color:var(--ink-soft)}
-  .gauge{display:flex;align-items:center;gap:8px}
-  .gauge svg{flex:0 0 auto}
-  .ptrack{flex:1;height:8px;border-radius:999px;background:var(--line);overflow:hidden}
-  .pfill{height:100%;border-radius:999px;background:linear-gradient(90deg,var(--highlight),var(--accent));transition:width .25s ease-out}
-  main{flex:1;padding:8px 20px 120px;max-width:640px;width:100%;margin:0 auto}
-  .screen{display:none;animation:rise .25s ease-out}
-  .screen.on{display:block}
-  @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-  @media(prefers-reduced-motion:reduce){.screen{animation:none}}
-  .kicker{font:500 13px/1.4 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin:16px 0 8px}
-  h1{font:600 34px/1.12 'Fraunces',serif;margin-bottom:12px}
-  h2{font:600 26px/1.2 'Fraunces',serif;margin:28px 0 10px}
-  h3{font:700 18px/1.35 'Inter';margin:22px 0 6px}
-  p{margin-bottom:14px;max-width:62ch}
-  .soft{color:var(--ink-soft)}
-  .term{font-weight:600;box-shadow:inset 0 -2px 0 var(--highlight)}
-  ul{margin:0 0 14px 20px}
-  li{margin-bottom:8px}
-  .card{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;box-shadow:var(--sh1);margin:16px 0}
-  .analogy{background:var(--warm);border:none;border-left:4px solid var(--highlight);border-radius:20px;padding:24px;margin:16px 0}
-  .analogy h2{margin-top:0}
-  .takeaway{background:var(--warm);border-radius:20px;padding:36px 24px 28px;position:relative;box-shadow:var(--sh2);margin:20px 0}
-  .takeaway:before{content:'\201C';position:absolute;top:2px;left:16px;font:600 96px 'Fraunces',serif;color:var(--accent);opacity:.18;line-height:1}
-  .takeaway p{font:italic 500 22px/1.4 'Fraunces',serif;position:relative;margin:0}
-  .navbar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);
-          box-shadow:var(--sh2);padding:12px 20px calc(12px + env(safe-area-inset-bottom));display:flex;justify-content:space-between;gap:12px;z-index:5}
-  .navbar .inner{display:flex;justify-content:space-between;gap:12px;width:100%;max-width:640px;margin:0 auto}
-  .btn{font:600 17px 'Inter';border:none;border-radius:999px;min-height:52px;padding:14px 28px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}
-  .btn-primary{background:var(--accent);color:var(--surface)}
-  .btn-primary:active,.btn-primary:hover{background:var(--accent-deep)}
-  .btn-primary[disabled]{opacity:.4;cursor:default}
-  .btn-ghost{background:transparent;color:var(--ink-soft)}
-  .qopt{display:flex;align-items:flex-start;gap:12px;width:100%;min-height:56px;padding:16px;border-radius:16px;
-        border:1.5px solid var(--line);background:var(--surface);font:400 17px/1.5 'Inter';text-align:left;cursor:pointer;margin-bottom:10px;color:var(--ink)}
-  .qopt.sel{border:2px solid var(--accent);padding:15px}
-  .qopt.ok{border:2px solid var(--success);background:#EAF1EB;padding:15px}
-  .qopt.no{border:2px solid var(--error);padding:15px}
-  .dot{flex:0 0 22px;height:22px;border-radius:50%;border:2px solid var(--line);margin-top:2px}
-  .qopt.ok .dot{border-color:var(--success);background:var(--success)}
-  .qopt.no .dot{border-color:var(--error)}
-  .explain{border-radius:16px;padding:16px;margin:6px 0 18px;font-size:16px;display:none}
-  .explain.show{display:block}
-  .explain.good{background:#EAF1EB;color:#33523D}
-  .explain.bad{background:#F6E8E2;color:#7A2E23}
-  .hero{padding:8px 0 4px}
-  .eyebrow{font:500 13px/1.4 'Inter';letter-spacing:.12em;text-transform:uppercase;color:var(--accent-deep);margin-bottom:10px}
-  .tagline{font:italic 500 20px/1.4 'Fraunces',serif;color:var(--ink-soft);margin:0 0 18px}
-  .mcard{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:18px 20px;box-shadow:var(--sh1);margin-bottom:12px;text-decoration:none;color:var(--ink)}
-  .mcard:hover{border-color:var(--accent)}
-  .mnum{flex:0 0 40px;height:40px;border-radius:50%;background:var(--warm);color:var(--accent-deep);font:600 18px 'Fraunces',serif;display:flex;align-items:center;justify-content:center}
-  .mbody{flex:1;min-width:0}
-  .mtitle{font:700 17px/1.3 'Inter';margin-bottom:3px}
-  .mmeta{font:400 14px/1.4 'Inter';color:var(--ink-soft)}
-  .manalogy{color:var(--accent-deep);font-weight:600}
-  .mcheck{flex:0 0 24px;height:24px;border-radius:50%;border:2px solid var(--line)}
-  .mcard.done .mcheck{background:var(--success);border-color:var(--success)}
-  .mcard.done .mcheck:after{content:'\2713';color:#fff;display:flex;align-items:center;justify-content:center;height:100%;font-size:14px;font-weight:700}
-  .mcard.done .mnum{background:var(--success);color:#fff}
-  footer{color:var(--ink-soft);font-size:14px;margin-top:24px;padding-top:18px;border-top:1px solid var(--line)}
-  @media(min-width:768px){
-    body{font-size:18px}
-    h1{font-size:48px} h2{font-size:32px}
-    main{padding-bottom:40px}
-    .navbar{position:static;box-shadow:none;border:none;background:transparent}
-  }
-
-  .lcard{display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:var(--sh1);margin-bottom:14px;text-decoration:none;color:var(--ink)}
-  .lcard:hover{border-color:var(--accent)}
-  .lcard.soon{opacity:.62;cursor:default}
-  .lnum{flex:0 0 46px;height:46px;border-radius:14px;background:var(--warm);color:var(--accent-deep);font:600 20px 'Fraunces',serif;display:flex;align-items:center;justify-content:center}
-  .lbody{flex:1;min-width:0}
-  .lname{font:700 18px/1.25 'Inter';margin-bottom:3px}
-  .ltag{font:400 14px/1.4 'Inter';color:var(--ink-soft)}
-  .lmeta{font:500 12px/1.4 'Inter';color:var(--accent-deep);margin-top:6px;text-transform:uppercase;letter-spacing:.08em}
-  .lmeta.soonlbl{color:var(--ink-soft)}
-  .lring{flex:0 0 34px;height:34px;border-radius:50%;background:conic-gradient(var(--accent) 0deg, var(--line) 0deg);display:flex;align-items:center;justify-content:center}
-  .lring span{width:26px;height:26px;border-radius:50%;background:var(--surface);font:600 10px 'Inter';display:flex;align-items:center;justify-content:center;color:var(--ink-soft)}
-  .util{display:flex;gap:12px;margin-top:6px}
-  .util .tile{flex:1;background:var(--warm);border-radius:16px;padding:16px;text-decoration:none;color:var(--ink)}
-  .util .tile .tt{font:700 15px 'Inter';margin-bottom:3px}
-  .util .tile .ts{font:400 12.5px/1.35 'Inter';color:var(--ink-soft)}
-  .backlink{display:inline-block;font:600 13px/1.4 'Inter';color:var(--accent-deep);text-decoration:none;margin:4px 0 4px}
-  .backlink:hover{text-decoration:underline}
-  .suggest{border:1px solid var(--line);border-top:3px solid var(--highlight)}
-  .suggest h3{font:700 17px/1.3 'Inter'}
-  .suggest textarea,.suggest input[type=email]{width:100%;background:var(--paper);border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;font:400 16px 'Inter';color:var(--ink);margin-bottom:10px;resize:vertical;font-family:'Inter',sans-serif}
-  .suggest textarea:focus,.suggest input[type=email]:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(191,85,56,.15)}
-  .suggest .btn-primary{width:100%}
-  .hp{position:absolute !important;left:-9999px !important;width:1px;height:1px;opacity:0;pointer-events:none}
-  .sg-msg{margin:10px 0 0;color:var(--error);font-size:14px}
-  .sg-ok{margin:0;color:var(--success);font-weight:600;font-size:16px}
-</style>
+<link rel="stylesheet" href="assets/themes.css">
+<link rel="stylesheet" href="assets/core.css">
 </head>
-<body>
+<body data-lesson="module-24" data-level="The Tools" data-i18n-step="Step" data-i18n-of="of" data-i18n-complete="Complete" data-i18n-start="Start the module" data-i18n-cont="Continue" data-i18n-finish="Finish" data-done-perfect="Full tank. 🎉" data-done-ok="Module complete 🎉" data-score-tpl="You got {s} of {n} on the quick check" data-score-perfect=", perfect drive." data-score-partial=", and the misses taught you something, which is the point." class="ed-1">
+<a class="skip" href="#main">Skip to content</a>
+<div id="live" class="sr-only" role="status" aria-live="polite"></div>
 <header>
   <div class="topline">
     <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
@@ -130,7 +22,7 @@
   </div>
   <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div></div>
 </header>
-<main>
+<main id="main" tabindex="-1">
   <section class="screen on" data-title="cover">
     <a class="backlink" href="level-2.html">← The Tools</a>
     <p class="kicker">The Tools · Lesson 6 of 8 · 8 min</p>
@@ -143,7 +35,7 @@
   <section class="screen" data-title="how"><p class="kicker">How it actually works</p><h1>What each one is actually for</h1><p><span class="term">Haiku</span> <span class="soft">(the bike)</span> answers almost instantly and costs the least. Perfect for quick chat, simple rewrites, summarizing a short email, anything where "good enough, fast" beats "perfect, slow."</p><h3>Sonnet, the one you'll use most</h3><p><span class="term">Sonnet</span> <span class="soft">(the sedan)</span> is the best balance of quality, speed, and cost for the vast majority of real work: drafting, analysis, planning, most of what fills an actual workday. If you're not sure which to pick, Sonnet is almost always the right default.</p><h3>Opus, for genuinely hard problems</h3><p><span class="term">Opus</span> <span class="soft">(the truck)</span> thinks longer and harder. Reach for it on complex reasoning, messy multi-step analysis, or anything where being right matters more than being fast.</p><h3>Fable, the flagship</h3><p><span class="term">Fable</span> <span class="soft">(the moving van)</span> is Anthropic's most capable model, built for the biggest, most complex, most multi-step work, the kind of job where an AI agent has to plan, use tools, and carry a task across many steps on its own. Most everyday work will never need it, but when a job is genuinely that big, it's the one that can actually carry it.</p><h3>Rate limits reward picking small</h3><p>On a Claude subscription, your message allowance stretches much further on Haiku or Sonnet than on Opus or Fable. Save the big engines for the jobs that actually need them.</p></section>
   <section class="screen" data-title="foryou"><p class="kicker">What this means for you</p><h1>Which one to actually tap</h1><h3>1. Start every day on Sonnet</h3><p>It's the daily driver for a reason. Default here unless you have a specific reason not to.</p><h3>2. Drop to Haiku for anything trivial</h3><p>A quick question, a one-line rewrite, a fast summary, Haiku handles it instantly and saves your Sonnet/Opus quota for later.</p><h3>3. Bump up to Opus or Fable when it's genuinely hard</h3><p>A gnarly analysis, a big messy document, a multi-step project you want an AI to actually carry, that's truck-and-van territory. Worth the wait.</p><div class="card"><h3 style="margin-top:0">Try it this week</h3><p style="margin-bottom:0">Next time you open Claude, check the model picker before you type. Match it to the size of the task, don't just leave it on default out of habit.</p></div></section>
   <section class="screen" data-title="takeaway"><p class="kicker">One takeaway</p><h1>Say it to a colleague</h1><div class="takeaway"><p>Haiku is the bike, Sonnet the daily driver, Opus the truck, Fable the moving van. Default to Sonnet, and reach for the others only when the job actually needs them.</p></div><p class="soft">That's the whole module in one sentence. If you can explain this to someone at work tomorrow, it stuck. Quick check, three questions, no grades, just proof it landed.</p></section>
-  <section class="screen" data-title="quiz"><p class="kicker">Quick check · 3 questions</p><div class="card" data-q="0" data-answer="1"><h3 style="margin-top:0">1. You need to draft a normal work email. Best default model?</h3><button class="qopt"><span class="dot"></span>Haiku, it's the cheapest option</button><button class="qopt"><span class="dot"></span>Sonnet, the daily-driver balance of quality and speed</button><button class="qopt"><span class="dot"></span>Fable, always use the biggest model</button><div class="explain"></div></div><div class="card" data-q="1" data-answer="2"><h3 style="margin-top:0">2. What is Opus best suited for?</h3><button class="qopt"><span class="dot"></span>Instant one-line answers</button><button class="qopt"><span class="dot"></span>Saving the most money</button><button class="qopt"><span class="dot"></span>Complex, multi-step reasoning where being right matters more than being fast</button><div class="explain"></div></div><div class="card" data-q="2" data-answer="0"><h3 style="margin-top:0">3. Why default to Haiku for a quick, simple question instead of Fable?</h3><button class="qopt"><span class="dot"></span>It answers fast and preserves your usage limit for harder tasks later</button><button class="qopt"><span class="dot"></span>Fable can't answer simple questions</button><button class="qopt"><span class="dot"></span>There's no real difference between them</button><div class="explain"></div></div></section>
+  <section class="screen" data-title="quiz"><p class="kicker">Quick check · 3 questions</p><div class="card" data-q="0" data-answer="1"><h3 style="margin-top:0">1. You need to draft a normal work email. Best default model?</h3><button class="qopt"><span class="dot"></span>Haiku, it's the cheapest option</button><button class="qopt"><span class="dot"></span>Sonnet, the daily-driver balance of quality and speed</button><button class="qopt"><span class="dot"></span>Fable, always use the biggest model</button><div class="explain" data-good="Right, Sonnet is the daily driver, the right default for most real work." data-bad="Sonnet's the daily driver here, the best balance for everyday drafting. Save Fable for genuinely big jobs."></div></div><div class="card" data-q="1" data-answer="2"><h3 style="margin-top:0">2. What is Opus best suited for?</h3><button class="qopt"><span class="dot"></span>Instant one-line answers</button><button class="qopt"><span class="dot"></span>Saving the most money</button><button class="qopt"><span class="dot"></span>Complex, multi-step reasoning where being right matters more than being fast</button><div class="explain" data-good="Exactly, the truck: slower, but built to haul something genuinely heavy." data-bad="Opus is the truck: slower and pricier, but built for hard, complex reasoning, not quick chat."></div></div><div class="card" data-q="2" data-answer="0"><h3 style="margin-top:0">3. Why default to Haiku for a quick, simple question instead of Fable?</h3><button class="qopt"><span class="dot"></span>It answers fast and preserves your usage limit for harder tasks later</button><button class="qopt"><span class="dot"></span>Fable can't answer simple questions</button><button class="qopt"><span class="dot"></span>There's no real difference between them</button><div class="explain" data-good="Yes, quick errand, bike job. Saves your bigger-model quota for when a real truck job shows up." data-bad="Haiku is faster and lighter on your usage limit, save Fable's horsepower for when a task actually needs it."></div></div></section>
   <section class="screen" data-title="done">
     <p class="kicker">Module complete</p><h1 id="doneTitle">Full tank. 🎉</h1><p id="doneScore"></p>
     <div class="takeaway"><p>Haiku is the bike, Sonnet the daily driver, Opus the truck, Fable the moving van. Default to Sonnet, and reach for the others only when the job actually needs them.</p></div><p><strong>Next up: The ChatGPT Family.</strong> GPT-5.3, GPT-5.4, GPT-5.5, and the o-series, here's what OpenAI's lineup actually means.</p>
@@ -155,60 +47,7 @@
   <button class="btn btn-primary" id="nextBtn">Start the module</button>
 </div></nav>
 <div id="doneNav" style="display:none;max-width:640px;margin:0 auto;padding:0 20px 40px"><div style="display:flex;gap:12px;flex-wrap:wrap"><a class="btn btn-primary" href="module-25.html">Next lesson →</a><a class="btn btn-ghost" href="level-2.html">Back to The Tools</a></div></div>
-<script>
-(function(){
-  var GID=24;
-  var LVLNAME="The Tools";
-  var L={step:"Step",of:"of",complete:"Complete",start:"Start the module",cont:"Continue",finish:"Finish"};
-  var screens=[].slice.call(document.querySelectorAll('.screen'));
-  var fill=document.getElementById('fill'),stepLabel=document.getElementById('stepLabel');
-  var nextBtn=document.getElementById('nextBtn'),backBtn=document.getElementById('backBtn');
-  var navbar=document.querySelector('.navbar'),doneNav=document.getElementById('doneNav');
-  var QUIZ=6,DONE=screens.length-1;
-  var i=0,answers={};
-  try{var sv=parseInt(localStorage.getItem('mmai-m'+GID),10);if(sv>0&&sv<DONE)i=sv;}catch(e){}
-  var explains={0:{good:"Right, Sonnet is the daily driver, the right default for most real work.",bad:"Sonnet's the daily driver here, the best balance for everyday drafting. Save Fable for genuinely big jobs."},1:{good:"Exactly, the truck: slower, but built to haul something genuinely heavy.",bad:"Opus is the truck: slower and pricier, but built for hard, complex reasoning, not quick chat."},2:{good:"Yes, quick errand, bike job. Saves your bigger-model quota for when a real truck job shows up.",bad:"Haiku is faster and lighter on your usage limit, save Fable's horsepower for when a task actually needs it."}};
-  function quizDone(){return Object.keys(answers).length===3}
-  function score(){var s=0;for(var k in answers){if(answers[k])s++}return s}
-  function render(){
-    screens.forEach(function(s,n){s.classList.toggle('on',n===i)});
-    fill.style.width=Math.round(i/DONE*100)+'%';
-    stepLabel.textContent=(i===0)?LVLNAME:(i===DONE)?L.complete:L.step+' '+i+' '+L.of+' '+(DONE-1);
-    backBtn.style.visibility=(i===0)?'hidden':'visible';
-    if(i===0)nextBtn.textContent=L.start;
-    else if(i===QUIZ){nextBtn.textContent=L.finish;nextBtn.disabled=!quizDone();}
-    else{nextBtn.textContent=L.cont;nextBtn.disabled=false;}
-    navbar.style.display=(i===DONE)?'none':'';
-    doneNav.style.display=(i===DONE)?'block':'none';
-    if(i===DONE){
-      try{localStorage.setItem('mmai-done-'+GID,'1')}catch(e){}
-      var s=score();
-      document.getElementById('doneTitle').textContent=(s===3)?"Full tank. 🎉":"Module complete 🎉";
-      document.getElementById('doneScore').textContent="You got "+s+" of 3 on the quick check"+(s===3?", perfect drive.":", and the misses taught you something, which is the point.");
-    }
-    try{localStorage.setItem('mmai-m'+GID,i)}catch(e){}
-    window.scrollTo({top:0});
-  }
-  nextBtn.addEventListener('click',function(){if(i<DONE){i++;render()}});
-  backBtn.addEventListener('click',function(){if(i>0){i--;render()}});
-  [].slice.call(document.querySelectorAll('[data-q]')).forEach(function(card){
-    var q=+card.dataset.q,ans=+card.dataset.answer;
-    var opts=[].slice.call(card.querySelectorAll('.qopt')),ex=card.querySelector('.explain');
-    opts.forEach(function(opt,n){
-      opt.addEventListener('click',function(){
-        if(q in answers)return;
-        var correct=(n===ans);answers[q]=correct;
-        opts.forEach(function(o){o.disabled=true});
-        opt.classList.add(correct?'ok':'no');
-        if(!correct)opts[ans].classList.add('ok');
-        ex.textContent=correct?explains[q].good:explains[q].bad;
-        ex.classList.add('show',correct?'good':'bad');
-        if(quizDone())nextBtn.disabled=false;
-      });
-    });
-  });
-  render();
-})();
-</script>
+<script src="assets/state.js"></script>
+<script src="assets/module.js"></script>
 </body>
 </html>

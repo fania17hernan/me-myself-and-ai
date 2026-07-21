@@ -1,0 +1,107 @@
+/* =============================================================
+   Me, Myself & AI  ·  themes.css
+   PHASE 0: the five level "editions" as theme classes on <body>.
+
+   Only .ed-1 is applied anywhere right now, and it reproduces the
+   current palette exactly, so Phase 0 changes nothing on screen.
+   Editions 0 and 2 to 4 are defined and waiting for Phase 1.
+
+   All pairings verified against WCAG 2.1 AA.
+   Format: body contrast / accent contrast against paper.
+   ============================================================= */
+
+:root,
+body.ed-1 {                    /* Level 1 · Foundations · Barro & Marigold
+                                  14.2 / 6.0 · the current brand, unchanged */
+  --paper:       #FAF5EC;
+  --surface:     #FFFDF8;
+  --warm:        #F3EADC;
+  --ink:         #2B231D;
+  --ink-soft:    #6B5C50;
+  --accent:      #BF5538;
+  --accent-deep: #9C4128;
+  --highlight:   #E5A33F;
+  --success:     #4E7A5A;
+  --error:       #A33B2E;
+  --line:        #E3D7C6;
+  --sh1: 0 1px 2px rgba(43,35,29,.06), 0 4px 12px rgba(43,35,29,.05);
+  --sh2: 0 4px 8px rgba(43,35,29,.08), 0 12px 32px rgba(43,35,29,.10);
+}
+
+body.ed-0 {                    /* Level 0 · What AI Isn't · Slate & Chalk
+                                  12.9 / 6.4 · deliberately cool. This is the
+                                  myth-clearing room, not the classroom, and
+                                  arriving at ed-1's warmth should feel like
+                                  being let in. */
+  --paper:       #EDF0F2;
+  --surface:     #FAFBFC;
+  --warm:        #E1E7EA;
+  --ink:         #1F2933;
+  --ink-soft:    #59636E;
+  --accent:      #1E5F63;
+  --accent-deep: #164A4D;
+  --highlight:   #3F8E93;
+  --success:     #3D6349;
+  --error:       #A33B2E;
+  --line:        #D3DBE0;
+  --sh1: 0 1px 2px rgba(31,41,51,.06), 0 4px 12px rgba(31,41,51,.05);
+  --sh2: 0 4px 8px rgba(31,41,51,.08), 0 12px 32px rgba(31,41,51,.10);
+}
+
+body.ed-2 {                    /* Level 2 · Olive & Bone · 13.6 / 6.1 */
+  --paper:       #F3F2E7;
+  --surface:     #FCFCF5;
+  --warm:        #E7E7D6;
+  --ink:         #242621;
+  --ink-soft:    #5C6055;
+  --accent:      #3D6349;
+  --accent-deep: #2E4C37;
+  --highlight:   #8FA36B;
+  --success:     #3D6349;
+  --error:       #A33B2E;
+  --line:        #DCDCC8;
+  --sh1: 0 1px 2px rgba(36,38,33,.06), 0 4px 12px rgba(36,38,33,.05);
+  --sh2: 0 4px 8px rgba(36,38,33,.08), 0 12px 32px rgba(36,38,33,.10);
+}
+
+body.ed-3 {                    /* Level 3 · Ochre & Rust · 13.7 / 6.6 */
+  --paper:       #F8EFE2;
+  --surface:     #FFFBF4;
+  --warm:        #F0E2CE;
+  --ink:         #2E2119;
+  --ink-soft:    #6E5A48;
+  --accent:      #8F3A1E;
+  --accent-deep: #6F2C15;
+  --highlight:   #C98A2E;
+  --success:     #4E7A5A;
+  --error:       #A33B2E;
+  --line:        #E6D4BC;
+  --sh1: 0 1px 2px rgba(46,33,25,.06), 0 4px 12px rgba(46,33,25,.05);
+  --sh2: 0 4px 8px rgba(46,33,25,.08), 0 12px 32px rgba(46,33,25,.10);
+}
+
+body.ed-4 {                    /* Level 4 · Under the Hood · Ink & Ember
+                                  15.0 / 6.9 · lights down, backstage. The
+                                  payoff, earned by three levels of buildup. */
+  --paper:       #1A1715;
+  --surface:     #241F1C;
+  --warm:        #2E2825;
+  --ink:         #F2EADF;
+  --ink-soft:    #B0A296;
+  --accent:      #E58A4A;
+  --accent-deep: #F0A268;
+  --highlight:   #E5C04A;
+  --success:     #7FB68F;
+  --error:       #E0796A;
+  --line:        #3A322D;
+  --sh1: 0 1px 2px rgba(0,0,0,.30), 0 4px 12px rgba(0,0,0,.24);
+  --sh2: 0 4px 8px rgba(0,0,0,.36), 0 12px 32px rgba(0,0,0,.40);
+}
+
+/* Dark edition needs the quiz feedback tints inverted, since the
+   hardcoded pale greens and pinks in core.css assume light paper. */
+body.ed-4 .qopt.ok  { background: rgba(127,182,143,.14); }
+body.ed-4 .explain.good { background: rgba(127,182,143,.14); color: #A9D6B6; }
+body.ed-4 .explain.bad  { background: rgba(224,121,106,.14); color: #EFA79A; }
+
+body.ed-4 meta[name="theme-color"] { color: #1A1715; }

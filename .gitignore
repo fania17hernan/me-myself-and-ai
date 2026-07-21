@@ -1,0 +1,12 @@
+# Generated HTML. Source of truth is content/*.md — see design/TAXONOMY.md §8.
+# Kept out of the repo so nobody edits the artefact instead of the source,
+# which is how the original 71-file duplication started.
+/u/
+/es/u/
+search-index.json
+
+# Local tooling
+node_modules/
+package.json
+package-lock.json
+.DS_Store

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FAF5EC">
+<title>The Tools, Me, Myself &amp; AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/themes.css">
+<link rel="stylesheet" href="assets/core.css">
+</head>
+<body class="ed-1">
+<a class="skip" href="#main">Skip to content</a>
+<header>
+  <div class="topline">
+    <a class="brand" href="index.html">Me, Myself <span class="amp">&amp;</span> AI</a>
+    <span class="rightgrp"><a class="lang" href="es/level-2.html">Español</a><span class="stepl" id="progText"></span></span>
+  </div>
+  <div class="gauge" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21c4.4 0 8-3.4 8-7.7C20 8.5 12 3 12 3S4 8.5 4 13.3C4 17.6 7.6 21 12 21Z" stroke="#BF5538" stroke-width="2" fill="#F3EADC"/></svg><div class="ptrack"><div class="pfill" id="fill" style="width:0%"></div></div></div>
+</header>
+<main>
+  <a class="backlink" href="index.html">← All levels</a>
+  <div class="hero">
+    <p class="eyebrow">Level 2</p>
+    <h1>The Tools</h1>
+    <p class="tagline">Chats, projects, artifacts, connectors, what every button actually does.</p>
+  </div>
+  <a class="mcard" href="module-6.html" data-mod="6"><div class="mnum">1</div><div class="mbody"><div class="mtitle">Chats vs. Projects: The Phone Call & the Office</div><div class="mmeta"><span class="manalogy">The Phone Call vs. the Office</span> · 8 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-7.html" data-mod="7"><div class="mnum">2</div><div class="mbody"><div class="mtitle">Artifacts: The Workbench</div><div class="mmeta"><span class="manalogy">The Workbench</span> · 7 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-8.html" data-mod="8"><div class="mnum">3</div><div class="mbody"><div class="mtitle">Connectors: The Set of Keys</div><div class="mmeta"><span class="manalogy">The Set of Keys</span> · 8 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-9.html" data-mod="9"><div class="mnum">4</div><div class="mbody"><div class="mtitle">Custom Assistants: The Trained Specialist</div><div class="mmeta"><span class="manalogy">The Trained Specialist</span> · 8 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-23.html" data-mod="23"><div class="mnum">5</div><div class="mbody"><div class="mtitle">Picking a Model: Choosing the Vehicle</div><div class="mmeta"><span class="manalogy">Choosing the Vehicle</span> · 8 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-24.html" data-mod="24"><div class="mnum">6</div><div class="mbody"><div class="mtitle">The Claude Family: Anthropic's Garage</div><div class="mmeta"><span class="manalogy">Anthropic's Garage</span> · 8 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-25.html" data-mod="25"><div class="mnum">7</div><div class="mbody"><div class="mtitle">The ChatGPT Family: OpenAI's Fleet</div><div class="mmeta"><span class="manalogy">OpenAI's Fleet</span> · 8 min</div></div><div class="mcheck" aria-hidden="true"></div></a><a class="mcard" href="module-26.html" data-mod="26"><div class="mnum">8</div><div class="mbody"><div class="mtitle">The Gemini Family: Google's Fleet</div><div class="mmeta"><span class="manalogy">Google's Fleet</span> · 8 min</div></div><div class="mcheck" aria-hidden="true"></div></a>
+</main>
+<script>
+(function(){
+  var mods=[6,7,8,9,23,24,25,26];var done=0;
+  [].slice.call(document.querySelectorAll('.mcard')).forEach(function(c){
+    var m=c.getAttribute('data-mod');
+    try{if(localStorage.getItem('mmai-done-'+m)==='1'){c.classList.add('done');done++;}}catch(e){}
+  });
+  document.getElementById('fill').style.width=Math.round(done/mods.length*100)+'%';
+  document.getElementById('progText').textContent=("{d} of {n} done").replace('{d}',String(done)).replace('{n}',String(mods.length));
+})();
+</script>
+</body>
+</html>
