@@ -22,6 +22,19 @@ const LEVELS = {
   4: { en: 'Under the Hood', es: 'Por dentro' }
 };
 
+const PROFESSIONS = {
+  teacher:             { en: 'Teacher',             es: 'Docente' },
+  'small-business-owner': { en: 'Small business owner', es: 'Dueño de un negocio' },
+  'hvac-technician':   { en: 'HVAC technician',     es: 'Técnico de climatización' },
+  nurse:               { en: 'Nurse',               es: 'Personal de enfermería' },
+  recruiter:           { en: 'Recruiter',           es: 'Reclutador' },
+  accountant:          { en: 'Accountant',          es: 'Contador' },
+  manager:             { en: 'Manager',             es: 'Líder de equipo' },
+  'real-estate-agent': { en: 'Real estate agent',   es: 'Agente inmobiliario' },
+  nonprofit:           { en: 'Nonprofit',           es: 'Sector social' },
+  other:               { en: 'Something else',      es: 'Otra cosa' }
+};
+
 const T = {
   en: { skip:'Skip to content', home:'Home', use:'Use It', gloss:'Glossary', prog:'Progress',
         start:'Start here', startSub:'5 myths · 2 min each · no quiz', startCta:'Clear the air first',
@@ -33,7 +46,14 @@ const T = {
         hero:'AI, explained by someone who was also intimidated by it.',
         foreLine:'Four companies. Four industries. The same crack in the floor.',
         foreBody:'Manufacturing, travel, healthcare, luxury retail. Different decades, one thing in common: teams moving fast on foundations nobody had been taught.',
-        foreHand:'AI is about to do it again. Faster, and to more people.' },
+        foreHand:'AI is about to do it again. Faster, and to more people.',
+        useTitle:'Use it in your work', useSub:'Pick what you do. See the units that pay off first.',
+        useNone:'No units tagged for this yet. Start with the foundations.',
+        progTitle:'Your progress', progSub:'Proof, not points.',
+        progEmpty:'Nothing yet. Finish a unit and it shows up here.',
+        progUnits:'units done', progCan:'What you can now do', progSheet:'Your cheat sheet',
+        progReview:'Worth another look', progReviewSub:'Units you missed on the first try.',
+        progExport:'Export one page', reset:'Reset my progress' },
   es: { skip:'Saltar al contenido', home:'Inicio', use:'Aplícalo', gloss:'Glosario', prog:'Tu avance',
         start:'Empieza aquí', startSub:'5 mitos · 2 min cada uno · sin examen', startCta:'Primero aclaremos el aire',
         resume:'Retoma donde lo dejaste', cont:'Continuar', path:'Tu camino',
@@ -44,7 +64,14 @@ const T = {
         hero:'La IA, explicada por alguien a quien también le intimidaba.',
         foreLine:'Cuatro empresas. Cuatro industrias. La misma grieta en el suelo.',
         foreBody:'Manufactura, viajes, salud, moda de lujo. Décadas distintas, una cosa en común: equipos avanzando rápido sobre fundamentos que nadie les había enseñado.',
-        foreHand:'La IA está a punto de repetirlo. Más rápido, y con más gente.' }
+        foreHand:'La IA está a punto de repetirlo. Más rápido, y con más gente.',
+        useTitle:'Úsalo en tu trabajo', useSub:'Elige a qué te dedicas. Mira las unidades que más te sirven.',
+        useNone:'Todavía no hay unidades para esto. Empieza por los fundamentos.',
+        progTitle:'Tu avance', progSub:'Pruebas, no puntos.',
+        progEmpty:'Aún nada. Termina una unidad y aparecerá aquí.',
+        progUnits:'unidades hechas', progCan:'Lo que ya puedes hacer', progSheet:'Tu hoja de apuntes',
+        progReview:'Vale la pena repasar', progReviewSub:'Unidades que fallaste en el primer intento.',
+        progExport:'Exportar en una página', reset:'Borrar mi avance' }
 };
 
 function head({ title, lang, prefix, desc }) {
@@ -223,6 +250,120 @@ ${entries}
   </div>
 </main>
 ${c.tabs}
+</body>
+</html>
+`;
+}
+
+/* ---- Use It ------------------------------------------------------------
+   Data-driven from each unit's `professions` frontmatter. No invented task
+   lists: a profession shows the units actually tagged for it, so the page
+   can never claim content that doesn't exist.
+   ------------------------------------------------------------------- */
+
+export function buildUseIt({ lang, units }) {
+  const t = T[lang];
+  const prefix = lang === 'en' ? '../' : '../../';
+  const alt = lang === 'en' ? '/es/use-it/' : '/use-it/';
+  const c = chrome({ lang, prefix, t, current: 'use', altHref: alt });
+
+  const byProf = {};
+  for (const u of units) for (const p of (u.professions || [])) (byProf[p] ??= []).push(u);
+
+  const order = Object.keys(PROFESSIONS).filter(p => byProf[p]);
+  const chips = order.map((p, i) =>
+    `<button class="prof-chip${i === 0 ? ' on' : ''}" data-prof="${attr(p)}" aria-pressed="${i === 0}">` +
+    `${esc(PROFESSIONS[p][lang])}</button>`).join('');
+
+  const panels = order.map((p, i) => {
+    const list = (byProf[p] || []).sort((a, b) =>
+      (a.level - b.level) || (a.order - b.order));
+    const items = list.map(u =>
+      `<li><span class="box"></span>` +
+      `<a class="t" href="${prefix}u/${u.id}/">${esc(u.capability || u.title)}</a>` +
+      `<span class="kind">${esc((u.type || '').replace('-', ' '))}</span>` +
+      `<span class="min">${u.minutes}m</span></li>`).join('');
+    return `<div class="prof-panel" data-panel="${attr(p)}"${i === 0 ? '' : ' hidden'}>
+  <ul class="checklist">${items || `<li class="soft">${esc(t.useNone)}</li>`}</ul>
+</div>`;
+  }).join('\n');
+
+  return `${head({ title: `${t.useTitle} · Me, Myself & AI`, lang, prefix, desc: t.useSub })}
+<body data-page="use-it">
+${c.top}
+<main id="main" tabindex="-1" class="wrap">
+  <p class="label red">${esc(t.use)}</p>
+  <h1>${esc(t.useTitle)}</h1>
+  <p class="soft" style="margin-top:.8rem">${esc(t.useSub)}</p>
+  <div class="chips" role="group" aria-label="${esc(t.use)}" style="margin-top:1.5rem">${chips}</div>
+  <div style="margin-top:1.75rem">
+${panels}
+  </div>
+</main>
+${c.tabs}
+<script src="${prefix}assets/use-it.js"></script>
+</body>
+</html>
+`;
+}
+
+/* ---- Progress ----------------------------------------------------------
+   Static shell, filled client-side from the mmai.v2 store by progress.js.
+   Nothing here is server-known because progress lives only in the browser.
+   ------------------------------------------------------------------- */
+
+export function buildProgress({ lang, units }) {
+  const t = T[lang];
+  const prefix = lang === 'en' ? '../' : '../../';
+  const alt = lang === 'en' ? '/es/progress/' : '/progress/';
+  const c = chrome({ lang, prefix, t, current: 'prog', altHref: alt });
+
+  // catalogue the JS needs: id -> capability / takeaway / title / url
+  const catalog = {};
+  for (const u of units) catalog[u.id] = {
+    title: u.title, capability: u.capability || null,
+    takeaway: u.takeaway || null, url: `${prefix}u/${u.id}/`
+  };
+
+  return `${head({ title: `${t.progTitle} · Me, Myself & AI`, lang, prefix, desc: t.progSub })}
+<body data-page="progress">
+${c.top}
+<main id="main" tabindex="-1" class="wrap">
+  <p class="label red">${esc(t.prog)}</p>
+  <h1>${esc(t.progTitle)}</h1>
+  <p class="soft" style="margin-top:.8rem">${esc(t.progSub)}</p>
+
+  <p id="progEmpty" class="hand" style="margin-top:1.5rem">${esc(t.progEmpty)}</p>
+
+  <div id="progStats" hidden>
+    <p class="fore-line" style="margin-top:1.5rem"><span id="progDone">0</span> / ${units.length}
+      <span class="soft" style="font-size:1rem;font-family:var(--sans);font-weight:400"> ${esc(t.progUnits)}</span></p>
+
+    <div id="progCanWrap" hidden>
+      <hr class="torn"><p class="label">${esc(t.progCan)}</p>
+      <ul class="checklist" id="progCan" style="margin-top:.6rem"></ul>
+    </div>
+
+    <div id="progSheetWrap" hidden>
+      <hr class="torn"><p class="label">${esc(t.progSheet)}</p>
+      <div id="progSheet" style="margin-top:.8rem"></div>
+      <button class="btn btn-2" id="progExport" style="margin-top:.9rem">${esc(t.progExport)}</button>
+    </div>
+
+    <div id="progReviewWrap" hidden>
+      <hr class="torn"><p class="label">${esc(t.progReview)}</p>
+      <p class="soft" style="font-size:.9375rem;margin-top:.3rem">${esc(t.progReviewSub)}</p>
+      <ul class="checklist" id="progReview" style="margin-top:.6rem"></ul>
+    </div>
+
+    <hr class="torn">
+    <button class="btn btn-2" id="progReset" style="font-size:.8125rem">${esc(t.reset)}</button>
+  </div>
+</main>
+${c.tabs}
+<script>window.MMAI_CATALOG=${JSON.stringify(catalog)};</script>
+<script src="${prefix}assets/state.js"></script>
+<script src="${prefix}assets/progress.js"></script>
 </body>
 </html>
 `;

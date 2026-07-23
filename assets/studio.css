@@ -51,7 +51,23 @@ body{
   font:400 17px/1.7 var(--sans);
   -webkit-font-smoothing:antialiased;
   position:relative;
+  /* reserve room for the fixed bottom tab bar so nothing hides behind it */
+  padding-bottom:calc(4.75rem + env(safe-area-inset-bottom));
 }
+
+/* Skip link. Hidden until keyboard focus. It was never styled in this
+   sheet, so it rendered as a plain visible blue link at the top left. */
+.skip{
+  position:absolute;left:.75rem;top:-4rem;z-index:60;
+  background:var(--ink);color:var(--paper);
+  padding:.55rem 1rem;border-radius:0 0 10px 10px;
+  font:600 .8125rem var(--sans);text-decoration:none;
+  transition:top .15s ease-out;
+}
+.skip:focus{top:0}
+:focus-visible{outline:2.5px solid var(--pencil);outline-offset:3px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 /* the grain */
 body::before{
   content:'';position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
@@ -175,6 +191,7 @@ hr.torn{
 .top{
   display:flex;align-items:center;justify-content:space-between;gap:1rem;
   padding:.85rem 1.1rem;border-bottom:1.5px solid var(--ink);
+  position:sticky;top:0;z-index:40;background:var(--paper);
 }
 .wordmark{
   font-family:var(--serif);font-weight:600;font-size:1rem;
@@ -182,8 +199,13 @@ hr.torn{
 }
 .wordmark em{font-style:italic;color:var(--pencil)}
 
+/* Pinned to the viewport bottom, always visible. Previously it had no
+   position at all, so it only appeared once you scrolled to the very end. */
 .tabs{
-  display:flex;border-top:1.5px solid var(--ink);background:var(--paper);
+  display:flex;position:fixed;left:0;right:0;bottom:0;z-index:40;
+  border-top:1.5px solid var(--ink);background:var(--paper);
+  padding-bottom:env(safe-area-inset-bottom);
+  box-shadow:0 -2px 12px -8px rgba(35,33,32,.4);
 }
 .tabs a{
   flex:1;text-align:center;padding:.6rem .25rem .75rem;text-decoration:none;
@@ -192,6 +214,12 @@ hr.torn{
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.2rem;
 }
 .tabs a:last-child{border-right:0}
+/* On wider screens a full-bleed stretched bar reads oddly, so centre four
+   fixed-width tabs instead. */
+@media(min-width:40rem){
+  .tabs{justify-content:center;gap:0}
+  .tabs a{flex:0 0 8.5rem;border-right:1px solid var(--rule)}
+}
 .tabs a[aria-current]{color:var(--ink)}
 .tabs a[aria-current] .ic{color:var(--pencil)}
 .tabs .ic{font-size:1rem;line-height:1;color:var(--ink-3)}
@@ -300,3 +328,15 @@ main.wrap>p{margin-top:1rem}
   display:inline-block;margin-top:.5rem;
 }
 .entry .learn:hover{text-decoration:underline}
+
+/* ---- Use It · profession chips ----------------------------------------- */
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.prof-chip{
+  border:1.5px solid var(--rule);background:var(--card);color:var(--ink);
+  border-radius:999px;padding:.5rem 1rem;font:600 .8125rem var(--sans);
+  cursor:pointer;min-height:44px;box-shadow:2px 2px 0 rgba(35,33,32,.06);
+}
+.prof-chip:hover{border-color:var(--ink)}
+.prof-chip.on{border-color:var(--pencil);background:var(--paper-2);color:var(--pencil)}
+.prof-panel .checklist a.t{color:var(--ink);text-decoration:none}
+.prof-panel .checklist a.t:hover{color:var(--pencil)}

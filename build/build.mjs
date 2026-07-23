@@ -17,7 +17,7 @@ import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync, rmSync
 import { join, dirname } from 'node:path';
 import { frontmatter, render, esc, attr } from './lib.mjs';
 import { validate, loadGlossary, loadUnits, VOLATILITY } from './validate.mjs';
-import { buildHome, buildGlossary, RETIRED } from './pages.mjs';
+import { buildHome, buildGlossary, buildUseIt, buildProgress, RETIRED } from './pages.mjs';
 
 const ROOT = process.argv[2] && !process.argv[2].startsWith('--') ? process.argv[2] : '.';
 const CHECK = process.argv.includes('--check');
@@ -207,8 +207,14 @@ for (const lang of ['en', 'es']) {
     mkdirSync(join(base, 'glossary'), { recursive: true });
     writeFileSync(join(base, 'glossary', 'index.html'),
       buildGlossary({ lang, glossary: index.glossary, unitsById }), 'utf8');
+    mkdirSync(join(base, 'use-it'), { recursive: true });
+    writeFileSync(join(base, 'use-it', 'index.html'),
+      buildUseIt({ lang, units: list }), 'utf8');
+    mkdirSync(join(base, 'progress'), { recursive: true });
+    writeFileSync(join(base, 'progress', 'index.html'),
+      buildProgress({ lang, units: list }), 'utf8');
   }
-  written += 2;
+  written += 4;
 }
 
 /* ---- legacy redirects --------------------------------------------------
