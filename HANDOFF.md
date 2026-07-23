@@ -3,7 +3,7 @@
 **Last updated:** July 22 2026
 **Live site:** https://fania17hernan.github.io/me-myself-and-ai/
 **Repo:** https://github.com/fania17hernan/me-myself-and-ai (branch `main`)
-**Local clone that works:** `~/Documents/GitHub/me-myself-and-ai`
+**Local clone that works:** `~/Developer/me-myself-and-ai`
 
 This is everything a new person (or you, in three months) needs to run, edit, and ship the course. Read sections 1 and 2 first; the rest is reference.
 
@@ -22,7 +22,7 @@ A bilingual (EN/ES) AI-literacy course for smart non-technical professionals. Th
 You never edit HTML. You edit markdown, run the build, and push.
 
 ```bash
-cd ~/Documents/GitHub/me-myself-and-ai
+cd ~/Developer/me-myself-and-ai
 node build/build.mjs .        # regenerates all pages, refuses to build on error
 ```
 
@@ -32,7 +32,7 @@ Then open **GitHub Desktop**, confirm the changed files, **Commit to main**, and
 
 ### Golden rules
 
-1. **The repo must live in `~/Documents/GitHub/`, not iCloud Drive.** iCloud does not reliably sync the hidden `.git` folder, which caused a full day of "my commits vanished" confusion. If you ever see two copies of this project, the iCloud one is dead. Delete it.
+1. **The repo must live in `~/Developer/`, which iCloud never syncs. NOT `~/Documents` or `~/Desktop`.** This Mac has iCloud "Desktop & Documents Folders" sync turned on, so both of those folders are inside iCloud Drive, even `~/Documents/GitHub`. iCloud does not reliably sync the hidden `.git` folder, which caused a full day of "my commits vanished" confusion (July 2026). If you ever see another copy of this project under iCloud (`09 AI Projects/`, `~/Documents`, `~/Desktop`), it is dead. Delete it.
 2. **Never edit files in `u/`, `es/u/`, `glossary/`, `use-it/`, `progress/`, `index.html`.** They are generated and gitignored. Your change will be erased on the next build. Edit the source in `content/` instead.
 3. **Add a glossary term before any unit that teaches it.** The build fails otherwise, on purpose.
 
@@ -221,7 +221,7 @@ Studio / workshop. Authority through showing your work, not polish. Newsprint pa
 
 - **Site 404s on a unit but home works:** Pages is probably serving from the branch instead of the Action. Check Settings → Pages → Source = "GitHub Actions."
 - **Build says "Refusing to build":** read the error; it names the file and the rule. Usually a missing glossary term or a missing ES counterpart.
-- **GitHub Desktop shows no changes after you edited files:** you're editing the wrong clone. Confirm the path is `~/Documents/GitHub/me-myself-and-ai`.
+- **GitHub Desktop shows no changes after you edited files:** you're editing the wrong clone. Confirm the path is `~/Developer/me-myself-and-ai`.
 - **A push asks for a password and rejects it:** GitHub Desktop handles auth; use it rather than Terminal. If you must use Terminal, the password field needs a Personal Access Token, not your account password.
 
 ---
