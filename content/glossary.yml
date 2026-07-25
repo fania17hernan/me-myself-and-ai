@@ -76,3 +76,35 @@
   plain_es: "Un conjunto de pasos que le das a la IA en orden y se puede repetir, para que una tarea salga igual cada vez en lugar de empezar de cero."
   volatility: evergreen
   related: [prompt]
+
+- id: project
+  term_en: "Project"
+  term_es: "Proyecto"
+  plain_en: "A dedicated space that keeps all the chats, files, and instructions for one job together, instead of a single chat that ends and is gone."
+  plain_es: "Un espacio dedicado que mantiene juntos todos los chats, archivos e instrucciones de un mismo trabajo, en vez de un chat suelto que termina y desaparece."
+  volatility: slow
+  related: [context-window]
+
+- id: artifact
+  term_en: "Artifact"
+  term_es: "Artefacto"
+  plain_en: "The actual thing the AI builds beside the conversation, a document, a table, a small app, that you can edit live instead of copying out of the chat."
+  plain_es: "La cosa que la IA construye junto a la conversación, un documento, una tabla, una pequeña app, que puedes editar en vivo en lugar de copiarla del chat."
+  volatility: slow
+  related: [project]
+
+- id: connector
+  term_en: "Connector"
+  term_es: "Conector"
+  plain_en: "A link you approve that lets the AI reach into another tool, your email, calendar, or files, to fetch and file things for you."
+  plain_es: "Un enlace que tú apruebas y que le permite a la IA entrar a otra herramienta, tu correo, calendario o archivos, para traer y guardar cosas por ti."
+  volatility: slow
+  related: [project]
+
+- id: custom-assistant
+  term_en: "Custom assistant"
+  term_es: "Asistente personalizado"
+  plain_en: "A helper you set up once for a recurring task, with its instructions saved, so it behaves the same way every time without re-explaining."
+  plain_es: "Un ayudante que configuras una vez para una tarea repetitiva, con sus instrucciones guardadas, para que actúe igual cada vez sin volver a explicarle."
+  volatility: slow
+  related: [prompt, workflow]

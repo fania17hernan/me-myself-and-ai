@@ -1,0 +1,55 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="ts-t ts-d" class="drawn">
+  <title id="ts-t">The trained specialist</title>
+  <desc id="ts-d">A specialist wearing an apron and a name badge stands beside a pinned instruction card whose lines
+    stay in place. A red note reads: trained once, shows up ready every time.</desc>
+  <defs>
+    <filter id="ts-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="5" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="ts-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <pattern id="ts-hatch" width="9" height="9" patternTransform="rotate(38)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="9" stroke="#2C4C77" stroke-width="2" opacity=".4"/>
+    </pattern>
+  </defs>
+
+  <!-- specialist -->
+  <g filter="url(#ts-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="112" cy="80" r="24" stroke-width="2.6"/>
+    <path d="M84,150 C84,126 94,112 112,112 C130,112 140,126 140,150 L140,200 C140,204 136,206 130,206 L94,206 C88,206 84,204 84,200 Z" stroke-width="2.6"/>
+  </g>
+  <!-- apron -->
+  <path d="M98,120 L126,120 L132,150 L130,196 L94,196 L92,150 Z" fill="url(#ts-hatch)" stroke="#2C4C77" stroke-width="2" stroke-linejoin="round" filter="url(#ts-rough2)"/>
+  <!-- badge -->
+  <g filter="url(#ts-rough2)" fill="#F1EEE7" stroke="#BE3A22" stroke-width="1.8" stroke-linejoin="round">
+    <rect x="100" y="128" width="24" height="15" rx="2"/>
+  </g>
+  <path d="M104,135 L120,135" stroke="#BE3A22" stroke-width="1.6" stroke-linecap="round" filter="url(#ts-rough2)"/>
+  <!-- calm face -->
+  <g filter="url(#ts-rough2)" fill="none" stroke="#232120" stroke-width="1.8" stroke-linecap="round">
+    <path d="M102,86 C107,90 117,90 122,86"/>
+    <path d="M100,74 L106,74 M118,74 L124,74"/>
+  </g>
+
+  <!-- pinned instruction card -->
+  <g filter="url(#ts-rough)" fill="#F1EEE7" stroke="#232120" stroke-linejoin="round">
+    <path d="M228,66 L360,72 L354,182 L222,176 Z" stroke-width="2.6"/>
+  </g>
+  <g filter="url(#ts-rough2)" fill="none" stroke="#232120" stroke-width="2" stroke-linecap="round">
+    <path d="M244,96 C272,98 306,100 338,102"/>
+    <path d="M242,118 C268,120 300,122 330,124"/>
+    <path d="M242,140 C266,142 296,144 324,146"/>
+  </g>
+  <!-- pin -->
+  <g filter="url(#ts-rough2)" stroke="#BE3A22" stroke-width="2" fill="#BE3A22">
+    <circle cx="292" cy="70" r="5"/>
+    <path d="M292,75 L292,84" stroke-linecap="round"/>
+  </g>
+  <text x="234" y="204" font-family="Fraunces,serif" font-size="13" font-style="italic" fill="#2C4C77">its saved instructions</text>
+
+  <!-- red note -->
+  <text x="40" y="232" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">trained once. shows up ready every time</text>
+</svg>

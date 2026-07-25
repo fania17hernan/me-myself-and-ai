@@ -1,0 +1,63 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="pc-t pc-d" class="drawn">
+  <title id="pc-t">The phone call and the office</title>
+  <desc id="pc-d">On the left, a telephone handset with ringing arcs and a small puff showing it vanishes when it
+    ends. On the right, a room with a desk holding a folder, papers, and a mug that stay put. A red note
+    reads: the call ends, the office keeps everything on the desk.</desc>
+  <defs>
+    <filter id="pc-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="pc-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <pattern id="pc-hatch" width="9" height="9" patternTransform="rotate(38)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="9" stroke="#BE3A22" stroke-width="2.1" opacity=".5"/>
+    </pattern>
+  </defs>
+
+  <!-- divider -->
+  <g filter="url(#pc-rough2)" stroke="#5E5852" stroke-width="1.6" stroke-linecap="round" opacity=".5">
+    <path d="M204,44 L204,196" stroke-dasharray="2 9"/>
+  </g>
+
+  <!-- LEFT: the call -->
+  <g filter="url(#pc-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M52,150 C46,138 56,128 68,134 C96,148 128,116 140,92 C148,80 162,88 158,102" stroke-width="6"/>
+    <circle cx="60" cy="146" r="7" fill="#232120" stroke="none"/>
+    <circle cx="150" cy="98" r="7" fill="#232120" stroke="none"/>
+  </g>
+  <!-- ringing arcs -->
+  <g filter="url(#pc-rough2)" fill="none" stroke="#2C4C77" stroke-width="2" stroke-linecap="round">
+    <path d="M166,84 C176,86 182,94 182,104"/>
+    <path d="M172,74 C188,78 196,90 196,106"/>
+  </g>
+  <!-- puff: it vanishes -->
+  <g filter="url(#pc-rough2)" fill="none" stroke="#BE3A22" stroke-width="1.8" stroke-linecap="round">
+    <path d="M60,168 c-8,-2 -10,6 -3,8 c-4,6 6,10 9,4 c5,5 12,-2 7,-7 c4,-6 -6,-11 -10,-5" opacity=".9"/>
+    <path d="M78,178 l6,6 M86,172 l7,3" stroke-width="1.4" opacity=".7"/>
+  </g>
+  <text x="52" y="204" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#232120">the call</text>
+
+  <!-- RIGHT: the office -->
+  <g filter="url(#pc-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M226,70 L378,70 L378,178 L226,178 Z" stroke-width="2.6"/>
+    <path d="M231,74 L373,74 L373,174 L231,174" stroke-width="1" opacity=".3"/>
+    <!-- desk -->
+    <path d="M244,150 L360,150 L360,158 L244,158 Z" stroke-width="2.4"/>
+    <path d="M252,158 L252,176 M352,158 L352,176" stroke-width="2.2"/>
+  </g>
+  <!-- things on the desk, they stay -->
+  <g filter="url(#pc-rough2)" stroke="#232120" stroke-linejoin="round" fill="none">
+    <path d="M256,150 L256,126 L286,126 L286,150" stroke-width="2" fill="url(#pc-hatch)"/>
+    <path d="M300,150 L300,132 L322,132 L322,150" stroke-width="2"/>
+    <path d="M300,140 L322,140" stroke-width="1.4" opacity=".5"/>
+    <path d="M334,150 L334,138 C334,135 337,134 340,134 L348,134 C351,134 352,135 352,138 L352,150 Z" stroke-width="2"/>
+    <path d="M352,140 C359,140 359,146 352,146" stroke-width="1.8"/>
+  </g>
+  <text x="256" y="204" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#232120">the office</text>
+
+  <!-- red note -->
+  <text x="40" y="230" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">the call ends. the office keeps everything on the desk</text>
+</svg>

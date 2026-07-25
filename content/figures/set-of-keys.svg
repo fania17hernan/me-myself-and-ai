@@ -1,0 +1,59 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="sk-t sk-d" class="drawn">
+  <title id="sk-t">The set of keys</title>
+  <desc id="sk-d">A key ring holding three keys that fan downward, each with a tag reading email, calendar, and files.
+    A red note reads: keys to your other rooms, you choose which ones.</desc>
+  <defs>
+    <filter id="sk-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="8" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="sk-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="4" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- ring -->
+  <g filter="url(#sk-rough)" fill="none" stroke="#232120" stroke-linecap="round">
+    <circle cx="150" cy="58" r="17" stroke-width="3"/>
+    <circle cx="150" cy="58" r="17" stroke-width="1" opacity=".35" transform="translate(1,-1)"/>
+  </g>
+
+  <!-- three keys -->
+  <g filter="url(#sk-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <!-- left key: email -->
+    <circle cx="112" cy="96" r="11" stroke-width="2.6"/>
+    <circle cx="112" cy="96" r="4" stroke-width="1.8"/>
+    <path d="M108,106 L96,158" stroke-width="4"/>
+    <path d="M94,150 L86,148 M97,140 L89,138" stroke-width="2.4"/>
+    <!-- center key: calendar -->
+    <circle cx="150" cy="100" r="11" stroke-width="2.6"/>
+    <circle cx="150" cy="100" r="4" stroke-width="1.8"/>
+    <path d="M150,111 L150,166" stroke-width="4"/>
+    <path d="M150,158 L141,158 M150,148 L141,148" stroke-width="2.4"/>
+    <!-- right key: files -->
+    <circle cx="188" cy="96" r="11" stroke-width="2.6"/>
+    <circle cx="188" cy="96" r="4" stroke-width="1.8"/>
+    <path d="M192,106 L204,158" stroke-width="4"/>
+    <path d="M206,150 L214,148 M203,140 L211,138" stroke-width="2.4"/>
+  </g>
+  <!-- little links from ring to each bow -->
+  <g filter="url(#sk-rough2)" fill="none" stroke="#232120" stroke-width="1.8" stroke-linecap="round" opacity=".55">
+    <path d="M138,68 L118,86"/>
+    <path d="M150,75 L150,88"/>
+    <path d="M162,68 L182,86"/>
+  </g>
+
+  <!-- tags -->
+  <g filter="url(#sk-rough2)" fill="#F1EEE7" stroke="#2C4C77" stroke-linejoin="round" stroke-width="1.8">
+    <path d="M60,168 L104,168 L104,188 L60,188 L50,178 Z"/>
+    <path d="M130,180 L174,180 L174,200 L130,200 L120,190 Z"/>
+    <path d="M214,168 L262,168 L262,188 L214,188 L204,178 Z"/>
+  </g>
+  <text x="64" y="182" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#2C4C77">email</text>
+  <text x="132" y="194" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#2C4C77">calendar</text>
+  <text x="220" y="182" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#2C4C77">files</text>
+
+  <!-- red note -->
+  <text x="40" y="228" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">keys to your other rooms. you choose which ones</text>
+</svg>

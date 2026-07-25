@@ -1,0 +1,58 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="wk-t wk-d" class="drawn">
+  <title id="wk-t">The workbench</title>
+  <desc id="wk-d">A workbench with a pegboard of tools behind it. On the bench sits a document being built, some
+    lines already written and one line in red being drawn. A small chat bubble on the left points a
+    blue arrow at the bench. A red note reads: the chat talks, the bench is where it gets built.</desc>
+  <defs>
+    <filter id="wk-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="6" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="wk-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="2" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- pegboard + tools -->
+  <g filter="url(#wk-rough2)" fill="none" stroke="#5E5852" stroke-width="1.6" stroke-linejoin="round">
+    <path d="M150,40 L330,40 L330,104 L150,104 Z" opacity=".8"/>
+    <circle cx="170" cy="58" r="1.6"/><circle cx="192" cy="58" r="1.6"/><circle cx="214" cy="58" r="1.6"/>
+    <circle cx="300" cy="58" r="1.6"/><circle cx="300" cy="80" r="1.6"/>
+  </g>
+  <!-- a wrench hanging -->
+  <g filter="url(#wk-rough2)" fill="none" stroke="#232120" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M296,60 C288,60 284,68 288,74 L300,92 L308,86 L296,68 C300,64 300,60 296,60 Z"/>
+  </g>
+
+  <!-- bench -->
+  <g filter="url(#wk-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M96,132 L346,132 L346,150 L96,150 Z" stroke-width="2.8"/>
+    <path d="M118,150 L118,214 M324,150 L324,214" stroke-width="2.6"/>
+    <path d="M118,190 L324,190" stroke-width="2" opacity=".5"/>
+  </g>
+
+  <!-- the artifact being built, sitting on the bench -->
+  <g filter="url(#wk-rough2)" stroke="#232120" stroke-linejoin="round" fill="#F1EEE7">
+    <path d="M176,132 L176,74 C176,71 178,70 181,70 L286,70 C289,70 291,71 291,74 L291,132 Z" stroke-width="2.4"/>
+  </g>
+  <g filter="url(#wk-rough2)" fill="none" stroke="#232120" stroke-width="2" stroke-linecap="round">
+    <path d="M188,86 C214,84 246,88 278,85"/>
+    <path d="M188,100 C210,98 240,102 268,99"/>
+  </g>
+  <path d="M188,114 C206,112 228,116 250,113" fill="none" stroke="#BE3A22" stroke-width="2.4" stroke-linecap="round" filter="url(#wk-rough2)"/>
+
+  <!-- chat bubble + arrow -->
+  <g filter="url(#wk-rough2)" fill="#F1EEE7" stroke="#2C4C77" stroke-linejoin="round">
+    <path d="M26,150 C26,143 31,140 39,140 L78,140 C86,140 90,143 90,150 L90,166 C90,173 86,176 78,176 L48,176 L36,186 L40,176 C31,176 26,173 26,166 Z" stroke-width="2.2"/>
+  </g>
+  <g filter="url(#wk-rough2)" fill="none" stroke="#2C4C77" stroke-linecap="round">
+    <path d="M50,152 L74,152 M50,162 L66,162" stroke-width="2"/>
+    <path d="M96,120 C120,108 142,102 168,100" stroke-width="2.2"/>
+    <path d="M160,94 L170,99 L162,108" stroke-width="2.2"/>
+  </g>
+  <text x="98" y="132" font-family="Fraunces,serif" font-size="13" font-style="italic" fill="#2C4C77">built here</text>
+
+  <!-- red note -->
+  <text x="40" y="232" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">the chat talks. the bench is where it gets built</text>
+</svg>
