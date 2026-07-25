@@ -1,0 +1,66 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="sc-t sc-d" class="drawn">
+  <title id="sc-t">The sous chef</title>
+  <desc id="sc-d">A chef's hat above three numbered stations connected by arrows: one, prep, with a knife and board;
+    two, cook, with a pot; three, plate, with a dish. A red note reads: you call the order, it does the prep.</desc>
+  <defs>
+    <filter id="sc-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="sc-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="1" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- chef hat -->
+  <g filter="url(#sc-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M186,60 C170,60 162,48 168,38 C172,30 182,28 188,32 C190,22 202,18 210,24 C218,18 230,22 232,32 C240,28 250,32 252,42 C256,52 248,60 234,60 Z" stroke-width="2.4"/>
+    <path d="M186,60 L186,74 C186,78 190,80 196,80 L224,80 C230,80 234,78 234,74 L234,60" stroke-width="2.4"/>
+    <path d="M198,44 C202,48 200,54 198,58 M210,42 L210,58 M222,44 C218,48 220,54 222,58" stroke-width="1.4" opacity=".5"/>
+  </g>
+
+  <!-- station 1: prep -->
+  <g filter="url(#sc-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="30" y="108" width="104" height="58" rx="8" stroke-width="2.6"/>
+    <!-- board + knife -->
+    <rect x="52" y="130" width="42" height="20" rx="3" stroke-width="2"/>
+    <path d="M98,126 L114,146" stroke-width="2.2"/>
+    <path d="M112,143 L118,149 L114,143" stroke-width="2.2"/>
+  </g>
+  <text x="38" y="126" font-family="Fraunces,serif" font-size="15" font-style="italic" font-weight="700" fill="#BE3A22">1</text>
+  <text x="52" y="184" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#232120">prep</text>
+
+  <!-- station 2: cook -->
+  <g filter="url(#sc-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="158" y="108" width="104" height="58" rx="8" stroke-width="2.6"/>
+    <!-- pot -->
+    <path d="M182,134 L232,134 L228,152 C228,156 224,158 220,158 L194,158 C190,158 186,156 186,152 Z" stroke-width="2.2"/>
+    <path d="M178,134 L236,134" stroke-width="2.4"/>
+    <path d="M232,140 C240,140 240,148 232,148" stroke-width="2"/>
+    <path d="M182,140 C174,140 174,148 182,148" stroke-width="2"/>
+    <path d="M200,124 C203,120 200,118 202,114 M214,124 C217,120 214,118 216,114" stroke-width="1.6" opacity=".55"/>
+  </g>
+  <text x="166" y="126" font-family="Fraunces,serif" font-size="15" font-style="italic" font-weight="700" fill="#BE3A22">2</text>
+  <text x="180" y="184" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#232120">cook</text>
+
+  <!-- station 3: plate -->
+  <g filter="url(#sc-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="286" y="108" width="104" height="58" rx="8" stroke-width="2.6"/>
+    <ellipse cx="338" cy="142" rx="30" ry="11" stroke-width="2.2"/>
+    <ellipse cx="338" cy="141" rx="17" ry="6" stroke-width="1.6" opacity=".6"/>
+  </g>
+  <text x="294" y="126" font-family="Fraunces,serif" font-size="15" font-style="italic" font-weight="700" fill="#BE3A22">3</text>
+  <text x="308" y="184" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#232120">plate</text>
+
+  <!-- blue arrows between stations -->
+  <g filter="url(#sc-rough2)" fill="none" stroke="#2C4C77" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M138,137 L154,137"/>
+    <path d="M148,132 L157,137 L148,142"/>
+    <path d="M266,137 L282,137"/>
+    <path d="M276,132 L285,137 L276,142"/>
+  </g>
+
+  <!-- red note -->
+  <text x="40" y="222" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">you call the order, it does the prep</text>
+</svg>

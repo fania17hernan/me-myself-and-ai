@@ -1,0 +1,68 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="tl-t tl-d" class="drawn">
+  <title id="tl-t">The test drive and the lease</title>
+  <desc id="tl-d">Two identical cars side by side. The left car is labelled "the test drive, free" with a short
+    dashed road that stops. The right car is labelled "the lease, paid" and has a set of keys beside it.
+    A red note reads: same car, the question is how long you keep it.</desc>
+  <defs>
+    <filter id="tl-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="6" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="tl-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="2" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- divider -->
+  <g filter="url(#tl-rough2)" stroke="#5E5852" stroke-width="1.6" stroke-linecap="round" opacity=".5">
+    <path d="M210,42 L210,196" stroke-dasharray="2 9"/>
+  </g>
+
+  <!-- LEFT CAR: test drive -->
+  <g filter="url(#tl-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M52,120 L64,96 C66,92 70,90 76,90 L120,90 C126,90 130,93 134,98 L146,120" stroke-width="2.4"/>
+    <path d="M24,132 C24,124 28,120 36,120 L152,120 C160,120 164,124 164,132 L164,150 L24,150 Z" stroke-width="2.6"/>
+    <path d="M96,92 L96,120" stroke-width="1.8" opacity=".6"/>
+    <circle cx="60" cy="152" r="13" stroke-width="2.4"/>
+    <circle cx="132" cy="152" r="13" stroke-width="2.4"/>
+  </g>
+  <!-- short dashed road that stops -->
+  <g filter="url(#tl-rough2)" stroke="#2C4C77" stroke-width="2" stroke-linecap="round">
+    <path d="M20,176 L150,176" stroke-dasharray="12 8"/>
+    <path d="M150,176 L166,176" opacity=".25"/>
+  </g>
+  <!-- FREE tag -->
+  <g filter="url(#tl-rough2)" fill="#F1EEE7" stroke="#2C4C77" stroke-linejoin="round">
+    <path d="M118,54 L152,54 C158,54 162,58 162,64 C162,70 158,74 152,74 L118,74 L104,64 Z" stroke-width="2"/>
+    <circle cx="122" cy="64" r="2.4" fill="#2C4C77" stroke="none"/>
+  </g>
+  <text x="124" y="69" font-family="Fraunces,serif" font-size="13" font-style="italic" font-weight="600" fill="#2C4C77">FREE</text>
+
+  <!-- RIGHT CAR: lease -->
+  <g filter="url(#tl-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M256,120 L268,96 C270,92 274,90 280,90 L324,90 C330,90 334,93 338,98 L350,120" stroke-width="2.4"/>
+    <path d="M228,132 C228,124 232,120 240,120 L356,120 C364,120 368,124 368,132 L368,150 L228,150 Z" stroke-width="2.6"/>
+    <path d="M300,92 L300,120" stroke-width="1.8" opacity=".6"/>
+    <circle cx="264" cy="152" r="13" stroke-width="2.4"/>
+    <circle cx="336" cy="152" r="13" stroke-width="2.4"/>
+  </g>
+  <!-- continuing road -->
+  <g filter="url(#tl-rough2)" stroke="#2C4C77" stroke-width="2" stroke-linecap="round">
+    <path d="M224,176 L372,176" stroke-dasharray="12 8"/>
+  </g>
+  <!-- keys -->
+  <g filter="url(#tl-rough2)" fill="none" stroke="#BE3A22" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="330" cy="60" r="8" stroke-width="2.2"/>
+    <path d="M337,64 L356,78" stroke-width="2.4"/>
+    <path d="M349,73 L353,69 M354,76 L358,72" stroke-width="2.2"/>
+  </g>
+  <text x="256" y="66" font-family="Fraunces,serif" font-size="13" font-style="italic" font-weight="600" fill="#BE3A22">PAID</text>
+
+  <!-- labels -->
+  <text x="42" y="204" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#232120">the test drive</text>
+  <text x="252" y="204" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#232120">the lease</text>
+
+  <!-- red note -->
+  <text x="40" y="232" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">same car. the question is how long you keep it</text>
+</svg>

@@ -1,0 +1,64 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="wb-t wb-d" class="drawn">
+  <title id="wb-t">The whiteboard</title>
+  <desc id="wb-d">A whiteboard on a stand, filled with lines of writing. On the left an eraser is wiping
+    the oldest lines away, which fade out. A blue arrow labelled "new notes go here" points to the
+    empty space on the right. A note reads: when it's full, the oldest gets wiped.</desc>
+  <defs>
+    <filter id="wb-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="5" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="wb-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="9" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <pattern id="wb-hatch" width="9" height="9" patternTransform="rotate(38)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="9" stroke="#BE3A22" stroke-width="2.1" opacity=".5"/>
+    </pattern>
+  </defs>
+
+  <!-- board frame -->
+  <g filter="url(#wb-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M54,44 L360,44 C368,44 372,48 372,56 L372,168 C372,176 368,180 360,180 L54,180 C46,180 42,176 42,168 L42,56 C42,48 46,44 54,44 Z" stroke-width="2.6"/>
+    <path d="M57,48 L357,48 C363,48 366,51 366,57 L366,167 C366,173 363,176 357,176 L57,176 C51,176 48,173 48,167 L48,57 C48,51 51,48 57,48 Z" stroke-width="1" opacity=".35"/>
+    <!-- legs -->
+    <path d="M96,180 L80,232" stroke-width="2.4"/>
+    <path d="M318,180 L334,232" stroke-width="2.4"/>
+    <path d="M120,214 L294,214" stroke-width="1.8" opacity=".5"/>
+    <!-- marker tray -->
+    <path d="M150,180 L264,180 L258,190 L156,190 Z" stroke-width="1.8"/>
+  </g>
+
+  <!-- being-wiped shading on the left -->
+  <path d="M58,58 L120,58 L120,170 L58,170 Z" fill="url(#wb-hatch)" opacity=".55" filter="url(#wb-rough)"/>
+
+  <!-- writing: faded on the left, solid on the right -->
+  <g filter="url(#wb-rough2)" fill="none" stroke="#232120" stroke-linecap="round">
+    <path d="M64,72 C86,70 104,74 118,71" stroke-width="2" opacity=".18"/>
+    <path d="M64,92 C82,90 100,93 116,91" stroke-width="2" opacity=".22"/>
+    <path d="M132,72 C176,70 214,74 250,71" stroke-width="2.2"/>
+    <path d="M132,92 C168,90 210,93 236,91" stroke-width="2.2"/>
+    <path d="M132,112 C176,110 220,114 262,111" stroke-width="2.2"/>
+    <path d="M132,132 C160,130 196,134 224,131" stroke-width="2.2"/>
+  </g>
+
+  <!-- eraser at the left -->
+  <g filter="url(#wb-rough2)" stroke="#232120" stroke-linejoin="round">
+    <rect x="66" y="118" width="46" height="26" rx="4" fill="#F1EEE7" stroke-width="2.4"/>
+    <rect x="66" y="136" width="46" height="8" rx="3" fill="#2C4C77" stroke-width="1.6" opacity=".85"/>
+  </g>
+
+  <!-- blue arrow: new notes go here -->
+  <g filter="url(#wb-rough2)" fill="none" stroke="#2C4C77" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M300,150 C312,140 320,128 322,116"/>
+    <path d="M314,120 L323,114 L326,124"/>
+  </g>
+  <text x="272" y="166" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#2C4C77">new notes go here</text>
+
+  <!-- red note -->
+  <g filter="url(#wb-rough2)" fill="none" stroke="#BE3A22" stroke-width="1.9" stroke-linecap="round">
+    <path d="M92,158 C90,176 96,190 92,204"/>
+    <path d="M86,196 L92,205 L99,197"/>
+  </g>
+  <text x="40" y="228" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">when it's full, the oldest gets wiped</text>
+</svg>

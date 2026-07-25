@@ -60,3 +60,19 @@
   plain_es: "Lo que pides. La diferencia entre una vaga y una específica explica casi toda la diferencia en lo que recibes."
   volatility: evergreen
   related: [token]
+
+- id: plan-tier
+  term_en: "Plan tier"
+  term_es: "Tipo de plan"
+  plain_en: "The level of access you pay for. A free tier with tight limits, or a paid tier with more room, faster answers, and extra features."
+  plain_es: "El nivel de acceso que pagas. Un plan gratis con límites ajustados, o un plan de pago con más espacio, respuestas más rápidas y funciones extra."
+  volatility: slow
+  related: [rate-limit]
+
+- id: workflow
+  term_en: "Workflow"
+  term_es: "Flujo de trabajo"
+  plain_en: "A repeatable set of steps you hand the AI in order, so a task runs the same way every time instead of starting from scratch."
+  plain_es: "Un conjunto de pasos que le das a la IA en orden y se puede repetir, para que una tarea salga igual cada vez en lugar de empezar de cero."
+  volatility: evergreen
+  related: [prompt]
