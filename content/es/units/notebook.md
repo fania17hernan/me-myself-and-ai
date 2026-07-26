@@ -20,7 +20,7 @@ takeaway: "El pizarrón se borra al terminar un chat. La memoria es el cuaderno 
 Si el chat es un pizarrón, la memoria es el cuaderno.
 ::
 
-Ya conociste el [[whiteboard]]: todo en una conversación, borrado al terminar. Por eso un chat nuevo no
+Ya conociste el pizarrón: todo en una conversación, borrado al terminar. Por eso un chat nuevo no
 te conoce. La [[memory]] es el cuadernito que la IA guarda _junto_ al pizarrón, donde anota unos cuantos
 datos duraderos sobre ti para llevarlos a la siguiente conversación.
 

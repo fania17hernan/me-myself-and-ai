@@ -148,3 +148,75 @@
   plain_es: "Una instrucción que guardaste para reutilizar. Escribe la buena versión una vez, guárdala en una caja y sácala en lugar de reescribirla."
   volatility: evergreen
   related: [prompt, workflow]
+
+- id: vibe-coding
+  term_en: "Vibe coding"
+  term_es: "Programar por instinto"
+  plain_en: "Building software by describing what you want in plain words and letting the AI write the code, like directing instead of laying bricks yourself."
+  plain_es: "Crear software describiendo en palabras sencillas lo que quieres y dejar que la IA escriba el código, como dirigir en vez de poner los ladrillos tú."
+  volatility: slow
+  related: [prompt]
+
+- id: frontend
+  term_en: "Frontend"
+  term_es: "Frontend"
+  plain_en: "The part of an app you see and touch, the dining room: buttons, screens, layout."
+  plain_es: "La parte de una app que ves y tocas, el comedor: botones, pantallas, diseño."
+  volatility: evergreen
+  related: [backend]
+
+- id: backend
+  term_en: "Backend"
+  term_es: "Backend"
+  plain_en: "The part of an app you never see, the kitchen: where data is stored and the real work gets done."
+  plain_es: "La parte de una app que nunca ves, la cocina: donde se guardan los datos y se hace el trabajo de verdad."
+  volatility: evergreen
+  related: [frontend, database]
+
+- id: api
+  term_en: "API"
+  term_es: "API"
+  plain_en: "A way for two programs to place orders with each other, like a waiter carrying requests to the kitchen and food back."
+  plain_es: "Una forma en que dos programas se hacen pedidos, como un mesero que lleva las órdenes a la cocina y regresa con la comida."
+  volatility: slow
+  related: [backend]
+
+- id: database
+  term_en: "Database"
+  term_es: "Base de datos"
+  plain_en: "Organized storage an app reaches into, like a filing cabinet where every record has its place."
+  plain_es: "Almacenamiento organizado al que una app entra, como un archivero donde cada registro tiene su lugar."
+  volatility: evergreen
+  related: [backend]
+
+- id: deployment
+  term_en: "Deployment"
+  term_es: "Despliegue"
+  plain_en: "Putting an app where the public can reach it, like opening the shop after building it inside."
+  plain_es: "Poner una app donde el público puede llegar a ella, como abrir la tienda después de armarla por dentro."
+  volatility: slow
+  related: [frontend, backend]
+
+- id: human-in-the-loop
+  term_en: "Human in the loop"
+  term_es: "Persona en el circuito"
+  plain_en: "A checkpoint where a person reviews or approves what the AI did, like a pilot watching the autopilot and taking over when needed."
+  plain_es: "Un punto de control donde una persona revisa o aprueba lo que hizo la IA, como un piloto que vigila el piloto automático y toma el control cuando hace falta."
+  volatility: evergreen
+  related: [confabulation]
+
+- id: loop
+  term_en: "Loop"
+  term_es: "Bucle"
+  plain_en: "Telling the AI to repeat a step across many items, like a night shift working through a stack while you sleep."
+  plain_es: "Indicarle a la IA que repita un paso en muchos elementos, como un turno de noche que avanza sobre una pila mientras duermes."
+  volatility: slow
+  related: [workflow]
+
+- id: orchestration
+  term_en: "Orchestration"
+  term_es: "Orquestación"
+  plain_en: "Coordinating several AI steps or helpers into one flow, like a conductor keeping a whole orchestra in time."
+  plain_es: "Coordinar varios pasos o ayudantes de IA en un solo flujo, como un director que mantiene a toda la orquesta a tiempo."
+  volatility: slow
+  related: [workflow, loop]

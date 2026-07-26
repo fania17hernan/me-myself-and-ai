@@ -1,0 +1,49 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="ap-t ap-d" class="drawn">
+  <title id="ap-t">The airport</title>
+  <desc id="ap-d">A control tower beside a parked plane and a signpost pointing to the gates. A red note reads: you
+    don't need to fly the plane to find your gate.</desc>
+  <defs>
+    <filter id="ap-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="ap-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- control tower -->
+  <g filter="url(#ap-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64,178 L64,96 L84,96 L84,178" stroke-width="2.6"/>
+    <path d="M56,74 L92,74 L86,96 L62,96 Z" stroke-width="2.6"/>
+    <path d="M60,80 L88,80" stroke-width="1.6" opacity=".5"/>
+    <path d="M74,74 L74,60" stroke-width="2"/>
+    <circle cx="74" cy="56" r="3.5" stroke-width="2"/>
+  </g>
+
+  <!-- plane -->
+  <g filter="url(#ap-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150,150 C150,142 158,138 178,138 L268,138 C286,138 300,144 312,152 C300,158 286,162 268,162 L178,162 C158,162 150,158 150,150 Z" stroke-width="2.6"/>
+    <path d="M210,138 L196,112 L206,112 L228,138" stroke-width="2.2"/>
+    <path d="M300,150 L322,150" stroke-width="2" opacity=".6"/>
+    <circle cx="188" cy="150" r="3" stroke-width="1.6"/>
+    <circle cx="206" cy="150" r="3" stroke-width="1.6"/>
+    <circle cx="224" cy="150" r="3" stroke-width="1.6"/>
+  </g>
+
+  <!-- signpost -->
+  <g filter="url(#ap-rough2)" fill="none" stroke="#2C4C77" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M348,120 L348,190"/>
+    <path d="M312,128 L376,128 L384,138 L376,148 L312,148 Z"/>
+    <path d="M340,160 L384,160 L376,170 L340,170 Z"/>
+  </g>
+  <text x="316" y="142" font-family="Fraunces,serif" font-size="11" font-style="italic" fill="#2C4C77">gates</text>
+  <text x="345" y="167" font-family="Fraunces,serif" font-size="10" font-style="italic" fill="#2C4C77">exit</text>
+
+  <!-- ground -->
+  <path d="M40,192 L392,192" stroke="#232120" stroke-width="2" stroke-linecap="round" filter="url(#ap-rough2)" opacity=".6"/>
+
+  <!-- red note -->
+  <text x="40" y="228" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">you don't need to fly the plane to find your gate</text>
+</svg>

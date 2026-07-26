@@ -1,0 +1,50 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="db-t db-d" class="drawn">
+  <title id="db-t">Director, not bricklayer</title>
+  <desc id="db-d">On the left a director's chair with a megaphone. On the right a brick wall rising on its own. A
+    blue arrow of instruction runs from the director to the wall. A red note reads: you direct, it lays
+    the bricks.</desc>
+  <defs>
+    <filter id="db-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="5" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="db-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="8" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- director chair -->
+  <g filter="url(#db-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M52,96 L108,96" stroke-width="3"/>
+    <path d="M56,110 L104,110" stroke-width="3"/>
+    <path d="M52,96 L60,150 M108,96 L100,150" stroke-width="2.4"/>
+    <path d="M52,150 L76,120 L104,150 M60,132 L100,132" stroke-width="2.4"/>
+    <path d="M60,150 L52,186 M100,150 L108,186" stroke-width="2.4"/>
+  </g>
+  <!-- megaphone -->
+  <g filter="url(#db-rough2)" fill="none" stroke="#BE3A22" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M120,120 L142,110 L142,140 L120,132 Z"/>
+    <path d="M112,124 L120,120 L120,132 L112,130 Z"/>
+    <path d="M150,112 C158,116 158,134 150,138"/>
+  </g>
+
+  <!-- brick wall rising -->
+  <g filter="url(#db-rough)" fill="none" stroke="#232120" stroke-width="2.2" stroke-linejoin="round">
+    <path d="M258,186 L366,186 L366,96 L258,96 Z"/>
+    <path d="M258,118 L366,118 M258,140 L366,140 M258,164 L366,164"/>
+    <path d="M294,96 L294,118 M330,118 L330,140 M294,140 L294,164 M330,164 L330,186 M312,96 L312,118 M348,140 L348,164"/>
+    <!-- top row still going up -->
+    <path d="M258,96 L306,96" stroke-dasharray="6 6" opacity=".5"/>
+  </g>
+  <text x="300" y="86" font-family="Fraunces,serif" font-size="12" font-style="italic" fill="#5E5852">(still building)</text>
+
+  <!-- instruction arrow -->
+  <g filter="url(#db-rough2)" fill="none" stroke="#2C4C77" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M164,124 C200,120 226,128 250,140"/>
+    <path d="M242,132 L252,141 L241,146"/>
+  </g>
+
+  <!-- red note -->
+  <text x="40" y="222" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">you direct. it lays the bricks</text>
+</svg>

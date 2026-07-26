@@ -1,0 +1,46 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="os-t os-d" class="drawn">
+  <title id="os-t">Opening the shop</title>
+  <desc id="os-d">A storefront with an awning, a window, and a door with an Open sign, the street in front. A red note
+    reads: built inside, now open to the street.</desc>
+  <defs>
+    <filter id="os-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="6" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="os-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <pattern id="os-stripe" width="20" height="14" patternUnits="userSpaceOnUse">
+      <rect width="10" height="14" fill="#BE3A22" opacity=".4"/>
+    </pattern>
+  </defs>
+
+  <!-- shopfront -->
+  <g filter="url(#os-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M96,96 L324,96 L324,196 L96,196 Z" stroke-width="2.8"/>
+    <!-- window -->
+    <path d="M116,120 L204,120 L204,180 L116,180 Z" stroke-width="2.4"/>
+    <path d="M116,150 L204,150 M160,120 L160,180" stroke-width="1.6" opacity=".5"/>
+    <!-- door -->
+    <path d="M228,116 L300,116 L300,196 L228,196 Z" stroke-width="2.4"/>
+    <circle cx="292" cy="158" r="3" stroke-width="2"/>
+  </g>
+  <!-- awning -->
+  <g filter="url(#os-rough2)" stroke="#232120" stroke-width="2" stroke-linejoin="round">
+    <path d="M88,96 L332,96 L322,72 L98,72 Z" fill="url(#os-stripe)"/>
+    <path d="M88,96 C112,102 136,102 160,96 C184,102 208,102 232,96 C256,102 280,102 304,96 C312,98 322,98 332,96" fill="none" stroke-width="1.6"/>
+  </g>
+  <!-- open sign -->
+  <g filter="url(#os-rough2)" fill="#F1EEE7" stroke="#2C4C77" stroke-width="2" stroke-linejoin="round">
+    <rect x="238" y="128" width="52" height="20" rx="3"/>
+  </g>
+  <text x="246" y="143" font-family="Fraunces,serif" font-size="13" font-weight="700" font-style="italic" fill="#2C4C77">OPEN</text>
+
+  <!-- street -->
+  <path d="M40,210 L392,210" stroke="#232120" stroke-width="2" stroke-linecap="round" filter="url(#os-rough2)" opacity=".6"/>
+  <path d="M60,210 L92,210 M140,210 L172,210 M240,210 L272,210 M330,210 L362,210" stroke="#5E5852" stroke-width="1.6" stroke-dasharray="0" opacity=".4" filter="url(#os-rough2)"/>
+
+  <!-- red note -->
+  <text x="40" y="234" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">built inside, now open to the street</text>
+</svg>

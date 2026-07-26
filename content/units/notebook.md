@@ -22,7 +22,7 @@ slug_history: []
 If the chat is a whiteboard, memory is the notebook.
 ::
 
-You already met the [[whiteboard]]: everything in one conversation, wiped clean when it ends. That is
+You already met the whiteboard: everything in one conversation, wiped clean when it ends. That is
 why a fresh chat doesn't know you. [[memory]] is the small notebook the AI keeps _beside_ the
 whiteboard, where it writes down a few durable facts about you to carry into the next conversation.
 

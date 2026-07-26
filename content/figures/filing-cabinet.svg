@@ -1,0 +1,46 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="fc-t fc-d" class="drawn">
+  <title id="fc-t">The filing cabinet</title>
+  <desc id="fc-d">A filing cabinet with labelled drawers, one open to show folders standing in rows. A red note reads:
+    every record in its place.</desc>
+  <defs>
+    <filter id="fc-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="fc-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="1" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <pattern id="fc-hatch" width="9" height="9" patternTransform="rotate(38)" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="0" y2="9" stroke="#2C4C77" stroke-width="2" opacity=".35"/>
+    </pattern>
+  </defs>
+
+  <!-- cabinet body -->
+  <g filter="url(#fc-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M140,46 L280,46 L280,208 L140,208 Z" stroke-width="2.8"/>
+    <path d="M145,50 L275,50 L275,204 L145,204" stroke-width="1" opacity=".3"/>
+    <!-- closed drawers -->
+    <path d="M140,86 L280,86 M140,126 L280,126" stroke-width="2.2"/>
+    <path d="M198,66 L222,66" stroke-width="3"/>
+    <path d="M198,106 L222,106" stroke-width="3"/>
+  </g>
+
+  <!-- open drawer with folders -->
+  <g filter="url(#fc-rough)" fill="none" stroke="#232120" stroke-linejoin="round">
+    <path d="M132,150 L288,150 L296,196 L124,196 Z" stroke-width="2.6"/>
+  </g>
+  <g filter="url(#fc-rough2)" stroke="#232120" stroke-linejoin="round" fill="url(#fc-hatch)" stroke-width="1.8">
+    <path d="M146,156 L172,155 L172,190 L144,190 Z"/>
+    <path d="M180,156 L206,155 L206,190 L178,190 Z"/>
+    <path d="M214,156 L240,155 L240,190 L212,190 Z"/>
+    <path d="M248,156 L274,155 L274,190 L246,190 Z"/>
+  </g>
+  <g filter="url(#fc-rough2)" fill="#F1EEE7" stroke="#232120" stroke-width="1.6">
+    <path d="M150,150 L166,150 L166,156 L150,156 Z"/>
+    <path d="M218,150 L234,150 L234,156 L218,156 Z"/>
+  </g>
+
+  <!-- red note -->
+  <text x="40" y="230" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">every record in its place</text>
+</svg>

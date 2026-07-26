@@ -1,0 +1,54 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="wa-t wa-d" class="drawn">
+  <title id="wa-t">The waiter</title>
+  <desc id="wa-d">A waiter carrying a tray stands between a diner's table and a kitchen window, an order going one
+    way and a plate coming back. A red note reads: you order, it fetches, you never enter the kitchen.</desc>
+  <defs>
+    <filter id="wa-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="8" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="wa-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="4" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- table (you) -->
+  <g filter="url(#wa-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M34,140 L96,140 L96,148 L34,148 Z" stroke-width="2.6"/>
+    <path d="M44,148 L44,186 M86,148 L86,186" stroke-width="2.4"/>
+    <ellipse cx="65" cy="132" rx="15" ry="6" stroke-width="2"/>
+  </g>
+  <text x="42" y="204" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#232120">you</text>
+
+  <!-- waiter -->
+  <g filter="url(#wa-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="205" cy="86" r="16" stroke-width="2.6"/>
+    <path d="M188,150 C188,128 195,116 205,116 C215,116 222,128 222,150 L222,190 L188,190 Z" stroke-width="2.6"/>
+    <!-- arm up holding tray -->
+    <path d="M192,130 C176,124 166,118 158,112" stroke-width="2.4"/>
+    <ellipse cx="150" cy="108" rx="22" ry="6" stroke-width="2.2"/>
+    <path d="M140,104 L140,98 M150,104 L150,96 M160,104 L160,98" stroke-width="1.8"/>
+  </g>
+
+  <!-- kitchen window (backend) -->
+  <g filter="url(#wa-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M300,96 L388,96 L388,168 L300,168 Z" stroke-width="2.6"/>
+    <path d="M300,128 L388,128" stroke-width="2.2"/>
+    <path d="M312,150 C320,146 332,146 340,150" stroke-width="1.8" opacity=".7"/>
+  </g>
+  <text x="316" y="186" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#232120">the kitchen</text>
+
+  <!-- order out / plate back arrows -->
+  <g filter="url(#wa-rough2)" fill="none" stroke="#2C4C77" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M236,120 C258,116 278,116 296,118"/>
+    <path d="M288,113 L297,118 L288,124"/>
+    <path d="M296,150 C270,154 246,152 232,146" stroke="#BE3A22"/>
+    <path d="M240,140 L231,146 L241,151" stroke="#BE3A22"/>
+  </g>
+  <text x="238" y="108" font-family="Fraunces,serif" font-size="11" font-style="italic" fill="#2C4C77">order</text>
+  <text x="238" y="170" font-family="Fraunces,serif" font-size="11" font-style="italic" fill="#BE3A22">plate back</text>
+
+  <!-- red note -->
+  <text x="40" y="228" font-family="Fraunces,serif" font-size="14" font-style="italic" font-weight="500" fill="#BE3A22">you order, it fetches. you never enter the kitchen</text>
+</svg>

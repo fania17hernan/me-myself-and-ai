@@ -1,0 +1,61 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="ns-t ns-d" class="drawn">
+  <title id="ns-t">The night shift</title>
+  <desc id="ns-d">A moon over a tall stack of papers being worked through one at a time, finished sheets moving to a
+    done pile. A red note reads: one step, repeated down the whole stack.</desc>
+  <defs>
+    <filter id="ns-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="ns-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="2" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- moon + stars -->
+  <g filter="url(#ns-rough2)" fill="none" stroke="#2C4C77" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M330,58 C314,58 306,72 314,84 C300,80 292,64 302,52 C312,42 330,46 334,58 Z"/>
+    <path d="M120,54 l3,3 l-3,3 l-3,-3 Z" stroke-width="1.6"/>
+    <path d="M190,44 l3,3 l-3,3 l-3,-3 Z" stroke-width="1.6"/>
+    <path d="M262,64 l2.5,2.5 l-2.5,2.5 l-2.5,-2.5 Z" stroke-width="1.4"/>
+  </g>
+
+  <!-- to-do stack (tall) -->
+  <g filter="url(#ns-rough)" fill="none" stroke="#232120" stroke-width="2.2" stroke-linejoin="round">
+    <path d="M60,190 L150,190 L150,182 L60,182 Z"/>
+    <path d="M63,182 L153,182 L153,174 L63,174 Z"/>
+    <path d="M60,174 L150,174 L150,166 L60,166 Z"/>
+    <path d="M63,166 L153,166 L153,158 L63,158 Z"/>
+    <path d="M60,158 L150,158 L150,150 L60,150 Z"/>
+    <path d="M63,150 L153,150 L153,142 L63,142 Z"/>
+  </g>
+  <text x="70" y="212" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#232120">the stack</text>
+
+  <!-- current sheet being worked -->
+  <g filter="url(#ns-rough)" fill="#F1EEE7" stroke="#232120" stroke-width="2.4" stroke-linejoin="round">
+    <path d="M186,120 L250,120 L250,182 L186,182 Z"/>
+  </g>
+  <g filter="url(#ns-rough2)" fill="none" stroke="#BE3A22" stroke-width="2" stroke-linecap="round">
+    <path d="M196,138 l6,6 l12,-14"/>
+  </g>
+  <g filter="url(#ns-rough2)" fill="none" stroke="#232120" stroke-width="1.8" stroke-linecap="round">
+    <path d="M220,142 L242,142 M196,158 L242,158 M196,170 L236,170"/>
+  </g>
+
+  <!-- arrow to done pile -->
+  <g filter="url(#ns-rough2)" fill="none" stroke="#2C4C77" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M258,150 L300,150"/>
+    <path d="M292,144 L301,150 L292,156"/>
+  </g>
+
+  <!-- done pile -->
+  <g filter="url(#ns-rough)" fill="none" stroke="#232120" stroke-width="2.2" stroke-linejoin="round" opacity=".8">
+    <path d="M312,190 L372,188 L372,180 L312,182 Z"/>
+    <path d="M314,182 L374,180 L374,172 L314,174 Z"/>
+  </g>
+  <text x="316" y="212" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#232120">done</text>
+
+  <!-- red note -->
+  <text x="40" y="234" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">one step, repeated down the whole stack</text>
+</svg>
