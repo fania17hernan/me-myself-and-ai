@@ -1,0 +1,46 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="rb-t rb-d" class="drawn">
+  <title id="rb-t">Your recipe box</title>
+  <desc id="rb-d">An index-card recipe box full of cards, with one card pulled up front showing written lines and a
+    tab. A red note reads: the good prompt, saved to reuse.</desc>
+  <defs>
+    <filter id="rb-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="6" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="rb-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="2" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- cards standing in the box -->
+  <g filter="url(#rb-rough2)" fill="#F1EEE7" stroke="#232120" stroke-linejoin="round" stroke-width="2">
+    <path d="M150,66 L262,66 L262,150 L150,150 Z"/>
+    <path d="M162,58 L274,58 L274,150 L162,150 Z"/>
+    <path d="M174,50 L286,50 L286,150 L174,150 Z"/>
+  </g>
+  <!-- tabs -->
+  <g filter="url(#rb-rough2)" fill="#2C4C77" stroke="#2C4C77" stroke-linejoin="round">
+    <path d="M196,44 L224,44 L224,52 L196,52 Z" opacity=".85"/>
+  </g>
+
+  <!-- pulled-forward card -->
+  <g filter="url(#rb-rough)" fill="#F1EEE7" stroke="#232120" stroke-linejoin="round">
+    <path d="M96,120 L232,110 L238,176 L102,186 Z" stroke-width="2.6"/>
+  </g>
+  <g filter="url(#rb-rough2)" fill="none" stroke="#232120" stroke-width="1.9" stroke-linecap="round">
+    <path d="M112,134 C146,130 186,128 222,126"/>
+    <path d="M114,150 C146,147 182,145 216,143"/>
+    <path d="M116,166 C144,163 176,161 206,160"/>
+  </g>
+  <path d="M112,134 C132,132 150,131 168,130" fill="none" stroke="#BE3A22" stroke-width="2.4" stroke-linecap="round" filter="url(#rb-rough2)"/>
+
+  <!-- the box -->
+  <g filter="url(#rb-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M132,150 L300,150 L288,206 C287,210 283,212 279,212 L153,212 C149,212 145,210 144,206 Z" stroke-width="2.8"/>
+    <path d="M132,150 L300,150" stroke-width="2.4"/>
+  </g>
+
+  <!-- red note -->
+  <text x="40" y="234" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">the good prompt, saved to reuse</text>
+</svg>

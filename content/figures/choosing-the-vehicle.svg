@@ -1,0 +1,56 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="cv-t cv-d" class="drawn">
+  <title id="cv-t">Choosing the vehicle</title>
+  <desc id="cv-d">Three vehicles in a row: a bicycle, a sedan, and a moving truck, under an arrow that runs from
+    "fast and cheap" on the left to "slow and powerful" on the right. A red note reads: match the
+    vehicle to the trip.</desc>
+  <defs>
+    <filter id="cv-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="6" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="cv-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="2" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- spectrum arrow -->
+  <g filter="url(#cv-rough2)" fill="none" stroke="#2C4C77" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M32,56 L388,56"/>
+    <path d="M380,50 L389,56 L380,62"/>
+  </g>
+  <text x="30" y="44" font-family="Fraunces,serif" font-size="13" font-style="italic" fill="#2C4C77">fast &amp; cheap</text>
+  <text x="300" y="44" font-family="Fraunces,serif" font-size="13" font-style="italic" fill="#2C4C77">slow &amp; powerful</text>
+
+  <!-- bicycle -->
+  <g filter="url(#cv-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="50" cy="150" r="20" stroke-width="2.4"/>
+    <circle cx="104" cy="150" r="20" stroke-width="2.4"/>
+    <path d="M50,150 L74,150 L88,120 L60,120 M74,150 L104,150 M88,120 L104,150 M84,116 L96,116" stroke-width="2.2"/>
+    <path d="M60,120 L54,110" stroke-width="2.2"/>
+  </g>
+  <text x="42" y="192" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#232120">the bike</text>
+
+  <!-- sedan -->
+  <g filter="url(#cv-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M172,120 L184,100 C186,97 189,96 193,96 L226,96 C230,96 233,98 236,102 L248,120" stroke-width="2.2"/>
+    <path d="M160,140 C160,132 164,128 172,128 L252,128 C260,128 264,132 264,140 L264,150 L160,150 Z" stroke-width="2.6"/>
+    <path d="M206,98 L206,120" stroke-width="1.6" opacity=".6"/>
+    <circle cx="186" cy="152" r="12" stroke-width="2.4"/>
+    <circle cx="238" cy="152" r="12" stroke-width="2.4"/>
+  </g>
+  <text x="182" y="192" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#232120">the sedan</text>
+
+  <!-- moving truck -->
+  <g filter="url(#cv-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M300,92 L356,92 L356,148 L300,148 Z" stroke-width="2.6"/>
+    <path d="M356,110 L380,110 L392,128 L392,148 L356,148 Z" stroke-width="2.6"/>
+    <path d="M360,116 L378,116 L386,128 L360,128 Z" stroke-width="1.8"/>
+    <circle cx="320" cy="152" r="12" stroke-width="2.4"/>
+    <circle cx="374" cy="152" r="12" stroke-width="2.4"/>
+  </g>
+  <text x="316" y="192" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#232120">the truck</text>
+
+  <!-- red note -->
+  <text x="40" y="228" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">match the vehicle to the trip</text>
+</svg>

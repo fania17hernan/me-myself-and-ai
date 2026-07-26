@@ -1,0 +1,46 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="hr-t hr-d" class="drawn">
+  <title id="hr-t">The house rules</title>
+  <desc id="hr-d">A framed sign titled House Rules with three short standing rules listed, pinned to the wall. A red
+    note reads: set once, followed every time.</desc>
+  <defs>
+    <filter id="hr-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="5" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="hr-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="1" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- frame -->
+  <g filter="url(#hr-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M118,54 L302,54 C308,54 312,58 312,64 L312,188 C312,194 308,198 302,198 L118,198 C112,198 108,194 108,188 L108,64 C108,58 112,54 118,54 Z" stroke-width="2.8"/>
+    <path d="M124,60 L296,60 C300,60 302,62 302,66 L302,186 C302,190 300,192 296,192 L124,192 C120,192 118,190 118,186 L118,66 C118,62 120,60 124,60 Z" stroke-width="1" opacity=".35"/>
+  </g>
+
+  <!-- title -->
+  <text x="150" y="92" font-family="Fraunces,serif" font-size="20" font-weight="700" font-style="italic" fill="#232120">House Rules</text>
+  <path d="M150,100 C186,97 232,101 270,98" fill="none" stroke="#BE3A22" stroke-width="2.2" stroke-linecap="round" filter="url(#hr-rough2)"/>
+
+  <!-- rules -->
+  <g filter="url(#hr-rough2)" fill="none" stroke="#2C4C77" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M138,124 l5,6 l10,-13"/>
+    <path d="M138,148 l5,6 l10,-13"/>
+    <path d="M138,172 l5,6 l10,-13"/>
+  </g>
+  <g filter="url(#hr-rough2)" fill="none" stroke="#232120" stroke-width="2" stroke-linecap="round">
+    <path d="M164,126 L286,126"/>
+    <path d="M164,150 L272,150"/>
+    <path d="M164,174 L280,174"/>
+  </g>
+
+  <!-- pin -->
+  <g filter="url(#hr-rough2)" stroke="#BE3A22" stroke-width="2" fill="#BE3A22">
+    <circle cx="210" cy="50" r="6"/>
+    <path d="M210,56 L210,66" stroke-linecap="round"/>
+  </g>
+
+  <!-- red note -->
+  <text x="40" y="228" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">set once, followed every time</text>
+</svg>

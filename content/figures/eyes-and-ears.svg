@@ -1,0 +1,55 @@
+<svg viewBox="0 0 420 250" role="img" aria-labelledby="ee-t ee-d" class="drawn">
+  <title id="ee-t">Giving AI eyes and ears</title>
+  <desc id="ee-d">An AI head with an eye and an ear. Three inputs feed into it from the left: a block of text, a
+    framed picture, and a soundwave. A red note reads: not just text, it can see and hear too.</desc>
+  <defs>
+    <filter id="ee-rough" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="7" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="2.4" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+    <filter id="ee-rough2" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="1.6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+
+  <!-- AI head -->
+  <g filter="url(#ee-rough)" fill="none" stroke="#232120" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M256,80 L352,80 C360,80 364,84 364,92 L364,158 C364,166 360,170 352,170 L256,170 C248,170 244,166 244,158 L244,92 C244,84 248,80 256,80 Z" stroke-width="2.6"/>
+    <path d="M304,80 L304,66" stroke-width="2.2"/>
+    <circle cx="304" cy="60" r="4" stroke-width="2.2"/>
+    <!-- eye -->
+    <circle cx="300" cy="118" r="15" stroke-width="2.4"/>
+    <circle cx="300" cy="118" r="4.5" fill="#232120" stroke="none"/>
+    <!-- mouth -->
+    <path d="M280,146 C296,152 316,152 332,146" stroke-width="2"/>
+    <!-- ear -->
+    <path d="M244,112 C234,112 232,132 244,134" stroke-width="2.4"/>
+  </g>
+
+  <!-- input: text -->
+  <g filter="url(#ee-rough2)" fill="none" stroke="#232120" stroke-width="2" stroke-linecap="round">
+    <path d="M44,72 L104,72 M44,82 L96,82 M44,92 L100,92"/>
+  </g>
+  <!-- input: image -->
+  <g filter="url(#ee-rough2)" stroke="#232120" stroke-linejoin="round" fill="none">
+    <rect x="44" y="108" width="60" height="40" rx="3" stroke-width="2.2"/>
+    <circle cx="60" cy="122" r="4" stroke-width="1.8"/>
+    <path d="M48,144 L72,126 L86,138 L100,124 L100,146 L48,146 Z" stroke-width="1.8" fill="none"/>
+  </g>
+  <!-- input: voice soundwave -->
+  <g filter="url(#ee-rough2)" fill="none" stroke="#232120" stroke-width="2.4" stroke-linecap="round">
+    <path d="M46,178 L46,190 M56,170 L56,198 M66,176 L66,192 M76,166 L76,202 M86,178 L86,190 M96,172 L96,196"/>
+  </g>
+
+  <!-- arrows into the head -->
+  <g filter="url(#ee-rough2)" fill="none" stroke="#2C4C77" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M118,84 C160,92 200,104 240,112"/>
+    <path d="M120,128 C160,126 200,124 238,123"/>
+    <path d="M116,184 C160,166 200,146 238,134"/>
+    <path d="M230,108 L241,112 L232,120"/>
+  </g>
+
+  <!-- red note -->
+  <text x="40" y="230" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">not just text: it can see and hear too</text>
+</svg>

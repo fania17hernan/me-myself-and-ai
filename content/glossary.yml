@@ -108,3 +108,43 @@
   plain_es: "Un ayudante que configuras una vez para una tarea repetitiva, con sus instrucciones guardadas, para que actúe igual cada vez sin volver a explicarle."
   volatility: slow
   related: [prompt, workflow]
+
+- id: multimodal
+  term_en: "Multimodal"
+  term_es: "Multimodal"
+  plain_en: "Able to work with more than text. The same AI can also take in images, voice, and audio, and sometimes produce them."
+  plain_es: "Capaz de trabajar con más que texto. La misma IA también puede recibir imágenes, voz y audio, y a veces producirlos."
+  volatility: slow
+  related: [model]
+
+- id: model
+  term_en: "Model"
+  term_es: "Modelo"
+  plain_en: "The particular AI engine you're talking to. Tools offer several, trading speed and cost against power, like choosing a vehicle for a trip."
+  plain_es: "El motor de IA concreto con el que hablas. Las herramientas ofrecen varios, que cambian velocidad y costo por potencia, como elegir un vehículo para un viaje."
+  volatility: slow
+  related: [plan-tier]
+
+- id: custom-instructions
+  term_en: "Custom instructions"
+  term_es: "Instrucciones personalizadas"
+  plain_en: "Standing preferences the AI follows on every chat, like how to address you or how long answers should be, so you stop repeating them."
+  plain_es: "Preferencias permanentes que la IA sigue en cada chat, como cómo dirigirse a ti o qué tan largas deben ser las respuestas, para que dejes de repetirlas."
+  volatility: evergreen
+  related: [prompt, custom-assistant]
+
+- id: memory
+  term_en: "Memory"
+  term_es: "Memoria"
+  plain_en: "A notebook the AI keeps across chats, holding facts it learned about you, unlike the whiteboard that wipes when a chat ends."
+  plain_es: "Un cuaderno que la IA conserva entre chats, con datos que aprendió sobre ti, a diferencia del pizarrón que se borra al terminar un chat."
+  volatility: slow
+  related: [context-window]
+
+- id: template
+  term_en: "Template"
+  term_es: "Plantilla"
+  plain_en: "A prompt you saved to reuse. Write the good version once, keep it in a box, and pull it out instead of retyping."
+  plain_es: "Una instrucción que guardaste para reutilizar. Escribe la buena versión una vez, guárdala en una caja y sácala en lugar de reescribirla."
+  volatility: evergreen
+  related: [prompt, workflow]
