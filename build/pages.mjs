@@ -139,9 +139,10 @@ function legacyModules(root, lang) {
 
 export function buildHome({ root, lang, units }) {
   const t = T[lang];
-  const prefix = lang === 'en' ? '' : '../';
+  const prefix = lang === 'en' ? '' : '../';   // to site root (assets, about, scripts)
+  const nav = '';                              // to language base (this page IS the base)
   const alt = lang === 'en' ? '/es/' : '/';
-  const c = chrome({ lang, prefix, t, current: 'home', altHref: alt });
+  const c = chrome({ lang, prefix: nav, t, current: 'home', altHref: alt });
 
   const byLevel = {};
   for (const u of units) (byLevel[u.level] ??= []).push(u);
@@ -151,7 +152,7 @@ export function buildHome({ root, lang, units }) {
     const list = byLevel[lv];
     const items = list.map(u =>
       `<li data-unit="${attr(u.id)}"><span class="box"></span>` +
-      `<a class="t" href="${prefix}u/${u.id}/">${esc(u.title)}</a>` +
+      `<a class="t" href="${nav}u/${u.id}/">${esc(u.title)}</a>` +
       `<span class="kind">${esc(u.type.replace('-', ' '))}</span>` +
       `<span class="min">${u.minutes}m</span></li>`).join('');
     return `<section class="lvl-block">
@@ -166,7 +167,7 @@ export function buildHome({ root, lang, units }) {
 <p class="label">${esc(t.legacy)}</p>
 <p class="soft" style="font-size:.9375rem;margin-top:.4rem">${esc(t.legacySub)}</p>
 <ul class="checklist legacy" style="margin-top:.8rem">
-${legacy.map(m => `  <li><span class="box"></span><a class="t" href="${prefix}${m.file}">${esc(m.title)}</a></li>`).join('\n')}
+${legacy.map(m => `  <li><span class="box"></span><a class="t" href="${nav}${m.file}">${esc(m.title)}</a></li>`).join('\n')}
 </ul>` : '';
 
   return `${head({ title: 'Me, Myself & AI', lang, prefix, desc: t.tagline })}
@@ -181,7 +182,7 @@ ${c.top}
       <p class="label red">${esc(t.start)}</p>
       <h2 style="font-size:1.4rem;margin:.5rem 0 .35rem">${esc(LEVELS[0][lang])}</h2>
       <p class="soft" style="font-size:.875rem">${esc(t.startSub)}</p>
-      <a class="btn btn-red" href="${prefix}u/myth-your-job/" style="width:100%;margin-top:1rem">${esc(t.startCta)}</a>
+      <a class="btn btn-red" href="${nav}u/myth-your-job/" style="width:100%;margin-top:1rem">${esc(t.startCta)}</a>
     </div>
   </div>
 
@@ -219,9 +220,10 @@ ${c.tabs}
 
 export function buildGlossary({ lang, glossary, unitsById }) {
   const t = T[lang];
-  const prefix = lang === 'en' ? '../' : '../../';
+  const prefix = lang === 'en' ? '../' : '../../';   // to site root (assets)
+  const nav = '../';                                 // to language base
   const alt = lang === 'en' ? '/es/glossary/' : '/glossary/';
-  const c = chrome({ lang, prefix, t, current: 'gloss', altHref: alt });
+  const c = chrome({ lang, prefix: nav, t, current: 'gloss', altHref: alt });
 
   const entries = glossary.map(term => {
     const name = lang === 'en' ? term.term_en : (term.term_es || term.term_en);
@@ -229,7 +231,7 @@ export function buildGlossary({ lang, glossary, unitsById }) {
     const first = (term.taught_by || [])[0];
     const u = first && unitsById[first];
     const link = u
-      ? `<a class="learn" href="${prefix}u/${first}/">${esc(t.learn)} · ${u.minutes} ${esc(t.min)} →</a>`
+      ? `<a class="learn" href="${nav}u/${first}/">${esc(t.learn)} · ${u.minutes} ${esc(t.min)} →</a>`
       : '';
     return `<div class="entry" id="${attr(term.id)}">
   <p class="term-name">${esc(name)}</p>
@@ -263,9 +265,10 @@ ${c.tabs}
 
 export function buildUseIt({ lang, units }) {
   const t = T[lang];
-  const prefix = lang === 'en' ? '../' : '../../';
+  const prefix = lang === 'en' ? '../' : '../../';   // to site root (assets)
+  const nav = '../';                                 // to language base
   const alt = lang === 'en' ? '/es/use-it/' : '/use-it/';
-  const c = chrome({ lang, prefix, t, current: 'use', altHref: alt });
+  const c = chrome({ lang, prefix: nav, t, current: 'use', altHref: alt });
 
   const byProf = {};
   for (const u of units) for (const p of (u.professions || [])) (byProf[p] ??= []).push(u);
@@ -280,7 +283,7 @@ export function buildUseIt({ lang, units }) {
       (a.level - b.level) || (a.order - b.order));
     const items = list.map(u =>
       `<li><span class="box"></span>` +
-      `<a class="t" href="${prefix}u/${u.id}/">${esc(u.capability || u.title)}</a>` +
+      `<a class="t" href="${nav}u/${u.id}/">${esc(u.capability || u.title)}</a>` +
       `<span class="kind">${esc((u.type || '').replace('-', ' '))}</span>` +
       `<span class="min">${u.minutes}m</span></li>`).join('');
     return `<div class="prof-panel" data-panel="${attr(p)}"${i === 0 ? '' : ' hidden'}>
@@ -314,15 +317,16 @@ ${c.tabs}
 
 export function buildProgress({ lang, units }) {
   const t = T[lang];
-  const prefix = lang === 'en' ? '../' : '../../';
+  const prefix = lang === 'en' ? '../' : '../../';   // to site root (assets)
+  const nav = '../';                                 // to language base
   const alt = lang === 'en' ? '/es/progress/' : '/progress/';
-  const c = chrome({ lang, prefix, t, current: 'prog', altHref: alt });
+  const c = chrome({ lang, prefix: nav, t, current: 'prog', altHref: alt });
 
   // catalogue the JS needs: id -> capability / takeaway / title / url
   const catalog = {};
   for (const u of units) catalog[u.id] = {
     title: u.title, capability: u.capability || null,
-    takeaway: u.takeaway || null, url: `${prefix}u/${u.id}/`
+    takeaway: u.takeaway || null, url: `${nav}u/${u.id}/`
   };
 
   return `${head({ title: `${t.progTitle} · Me, Myself & AI`, lang, prefix, desc: t.progSub })}

@@ -50,12 +50,15 @@ function loadFigures(root) {
 
 /* ---- page shell -------------------------------------------------------- */
 
-function shell({ d, html, lang, prefix, t, stamp, nextUnit }) {
+function shell({ d, html, lang, prefix, nav, t, stamp, nextUnit }) {
+  // `prefix` reaches the site root (for shared /assets/). `nav` reaches the
+  // current language's base (root for EN, /es/ for ES), so tab and wordmark
+  // links stay inside the language instead of falling back to English.
   const tabs = [
-    ['◧', t.home, `${prefix}`],
-    ['✦', t.use, `${prefix}use-it/`],
-    ['A', t.gloss, `${prefix}glossary/`],
-    ['◔', t.prog, `${prefix}progress/`]
+    ['◧', t.home, `${nav}`],
+    ['✦', t.use, `${nav}use-it/`],
+    ['A', t.gloss, `${nav}glossary/`],
+    ['◔', t.prog, `${nav}progress/`]
   ].map(([ic, label, href]) =>
     `<a href="${href}"><span class="ic" aria-hidden="true">${ic}</span>${esc(label)}</a>`).join('');
 
@@ -69,7 +72,7 @@ function shell({ d, html, lang, prefix, t, stamp, nextUnit }) {
 <meta name="theme-color" content="#F1EEE7">
 <title>${esc(d.title)} · Me, Myself &amp; AI</title>
 <meta name="description" content="${attr(d.capability || d.takeaway || d.title)}">
-<link rel="canonical" href="${prefix === '../../' ? '' : ''}/u/${d.id}/">
+<link rel="canonical" href="${lang === 'en' ? '' : '/es'}/u/${d.id}/">
 <link rel="alternate" hreflang="en" href="/u/${d.id}/">
 <link rel="alternate" hreflang="es" href="/es/u/${d.id}/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -82,7 +85,7 @@ function shell({ d, html, lang, prefix, t, stamp, nextUnit }) {
 <div id="live" class="sr-only" role="status" aria-live="polite"></div>
 
 <header class="top">
-  <a class="wordmark" href="${prefix}">Me, Myself <em>&amp;</em> AI</a>
+  <a class="wordmark" href="${nav}">Me, Myself <em>&amp;</em> AI</a>
   <a class="label" href="${lang === 'en' ? `/es/u/${d.id}/` : `/u/${d.id}/`}"
      hreflang="${lang === 'en' ? 'es' : 'en'}">${lang === 'en' ? 'ES' : 'EN'}</a>
 </header>
@@ -122,7 +125,8 @@ for (const lang of ['en', 'es']) {
   const units = loadUnits(ROOT, lang);
   if (!units.length) continue;
   const t = UI[lang];
-  const prefix = lang === 'en' ? '../../' : '../../../';
+  const prefix = lang === 'en' ? '../../' : '../../../';   // to site root (assets)
+  const nav = '../../';                                    // to language base (both langs)
   const byTopic = {};
   for (const u of units) (byTopic[u.data.topic] ||= []).push(u);
   for (const k in byTopic) byTopic[k].sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
@@ -143,11 +147,11 @@ for (const lang of ['en', 'es']) {
     const nxt = siblings[idx + 1];
     const nextUnit = nxt
       ? `\n<hr class="torn">\n<p class="label">${esc(t.next)}</p>\n` +
-        `<a class="btn" href="${prefix.replace('../../', '../')}${nxt.data.id}/">${esc(nxt.data.title)} →</a>`
+        `<a class="btn" href="../${nxt.data.id}/">${esc(nxt.data.title)} →</a>`
       : '';
 
     const dir = lang === 'en' ? join(ROOT, 'u', d.id) : join(ROOT, 'es', 'u', d.id);
-    const page = shell({ d, html, lang, prefix, t, stamp, nextUnit });
+    const page = shell({ d, html, lang, prefix, nav, t, stamp, nextUnit });
     if (!CHECK) {
       mkdirSync(dir, { recursive: true });
       writeFileSync(join(dir, 'index.html'), page, 'utf8');
