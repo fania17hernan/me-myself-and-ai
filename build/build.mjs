@@ -48,6 +48,41 @@ function loadFigures(root) {
   return out;
 }
 
+/* ---- figure label translation -----------------------------------------
+   Figures are drawn once (single source of geometry). For non-English
+   units their visible text is swapped at build time using a per-figure
+   map in content/figures/labels.<lang>.json. We only replace the BODY of
+   <text>, <title>, and <desc> elements, never attributes, so a short
+   label like "on" can never corrupt an attribute such as font-family.
+   Anything not listed in the map is left in English (safe fallback).
+   ------------------------------------------------------------------- */
+
+function loadFigureLabels(root, lang) {
+  const p = join(root, 'content', 'figures', `labels.${lang}.json`);
+  if (!existsSync(p)) return {};
+  try { return JSON.parse(readFileSync(p, 'utf8')); }
+  catch (e) { console.log(`  warn  could not parse labels.${lang}.json: ${e.message}`); return {}; }
+}
+
+function translateSvg(svg, map) {
+  if (!map) return svg;
+  return svg.replace(/(<(text|title|desc)\b[^>]*>)([\s\S]*?)(<\/\2>)/g,
+    (m, open, tag, inner, close) => {
+      const key = inner.replace(/\s+/g, ' ').trim();
+      return Object.prototype.hasOwnProperty.call(map, key)
+        ? `${open}${map[key]}${close}`
+        : m;
+    });
+}
+
+function translateFigures(figures, labelsById) {
+  const out = {};
+  for (const id in figures) {
+    out[id] = labelsById[id] ? translateSvg(figures[id], labelsById[id]) : figures[id];
+  }
+  return out;
+}
+
 /* ---- page shell -------------------------------------------------------- */
 
 function shell({ d, html, lang, prefix, nav, t, stamp, nextUnit }) {
@@ -118,6 +153,7 @@ if (errors.length) {
 }
 
 const figures = loadFigures(ROOT);
+const figuresByLang = { en: figures, es: translateFigures(figures, loadFigureLabels(ROOT, 'es')) };
 const glossary = loadGlossary(ROOT);
 let written = 0, redirects = 0;
 
@@ -131,8 +167,9 @@ for (const lang of ['en', 'es']) {
   for (const u of units) (byTopic[u.data.topic] ||= []).push(u);
   for (const k in byTopic) byTopic[k].sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
 
+  const figs = figuresByLang[lang] || figures;
   for (const { data: d, body } of units) {
-    const html = render(body, { figures });
+    const html = render(body, { figures: figs });
 
     // freshness stamp, tool-specific units only. Turns the biggest
     // credibility risk into a credibility signal.

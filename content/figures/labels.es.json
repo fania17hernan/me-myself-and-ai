@@ -1,0 +1,181 @@
+{
+  "_note": "Spanish translations for figure text. Keyed by figure id, then by the exact (whitespace-normalized) English content of a <text>, <title>, or <desc>. Applied at build time to ES units only; anything not listed here is left as-is. Keep visible red-note strings short so they fit the drawing width.",
+
+  "airport": {
+    "The airport": "El aeropuerto",
+    "A control tower beside a parked plane and a signpost pointing to the gates. A red note reads: you don't need to fly the plane to find your gate.": "Una torre de control junto a un avión estacionado y un letrero que apunta a las puertas. Una nota en rojo dice: no necesitas pilotar para encontrar tu puerta.",
+    "gates": "puertas",
+    "exit": "salida",
+    "you don't need to fly the plane to find your gate": "no necesitas pilotar para encontrar tu puerta"
+  },
+
+  "choosing-the-vehicle": {
+    "Choosing the vehicle": "Escoger el vehículo",
+    "Three vehicles in a row: a bicycle, a sedan, and a moving truck, under an arrow that runs from \"fast and cheap\" on the left to \"slow and powerful\" on the right. A red note reads: match the vehicle to the trip.": "Tres vehículos en fila: una bicicleta, un coche y un camión de mudanza, bajo una flecha que va de \"rápido y barato\" a la izquierda a \"lento y potente\" a la derecha. Una nota en rojo dice: ajusta el vehículo al viaje.",
+    "fast &amp; cheap": "rápido y barato",
+    "slow &amp; powerful": "lento y potente",
+    "the bike": "la bici",
+    "the sedan": "el coche",
+    "the truck": "el camión",
+    "match the vehicle to the trip": "ajusta el vehículo al viaje"
+  },
+
+  "confident-intern": {
+    "The confident intern": "El becario muy seguro",
+    "An intern standing at an easel, one hand raised, presenting a chart with a wrong figure on it. A speech bubble reads \"Absolutely.\" A red note reads: sounds certain, still made it up.": "Un becario parado frente a un caballete, con una mano en alto, presentando una gráfica con un dato equivocado. Un globo de diálogo dice \"Claro que sí\". Una nota en rojo dice: suena seguro, aun así lo inventó.",
+    "Absolutely.": "Claro que sí.",
+    "sounds certain, still made it up": "suena seguro, aun así lo inventó"
+  },
+
+  "dining-room-and-kitchen": {
+    "The dining room and the kitchen": "El comedor y la cocina",
+    "A dining room with a set table on the left and a kitchen with a stove on the right, split by a swinging door. A red note reads: the room you see, the kitchen you don't.": "Un comedor con una mesa puesta a la izquierda y una cocina con estufa a la derecha, separados por una puerta batiente. Una nota en rojo dice: el cuarto que ves, la cocina que no.",
+    "dining room": "comedor",
+    "kitchen": "cocina",
+    "the room you see, the kitchen you don't": "el cuarto que ves, la cocina que no"
+  },
+
+  "director-not-bricklayer": {
+    "Director, not bricklayer": "Director, no albañil",
+    "On the left a director's chair with a megaphone. On the right a brick wall rising on its own. A blue arrow of instruction runs from the director to the wall. A red note reads: you direct, it lays the bricks.": "A la izquierda, una silla de director con un megáfono. A la derecha, un muro de ladrillos que sube solo. Una flecha azul de instrucción va del director al muro. Una nota en rojo dice: tú diriges, ella pone los ladrillos.",
+    "(still building)": "(sigue en obra)",
+    "you direct. it lays the bricks": "tú diriges. ella pone los ladrillos"
+  },
+
+  "eyes-and-ears": {
+    "Giving AI eyes and ears": "Darle ojos y oídos a la IA",
+    "An AI head with an eye and an ear. Three inputs feed into it from the left: a block of text, a framed picture, and a soundwave. A red note reads: not just text, it can see and hear too.": "Una cabeza de IA con un ojo y una oreja. Tres entradas la alimentan desde la izquierda: un bloque de texto, una imagen y una onda de sonido. Una nota en rojo dice: no solo texto, también puede ver y oír.",
+    "not just text: it can see and hear too": "no solo texto: también puede ver y oír"
+  },
+
+  "filing-cabinet": {
+    "The filing cabinet": "El archivero",
+    "A filing cabinet with labelled drawers, one open to show folders standing in rows. A red note reads: every record in its place.": "Un archivero con cajones etiquetados, uno abierto que muestra carpetas en fila. Una nota en rojo dice: cada registro en su lugar.",
+    "every record in its place": "cada registro en su lugar"
+  },
+
+  "gas-tank": {
+    "The gas tank": "El tanque de gasolina",
+    "A fuel tank with a gauge reading near empty. An arrow labelled \"the words you type\" enters from the left, an arrow labelled \"and the words it writes back\" leaves to the right. A note reads: both directions burn it.": "Un tanque de gasolina con el medidor casi en cero. Una flecha con la etiqueta \"las palabras que escribes\" entra por la izquierda, y otra con \"y las palabras que responde\" sale por la derecha. Una nota dice: las dos direcciones la gastan.",
+    "the words you type": "las palabras que escribes",
+    "…and the words": "…y las palabras",
+    "it writes back": "que responde",
+    "both directions burn it": "las dos direcciones la gastan"
+  },
+
+  "house-rules": {
+    "The house rules": "Las reglas de la casa",
+    "A framed sign titled House Rules with three short standing rules listed, pinned to the wall. A red note reads: set once, followed every time.": "Un letrero enmarcado titulado Reglas de la casa con tres reglas cortas, fijado a la pared. Una nota en rojo dice: se ponen una vez, se siguen siempre.",
+    "House Rules": "Reglas de la casa",
+    "set once, followed every time": "se ponen una vez, se siguen siempre"
+  },
+
+  "night-shift": {
+    "The night shift": "El turno de noche",
+    "A moon over a tall stack of papers being worked through one at a time, finished sheets moving to a done pile. A red note reads: one step, repeated down the whole stack.": "Una luna sobre una pila alta de papeles que se resuelven uno por uno, y las hojas terminadas pasan a una pila de listos. Una nota en rojo dice: un paso, repetido en toda la pila.",
+    "the stack": "la pila",
+    "done": "listos",
+    "one step, repeated down the whole stack": "un paso, repetido en toda la pila"
+  },
+
+  "notebook": {
+    "The notebook that keeps notes": "El cuaderno que sí guarda notas",
+    "An open spiral notebook with writing on both pages that stays, and a red bookmark ribbon. A red note reads: unlike the whiteboard, this one keeps the notes.": "Un cuaderno de espiral abierto con escritura en ambas páginas que se queda, y un separador rojo. Una nota en rojo dice: el pizarrón se borra; este sí guarda las notas.",
+    "unlike the whiteboard, this one keeps the notes": "el pizarrón se borra; este sí guarda las notas"
+  },
+
+  "opening-the-shop": {
+    "Opening the shop": "Abrir la tienda",
+    "A storefront with an awning, a window, and a door with an Open sign, the street in front. A red note reads: built inside, now open to the street.": "Una tienda con toldo, una vitrina y una puerta con un letrero de Abierto, con la calle enfrente. Una nota en rojo dice: se armó por dentro, ya abierta a la calle.",
+    "OPEN": "ABIERTO",
+    "built inside, now open to the street": "se armó por dentro, ya abierta a la calle"
+  },
+
+  "phone-call-and-office": {
+    "The phone call and the office": "La llamada y la oficina",
+    "On the left, a telephone handset with ringing arcs and a small puff showing it vanishes when it ends. On the right, a room with a desk holding a folder, papers, and a mug that stay put. A red note reads: the call ends, the office keeps everything on the desk.": "A la izquierda, un auricular con ondas de timbre y una nubecita que muestra que desaparece al terminar. A la derecha, un cuarto con un escritorio que sostiene una carpeta, papeles y una taza que se quedan. Una nota en rojo dice: la llamada acaba, la oficina lo guarda todo.",
+    "the call": "la llamada",
+    "the office": "la oficina",
+    "the call ends. the office keeps everything on the desk": "la llamada acaba. la oficina lo guarda todo"
+  },
+
+  "pilot-and-autopilot": {
+    "The pilot and the autopilot": "El piloto y el piloto automático",
+    "A cockpit dashboard with an autopilot switch set to on and a hand resting near the controls, ready to take over. A red note reads: autopilot flies, you watch and can take over.": "Un tablero de cabina con el piloto automático activado y una mano cerca de los mandos, lista para tomar el control. Una nota en rojo dice: el piloto automático vuela, tú vigilas y puedes retomar.",
+    "autopilot": "automático",
+    "on": "activado",
+    "ready to take over": "lista para retomar",
+    "autopilot flies. you watch, and can take over": "vuela solo. tú vigilas y puedes retomar"
+  },
+
+  "recipe-box": {
+    "Your recipe box": "Tu recetario",
+    "An index-card recipe box full of cards, with one card pulled up front showing written lines and a tab. A red note reads: the good prompt, saved to reuse.": "Un recetario lleno de tarjetas, con una al frente que muestra líneas escritas y una pestaña. Una nota en rojo dice: la buena instrucción, guardada para reutilizar.",
+    "the good prompt, saved to reuse": "la buena instrucción, guardada"
+  },
+
+  "set-of-keys": {
+    "The set of keys": "El juego de llaves",
+    "A key ring holding three keys that fan downward, each with a tag reading email, calendar, and files. A red note reads: keys to your other rooms, you choose which ones.": "Un llavero con tres llaves en abanico, cada una con una etiqueta que dice correo, calendario y archivos. Una nota en rojo dice: llaves a tus otros cuartos, tú eliges cuáles.",
+    "email": "correo",
+    "calendar": "calendario",
+    "files": "archivos",
+    "keys to your other rooms. you choose which ones": "llaves a tus cuartos. tú eliges cuáles"
+  },
+
+  "sous-chef": {
+    "The sous chef": "El sous chef",
+    "A chef's hat above three numbered stations connected by arrows: one, prep, with a knife and board; two, cook, with a pot; three, plate, with a dish. A red note reads: you call the order, it does the prep.": "Un gorro de chef sobre tres estaciones numeradas y conectadas por flechas: uno, preparar, con cuchillo y tabla; dos, cocinar, con una olla; tres, emplatar, con un plato. Una nota en rojo dice: tú cantas la orden, él hace la preparación.",
+    "prep": "preparar",
+    "cook": "cocinar",
+    "plate": "emplatar",
+    "you call the order, it does the prep": "tú cantas la orden, él prepara"
+  },
+
+  "test-drive-or-lease": {
+    "The test drive and the lease": "La prueba y quedártelo",
+    "Two identical cars side by side. The left car is labelled \"the test drive, free\" with a short dashed road that stops. The right car is labelled \"the lease, paid\" and has a set of keys beside it. A red note reads: same car, the question is how long you keep it.": "Dos coches idénticos lado a lado. El de la izquierda dice \"la prueba, gratis\" con un camino corto de rayas que se detiene. El de la derecha dice \"quedártelo, de pago\" y tiene un juego de llaves al lado. Una nota en rojo dice: el mismo coche, la pregunta es cuánto lo conservas.",
+    "FREE": "GRATIS",
+    "PAID": "DE PAGO",
+    "the test drive": "la prueba",
+    "the lease": "quedártelo",
+    "same car. the question is how long you keep it": "el mismo coche; ¿cuánto lo conservas?"
+  },
+
+  "the-conductor": {
+    "The conductor": "El director de orquesta",
+    "A conductor with a raised baton in front of three music stands, keeping the parts in time. A red note reads: many parts, kept in time.": "Un director con la batuta en alto frente a tres atriles, manteniendo las partes a tiempo. Una nota en rojo dice: muchas partes, a tiempo.",
+    "many parts, kept in time": "muchas partes, a tiempo"
+  },
+
+  "the-waiter": {
+    "The waiter": "El mesero",
+    "A waiter carrying a tray stands between a diner's table and a kitchen window, an order going one way and a plate coming back. A red note reads: you order, it fetches, you never enter the kitchen.": "Un mesero con una charola está entre la mesa de un comensal y la ventana de la cocina, con un pedido que va y un plato que regresa. Una nota en rojo dice: tú pides, él lo trae, tú nunca entras a la cocina.",
+    "you": "tú",
+    "the kitchen": "la cocina",
+    "order": "pedido",
+    "plate back": "regresa el plato",
+    "you order, it fetches. you never enter the kitchen": "tú pides, él trae. nunca entras a la cocina"
+  },
+
+  "trained-specialist": {
+    "The trained specialist": "El especialista entrenado",
+    "A specialist wearing an apron and a name badge stands beside a pinned instruction card whose lines stay in place. A red note reads: trained once, shows up ready every time.": "Un especialista con delantal y gafete está junto a una tarjeta de instrucciones fijada cuyas líneas se quedan en su lugar. Una nota en rojo dice: se entrena una vez, llega listo cada vez.",
+    "its saved instructions": "sus instrucciones guardadas",
+    "trained once. shows up ready every time": "se entrena una vez, llega listo siempre"
+  },
+
+  "whiteboard": {
+    "The whiteboard": "El pizarrón",
+    "A whiteboard on a stand, filled with lines of writing. On the left an eraser is wiping the oldest lines away, which fade out. A blue arrow labelled \"new notes go here\" points to the empty space on the right. A note reads: when it's full, the oldest gets wiped.": "Un pizarrón en un caballete, lleno de líneas de escritura. A la izquierda, un borrador quita las líneas más viejas, que se desvanecen. Una flecha azul con la etiqueta \"aquí van las notas nuevas\" apunta al espacio vacío de la derecha. Una nota dice: cuando se llena, se borra lo más viejo.",
+    "new notes go here": "aquí van las notas nuevas",
+    "when it's full, the oldest gets wiped": "cuando se llena, borra lo más viejo"
+  },
+
+  "workbench": {
+    "The workbench": "El banco de trabajo",
+    "A workbench with a pegboard of tools behind it. On the bench sits a document being built, some lines already written and one line in red being drawn. A small chat bubble on the left points a blue arrow at the bench. A red note reads: the chat talks, the bench is where it gets built.": "Un banco de trabajo con un panel de herramientas detrás. Sobre el banco hay un documento en construcción, con algunas líneas escritas y una en rojo dibujándose. Un globo de chat a la izquierda apunta con una flecha azul al banco. Una nota en rojo dice: el chat habla; el banco es donde se construye.",
+    "built here": "aquí se construye",
+    "the chat talks. the bench is where it gets built": "el chat habla; el banco lo construye"
+  }
+}
