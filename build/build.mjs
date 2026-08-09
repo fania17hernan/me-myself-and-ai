@@ -22,6 +22,11 @@ import { buildHome, buildGlossary, buildUseIt, buildProgress, RETIRED } from './
 const ROOT = process.argv[2] && !process.argv[2].startsWith('--') ? process.argv[2] : '.';
 const CHECK = process.argv.includes('--check');
 
+// The site is a GitHub Pages *project* site, served under a subpath.
+// Canonical / hreflang must be absolute, so they point at the real URL,
+// but in-page navigation must be relative so it survives the subpath.
+const SITE = 'https://fania17hernan.github.io/me-myself-and-ai';
+
 const UI = {
   en: { skip: 'Skip to content', home: 'Home', use: 'Use It', gloss: 'Glossary',
         prog: 'Progress', cont: 'Continue', of: 'of', unit: 'unit',
@@ -107,9 +112,9 @@ function shell({ d, html, lang, prefix, nav, t, stamp, nextUnit }) {
 <meta name="theme-color" content="#F1EEE7">
 <title>${esc(d.title)} · Me, Myself &amp; AI</title>
 <meta name="description" content="${attr(d.capability || d.takeaway || d.title)}">
-<link rel="canonical" href="${lang === 'en' ? '' : '/es'}/u/${d.id}/">
-<link rel="alternate" hreflang="en" href="/u/${d.id}/">
-<link rel="alternate" hreflang="es" href="/es/u/${d.id}/">
+<link rel="canonical" href="${SITE}${lang === 'en' ? '' : '/es'}/u/${d.id}/">
+<link rel="alternate" hreflang="en" href="${SITE}/u/${d.id}/">
+<link rel="alternate" hreflang="es" href="${SITE}/es/u/${d.id}/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -121,7 +126,7 @@ function shell({ d, html, lang, prefix, nav, t, stamp, nextUnit }) {
 
 <header class="top">
   <a class="wordmark" href="${nav}">Me, Myself <em>&amp;</em> AI</a>
-  <a class="label" href="${lang === 'en' ? `/es/u/${d.id}/` : `/u/${d.id}/`}"
+  <a class="label" href="${lang === 'en' ? `${prefix}es/u/${d.id}/` : `${prefix}u/${d.id}/`}"
      hreflang="${lang === 'en' ? 'es' : 'en'}">${lang === 'en' ? 'ES' : 'EN'}</a>
 </header>
 <div class="prog"><i style="width:0%"></i></div>

@@ -141,7 +141,7 @@ export function buildHome({ root, lang, units }) {
   const t = T[lang];
   const prefix = lang === 'en' ? '' : '../';   // to site root (assets, about, scripts)
   const nav = '';                              // to language base (this page IS the base)
-  const alt = lang === 'en' ? '/es/' : '/';
+  const alt = lang === 'en' ? `${prefix}es/` : `${prefix}`;   // relative EN↔ES toggle (subpath-safe)
   const c = chrome({ lang, prefix: nav, t, current: 'home', altHref: alt });
 
   const byLevel = {};
@@ -205,7 +205,7 @@ ${legacyBlock}
   <p class="label">${esc(t.fore)}</p>
   <p class="fore-line">${esc(t.foreLine)}</p>
   <p class="soft" style="font-size:.9375rem;margin-top:.7rem">${esc(t.foreBody)}</p>
-  <p class="hand" style="margin-top:.8rem">${esc(t.foreHand)} <a href="${prefix}about.html">${esc(t.read)} →</a></p>
+  <p class="hand" style="margin-top:.8rem">${esc(t.foreHand)} <a href="${nav}about.html">${esc(t.read)} →</a></p>
 
 </main>
 ${c.tabs}
@@ -222,7 +222,7 @@ export function buildGlossary({ lang, glossary, unitsById }) {
   const t = T[lang];
   const prefix = lang === 'en' ? '../' : '../../';   // to site root (assets)
   const nav = '../';                                 // to language base
-  const alt = lang === 'en' ? '/es/glossary/' : '/glossary/';
+  const alt = lang === 'en' ? `${prefix}es/glossary/` : `${prefix}glossary/`;
   const c = chrome({ lang, prefix: nav, t, current: 'gloss', altHref: alt });
 
   const entries = glossary.map(term => {
@@ -267,7 +267,7 @@ export function buildUseIt({ lang, units }) {
   const t = T[lang];
   const prefix = lang === 'en' ? '../' : '../../';   // to site root (assets)
   const nav = '../';                                 // to language base
-  const alt = lang === 'en' ? '/es/use-it/' : '/use-it/';
+  const alt = lang === 'en' ? `${prefix}es/use-it/` : `${prefix}use-it/`;
   const c = chrome({ lang, prefix: nav, t, current: 'use', altHref: alt });
 
   const byProf = {};
@@ -319,7 +319,7 @@ export function buildProgress({ lang, units }) {
   const t = T[lang];
   const prefix = lang === 'en' ? '../' : '../../';   // to site root (assets)
   const nav = '../';                                 // to language base
-  const alt = lang === 'en' ? '/es/progress/' : '/progress/';
+  const alt = lang === 'en' ? `${prefix}es/progress/` : `${prefix}progress/`;
   const c = chrome({ lang, prefix: nav, t, current: 'prog', altHref: alt });
 
   // catalogue the JS needs: id -> capability / takeaway / title / url
