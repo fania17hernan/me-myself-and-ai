@@ -37,6 +37,7 @@ const PROFESSIONS = {
 
 const T = {
   en: { skip:'Skip to content', home:'Home', use:'Use It', gloss:'Glossary', prog:'Progress',
+        nav:'Main',
         start:'Start here', startSub:'5 myths · 2 min each · no quiz', startCta:'Clear the air first',
         resume:'Pick up where you left off', cont:'Continue', path:'Your path',
         legacy:'Still being rebuilt', legacySub:'These are on the old format while they get split into units.',
@@ -55,6 +56,7 @@ const T = {
         progReview:'Worth another look', progReviewSub:'Units you missed on the first try.',
         progExport:'Export one page', reset:'Reset my progress' },
   es: { skip:'Saltar al contenido', home:'Inicio', use:'Aplícalo', gloss:'Glosario', prog:'Tu avance',
+        nav:'Principal',
         start:'Empieza aquí', startSub:'5 mitos · 2 min cada uno · sin examen', startCta:'Primero aclaremos el aire',
         resume:'Retoma donde lo dejaste', cont:'Continuar', path:'Tu camino',
         legacy:'En reconstrucción', legacySub:'Estos siguen en el formato anterior mientras se dividen en unidades.',
@@ -107,7 +109,7 @@ function chrome({ lang, prefix, t, current, altHref }) {
   <a class="wordmark" href="${prefix}">Me, Myself <em>&amp;</em> AI</a>
   <a class="label" href="${altHref}" hreflang="${lang === 'en' ? 'es' : 'en'}">${lang === 'en' ? 'ES' : 'EN'}</a>
 </header>`,
-    tabs: `<nav class="tabs" aria-label="${esc(t.home)}">${tabs}</nav>`
+    tabs: `<nav class="tabs" aria-label="${esc(t.nav)}">${tabs}</nav>`
   };
 }
 
@@ -298,7 +300,7 @@ ${c.top}
   <p class="label red">${esc(t.use)}</p>
   <h1>${esc(t.useTitle)}</h1>
   <p class="soft" style="margin-top:.8rem">${esc(t.useSub)}</p>
-  <div class="chips" role="group" aria-label="${esc(t.use)}" style="margin-top:1.5rem">${chips}</div>
+  <div class="chips" role="group" aria-label="${esc(t.use)}" data-count-label="${attr(t.units)}" style="margin-top:1.5rem">${chips}</div>
   <div style="margin-top:1.75rem">
 ${panels}
   </div>

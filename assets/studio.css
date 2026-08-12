@@ -229,11 +229,26 @@ hr.torn{
    ------------------------------------------------------------------- */
 
 .checklist{list-style:none}
+/* The row, not the text, is the tap target. At .7rem padding the link
+   itself measured 21px tall, less than half the 44px WCAG 2.5.5 floor,
+   on the primary call to action of a phone-first course. The stretched
+   ::after below hands the whole row to the link; the padding bump takes
+   the row past 44px without touching the baseline rhythm. */
 .checklist li{
   display:flex;align-items:baseline;gap:.85rem;
-  padding:.7rem 0;border-bottom:1px solid var(--rule);
+  padding:.75rem 0;border-bottom:1px solid var(--rule);
+  position:relative;
 }
 .checklist li:last-child{border-bottom:0}
+.checklist a.t::after{content:'';position:absolute;inset:0}
+/* Ring the whole row rather than just the text, where :has is available.
+   Gated, because the fallback has to be the default ring and not no ring
+   at all: suppressing the link outline unconditionally would leave older
+   browsers with no visible focus at all. */
+@supports selector(li:has(a)){
+  .checklist a.t:focus-visible{outline:none}
+  .checklist li:has(a.t:focus-visible){outline:2.5px solid var(--pencil);outline-offset:3px}
+}
 .checklist .box{
   flex:0 0 18px;width:18px;height:18px;border:1.5px solid var(--ink-3);
   position:relative;transform:rotate(-1deg);align-self:center;

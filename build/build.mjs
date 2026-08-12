@@ -29,10 +29,10 @@ const SITE = 'https://fania17hernan.github.io/me-myself-and-ai';
 
 const UI = {
   en: { skip: 'Skip to content', home: 'Home', use: 'Use It', gloss: 'Glossary',
-        prog: 'Progress', cont: 'Continue', of: 'of', unit: 'unit',
+        prog: 'Progress', cont: 'Continue', of: 'of', unit: 'unit', nav: 'Main',
         pinned: 'Pin to your bench', next: 'Next', checked: 'Checked' },
   es: { skip: 'Saltar al contenido', home: 'Inicio', use: 'Aplícalo', gloss: 'Glosario',
-        prog: 'Tu avance', cont: 'Continuar', of: 'de', unit: 'unidad',
+        prog: 'Tu avance', cont: 'Continuar', of: 'de', unit: 'unidad', nav: 'Principal',
         pinned: 'Fíjalo en tu mesa', next: 'A continuación', checked: 'Verificado' }
 };
 
@@ -139,7 +139,7 @@ ${stamp}
 ${nextUnit}
 </main>
 
-<nav class="tabs" aria-label="${esc(t.home)}">${tabs}</nav>
+<nav class="tabs" aria-label="${esc(t.nav)}">${tabs}</nav>
 <script src="${prefix}assets/state.js"></script>
 <script src="${prefix}assets/unit.js"></script>
 </body>
@@ -203,12 +203,14 @@ for (const lang of ['en', 'es']) {
     // slug_history → redirect stubs, so a rename never 404s
     for (const old of d.slug_history || []) {
       const rdir = lang === 'en' ? join(ROOT, 'u', old) : join(ROOT, 'es', 'u', old);
-      const target = lang === 'en' ? `/u/${d.id}/` : `/es/u/${d.id}/`;
+      /* Sibling directory under the same u/, so one level up and across. */
+      const target = `../${d.id}/`;
+      const abs = `${SITE}${lang === 'en' ? '' : '/es'}/u/${d.id}/`;
       if (!CHECK) {
         mkdirSync(rdir, { recursive: true });
         writeFileSync(join(rdir, 'index.html'),
           `<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8">` +
-          `<link rel="canonical" href="${target}">` +
+          `<link rel="canonical" href="${abs}">` +
           `<meta http-equiv="refresh" content="0; url=${target}">` +
           `<title>Moved</title></head><body><p><a href="${target}">Moved here</a></p></body></html>`, 'utf8');
       }
@@ -271,11 +273,16 @@ for (const lang of ['en', 'es']) {
 for (const lang of ['en', 'es']) {
   const base = lang === 'en' ? ROOT : join(ROOT, 'es');
   for (const [file, target] of Object.entries(RETIRED)) {
-    const to = lang === 'en' ? `/u/${target}/` : `/es/u/${target}/`;
+    /* The stub sits beside the language base, so the hop is relative:
+       module-1.html → u/<slug>/. Root-absolute would resolve against the
+       domain root and 404, because the site is served from a project
+       subpath. Canonical stays a full URL, per the same rule. */
+    const to = `u/${target}/`;
+    const abs = `${SITE}${lang === 'en' ? '' : '/es'}/u/${target}/`;
     if (!CHECK && existsSync(join(base, file))) {
       writeFileSync(join(base, file),
         `<!DOCTYPE html><html lang="${lang}"><head><meta charset="UTF-8">` +
-        `<link rel="canonical" href="${to}">` +
+        `<link rel="canonical" href="${abs}">` +
         `<meta http-equiv="refresh" content="0; url=${to}">` +
         `<title>Moved</title></head><body><p><a href="${to}">Moved here</a></p></body></html>`, 'utf8');
       redirects++;
