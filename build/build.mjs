@@ -17,7 +17,7 @@ import { readdirSync, readFileSync, writeFileSync, mkdirSync, existsSync, rmSync
 import { join, dirname } from 'node:path';
 import { frontmatter, render, esc, attr } from './lib.mjs';
 import { validate, loadGlossary, loadUnits, VOLATILITY } from './validate.mjs';
-import { buildHome, buildGlossary, buildUseIt, buildProgress, RETIRED } from './pages.mjs';
+import { buildHome, buildGlossary, buildUseIt, buildProgress, RETIRED, LEVELS } from './pages.mjs';
 
 const ROOT = process.argv[2] && !process.argv[2].startsWith('--') ? process.argv[2] : '.';
 const CHECK = process.argv.includes('--check');
@@ -30,10 +30,18 @@ const SITE = 'https://fania17hernan.github.io/me-myself-and-ai';
 const UI = {
   en: { skip: 'Skip to content', home: 'Home', use: 'Use It', gloss: 'Glossary',
         prog: 'Progress', cont: 'Continue', of: 'of', unit: 'unit', nav: 'Main',
-        pinned: 'Pin to your bench', next: 'Next', checked: 'Checked' },
+        pinned: 'Pin to your bench', next: 'Next', checked: 'Checked',
+        levelDone: 'complete', startLevel: 'Start', backHome: 'Back to your path',
+        pathDone: "You've reached the end of the path",
+        pathDoneSub: 'Everything you finished is on your progress page.',
+        seeProgress: 'See your progress' },
   es: { skip: 'Saltar al contenido', home: 'Inicio', use: 'Aplícalo', gloss: 'Glosario',
         prog: 'Tu avance', cont: 'Continuar', of: 'de', unit: 'unidad', nav: 'Principal',
-        pinned: 'Fíjalo en tu mesa', next: 'A continuación', checked: 'Verificado' }
+        pinned: 'Fíjalo en tu mesa', next: 'A continuación', checked: 'Verificado',
+        levelDone: 'completo', startLevel: 'Empezar', backHome: 'Volver a tu camino',
+        pathDone: 'Llegaste al final del camino',
+        pathDoneSub: 'Todo lo que terminaste está en tu página de avance.',
+        seeProgress: 'Ver tu avance' }
 };
 
 const MONTHS = {
@@ -168,9 +176,19 @@ for (const lang of ['en', 'es']) {
   const t = UI[lang];
   const prefix = lang === 'en' ? '../../' : '../../../';   // to site root (assets)
   const nav = '../../';                                    // to language base (both langs)
-  const byTopic = {};
-  for (const u of units) (byTopic[u.data.topic] ||= []).push(u);
-  for (const k in byTopic) byTopic[k].sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+  // "Next" used to look sideways within a unit's own topic, so any unit
+  // that was last in its topic (which, for every single-topic level like
+  // Level 2, means EVERY unit) rendered no next-unit block at all: the
+  // page just stopped after the pin-to-bench card. This sequence instead
+  // matches the order the home page's path already renders each level
+  // in — sorted by `order`, ties broken by source order — so "next"
+  // means "the next thing on your path", not "the next thing in this
+  // one topic". See design/IA-AND-JOURNEYS.md §6, "there is always
+  // exactly one obvious next action."
+  const byLevel = {};
+  for (const u of units) (byLevel[u.data.level] ??= []).push(u);
+  for (const k in byLevel) byLevel[k].sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+  const levelSequence = Object.keys(byLevel).sort((a, b) => a - b).flatMap(lv => byLevel[lv]);
 
   const figs = figuresByLang[lang] || figures;
   for (const { data: d, body } of units) {
@@ -184,13 +202,28 @@ for (const lang of ['en', 'es']) {
       stamp = `\n<p class="stamp label">${esc(t.checked)} ${esc(MONTHS[lang][v.getMonth()])} ${v.getFullYear()}</p>`;
     }
 
-    const siblings = byTopic[d.topic] || [];
-    const idx = siblings.findIndex(s => s.data.id === d.id);
-    const nxt = siblings[idx + 1];
-    const nextUnit = nxt
-      ? `\n<hr class="torn">\n<p class="label">${esc(t.next)}</p>\n` +
-        `<a class="btn" href="../${nxt.data.id}/">${esc(nxt.data.title)} →</a>`
-      : '';
+    const idx = levelSequence.findIndex(s => s.data.id === d.id);
+    const nxt = levelSequence[idx + 1];
+    let nextUnit;
+    if (nxt && nxt.data.level === d.level) {
+      // Same level, next thing on the path: the plain "Next" link.
+      nextUnit = `\n<hr class="torn">\n<p class="label">${esc(t.next)}</p>\n` +
+        `<a class="btn" href="../${nxt.data.id}/">${esc(nxt.data.title)} →</a>`;
+    } else if (nxt) {
+      // Last unit of a level: name what just finished and what starts
+      // next, so finishing a level reads as a milestone, not a dead end.
+      const levelName = LEVELS[nxt.data.level]?.[lang] || `Level ${nxt.data.level}`;
+      nextUnit = `\n<hr class="torn">\n` +
+        `<p class="label red">${esc(LEVELS[d.level]?.[lang] || `Level ${d.level}`)} ${esc(t.levelDone)}</p>\n` +
+        `<a class="btn" href="../${nxt.data.id}/">${esc(t.startLevel)} ${esc(levelName)} →</a>`;
+    } else {
+      // Last unit of the last level: nothing to hand off to but the
+      // path itself. Never a silent stop.
+      nextUnit = `\n<hr class="torn">\n` +
+        `<p class="label red">${esc(t.pathDone)}</p>\n` +
+        `<p class="soft" style="margin-top:.4rem">${esc(t.pathDoneSub)}</p>\n` +
+        `<a class="btn" href="../../progress/" style="margin-top:1rem">${esc(t.seeProgress)} →</a>`;
+    }
 
     const dir = lang === 'en' ? join(ROOT, 'u', d.id) : join(ROOT, 'es', 'u', d.id);
     const page = shell({ d, html, lang, prefix, nav, t, stamp, nextUnit });

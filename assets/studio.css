@@ -309,6 +309,13 @@ hr.torn{
   font-family:var(--serif);font-size:1.15rem;line-height:1.3;
   font-variation-settings:var(--wonk);margin-top:.5rem;
 }
+/* .check has margin-top but no margin-bottom, and this card has no
+   margin-top of its own, so a say-it-back directly after a quiz sat
+   flush against the last .opt. The .taped::before tape strip then pokes
+   -11px above the card's own top edge into that zero gap, visually
+   lapping onto the option below it. 2.25rem clears the tape and reads
+   as a deliberate break between "answer the question" and "keep this". */
+.pinnable{margin-top:2.25rem}
 .pinnable .pin{margin-top:.9rem;font-size:.8125rem;padding:.55rem 1rem;min-height:42px}
 .stamp{
   display:inline-flex;align-items:center;gap:.45rem;margin-top:2rem;

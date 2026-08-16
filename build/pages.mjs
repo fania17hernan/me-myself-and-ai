@@ -14,7 +14,7 @@ import { readdirSync, readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 import { esc, attr } from './lib.mjs';
 
-const LEVELS = {
+export const LEVELS = {
   0: { en: "What AI isn't", es: "Lo que la IA no es" },
   1: { en: 'Foundations',   es: 'Fundamentos' },
   2: { en: 'The Tools', es: 'Las herramientas' },

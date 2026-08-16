@@ -58,6 +58,13 @@
   </g>
   <text x="256" y="204" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#232120">the office</text>
 
-  <!-- red note -->
-  <text x="40" y="230" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">the call ends. the office keeps everything on the desk</text>
+  <!-- red note. Was one line at 56 characters, ~420px wide against a
+       420px-wide canvas, so "on the desk" was rendering past the edge
+       and getting clipped. Split across two lines like the gas-tank
+       figure's long label — two separate <text> elements, not tspans,
+       so the exact-string lookup in labels.es.json still matches each
+       line (a single text node with tspans inside would change what
+       that lookup sees and silently fall back to English). -->
+  <text x="40" y="222" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">the call ends.</text>
+  <text x="40" y="240" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">the office keeps everything on the desk</text>
 </svg>

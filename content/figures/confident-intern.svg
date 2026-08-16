@@ -47,11 +47,19 @@
     <path d="M84,80 L90,80 M102,80 L108,80" stroke-width="1.8"/>
   </g>
 
-  <!-- speech bubble -->
+  <!-- speech bubble
+       Previously sat low enough that its bottom-left corner clipped the
+       head's top-right (an 8px sliver at y=68), and the tail's tip
+       (114,82) landed inside the head circle itself (cx=96,cy=86,r=24;
+       that point is only 18.4 units from center, well under the 24
+       radius). Whole bubble shifted +14 right / -14 up so the body
+       clears the head entirely, with the tail now stopping about 13px
+       short of the head instead of piercing it — close enough to still
+       read as "pointing at", far enough to not overlap. -->
   <g filter="url(#ci-rough2)" fill="#F1EEE7" stroke="#2C4C77" stroke-linejoin="round">
-    <path d="M104,40 C104,32 110,28 120,28 L176,28 C186,28 192,32 192,40 L192,58 C192,66 186,70 176,70 L128,70 L114,82 L118,70 C110,69 104,65 104,58 Z" stroke-width="2.2"/>
+    <path d="M118,26 C118,18 124,14 134,14 L190,14 C200,14 206,18 206,26 L206,44 C206,52 200,56 190,56 L142,56 L128,68 L132,56 C124,55 118,51 118,44 Z" stroke-width="2.2"/>
   </g>
-  <text x="118" y="55" font-family="Fraunces,serif" font-size="15" font-style="italic" font-weight="600" fill="#2C4C77">Absolutely.</text>
+  <text x="132" y="41" font-family="Fraunces,serif" font-size="15" font-style="italic" font-weight="600" fill="#2C4C77">Absolutely.</text>
 
   <!-- red note -->
   <g filter="url(#ci-rough2)" fill="none" stroke="#BE3A22" stroke-width="1.9" stroke-linecap="round">

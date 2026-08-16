@@ -48,10 +48,20 @@
   </g>
   <g filter="url(#wk-rough2)" fill="none" stroke="#2C4C77" stroke-linecap="round">
     <path d="M50,152 L74,152 M50,162 L66,162" stroke-width="2"/>
-    <path d="M96,120 C120,108 142,102 168,100" stroke-width="2.2"/>
-    <path d="M160,94 L170,99 L162,108" stroke-width="2.2"/>
+    <path d="M96,114 C120,102 142,96 168,94" stroke-width="2.2"/>
+    <path d="M160,88 L170,93 L162,102" stroke-width="2.2"/>
   </g>
-  <text x="98" y="132" font-family="Fraunces,serif" font-size="13" font-style="italic" fill="#2C4C77">built here</text>
+  <!-- Label's baseline had been sitting exactly on y=132, the same
+       coordinate as the bench's top edge, so every letter's foot ran
+       straight into that line. Arrow raised to open headroom. Split
+       across two short lines rather than widened as one: "built here"
+       fits fine as a single EN line, but its ES translation ("aquí se
+       construye", 18 characters vs 10) doesn't fit the same ~80px gap
+       between the arrow and the artifact box, and was running into
+       both. Two lines keeps every language inside the same footprint,
+       tested against the actual translated string, not assumed. -->
+  <text x="98" y="112" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#2C4C77">built</text>
+  <text x="98" y="128" font-family="Fraunces,serif" font-size="12.5" font-style="italic" fill="#2C4C77">here</text>
 
   <!-- red note -->
   <text x="40" y="232" font-family="Fraunces,serif" font-size="14.5" font-style="italic" font-weight="500" fill="#BE3A22">the chat talks. the bench is where it gets built</text>

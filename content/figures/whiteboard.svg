@@ -53,7 +53,13 @@
     <path d="M300,150 C312,140 320,128 322,116"/>
     <path d="M314,120 L323,114 L326,124"/>
   </g>
-  <text x="272" y="166" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#2C4C77">new notes go here</text>
+  <!-- Was one line, 18 characters, starting well inside the board's
+       blank right column but wide enough that "here" ran past the
+       column's edge and straight through the frame's own bottom-right
+       corner curve. Split across two lines that both fit inside the
+       blank space instead of spilling onto the frame. -->
+  <text x="272" y="155" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#2C4C77">new notes</text>
+  <text x="272" y="173" font-family="Fraunces,serif" font-size="13.5" font-style="italic" fill="#2C4C77">go here</text>
 
   <!-- red note -->
   <g filter="url(#wb-rough2)" fill="none" stroke="#BE3A22" stroke-width="1.9" stroke-linecap="round">

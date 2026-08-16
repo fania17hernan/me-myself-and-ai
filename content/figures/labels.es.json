@@ -96,7 +96,8 @@
     "On the left, a telephone handset with ringing arcs and a small puff showing it vanishes when it ends. On the right, a room with a desk holding a folder, papers, and a mug that stay put. A red note reads: the call ends, the office keeps everything on the desk.": "A la izquierda, un auricular con ondas de timbre y una nubecita que muestra que desaparece al terminar. A la derecha, un cuarto con un escritorio que sostiene una carpeta, papeles y una taza que se quedan. Una nota en rojo dice: la llamada acaba, la oficina lo guarda todo.",
     "the call": "la llamada",
     "the office": "la oficina",
-    "the call ends. the office keeps everything on the desk": "la llamada acaba. la oficina lo guarda todo"
+    "the call ends.": "la llamada acaba.",
+    "the office keeps everything on the desk": "la oficina lo guarda todo"
   },
 
   "pilot-and-autopilot": {
@@ -168,14 +169,16 @@
   "whiteboard": {
     "The whiteboard": "El pizarrón",
     "A whiteboard on a stand, filled with lines of writing. On the left an eraser is wiping the oldest lines away, which fade out. A blue arrow labelled \"new notes go here\" points to the empty space on the right. A note reads: when it's full, the oldest gets wiped.": "Un pizarrón en un caballete, lleno de líneas de escritura. A la izquierda, un borrador quita las líneas más viejas, que se desvanecen. Una flecha azul con la etiqueta \"aquí van las notas nuevas\" apunta al espacio vacío de la derecha. Una nota dice: cuando se llena, se borra lo más viejo.",
-    "new notes go here": "aquí van las notas nuevas",
+    "new notes": "aquí van las",
+    "go here": "notas nuevas",
     "when it's full, the oldest gets wiped": "cuando se llena, borra lo más viejo"
   },
 
   "workbench": {
     "The workbench": "El banco de trabajo",
     "A workbench with a pegboard of tools behind it. On the bench sits a document being built, some lines already written and one line in red being drawn. A small chat bubble on the left points a blue arrow at the bench. A red note reads: the chat talks, the bench is where it gets built.": "Un banco de trabajo con un panel de herramientas detrás. Sobre el banco hay un documento en construcción, con algunas líneas escritas y una en rojo dibujándose. Un globo de chat a la izquierda apunta con una flecha azul al banco. Una nota en rojo dice: el chat habla; el banco es donde se construye.",
-    "built here": "aquí se construye",
+    "built": "aquí se",
+    "here": "construye",
     "the chat talks. the bench is where it gets built": "el chat habla; el banco lo construye"
   }
 }
